@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sorting Mat — Wants vs. Needs</title>
+<style>
+  @media print {
+    body { margin: 0.2in; }
+    @page { size: landscape; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 12px; color: #2d3436; }
+
+  .mat-title {
+    text-align: center;
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #2d3436;
+  }
+  .mat-subtitle {
+    text-align: center;
+    font-size: 0.85em;
+    color: #636e72;
+    margin-bottom: 14px;
+  }
+
+  .mat {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border: 3px solid #2d3436;
+    border-radius: 12px;
+    overflow: hidden;
+    min-height: 80vh;
+  }
+
+  .column {
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .column:not(:last-child) {
+    border-right: 3px dashed #b2bec3;
+  }
+
+  .col-header {
+    font-size: 1.8em;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 6px;
+    width: 100%;
+    border-radius: 8px;
+  }
+  .col-definition {
+    font-size: 0.82em;
+    text-align: center;
+    margin-bottom: 14px;
+    line-height: 1.4;
+    padding: 0 8px;
+    min-height: 50px;
+  }
+  .col-area {
+    flex: 1;
+    width: 100%;
+    border: 2px dashed #dfe6e9;
+    border-radius: 8px;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .col-area-hint {
+    color: #b2bec3;
+    font-size: 0.9em;
+    font-style: italic;
+    text-align: center;
+    padding: 10px;
+  }
+
+  /* NEEDS column */
+  .needs { background: #f0fff8; }
+  .needs .col-header { background: #00b894; color: white; }
+  .needs .col-area { border-color: #00b89455; }
+
+  /* GRAY AREA column */
+  .gray { background: #fffdf2; }
+  .gray .col-header { background: #fdcb6e; color: #2d3436; }
+  .gray .col-area { border-color: #fdcb6e55; }
+
+  /* WANTS column */
+  .wants { background: #fff5f2; }
+  .wants .col-header { background: #e17055; color: white; }
+  .wants .col-area { border-color: #e1705555; }
+</style>
+</head>
+<body>
+
+<div class="mat-title">Wants vs. Needs Sorting Mat</div>
+<div class="mat-subtitle">Sort each item card into the column where you think it belongs. Be ready to defend your choice!</div>
+
+<div class="mat">
+
+  <div class="column needs">
+    <div class="col-header">NEEDS</div>
+    <div class="col-definition">
+      Things you <strong>must have</strong> to survive and function.<br>
+      Without these, your health, safety, or basic life is at risk.
+    </div>
+    <div class="col-area">
+      <div class="col-area-hint">Place NEED cards here</div>
+    </div>
+  </div>
+
+  <div class="column gray">
+    <div class="col-header">GRAY AREA</div>
+    <div class="col-definition">
+      It depends on the <strong>situation</strong>.<br>
+      Could be a need OR a want depending on where you live, your job, health, or family.
+    </div>
+    <div class="col-area">
+      <div class="col-area-hint">Place GRAY AREA cards here</div>
+    </div>
+  </div>
+
+  <div class="column wants">
+    <div class="col-header">WANTS</div>
+    <div class="col-definition">
+      Things that make life <strong>better or more fun</strong>, but you could survive without them.
+    </div>
+    <div class="col-area">
+      <div class="col-area-hint">Place WANT cards here</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

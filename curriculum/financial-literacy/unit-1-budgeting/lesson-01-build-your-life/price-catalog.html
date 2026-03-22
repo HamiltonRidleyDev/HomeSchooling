@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real-World Price Catalog</title>
+<style>
+  @media print {
+    body { margin: 0.3in; font-size: 9.5pt; }
+    .page-break { page-break-before: always; }
+    .cat-section { page-break-inside: avoid; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.35; color: #2d3436; max-width: 900px; margin: 0 auto; padding: 16px; }
+  h1 { font-size: 1.6em; text-align: center; color: #2d3436; margin-bottom: 2px; }
+  .tagline { text-align: center; font-size: 0.85em; color: #636e72; margin-bottom: 12px; }
+  .cat-section { margin: 14px 0; }
+  .cat-header { display: flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 6px; margin-bottom: 6px; }
+  .cat-header h2 { font-size: 1.05em; color: white; }
+  .cat-header .icon { font-size: 1.3em; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85em; }
+  th { background: #f5f6fa; text-align: left; padding: 4px 8px; font-size: 0.8em; color: #636e72; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #dfe6e9; }
+  td { padding: 4px 8px; border-bottom: 1px solid #f0f0f0; }
+  tr:hover { background: #fafafa; }
+  .price { font-weight: bold; color: #d63031; white-space: nowrap; }
+  .note { font-size: 0.78em; color: #636e72; }
+  .tip-box { background: #fff3cd; border-left: 4px solid #fdcb6e; padding: 8px 12px; font-size: 0.82em; margin: 8px 0; border-radius: 0 4px 4px 0; }
+  .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .col-table { width: 100%; }
+</style>
+</head>
+<body>
+
+<h1>Real-World Price Catalog 2026</h1>
+<p class="tagline">What things actually cost. Use this as your reference when building your budget.</p>
+
+<!-- HOUSING -->
+<div class="cat-section">
+  <div class="cat-header" style="background: #e17055;">
+    <span class="icon">&#127968;</span>
+    <h2>Housing — Monthly Rent</h2>
+  </div>
+  <table>
+    <tr><th>Type</th><th>Small Town / Rural</th><th>Mid-Size City</th><th>Big City</th></tr>
+    <tr><td>Room in shared house</td><td class="price">$350-$500</td><td class="price">$500-$700</td><td class="price">$700-$1,000</td></tr>
+    <tr><td>Studio apartment</td><td class="price">$450-$600</td><td class="price">$650-$900</td><td class="price">$1,000-$1,500</td></tr>
+    <tr><td>1-bedroom apartment</td><td class="price">$550-$750</td><td class="price">$850-$1,200</td><td class="price">$1,300-$2,000</td></tr>
+    <tr><td>2-bedroom apartment</td><td class="price">$700-$950</td><td class="price">$1,100-$1,500</td><td class="price">$1,600-$2,500</td></tr>
+    <tr><td>3-bedroom house</td><td class="price">$900-$1,300</td><td class="price">$1,400-$1,900</td><td class="price">$2,000-$3,500</td></tr>
+  </table>
+  <div class="tip-box">Rule of thumb: Try to keep housing under 30% of your take-home pay. If you earn $3,000/month, aim for $900 or less in rent.</div>
+</div>
+
+<!-- UTILITIES -->
+<div class="cat-section">
+  <div class="cat-header" style="background: #fdcb6e; color: #2d3436;">
+    <span class="icon">&#128161;</span>
+    <h2 style="color: #2d3436;">Utilities — Monthly</h2>
+  </div>
+  <table>
+    <tr><th>Utility</th><th>Small Apt</th><th>Large Apt</th><th>House</th></tr>
+    <tr><td>Electricity</td><td class="price">$40-$70</td><td class="price">$70-$120</td><td class="price">$100-$200</td></tr>
+    <tr><td>Water & sewer</td><td class="price">$20-$35</td><td class="price">$30-$50</td><td class="price">$40-$75</td></tr>
+    <tr><td>Natural gas / heating</td><td class="price">$20-$50</td><td class="price">$40-$80</td><td class="price">$60-$150</td></tr>
+    <tr><td>Trash & recycling</td><td class="price">Often included</td><td class="price">$0-$25</td><td class="price">$25-$45</td></tr>
+    <tr><td>Internet — Basic (100 Mbps)</td><td colspan="3" class="price">$40-$55/mo</td></tr>
+    <tr><td>Internet — Fast (300+ Mbps)</td><td colspan="3" class="price">$60-$80/mo</td></tr>
+    <tr><td>Internet — Gigabit</td><td colspan="3" class="price">$80-$120/mo</td></tr>
+  </table>
+  <div class="tip-box">Leaving lights on, running AC all day, or having lots of devices plugged in raises your electric bill. Small habits = real savings.</div>
+</div>
+
+<!-- FOOD -->
+<div class="cat-section">
+  <div class="cat-header" style="background: #00b894;">
+    <span class="icon">&#127834;</span>
+    <h2>Groceries — Common Items</h2>
+  </div>
+  <div class="columns">
+    <table class="col-table">
+      <tr><th>Item</th><th>Price</th></tr>
+      <tr><td>Gallon of milk</td><td class="price">$4.29</td></tr>
+      <tr><td>Dozen eggs</td><td class="price">$3.99</td></tr>
+      <tr><td>Loaf of bread</td><td class="price">$3.49</td></tr>
+      <tr><td>1 lb chicken breast</td><td class="price">$4.99</td></tr>
+      <tr><td>1 lb ground beef</td><td class="price">$5.99</td></tr>
+      <tr><td>1 lb ground turkey</td><td class="price">$5.49</td></tr>
+      <tr><td>5 lb bag of rice</td><td class="price">$4.99</td></tr>
+      <tr><td>1 lb pasta</td><td class="price">$1.79</td></tr>
+      <tr><td>Jar of pasta sauce</td><td class="price">$3.29</td></tr>
+      <tr><td>Bag of frozen veggies</td><td class="price">$2.49</td></tr>
+      <tr><td>Can of beans</td><td class="price">$1.29</td></tr>
+      <tr><td>Peanut butter (16 oz)</td><td class="price">$3.99</td></tr>
+      <tr><td>Jelly / jam</td><td class="price">$3.49</td></tr>
+      <tr><td>Cereal (box)</td><td class="price">$4.49</td></tr>
+      <tr><td>Butter (1 lb)</td><td class="price">$4.99</td></tr>
+    </table>
+    <table class="col-table">
+      <tr><th>Item</th><th>Price</th></tr>
+      <tr><td>Cheese (8 oz block)</td><td class="price">$3.99</td></tr>
+      <tr><td>Bananas (1 lb)</td><td class="price">$0.69</td></tr>
+      <tr><td>Apples (1 lb)</td><td class="price">$1.99</td></tr>
+      <tr><td>Potatoes (5 lb bag)</td><td class="price">$4.49</td></tr>
+      <tr><td>Onions (3 lb bag)</td><td class="price">$3.49</td></tr>
+      <tr><td>Cooking oil (48 oz)</td><td class="price">$4.99</td></tr>
+      <tr><td>Sugar (4 lb)</td><td class="price">$3.79</td></tr>
+      <tr><td>Flour (5 lb)</td><td class="price">$3.49</td></tr>
+      <tr><td>Coffee (12 oz bag)</td><td class="price">$8.99</td></tr>
+      <tr><td>Orange juice (64 oz)</td><td class="price">$4.49</td></tr>
+      <tr><td>Tortillas (pack of 10)</td><td class="price">$3.29</td></tr>
+      <tr><td>Frozen pizza</td><td class="price">$5.99</td></tr>
+      <tr><td>Chips (family size)</td><td class="price">$4.99</td></tr>
+      <tr><td>Case of water (24 pk)</td><td class="price">$5.99</td></tr>
+      <tr><td>Laundry detergent</td><td class="price">$11.99</td></tr>
+    </table>
+  </div>
+  <div class="tip-box">Average monthly grocery spend: $250 (budget) to $400 (comfortable) per person. Meal planning and buying store brands can save 20-30%.</div>
+
+  <table style="margin-top: 8px;">
+    <tr><th colspan="2">Eating Out / Delivery — Per Meal</th></tr>
+    <tr><td>Fast food meal (McDonald's, Taco Bell)</td><td class="price">$8-$12</td></tr>
+    <tr><td>Fast casual (Chipotle, Panera)</td><td class="price">$12-$16</td></tr>
+    <tr><td>Sit-down restaurant (per person)</td><td class="price">$18-$35</td></tr>
+    <tr><td>DoorDash/Uber Eats order (food + fees + tip)</td><td class="price">$25-$40</td></tr>
+    <tr><td>Coffee shop (latte)</td><td class="price">$5.50-$7.00</td></tr>
+  </table>
+  <div class="tip-box">One $6 latte every workday = $130/month. One DoorDash order per week = $120-$160/month. Small habits, big numbers.</div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- TRANSPORTATION -->
+<div class="cat-section">
+  <div class="cat-header" style="background: #0984e3;">
+    <span class="icon">&#128663;</span>
+    <h2>Transportation</h2>
+  </div>
+  <table>
+    <tr><th>Vehicle Type</th><th>Monthly Payment</th><th>Insurance</th><th>Gas (avg)</th><th>Total/mo</th></tr>
+    <tr><td>Walk / bike</td><td class="price">$0</td><td class="price">$0</td><td class="price">$0</td><td class="price">$0</td></tr>
+    <tr><td>Public transit pass</td><td colspan="3"><span class="note">Varies by city</span></td><td class="price">$50-$100</td></tr>
+    <tr><td>Older used car (paid off)</td><td class="price">$0</td><td class="price">$80-$130</td><td class="price">$80-$120</td><td class="price">$160-$250</td></tr>
+    <tr><td>Reliable used car (2018-2021)</td><td class="price">$250-$350</td><td class="price">$100-$160</td><td class="price">$80-$120</td><td class="price">$430-$630</td></tr>
+    <tr><td>New mid-range car (Civic, Corolla)</td><td class="price">$400-$500</td><td class="price">$140-$200</td><td class="price">$80-$120</td><td class="price">$620-$820</td></tr>
+    <tr><td>New SUV / Truck</td><td class="price">$500-$700</td><td class="price">$160-$240</td><td class="price">$120-$180</td><td class="price">$780-$1,120</td></tr>
+    <tr><td>Luxury / Sport car</td><td class="price">$700-$1,200</td><td class="price">$200-$350</td><td class="price">$120-$200</td><td class="price">$1,020-$1,750</td></tr>
+  </table>
+  <div class="tip-box">Don't forget: cars also need maintenance ($50-$100/mo average), registration ($100-$300/year), and occasional repairs. A car is usually the 2nd biggest expense after housing.</div>
+</div>
+
+<!-- PHONE PLANS -->
+<div class="cat-section">
+  <div class="cat-header" style="background: #a29bfe;">
+    <span class="icon">&#128241;</span>
+    <h2>Phone Plans — Monthly</h2>
+  </div>
+  <table>
+    <tr><th>Carrier / Plan</th><th>Data</th><th>Price/mo</th></tr>
+    <tr><td>Mint Mobile — Basic</td><td>5 GB</td><td class="price">$15</td></tr>
+    <tr><td>Mint Mobile — Unlimited</td><td>Unlimited (35 GB fast)</td><td class="price">$30</td></tr>
+    <tr><td>Visible (Verizon network)</td><td>Unlimited</td><td class="price">$25</td></tr>
+    <tr><td>T-Mobile Essentials</td><td>Unlimited</td><td class="price">$50</td></tr>
+    <tr><td>T-Mobile Go5G Plus</td><td>Unlimited Premium</td><td class="price">$75</td></tr>
+    <tr><td>AT&T Unlimited Starter</td><td>Unlimited</td><td class="price">$65</td></tr>
+    <tr><td>AT&T Unlimited Premium</td><td>Unlimited Premium</td><td class="price">$85</td></tr>
+    <tr><td>Verizon Unlimited Welcome</td><td>Unlimited</td><td class="price">$65</td></tr>
+    <tr><td>Verizon Unlimited Ultimate</td><td>Unlimited Premium</td><td class="price">$90</td></tr>
+    <tr><td colspan="2">Add: Phone financing (iPhone/Samsung)</td><td class="price">+$25-$45/mo</td></tr>
+  </table>
+  <div class="tip-box">Budget carriers (Mint, Visible, Cricket) use the same towers as the big carriers but cost half as much. The phone you carry matters less than the plan you pick.</div>
+</div>
+
+<!-- STREAMING & ENTERTAINMENT -->
+<div class="cat-section">
+  <div class="cat-header" style="background: #6c5ce7;">
+    <span class="icon">&#127916;</span>
+    <h2>Streaming &amp; Entertainment — Monthly</h2>
+  </div>
+  <div class="columns">
+    <table class="col-table">
+      <tr><th>Service</th><th>Price/mo</th></tr>
+      <tr><td>Netflix — Standard (ads)</td><td class="price">$6.99</td></tr>
+      <tr><td>Netflix — Standard</td><td class="price">$15.49</td></tr>
+      <tr><td>Netflix — Premium (4K)</td><td class="price">$22.99</td></tr>
+      <tr><td>YouTube — Free</td><td class="price">$0</td></tr>
+      <tr><td>YouTube Premium</td><td class="price">$13.99</td></tr>
+      <tr><td>Spotify — Free (with ads)</td><td class="price">$0</td></tr>
+      <tr><td>Spotify Premium</td><td class="price">$11.99</td></tr>
+      <tr><td>Apple Music</td><td class="price">$10.99</td></tr>
+      <tr><td>Disney+</td><td class="price">$9.99</td></tr>
+      <tr><td>Hulu (ads)</td><td class="price">$7.99</td></tr>
+      <tr><td>Hulu (no ads)</td><td class="price">$17.99</td></tr>
+    </table>
+    <table class="col-table">
+      <tr><th>Service</th><th>Price/mo</th></tr>
+      <tr><td>HBO Max</td><td class="price">$9.99-$16.99</td></tr>
+      <tr><td>Amazon Prime (includes video)</td><td class="price">$14.99</td></tr>
+      <tr><td>Paramount+</td><td class="price">$7.99</td></tr>
+      <tr><td>Peacock</td><td class="price">$7.99</td></tr>
+      <tr><td>Apple TV+</td><td class="price">$9.99</td></tr>
+      <tr><td>Xbox Game Pass Ultimate</td><td class="price">$19.99</td></tr>
+      <tr><td>PlayStation Plus Essential</td><td class="price">$9.99</td></tr>
+      <tr><td>Nintendo Switch Online</td><td class="price">$3.99</td></tr>
+      <tr><td>Gym (Planet Fitness)</td><td class="price">$15-$25</td></tr>
+      <tr><td>Gym (nice / CrossFit)</td><td class="price">$50-$150</td></tr>
+      <tr><td>Movie theater ticket</td><td class="price">$12-$18</td></tr>
+    </table>
+  </div>
+  <div class="tip-box">If you subscribed to everything above, you'd spend over $200/month just on entertainment. Most people pick 2-3 services and rotate. Free options (YouTube, library, parks) are underrated.</div>
+</div>
+
+<!-- INSURANCE -->
+<div class="cat-section">
+  <div class="cat-header" style="background: #00cec9;">
+    <span class="icon">&#128737;</span>
+    <h2>Insurance — Monthly Premiums</h2>
+  </div>
+  <p style="font-size: 0.82em; color: #636e72; margin: 4px 0 8px; padding: 0 4px;">Insurance = you pay a little each month so you don't pay a LOT when something bad happens. The "deductible" is what you pay out of pocket before insurance kicks in.</p>
+  <table>
+    <tr><th>Type</th><th>Basic / High Deductible</th><th>Standard</th><th>Premium / Low Deductible</th></tr>
+    <tr>
+      <td><strong>Car Insurance</strong><br><span class="note">Required by law if you drive</span></td>
+      <td><span class="price">$80-$120/mo</span><br><span class="note">$1,500-$2,000 deductible. Liability only on old cars.</span></td>
+      <td><span class="price">$130-$180/mo</span><br><span class="note">$1,000 deductible. Covers your car too.</span></td>
+      <td><span class="price">$180-$280/mo</span><br><span class="note">$250-$500 deductible. Full coverage, rental car, roadside.</span></td>
+    </tr>
+    <tr>
+      <td><strong>Renter's Insurance</strong><br><span class="note">Protects your stuff in an apartment</span></td>
+      <td colspan="2"><span class="price">$15-$25/mo</span><br><span class="note">Covers $20K-$30K of belongings. $500-$1,000 deductible.</span></td>
+      <td><span class="price">$30-$50/mo</span><br><span class="note">Covers $50K+, lower deductible, liability.</span></td>
+    </tr>
+    <tr>
+      <td><strong>Health Insurance</strong><br><span class="note">Often partly paid by employer</span></td>
+      <td><span class="price">$50-$100/mo</span><br><span class="note">High deductible ($3,000+). You pay a lot before it kicks in.</span></td>
+      <td><span class="price">$100-$200/mo</span><br><span class="note">$1,000-$1,500 deductible. Copays for visits.</span></td>
+      <td><span class="price">$200-$400/mo</span><br><span class="note">Low deductible ($250-$500). Low copays. Best coverage.</span></td>
+    </tr>
+    <tr>
+      <td><strong>Life Insurance</strong><br><span class="note">Pays your family if you die</span></td>
+      <td><span class="price">$15-$25/mo</span><br><span class="note">$100K policy. Term (20 yr). Young & healthy.</span></td>
+      <td><span class="price">$30-$50/mo</span><br><span class="note">$250K policy.</span></td>
+      <td><span class="price">$50-$100/mo</span><br><span class="note">$500K+ policy.</span></td>
+    </tr>
+  </table>
+  <div class="tip-box"><strong>Why does this matter?</strong> Without renter's insurance, a house fire could cost you $5,000-$15,000 to replace your stuff. With it, you pay $15/month and a $500 deductible. Insurance is boring until you need it — then it's the best money you ever spent.</div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- CLOTHING -->
+<div class="cat-section">
+  <div class="cat-header" style="background: #fd79a8;">
+    <span class="icon">&#128085;</span>
+    <h2>Clothing — Typical Prices</h2>
+  </div>
+  <div class="columns">
+    <table class="col-table">
+      <tr><th>Item</th><th>Budget</th><th>Mid</th><th>Premium</th></tr>
+      <tr><td>T-shirt</td><td class="price">$5-$10</td><td class="price">$15-$25</td><td class="price">$30-$60</td></tr>
+      <tr><td>Jeans</td><td class="price">$15-$25</td><td class="price">$40-$60</td><td class="price">$80-$200</td></tr>
+      <tr><td>Sneakers</td><td class="price">$30-$50</td><td class="price">$70-$100</td><td class="price">$120-$250</td></tr>
+      <tr><td>Winter jacket</td><td class="price">$25-$50</td><td class="price">$60-$120</td><td class="price">$150-$400</td></tr>
+      <tr><td>Hoodie</td><td class="price">$15-$25</td><td class="price">$40-$60</td><td class="price">$65-$150</td></tr>
+    </table>
+    <table class="col-table">
+      <tr><th colspan="2">Monthly Clothing Budget Guide</th></tr>
+      <tr><td>Minimal / thrift</td><td class="price">$20-$40/mo</td></tr>
+      <tr><td>Moderate</td><td class="price">$50-$80/mo</td></tr>
+      <tr><td>Fashion-conscious</td><td class="price">$100-$175/mo</td></tr>
+      <tr><td>Designer / hype</td><td class="price">$200-$500+/mo</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- HEALTH & PERSONAL -->
+<div class="cat-section">
+  <div class="cat-header" style="background: #55efc4; color: #2d3436;">
+    <span class="icon">&#129657;</span>
+    <h2 style="color: #2d3436;">Health &amp; Personal Care</h2>
+  </div>
+  <table>
+    <tr><th>Item / Service</th><th>Cost</th></tr>
+    <tr><td>Haircut — budget (Great Clips, etc.)</td><td class="price">$15-$25</td></tr>
+    <tr><td>Haircut — barber / salon</td><td class="price">$30-$60</td></tr>
+    <tr><td>Haircut — high-end salon</td><td class="price">$60-$150+</td></tr>
+    <tr><td>Toiletries (shampoo, soap, toothpaste, deodorant — monthly)</td><td class="price">$15-$30</td></tr>
+    <tr><td>Doctor visit copay (with insurance)</td><td class="price">$20-$50</td></tr>
+    <tr><td>Doctor visit (without insurance)</td><td class="price">$150-$300</td></tr>
+    <tr><td>Prescription medication (generic, with insurance)</td><td class="price">$5-$30</td></tr>
+    <tr><td>Dental cleaning (with insurance)</td><td class="price">$0-$50</td></tr>
+    <tr><td>Dental cleaning (without insurance)</td><td class="price">$100-$200</td></tr>
+    <tr><td>Gym — budget (Planet Fitness)</td><td class="price">$15-$25/mo</td></tr>
+    <tr><td>Gym — mid-range (LA Fitness, YMCA)</td><td class="price">$40-$70/mo</td></tr>
+    <tr><td>Gym — premium (Equinox, CrossFit)</td><td class="price">$100-$200/mo</td></tr>
+  </table>
+</div>
+
+<!-- INVESTING & SAVINGS -->
+<div class="cat-section">
+  <div class="cat-header" style="background: #2d3436;">
+    <span class="icon">&#128200;</span>
+    <h2>Saving &amp; Investing — What Your Money Can Do</h2>
+  </div>
+  <table>
+    <tr><th>Option</th><th>How It Works</th><th>Avg Return/Year</th><th>Risk</th></tr>
+    <tr>
+      <td><strong>Savings Account</strong></td>
+      <td>Money sits in bank. Safe. Easy to access.</td>
+      <td class="price">4-5% (currently)</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td><strong>High-Yield Savings</strong></td>
+      <td>Online bank, higher interest than regular.</td>
+      <td class="price">4.5-5.5%</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td><strong>Index Fund (S&P 500)</strong></td>
+      <td>You own a tiny piece of 500 big companies. Set it and forget it.</td>
+      <td class="price">~10% (historical avg)</td>
+      <td>Medium — goes up and down but trends up over decades</td>
+    </tr>
+    <tr>
+      <td><strong>Mutual Fund</strong></td>
+      <td>A professional picks stocks for you. You pay a small fee.</td>
+      <td class="price">7-10%</td>
+      <td>Medium</td>
+    </tr>
+    <tr>
+      <td><strong>401(k) / IRA</strong></td>
+      <td>Retirement account. Tax benefits. Can't touch until 59&frac12;.</td>
+      <td class="price">7-10%</td>
+      <td>Medium — but you have decades for it to grow</td>
+    </tr>
+  </table>
+  <div class="tip-box"><strong>The magic of compound interest:</strong> If you invest $100/month starting at age 20 in an index fund averaging 10%/year, by age 60 you'd have about <strong>$632,000</strong> — but you only put in $48,000. The rest is growth. Start early!</div>
+  <table style="margin-top: 8px;">
+    <tr><th>$100/month invested at 10%/year</th><th>After 10 years</th><th>After 20 years</th><th>After 30 years</th><th>After 40 years</th></tr>
+    <tr>
+      <td>You put in:</td>
+      <td>$12,000</td>
+      <td>$24,000</td>
+      <td>$36,000</td>
+      <td>$48,000</td>
+    </tr>
+    <tr>
+      <td><strong>It grows to:</strong></td>
+      <td class="price">$20,500</td>
+      <td class="price">$76,000</td>
+      <td class="price">$226,000</td>
+      <td class="price">$632,000</td>
+    </tr>
+  </table>
+</div>
+
+<!-- BANKING BASICS -->
+<div class="cat-section">
+  <div class="cat-header" style="background: #2d3436;">
+    <span class="icon">&#127974;</span>
+    <h2>Banking Basics</h2>
+  </div>
+  <p style="font-size: 0.82em; color: #636e72; margin: 4px 0 8px; padding: 0 4px;">You need a bank account before you do anything else with money. Here's what you need to know.</p>
+  <table>
+    <tr><th>Account / Feature</th><th>What It Does</th><th>Cost</th></tr>
+    <tr>
+      <td><strong>Checking Account</strong></td>
+      <td>Where your paycheck goes. Use a debit card to spend from it. Pay bills from it.</td>
+      <td class="price">$0/mo (most banks)</td>
+    </tr>
+    <tr>
+      <td><strong>Savings Account</strong></td>
+      <td>Holds money you're not spending. Earns a small amount of interest.</td>
+      <td class="price">$0/mo, earns 0.5-1% interest</td>
+    </tr>
+    <tr>
+      <td><strong>High-Yield Savings</strong></td>
+      <td>Online bank savings. Same safety, much better interest rate.</td>
+      <td class="price">$0/mo, earns 4-5% interest</td>
+    </tr>
+    <tr>
+      <td><strong>Debit Card</strong></td>
+      <td>Spends money directly from your checking account. No borrowing, no interest.</td>
+      <td class="price">Free with checking</td>
+    </tr>
+    <tr>
+      <td><strong>Credit Card</strong></td>
+      <td>Borrows money. Must pay it back. If you don't pay in full monthly, you pay 20-25% interest.</td>
+      <td class="price">$0 annual fee (basic cards)</td>
+    </tr>
+    <tr>
+      <td style="color: #d63031;"><strong>Overdraft Fee</strong></td>
+      <td style="color: #d63031;">Spend more than you have? The bank charges you for it. Ouch.</td>
+      <td class="price" style="color: #d63031;">$35 per transaction!</td>
+    </tr>
+    <tr>
+      <td><strong>Direct Deposit</strong></td>
+      <td>Your employer puts your paycheck straight into your bank. Faster than a paper check.</td>
+      <td class="price">Free</td>
+    </tr>
+  </table>
+  <div class="tip-box"><strong>Debit vs. Credit:</strong> A debit card spends YOUR money (from checking). A credit card spends the BANK'S money (which you must pay back). Use debit for everyday spending. Use credit only if you can pay the full balance every month — this builds your credit score without costing you interest.</div>
+</div>
+
+<!-- MISC COMMON COSTS -->
+<div class="cat-section">
+  <div class="cat-header" style="background: #636e72;">
+    <span class="icon">&#128221;</span>
+    <h2>Other Common Costs</h2>
+  </div>
+  <table>
+    <tr><th>Item</th><th>Cost</th></tr>
+    <tr><td>Childcare (daycare, per month per child)</td><td class="price">$800-$1,500</td></tr>
+    <tr><td>Student loan payment (average)</td><td class="price">$200-$400/mo</td></tr>
+    <tr><td>Pet — dog (food, vet, basics per month)</td><td class="price">$100-$200</td></tr>
+    <tr><td>Pet — cat (food, vet, basics per month)</td><td class="price">$50-$100</td></tr>
+    <tr><td>Laundromat (if no washer/dryer)</td><td class="price">$40-$60/mo</td></tr>
+    <tr><td>Parking (city monthly)</td><td class="price">$75-$250</td></tr>
+    <tr><td>Rideshare (Uber/Lyft) — per ride</td><td class="price">$10-$25</td></tr>
+    <tr><td>Haircut + tip (monthly average)</td><td class="price">$25-$70</td></tr>
+    <tr><td>Charity / tithing (10% of gross on $50K)</td><td class="price">~$415/mo</td></tr>
+  </table>
+</div>
+
+<div style="text-align: center; margin-top: 16px; padding-top: 10px; border-top: 2px solid #dfe6e9; font-size: 0.78em; color: #b2bec3;">
+  Prices are approximate U.S. averages as of 2025-2026. Actual prices vary by location, brand, and deals.
+</div>
+
+</body>
+</html>

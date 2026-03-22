@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quarterly Budget Check-In</title>
+<style>
+  @media print {
+    body { margin: 0.4in; font-size: 10pt; }
+    .checkin { page-break-inside: avoid; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.5; color: #2d3436; max-width: 850px; margin: 0 auto; padding: 20px; }
+  h1 { font-size: 1.5em; text-align: center; margin-bottom: 2px; }
+  .subtitle { text-align: center; font-size: 0.85em; color: #636e72; margin-bottom: 14px; }
+
+  .checkin { border: 2px solid #6c5ce7; border-radius: 12px; padding: 16px; margin: 16px 0; }
+  .checkin-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 2px solid #6c5ce7; margin-bottom: 12px; }
+  .checkin-title { font-size: 1.2em; font-weight: bold; color: #6c5ce7; }
+  .checkin-date { font-size: 0.9em; }
+  .checkin-date span { border-bottom: 1.5px solid #2d3436; display: inline-block; width: 120px; }
+
+  .section { margin: 12px 0; }
+  .section h3 { font-size: 0.95em; color: #0984e3; margin-bottom: 6px; padding-bottom: 3px; border-bottom: 1.5px dashed #dfe6e9; }
+  .q { margin: 6px 0; font-size: 0.88em; }
+  .wl { border-bottom: 1.5px solid #b2bec3; display: inline-block; width: 70px; }
+  .wll { border-bottom: 1.5px solid #b2bec3; display: inline-block; width: 100%; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .mini-box { background: #f5f6fa; border-radius: 6px; padding: 8px 10px; font-size: 0.85em; }
+  .mini-box .label { font-weight: bold; font-size: 0.8em; text-transform: uppercase; color: #636e72; letter-spacing: 0.5px; margin-bottom: 4px; }
+
+  .invest-table { width: 100%; border-collapse: collapse; font-size: 0.82em; margin-top: 6px; }
+  .invest-table th { background: #6c5ce7; color: white; padding: 4px 6px; font-size: 0.78em; }
+  .invest-table td { padding: 4px 6px; border: 1px solid #dfe6e9; }
+
+  .goals { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 8px; }
+  .goal-card { border: 1.5px solid #dfe6e9; border-radius: 6px; padding: 8px; font-size: 0.82em; text-align: center; }
+  .goal-card .emoji { font-size: 1.4em; }
+  .goal-card .goal-label { font-weight: bold; font-size: 0.78em; color: #636e72; margin: 2px 0; }
+
+  .reflection { background: #f0f0ff; border-radius: 8px; padding: 10px 12px; margin-top: 10px; }
+  .reflection h3 { color: #6c5ce7 !important; border: none !important; }
+
+  .cut-line { border-top: 2.5px dashed #b2bec3; margin: 24px 0; text-align: center; font-size: 0.7em; color: #b2bec3; padding-top: 4px; }
+</style>
+</head>
+<body>
+
+<h1>&#128197; Quarterly Budget Check-In</h1>
+<p class="subtitle">Every 3 months, revisit your budget. What's changed? What would you do differently?</p>
+
+<!-- CHECK-IN 1 -->
+<div class="checkin">
+  <div class="checkin-header">
+    <div class="checkin-title">Check-In #1</div>
+    <div class="checkin-date">Name: <span>&nbsp;</span> &nbsp; Date: <span>&nbsp;</span></div>
+  </div>
+
+  <div class="section">
+    <h3>&#128188; Career &amp; Income</h3>
+    <div class="grid-2">
+      <div class="mini-box">
+        <div class="label">My Career</div>
+        <span class="wll">&nbsp;</span>
+      </div>
+      <div class="mini-box">
+        <div class="label">Monthly Take-Home</div>
+        $ <span class="wl">&nbsp;</span>
+      </div>
+    </div>
+    <div class="q">Any changes to my income since last time? <span class="wll">&nbsp;</span></div>
+  </div>
+
+  <div class="section">
+    <h3>&#128176; Budget Snapshot</h3>
+    <div class="q">What's my biggest expense? <span class="wl">&nbsp;</span> at $ <span class="wl">&nbsp;</span>/mo</div>
+    <div class="q">Am I over or under budget this quarter? <span class="wll">&nbsp;</span></div>
+    <div class="q">One thing I'd change about my budget: <span class="wll">&nbsp;</span></div>
+  </div>
+
+  <div class="section">
+    <h3>&#128176; Savings &amp; Emergency Fund</h3>
+    <div class="grid-2">
+      <div class="mini-box">
+        <div class="label">Monthly Savings Amount</div>
+        $ <span class="wl">&nbsp;</span>
+      </div>
+      <div class="mini-box">
+        <div class="label">Total Saved So Far</div>
+        $ <span class="wl">&nbsp;</span>
+      </div>
+    </div>
+    <div class="q" style="margin-top: 6px;">Emergency fund balance: $ <span class="wl">&nbsp;</span> &nbsp; Goal: $ <span class="wl">&nbsp;</span></div>
+  </div>
+
+  <div class="section">
+    <h3>&#128200; Investment Portfolio Update</h3>
+    <p style="font-size: 0.82em; color: #636e72;">Look up current prices for your investments. Fill in from your Investment Tracker.</p>
+    <table class="invest-table">
+      <tr>
+        <th>Investment</th>
+        <th>Shares Owned</th>
+        <th>Current Price</th>
+        <th>Current Value</th>
+        <th>Up or Down?</th>
+      </tr>
+      <tr><td></td><td></td><td>$</td><td>$</td><td></td></tr>
+      <tr><td></td><td></td><td>$</td><td>$</td><td></td></tr>
+      <tr><td></td><td></td><td>$</td><td>$</td><td></td></tr>
+      <tr style="font-weight: bold;"><td colspan="3">Total Portfolio Value</td><td>$</td><td></td></tr>
+    </table>
+    <div class="q">What happened in the market this quarter? <span class="wll">&nbsp;</span></div>
+  </div>
+
+  <div class="section">
+    <h3>&#128640; Side Hustle Update</h3>
+    <div class="grid-2">
+      <div class="mini-box">
+        <div class="label">My Side Hustle</div>
+        <span class="wll">&nbsp;</span>
+      </div>
+      <div class="mini-box">
+        <div class="label">Monthly Profit</div>
+        $ <span class="wl">&nbsp;</span>
+      </div>
+    </div>
+    <div class="q">What's going well? <span class="wll">&nbsp;</span></div>
+    <div class="q">What would I improve? <span class="wll">&nbsp;</span></div>
+  </div>
+
+  <div class="section">
+    <h3>&#127919; Goals for Next Quarter</h3>
+    <div class="goals">
+      <div class="goal-card">
+        <div class="emoji">&#128176;</div>
+        <div class="goal-label">Money Goal</div>
+        <span class="wll">&nbsp;</span>
+      </div>
+      <div class="goal-card">
+        <div class="emoji">&#128218;</div>
+        <div class="goal-label">Learning Goal</div>
+        <span class="wll">&nbsp;</span>
+      </div>
+      <div class="goal-card">
+        <div class="emoji">&#128640;</div>
+        <div class="goal-label">Hustle Goal</div>
+        <span class="wll">&nbsp;</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="reflection">
+    <h3>Reflection</h3>
+    <div class="q"><strong>What's one smart money decision I made this quarter?</strong></div>
+    <p><span class="wll">&nbsp;</span></p>
+    <div class="q"><strong>What's one thing I wish I'd done differently?</strong></div>
+    <p><span class="wll">&nbsp;</span></p>
+  </div>
+</div>
+
+<div class="cut-line">&#9986; Print multiple copies — one per kid per quarter. Or print this page 4 times for a full year.</div>
+
+<!-- CHECK-IN 2 (identical structure for a second copy on same print) -->
+<div class="checkin">
+  <div class="checkin-header">
+    <div class="checkin-title">Check-In #___</div>
+    <div class="checkin-date">Name: <span>&nbsp;</span> &nbsp; Date: <span>&nbsp;</span></div>
+  </div>
+
+  <div class="section">
+    <h3>&#128188; Career &amp; Income</h3>
+    <div class="grid-2">
+      <div class="mini-box">
+        <div class="label">My Career</div>
+        <span class="wll">&nbsp;</span>
+      </div>
+      <div class="mini-box">
+        <div class="label">Monthly Take-Home</div>
+        $ <span class="wl">&nbsp;</span>
+      </div>
+    </div>
+    <div class="q">Any changes to my income since last time? <span class="wll">&nbsp;</span></div>
+  </div>
+
+  <div class="section">
+    <h3>&#128176; Budget Snapshot</h3>
+    <div class="q">What's my biggest expense? <span class="wl">&nbsp;</span> at $ <span class="wl">&nbsp;</span>/mo</div>
+    <div class="q">Am I over or under budget this quarter? <span class="wll">&nbsp;</span></div>
+    <div class="q">One thing I'd change about my budget: <span class="wll">&nbsp;</span></div>
+  </div>
+
+  <div class="section">
+    <h3>&#128176; Savings &amp; Emergency Fund</h3>
+    <div class="grid-2">
+      <div class="mini-box">
+        <div class="label">Monthly Savings Amount</div>
+        $ <span class="wl">&nbsp;</span>
+      </div>
+      <div class="mini-box">
+        <div class="label">Total Saved So Far</div>
+        $ <span class="wl">&nbsp;</span>
+      </div>
+    </div>
+    <div class="q" style="margin-top: 6px;">Emergency fund balance: $ <span class="wl">&nbsp;</span> &nbsp; Goal: $ <span class="wl">&nbsp;</span></div>
+  </div>
+
+  <div class="section">
+    <h3>&#128200; Investment Portfolio Update</h3>
+    <table class="invest-table">
+      <tr>
+        <th>Investment</th>
+        <th>Shares Owned</th>
+        <th>Current Price</th>
+        <th>Current Value</th>
+        <th>Up or Down?</th>
+      </tr>
+      <tr><td></td><td></td><td>$</td><td>$</td><td></td></tr>
+      <tr><td></td><td></td><td>$</td><td>$</td><td></td></tr>
+      <tr><td></td><td></td><td>$</td><td>$</td><td></td></tr>
+      <tr style="font-weight: bold;"><td colspan="3">Total Portfolio Value</td><td>$</td><td></td></tr>
+    </table>
+    <div class="q">What happened in the market this quarter? <span class="wll">&nbsp;</span></div>
+  </div>
+
+  <div class="section">
+    <h3>&#128640; Side Hustle Update</h3>
+    <div class="grid-2">
+      <div class="mini-box">
+        <div class="label">My Side Hustle</div>
+        <span class="wll">&nbsp;</span>
+      </div>
+      <div class="mini-box">
+        <div class="label">Monthly Profit</div>
+        $ <span class="wl">&nbsp;</span>
+      </div>
+    </div>
+    <div class="q">What's going well? <span class="wll">&nbsp;</span></div>
+    <div class="q">What would I improve? <span class="wll">&nbsp;</span></div>
+  </div>
+
+  <div class="section">
+    <h3>&#127919; Goals for Next Quarter</h3>
+    <div class="goals">
+      <div class="goal-card">
+        <div class="emoji">&#128176;</div>
+        <div class="goal-label">Money Goal</div>
+        <span class="wll">&nbsp;</span>
+      </div>
+      <div class="goal-card">
+        <div class="emoji">&#128218;</div>
+        <div class="goal-label">Learning Goal</div>
+        <span class="wll">&nbsp;</span>
+      </div>
+      <div class="goal-card">
+        <div class="emoji">&#128640;</div>
+        <div class="goal-label">Hustle Goal</div>
+        <span class="wll">&nbsp;</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="reflection">
+    <h3>Reflection</h3>
+    <div class="q"><strong>What's one smart money decision I made this quarter?</strong></div>
+    <p><span class="wll">&nbsp;</span></p>
+    <div class="q"><strong>What's one thing I wish I'd done differently?</strong></div>
+    <p><span class="wll">&nbsp;</span></p>
+  </div>
+</div>
+
+</body>
+</html>

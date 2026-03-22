@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parent Guide — The Power of Compound Interest | Lesson 9</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 850px; margin: 0 auto; padding: 24px;
+    color: #1a1a2e; line-height: 1.65; background: #fff;
+  }
+
+  /* Header */
+  .lesson-header {
+    background: linear-gradient(135deg, #0d1b2a 0%, #1b3a4b 50%, #006d77 100%);
+    color: #fff; border-radius: 12px; padding: 36px 32px; margin-bottom: 32px;
+    position: relative; overflow: hidden;
+  }
+  .lesson-header::after {
+    content: ''; position: absolute; top: -40px; right: -40px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+  .lesson-header .unit-tag {
+    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;
+    opacity: 0.7; margin-bottom: 4px;
+  }
+  .lesson-header h1 { font-size: 2rem; margin-bottom: 6px; }
+  .lesson-header .subtitle {
+    font-size: 1.05rem; font-weight: 300; opacity: 0.85;
+    font-style: italic;
+  }
+
+  .meta-bar {
+    display: flex; flex-wrap: wrap; gap: 18px;
+    margin-bottom: 28px; font-size: 0.92rem; color: #555;
+  }
+  .meta-bar span { background: #f0f4f8; padding: 5px 14px; border-radius: 20px; }
+
+  h2 {
+    font-size: 1.35rem; color: #0d1b2a; margin: 32px 0 12px;
+    border-bottom: 3px solid #006d77; padding-bottom: 6px;
+  }
+  h3 { font-size: 1.1rem; color: #1b3a4b; margin: 20px 0 8px; }
+
+  p, li { margin-bottom: 8px; }
+  ul, ol { padding-left: 24px; }
+
+  /* Callout boxes */
+  .callout {
+    border-radius: 10px; padding: 20px 24px; margin: 20px 0;
+  }
+  .callout-magic {
+    background: linear-gradient(135deg, #fff7e6 0%, #fff3cd 100%);
+    border-left: 5px solid #f0a500;
+  }
+  .callout-magic .callout-label { color: #b37800; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .callout-say {
+    background: #e8f5e9; border-left: 5px solid #2e7d32;
+  }
+  .callout-say .callout-label { color: #2e7d32; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .callout-warn {
+    background: #fce4ec; border-left: 5px solid #c62828;
+  }
+  .callout-warn .callout-label { color: #c62828; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .callout-age {
+    background: #e3f2fd; border-left: 5px solid #1565c0;
+  }
+  .callout-age .callout-label { color: #1565c0; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .callout-tip {
+    background: #f3e5f5; border-left: 5px solid #7b1fa2;
+  }
+  .callout-tip .callout-label { color: #7b1fa2; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+
+  .section-block {
+    background: #fafbfc; border: 1px solid #e0e6ed;
+    border-radius: 10px; padding: 24px; margin: 20px 0;
+  }
+  .section-block .time-badge {
+    display: inline-block; background: #006d77; color: #fff;
+    font-size: 0.78rem; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-bottom: 10px;
+  }
+
+  .big-number {
+    font-size: 2.2rem; font-weight: 800; color: #006d77;
+    text-align: center; margin: 12px 0;
+  }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 16px 0;
+    font-size: 0.92rem;
+  }
+  th, td { padding: 8px 12px; border: 1px solid #d0d7de; text-align: left; }
+  th { background: #0d1b2a; color: #fff; font-weight: 600; }
+  tr:nth-child(even) { background: #f6f8fa; }
+
+  .materials-list { columns: 2; column-gap: 24px; }
+  .materials-list li { break-inside: avoid; }
+
+  .flow-number {
+    display: inline-block; width: 32px; height: 32px; line-height: 32px;
+    text-align: center; background: #006d77; color: #fff;
+    font-weight: 700; border-radius: 50%; margin-right: 8px;
+    font-size: 0.9rem; flex-shrink: 0;
+  }
+
+  footer {
+    margin-top: 40px; padding-top: 16px; border-top: 1px solid #e0e6ed;
+    font-size: 0.82rem; color: #888; text-align: center;
+  }
+
+  @media print {
+    body { padding: 0; font-size: 11pt; }
+    .lesson-header { background: #1a1a2e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .callout, .section-block { break-inside: avoid; }
+    .no-print { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="lesson-header">
+  <div class="unit-tag">Unit 5: Growing Wealth &mdash; Lesson 9</div>
+  <h1>The Power of Compound Interest</h1>
+  <div class="subtitle">"This is the closest thing to magic in the financial world."</div>
+</div>
+
+<div class="meta-bar">
+  <span>30&ndash;40 minutes</span>
+  <span>Ages 6&ndash;15 (differentiated)</span>
+  <span>6 kids</span>
+  <span>Facilitator Guide</span>
+</div>
+
+<div class="callout callout-magic">
+  <div class="callout-label">Why This Lesson Matters More Than Any Other</div>
+  <p>If you could teach only <strong>one</strong> financial concept for the rest of your life, this would be it. Compound interest is the single most powerful force in personal finance. It's why starting early matters more than earning more. It's why patient investors become wealthy while impatient ones stay broke. Today's lesson should create a <em>surprise moment</em> your kids remember for years &mdash; the instant they see the hockey stick curve and realize what time + patience can do.</p>
+</div>
+
+<!-- ============================================ -->
+<h2>Materials Needed</h2>
+<ul class="materials-list">
+  <li><strong>Penny Doubling worksheet</strong> (penny-doubling.html) &mdash; 1 per kid</li>
+  <li><strong>Growth Chart worksheet</strong> (growth-chart-worksheet.html) &mdash; 1 per kid</li>
+  <li>A jar of real pennies (at least 30)</li>
+  <li>Pencils and colored pencils (green, red, yellow)</li>
+  <li>Calculator (1 per older kid, or shared)</li>
+  <li>Each kid's <strong>Build Your Life</strong> monthly investment amount</li>
+  <li>Each kid's <strong>Investment Tracker</strong> (for reference/update)</li>
+  <li>Whiteboard or large paper for drawing the growth curve</li>
+  <li>Optional: real dollar bills to stack and visualize amounts</li>
+</ul>
+
+<!-- ============================================ -->
+<h2>Lesson Flow</h2>
+
+<!-- PART 1 -->
+<div class="section-block">
+  <span class="time-badge">5 min</span>
+  <h3><span class="flow-number">1</span>The Penny Challenge &mdash; The Hook</h3>
+
+  <div class="callout callout-say">
+    <div class="callout-label">Say This</div>
+    <p>"I have a deal for you. You can have <strong>one million dollars</strong> right now, cash in your hand. Or... you can have a single penny &mdash; ONE cent &mdash; but it doubles every day for 30 days. Which do you pick?"</p>
+  </div>
+
+  <p><strong>Take a family vote.</strong> Write names under "$1,000,000" or "Magic Penny" on the whiteboard. Most kids (and most adults!) pick the million. Let them commit.</p>
+
+  <p>Then reveal the truth:</p>
+
+  <div class="big-number">The penny becomes $5,368,709.12</div>
+
+  <p>Walk through the penny-doubling worksheet together. Point out:</p>
+  <ul>
+    <li><strong>After 10 days</strong> &mdash; you only have $5.12. "Still feeling good about your choice?"</li>
+    <li><strong>After 20 days</strong> &mdash; $5,242.88. "Barely anything! Two thirds of the time is GONE."</li>
+    <li><strong>Days 21&ndash;30</strong> &mdash; this is where EVERYTHING happens. $5.2 million in the last 10 days.</li>
+  </ul>
+
+  <div class="callout callout-magic">
+    <div class="callout-label">The Key Moment</div>
+    <p>Draw or point to the growth curve. The flat-flat-flat-EXPLOSION shape is the most important image in financial literacy. Say: <em>"This is <strong>exactly</strong> what happens when you invest. For years &mdash; maybe decades &mdash; it feels like nothing is happening. Then suddenly, it takes off. The people who gave up in the flat part missed the explosion."</em></p>
+  </div>
+
+  <div class="callout callout-age">
+    <div class="callout-label">For the 6-Year-Old</div>
+    <p>Use <strong>real pennies</strong>. Put 1 penny on the table. "This is day 1." Then 2 pennies. Then 4. Stack them physically. By day 8 you're at 128 pennies &mdash; that's already a big pile. Say: "And it just keeps going! By day 30, you'd need a truck to carry all the pennies." Let them hold the growing stacks. Use the coloring section on the worksheet &mdash; tiny stacks at the beginning, enormous ones at the end.</p>
+  </div>
+</div>
+
+<!-- PART 2 -->
+<div class="section-block">
+  <span class="time-badge">10 min</span>
+  <h3><span class="flow-number">2</span>Real-World Numbers &mdash; The Growth Chart</h3>
+
+  <p>Hand out the <strong>Growth Chart worksheet</strong>. Turn to Section 1: "What Does $100/Month Become?"</p>
+
+  <p>Read through the table together. Let the numbers sink in:</p>
+
+  <table>
+    <tr><th>Start Age</th><th>You Put In</th><th>It Grows To</th><th>FREE Money</th></tr>
+    <tr><td>15</td><td>$60,000</td><td style="color:#006d77;font-weight:700;">$2,598,000</td><td style="color:#2e7d32;font-weight:700;">$2,538,000</td></tr>
+    <tr><td>25</td><td>$48,000</td><td>$956,000</td><td>$908,000</td></tr>
+    <tr><td>35</td><td>$36,000</td><td>$339,000</td><td>$303,000</td></tr>
+  </table>
+
+  <div class="callout callout-say">
+    <div class="callout-label">Say This</div>
+    <p>"Look at this. The person who starts at 15 puts in only $12,000 more than the person who starts at 25. But they end up with <strong>$1,642,000 MORE</strong>. That's the power of those extra 10 years. Time is worth more than money."</p>
+  </div>
+
+  <p><strong>Make it personal:</strong> "Who here is 15? You're standing at the top of this chart RIGHT NOW. Every year you wait, you're sliding down. Who's 13? You have an even BIGGER advantage if you start." Go through each kid's age and show them where they fall.</p>
+
+  <div class="callout callout-age">
+    <div class="callout-label">Age Adjustments</div>
+    <ul>
+      <li><strong>Ages 6&ndash;8:</strong> Focus on the simple idea: "If you save your money and let it grow, it makes MORE money all by itself. And the longer you wait, the more free money you get." Point at the "FREE Money" column. They don't need to grasp percentages yet.</li>
+      <li><strong>Ages 9&ndash;11:</strong> They can understand the table and the comparison. Ask them to calculate the difference between starting at 15 vs. 35. Let them use a calculator.</li>
+      <li><strong>Ages 12&ndash;15:</strong> Full understanding expected. Challenge them: "Why does 10 extra years matter so much when you're only putting in $12,000 more?" Push them toward understanding exponential growth vs. linear growth.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PART 3 -->
+<div class="section-block">
+  <span class="time-badge">5 min</span>
+  <h3><span class="flow-number">3</span>The Rule of 72 &mdash; Mental Math Superpower</h3>
+
+  <div class="callout callout-say">
+    <div class="callout-label">Say This</div>
+    <p>"Want a shortcut to figure out how fast your money doubles? Here's a trick that even financial professionals use every day. Take the number 72 and divide it by the interest rate. That's how many years it takes to double."</p>
+  </div>
+
+  <p>Do examples together on the whiteboard:</p>
+  <ul>
+    <li>10% return: 72 &divide; 10 = <strong>7.2 years</strong> to double</li>
+    <li>7% return: 72 &divide; 7 = <strong>10.3 years</strong> to double</li>
+    <li>2% savings account: 72 &divide; 2 = <strong>36 years</strong> to double &mdash; "That's why savings accounts don't make you rich."</li>
+  </ul>
+
+  <p>Then flip it for ages 11+:</p>
+  <ul>
+    <li>24% credit card: 72 &divide; 24 = <strong>3 years</strong> for your debt to double &mdash; "The same force working <em>against</em> you."</li>
+  </ul>
+
+  <div class="callout callout-age">
+    <div class="callout-label">Age Note</div>
+    <p><strong>Ages 6&ndash;8:</strong> Skip the Rule of 72 calculation. Just say: "When your money is invested, it makes copies of itself. And then THOSE copies make copies. It just keeps going!" <br><strong>Ages 9+:</strong> They can do the division. Let them try the practice problems on the worksheet.</p>
+  </div>
+</div>
+
+<!-- PART 4 -->
+<div class="section-block">
+  <span class="time-badge">10&ndash;15 min</span>
+  <h3><span class="flow-number">4</span>Hands-On Calculation &mdash; YOUR Money Growing</h3>
+
+  <p>This is where it becomes <strong>personal</strong>. Each kid pulls out their <strong>Build Your Life</strong> budget and finds their monthly investment amount.</p>
+
+  <p>Turn to Section 2 of the Growth Chart worksheet. Using the lookup table provided:</p>
+
+  <ol>
+    <li>Write down their monthly investment amount.</li>
+    <li>Find the closest match in the reference table.</li>
+    <li>Fill in their personal decade-by-decade growth chart.</li>
+    <li>Circle the number at 40 years. <strong>That's what patience looks like.</strong></li>
+  </ol>
+
+  <div class="callout callout-say">
+    <div class="callout-label">Say This (to each kid individually)</div>
+    <p>"[Name], you chose to invest $[amount] per month. Look what that becomes. After 10 years: $___. After 40 years: $___. You put in $[total contributions], and compound interest gave you $[total growth] for FREE. That's your money making more money making more money."</p>
+  </div>
+
+  <div class="callout callout-tip">
+    <div class="callout-label">Connection to Investment Tracker</div>
+    <p>Have each kid write their projected 10-year and 40-year values on their <strong>Investment Tracker</strong>. This makes compound interest a concrete part of their ongoing financial picture, not just a one-time lesson. Every time they see those numbers, they're reminded why they're investing.</p>
+  </div>
+
+  <div class="callout callout-age">
+    <div class="callout-label">For the 6-Year-Old</div>
+    <p>Help them find their number in the lookup table. Then stack physical coins to represent the growth. "You put in THIS many [small stack]. Compound interest added THIS many [big stack]." The visual of the big stack being much taller than the small one is what they'll remember.</p>
+  </div>
+</div>
+
+<!-- PART 5 -->
+<div class="section-block">
+  <span class="time-badge">5 min</span>
+  <h3><span class="flow-number">5</span>The Flip Side &mdash; Compound Interest on Debt <span style="font-size:0.85rem; color:#888;">(Ages 11+)</span></h3>
+
+  <div class="callout callout-warn">
+    <div class="callout-label">Important Contrast</div>
+    <p>Compound interest is a <strong>tool</strong>. It is not good or bad &mdash; it depends on which side you're on. When you invest, it works FOR you. When you owe debt, it works AGAINST you. The same math. The same force. Opposite results.</p>
+  </div>
+
+  <div class="callout callout-say">
+    <div class="callout-label">Say This</div>
+    <p>"Remember how we said money doubles at 10% every 7 years? Credit cards charge 24%. That means your DEBT doubles every 3 years. You buy a $1,000 TV on a credit card and pay the minimum &mdash; in 3 years you owe $2,000. In 6 years, $4,000. For a TV that broke 4 years ago."</p>
+  </div>
+
+  <p>Walk through the credit card example on the worksheet (Section 4):</p>
+  <ul>
+    <li>$5,000 balance at 24% with $100/month payments = <strong>$9,800 total paid</strong>. Almost double.</li>
+    <li>Same balance with $250/month payments = <strong>$6,200 total paid</strong>. Saved $3,600.</li>
+  </ul>
+
+  <p>"This is why we learn about investing FIRST. You want compound interest on YOUR side."</p>
+
+  <div class="callout callout-age">
+    <div class="callout-label">Age Note</div>
+    <p><strong>Ages 6&ndash;10:</strong> Keep it very simple. "Borrowing money costs extra. The longer you take to pay it back, the more extra you pay. That's why we try to save up first." They don't need the math. <br><strong>Ages 11&ndash;15:</strong> Full credit card example. This is old enough to encounter "buy now, pay later" and needs to understand the trap.</p>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<h2>Wrapping Up &mdash; Reflection</h2>
+
+<p>Have each kid complete the Reflection section (Section 5) on their worksheet. Then go around the table:</p>
+
+<ul>
+  <li><strong>"What surprised you most?"</strong> &mdash; Let each kid share one thing.</li>
+  <li><strong>"What would you tell a friend about compound interest?"</strong> &mdash; Practice explaining it in their own words. If they can teach it, they understand it.</li>
+</ul>
+
+<div class="callout callout-magic">
+  <div class="callout-label">The Emotional Anchor</div>
+  <p>End with this: <em>"Albert Einstein allegedly called compound interest 'the 8th wonder of the world.' He said, 'Those who understand it, earn it. Those who don't, pay it.' Starting today, you understand it. You're on the earning side. And because you're starting now &mdash; at 6, at 9, at 12, at 15 &mdash; you have something most adults wish they had: TIME. That's your superpower."</em></p>
+</div>
+
+<!-- ============================================ -->
+<h2>Facilitator Notes</h2>
+
+<h3>Making It Stick</h3>
+<ul>
+  <li><strong>The surprise is everything.</strong> Don't reveal the penny answer before taking the vote. The shock of being wrong is what creates the memory.</li>
+  <li><strong>Use physical objects</strong> with the younger kids. Pennies, blocks, Legos &mdash; anything that stacks. The tactile experience of watching a pile grow is more powerful than numbers on a page.</li>
+  <li><strong>Draw the curve.</strong> On the whiteboard, sketch the hockey stick shape as you walk through the penny chart. Point at the flat part: "This is where most people quit." Point at the explosion: "This is what they missed."</li>
+  <li><strong>Personalize relentlessly.</strong> Every time you say a number, connect it to THEIR investment amount, THEIR age, THEIR Build Your Life budget. Abstract numbers are forgettable. "YOUR $200/month becomes $1.2 million" is not.</li>
+</ul>
+
+<h3>Common Questions Kids Ask</h3>
+<ul>
+  <li><strong>"Is 10% realistic?"</strong> &mdash; Yes. The S&P 500 has averaged about 10% per year over the last 100 years. Some years it's up 30%, some years it's down 20%. But over decades, 10% is a reasonable average.</li>
+  <li><strong>"Can I really start investing as a kid?"</strong> &mdash; Yes, with a custodial account (a parent opens it for you). This is something to discuss as a family follow-up.</li>
+  <li><strong>"What if the stock market crashes?"</strong> &mdash; "Remember the penny chart? Even after a crash, the doublings keep going. You just need to not sell during the dip. That's why it's called patience."</li>
+  <li><strong>"Why doesn't everyone do this?"</strong> &mdash; "Because watching money grow slowly is boring. Most people want results NOW. The penny is worth nothing for 20 days. Most people would have given up by day 10."</li>
+</ul>
+
+<h3>Connection to Other Lessons</h3>
+<ul>
+  <li><strong>Build Your Life:</strong> Their chosen investment amount is the input for today's calculations. This makes Build Your Life feel consequential.</li>
+  <li><strong>Investment Tracker:</strong> Update with projected growth numbers from today's worksheet. These become long-term benchmarks.</li>
+  <li><strong>Future lessons on budgeting:</strong> When they see how powerful investing is, the question shifts from "Can I afford this thing?" to "Is this thing worth more than what my money could become?"</li>
+</ul>
+
+<footer>
+  The Lost Boys Adventure &mdash; Financial Literacy Curriculum<br>
+  Unit 5: Growing Wealth &bull; Lesson 9: The Power of Compound Interest &bull; Parent/Facilitator Guide
+</footer>
+
+</body>
+</html>

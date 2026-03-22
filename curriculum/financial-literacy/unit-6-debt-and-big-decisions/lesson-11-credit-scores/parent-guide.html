@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parent Guide — Credit Scores & The Cost of Borrowing</title>
+<style>
+  :root {
+    --navy: #1a2744;
+    --blue: #2563eb;
+    --light-blue: #dbeafe;
+    --green: #16a34a;
+    --light-green: #dcfce7;
+    --amber: #d97706;
+    --light-amber: #fef3c7;
+    --red: #dc2626;
+    --light-red: #fee2e2;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-600: #4b5563;
+    --gray-800: #1f2937;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--gray-800);
+    line-height: 1.6;
+    background: var(--gray-50);
+  }
+
+  .page {
+    max-width: 850px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px 48px;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .page { padding: 20px 0; max-width: 100%; }
+    .flow-step { break-inside: avoid; }
+    .age-grid { break-inside: avoid; }
+    .callout { break-inside: avoid; }
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid var(--navy);
+    padding-bottom: 20px;
+    margin-bottom: 32px;
+  }
+  .header .unit-tag {
+    display: inline-block;
+    background: var(--navy);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 28px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .header .subtitle {
+    font-size: 16px;
+    color: var(--gray-600);
+  }
+
+  /* Meta bar */
+  .meta-bar {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    background: var(--gray-100);
+    border-radius: 10px;
+    padding: 14px 20px;
+    margin-bottom: 28px;
+    font-size: 14px;
+  }
+  .meta-bar .item { display: flex; align-items: center; gap: 6px; }
+  .meta-bar .label { font-weight: 600; color: var(--gray-600); }
+
+  /* Section headings */
+  h2 {
+    font-size: 20px;
+    color: var(--navy);
+    margin: 28px 0 12px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--light-blue);
+  }
+  h3 { font-size: 16px; color: var(--blue); margin: 16px 0 8px; }
+
+  p, li { font-size: 15px; }
+  p { margin-bottom: 10px; }
+  ul, ol { padding-left: 24px; margin-bottom: 12px; }
+  li { margin-bottom: 4px; }
+
+  /* Lesson flow steps */
+  .flow-step {
+    border-left: 4px solid var(--blue);
+    background: #fff;
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .flow-step .step-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .flow-step .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--blue);
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  .flow-step .step-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .flow-step .step-time {
+    font-size: 13px;
+    font-weight: 600;
+    background: var(--light-blue);
+    color: var(--blue);
+    padding: 2px 10px;
+    border-radius: 12px;
+  }
+
+  /* Call-out boxes */
+  .callout {
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 14px;
+  }
+  .callout-title {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .callout.say {
+    background: var(--light-blue);
+    border-left: 4px solid var(--blue);
+  }
+  .callout.say .callout-title { color: var(--blue); }
+  .callout.tip {
+    background: var(--light-green);
+    border-left: 4px solid var(--green);
+  }
+  .callout.tip .callout-title { color: var(--green); }
+  .callout.warn {
+    background: var(--light-amber);
+    border-left: 4px solid var(--amber);
+  }
+  .callout.warn .callout-title { color: var(--amber); }
+  .callout.connect {
+    background: var(--light-red);
+    border-left: 4px solid var(--red);
+  }
+  .callout.connect .callout-title { color: var(--red); }
+
+  /* Age badges */
+  .age-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .age-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  .age-card .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+  }
+  .age-card.primary .badge { background: #fce7f3; color: #be185d; }
+  .age-card.elementary .badge { background: #dbeafe; color: #1d4ed8; }
+  .age-card.middle .badge { background: #dcfce7; color: #15803d; }
+  .age-card.high .badge { background: #fef3c7; color: #b45309; }
+
+  /* Materials list */
+  .materials-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .materials-list .mat-item {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  .materials-list .mat-item strong { color: var(--navy); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="unit-tag">Unit 6 &middot; Debt &amp; Big Decisions &middot; Lesson 11</div>
+    <h1>Credit Scores &amp; The Cost of Borrowing</h1>
+    <div class="subtitle">The invisible number that silently costs &mdash; or saves &mdash; you hundreds of thousands of dollars</div>
+  </div>
+
+  <!-- Meta bar -->
+  <div class="meta-bar">
+    <div class="item"><span class="label">Duration:</span> 35&ndash;45 min</div>
+    <div class="item"><span class="label">Ages:</span> 6&ndash;15 (differentiated)</div>
+    <div class="item"><span class="label">Type:</span> Discussion + Game + Worksheet</div>
+    <div class="item"><span class="label">Energy:</span> Medium&ndash;High</div>
+  </div>
+
+  <!-- Big Idea -->
+  <h2>The Big Idea</h2>
+  <p>Your credit score is a three-digit number that follows you through adult life. It determines how much you pay for a car, a house, and even whether you get approved to rent an apartment. The difference between a great score and a poor one can cost you <strong>over $123,000</strong> on a single purchase. Kids who understand this early can start building great credit before most adults even think about it.</p>
+
+  <!-- Materials -->
+  <h2>Materials Needed</h2>
+  <div class="materials-list">
+    <div class="mat-item"><strong>Reference Sheet:</strong> reference-credit-scores.html</div>
+    <div class="mat-item"><strong>Scenario Cards:</strong> scenario-cards-credit.html (print &amp; cut)</div>
+    <div class="mat-item"><strong>Worksheet:</strong> worksheet-cost-of-credit.html</div>
+    <div class="mat-item"><strong>Pencils</strong> for each child</div>
+    <div class="mat-item"><strong>Calculator</strong> (for older kids)</div>
+    <div class="mat-item"><strong>Scoreboard</strong> (whiteboard or paper for game)</div>
+  </div>
+
+  <!-- Age Adaptations Overview -->
+  <h2>Age Adaptations at a Glance</h2>
+  <div class="age-grid">
+    <div class="age-card primary">
+      <div class="badge">Age 6 &mdash; Primary</div>
+      <p>"A credit score is like a grade for how good you are with money. If you always pay people back, you get an A. If you forget, you get a bad grade." Focus on the scenario game (up/down only). Skip the math.</p>
+    </div>
+    <div class="age-card elementary">
+      <div class="badge">Ages 9&ndash;10 &mdash; Elementary</div>
+      <p>Can understand the 5 factors at a basic level. Use the car example on the worksheet (fill-in-the-blank). They will be shocked by the dollar difference.</p>
+    </div>
+    <div class="age-card middle">
+      <div class="badge">Ages 11&ndash;13 &mdash; Middle</div>
+      <p>Ready for the full reference sheet. Car + house examples on the worksheet. Can lead discussions in the scenario game. Start talking about building credit young.</p>
+    </div>
+    <div class="age-card high">
+      <div class="badge">Age 15 &mdash; High School</div>
+      <p>All three worksheet scenarios including credit card debt. Good debt vs. bad debt discussion. Create a personal credit-building plan. Discuss authorized user strategy.</p>
+    </div>
+  </div>
+
+  <!-- Lesson Flow -->
+  <h2>Lesson Flow</h2>
+
+  <!-- Step 1 -->
+  <div class="flow-step">
+    <div class="step-header">
+      <div><span class="step-number">1</span><span class="step-title">Hook: The Invisible Number</span></div>
+      <span class="step-time">3 min</span>
+    </div>
+    <div class="callout say">
+      <div class="callout-title">Say This:</div>
+      "There's a number that follows you your entire adult life. It determines whether you can rent an apartment, how much you pay for a car, and can even affect whether you get a job. It's called your credit score, and most kids have never heard of it."
+    </div>
+    <p>Pause and let that sink in. Ask: <em>"Has anyone heard of a credit score before?"</em> Let them share what they know (or guess). Don't correct anything yet &mdash; just collect ideas.</p>
+    <p>Then ask: <em>"What do you think the difference between a GREAT credit score and a TERRIBLE one costs you?"</em> Take guesses. Write them down. (They'll find out the real answer later, and it will blow their minds.)</p>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="flow-step">
+    <div class="step-header">
+      <div><span class="step-number">2</span><span class="step-title">What Is a Credit Score?</span></div>
+      <span class="step-time">10 min</span>
+    </div>
+    <p>Hand out or display the <strong>reference-credit-scores.html</strong> sheet. Walk through together:</p>
+    <ol>
+      <li><strong>The Scale (300&ndash;850)</strong> &mdash; Point to the thermometer. "300 is the worst. 850 is perfect. The average American is around 714."</li>
+      <li><strong>The 5 Factors</strong> &mdash; Go through each one. Emphasize the percentages:
+        <ul>
+          <li><strong>Payment History (35%)</strong> &mdash; "This is the biggest chunk. Just paying on time is over a third of your score."</li>
+          <li><strong>Credit Utilization (30%)</strong> &mdash; "If you have a $1,000 credit card limit, keep your balance under $300. Under $100 is even better."</li>
+          <li><strong>Length of History (15%)</strong> &mdash; "This is why starting young is a superpower."</li>
+          <li><strong>Credit Mix (10%)</strong> &mdash; "Having different types of credit helps."</li>
+          <li><strong>New Inquiries (10%)</strong> &mdash; "Don't apply for a bunch of cards at once."</li>
+        </ul>
+      </li>
+      <li><strong>Who Cares About Your Score?</strong> &mdash; Read the list. Kids are usually surprised that employers and phone companies check it too.</li>
+    </ol>
+    <div class="callout tip">
+      <div class="callout-title">For the 6-Year-Old:</div>
+      Simplify to: "Imagine your teacher gives you a grade for how good you are at returning library books on time. If you always bring them back, you get an A+. If you lose them or bring them back late, your grade goes down. A credit score is like that, but for money. Grown-ups who always pay people back on time get a high score."
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="flow-step">
+    <div class="step-header">
+      <div><span class="step-number">3</span><span class="step-title">The REAL Cost of Bad Credit</span></div>
+      <span class="step-time">10 min</span>
+    </div>
+    <p>This is the <strong>surprise moment</strong>. Hand out <strong>worksheet-cost-of-credit.html</strong>.</p>
+    <div class="callout say">
+      <div class="callout-title">Say This:</div>
+      "Remember those guesses you made about how much bad credit costs? Let's find out the real answer. We're going to look at the exact same purchase &mdash; same car, same house &mdash; and see how much MORE you pay just because of a three-digit number."
+    </div>
+    <p><strong>Walk through Scenario 1 (Car):</strong> Everyone does this together. Read each row. When you reach the bottom row (poor credit), pause dramatically. <em>"The same car. The exact same car. But you pay $8,460 MORE."</em></p>
+    <p><strong>Scenario 2 (House):</strong> For ages 11+. The $123,120 difference usually gets gasps. Say: <em>"That's enough to buy a whole OTHER house in some places."</em></p>
+    <p><strong>Scenario 3 (Credit Card):</strong> For age 15. Minimum payments turning $5,000 into $9,800 over 9 years is a powerful lesson about credit card debt.</p>
+    <div class="callout warn">
+      <div class="callout-title">Let the Numbers Do the Talking</div>
+      Don't rush past the shock. Give them time to process. Ask: "Is that more or less than you guessed?" Compare to their earlier guesses. This is the moment that sticks.
+    </div>
+    <p>Have everyone fill in the reflection questions at the bottom of their worksheet.</p>
+  </div>
+
+  <!-- Step 4 -->
+  <div class="flow-step">
+    <div class="step-header">
+      <div><span class="step-number">4</span><span class="step-title">Credit Score Scenario Game</span></div>
+      <span class="step-time">10 min</span>
+    </div>
+    <p>Print and cut the <strong>scenario-cards-credit.html</strong> cards. Place them face-down in a stack.</p>
+    <h3>How to Play</h3>
+    <ol>
+      <li>Divide the family into 2 teams (or play individually).</li>
+      <li>One person draws a card and reads the scenario aloud.</li>
+      <li>Each team discusses for 15 seconds, then holds up a sign: <strong>UP</strong>, <strong>DOWN</strong>, or <strong>NO CHANGE</strong>.</li>
+      <li>Reveal the answer. Each correct team gets 1 point. Bonus point if they can explain <em>why</em>.</li>
+      <li>Keep a scoreboard. Play through as many cards as time allows.</li>
+    </ol>
+    <div class="callout tip">
+      <div class="callout-title">Making It Fun</div>
+      <ul>
+        <li>Let kids make paddle signs (UP on one side, DOWN on the other, NO CHANGE written on a third card).</li>
+        <li>Award bonus points for naming WHICH of the 5 factors is affected.</li>
+        <li>Keep the pace fast &mdash; 15-second timer keeps energy high.</li>
+        <li>Younger kids can team up with an older sibling.</li>
+        <li>Let the winning team pick dessert or a family activity.</li>
+      </ul>
+    </div>
+    <div class="callout tip">
+      <div class="callout-title">For the 6-Year-Old:</div>
+      They only need to choose UP or DOWN. Skip "NO CHANGE" scenarios. Partner them with an older sibling and let them hold up the paddle. They'll absorb more than you think just by participating.
+    </div>
+  </div>
+
+  <!-- Step 5 -->
+  <div class="flow-step">
+    <div class="step-header">
+      <div><span class="step-number">5</span><span class="step-title">Building Credit Young</span></div>
+      <span class="step-time">5 min</span>
+    </div>
+    <p>This section is especially for your <strong>13+ kids</strong>, but everyone can listen in.</p>
+    <div class="callout say">
+      <div class="callout-title">Say This:</div>
+      "Here's the secret most adults don't know: you can start building credit BEFORE you turn 18. And the earlier you start, the longer your credit history, which is 15% of your score. By the time your friends are trying to build credit at 22, you could already have a 7-year head start."
+    </div>
+    <h3>The Credit-Building Roadmap</h3>
+    <ol>
+      <li><strong>Ages 13&ndash;17: Authorized User.</strong> A parent adds you to one of their credit cards. You don't even need to use the card. Their good payment history starts building YOUR credit history. (Only works if the parent's account is in good standing.)</li>
+      <li><strong>Age 18: Secured Credit Card.</strong> You deposit $200&ndash;$500 at a bank. That becomes your credit limit. Use it for one small purchase a month. Pay it in full every month. After 6&ndash;12 months, you can upgrade to a regular card and get your deposit back.</li>
+      <li><strong>Always: The Golden Rules.</strong> Pay every bill on time. Use less than 30% of your limit. Don't close old accounts. Don't open many new accounts at once.</li>
+    </ol>
+    <div class="callout warn">
+      <div class="callout-title">Important Parent Note</div>
+      If you decide to add a child as an authorized user, you remain fully responsible for the account. The child doesn't need to physically have or use the card. Simply being on the account allows them to benefit from the positive history. Check with your card issuer &mdash; some report authorized user history to credit bureaus, some don't.
+    </div>
+  </div>
+
+  <!-- Step 6 -->
+  <div class="flow-step">
+    <div class="step-header">
+      <div><span class="step-number">6</span><span class="step-title">Good Debt vs. Bad Debt</span></div>
+      <span class="step-time">5 min</span>
+    </div>
+    <div class="callout say">
+      <div class="callout-title">Say This:</div>
+      "Not all debt is bad. Wait &mdash; what? That might surprise you after everything we just learned. But some debt actually helps you get richer over time. The key question is: does this debt help me earn more money, or own something that grows in value?"
+    </div>
+    <p>Walk through the Good Debt vs. Bad Debt table on the reference sheet together.</p>
+    <ul>
+      <li><strong>Potentially Good Debt:</strong> Mortgage (builds equity &mdash; you own something that usually grows in value), student loans for a high-earning career (increases your earning power), business loan (grows your income).</li>
+      <li><strong>Bad Debt:</strong> Credit card balances for impulse purchases, payday loans (extremely high interest), car loans you can't afford (cars lose value the moment you drive off the lot).</li>
+    </ul>
+    <div class="callout tip">
+      <div class="callout-title">The Test</div>
+      For each type of debt, ask the kids: "Will this debt help you earn more money or own something that goes UP in value?" If yes, it might be good debt. If no, it's probably bad debt. Practice with examples: "Borrowing $50K for medical school?" (Good &mdash; high earning career.) "Putting a vacation on a credit card at 24% interest?" (Bad &mdash; it's gone the moment you come home.)
+    </div>
+    <div class="callout tip">
+      <div class="callout-title">For the 6-Year-Old:</div>
+      "Some borrowing is like planting a seed &mdash; it grows into something bigger. Like borrowing money to buy a house that gets more valuable. But some borrowing is like eating candy &mdash; it feels good now but it's gone and you still have to pay for it."
+    </div>
+  </div>
+
+  <!-- Connection to Build Your Life -->
+  <h2>Connection to Build Your Life Game</h2>
+  <div class="callout connect">
+    <div class="callout-title">Build Your Life Tie-In</div>
+    <p>In the Build Your Life simulation, players have a credit card section where they manage credit decisions. Connect today's lesson directly:</p>
+    <ul>
+      <li>"Remember when you chose whether to pay your credit card in full or make minimum payments? NOW you know what happens with minimum payments &mdash; $5,000 becomes $9,800."</li>
+      <li>"In Build Your Life, your credit score affected your interest rates on the car and house. Now you know exactly how much that costs."</li>
+      <li>"Next time we play, you'll know why paying that credit card bill on time matters so much."</li>
+    </ul>
+  </div>
+
+  <!-- Wrap-Up -->
+  <h2>Closing Question (2 min)</h2>
+  <p>Go around the room. Each person answers:</p>
+  <p style="font-size: 17px; font-weight: 700; color: var(--navy); text-align: center; padding: 12px; background: var(--light-blue); border-radius: 8px; margin: 12px 0;">"What is the ONE thing you will remember about credit scores?"</p>
+  <p>Accept all answers. The most common (and best) answer: <em>pay on time, every time.</em></p>
+
+</div>
+</body>
+</html>

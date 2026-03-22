@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Pay Stub — Jordan Smith</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 32px 24px;
+            color: #1a1a2e;
+            background: #f8f9fa;
+            line-height: 1.5;
+        }
+
+        /* Lesson context header */
+        .lesson-tag {
+            text-align: center;
+            font-size: 0.78rem;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        /* Pay stub document */
+        .pay-stub {
+            background: #fff;
+            border: 2px solid #333;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        /* Company header */
+        .stub-header {
+            background: #1a1a2e;
+            color: #fff;
+            padding: 20px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .company-info h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .company-info .address {
+            font-size: 0.78rem;
+            opacity: 0.7;
+            margin-top: 2px;
+        }
+        .stub-label {
+            text-align: right;
+        }
+        .stub-label .doc-type {
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .stub-label .doc-sub {
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* Employee info bar */
+        .employee-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 0;
+            border-bottom: 2px solid #333;
+            background: #f4f4f4;
+        }
+        .emp-field {
+            padding: 10px 16px;
+            border-right: 1px solid #ddd;
+            font-size: 0.82rem;
+        }
+        .emp-field:last-child { border-right: none; }
+        .emp-field .label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            color: #666;
+            letter-spacing: 0.5px;
+        }
+        .emp-field .value {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #1a1a2e;
+        }
+
+        /* Tables inside stub */
+        .stub-section {
+            padding: 16px 20px 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .stub-section:last-child { border-bottom: none; }
+        .stub-section h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #666;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .stub-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        .stub-table thead th {
+            text-align: right;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #888;
+            padding: 4px 8px 8px;
+            border-bottom: 1px solid #ccc;
+            font-weight: 600;
+        }
+        .stub-table thead th:first-child { text-align: left; }
+        .stub-table tbody td {
+            padding: 8px 8px;
+            border-bottom: 1px solid #eee;
+        }
+        .stub-table tbody td:first-child {
+            text-align: left;
+            font-weight: 500;
+        }
+        .stub-table tbody td {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+        .stub-table tbody tr:last-child td { border-bottom: none; }
+
+        /* Totals section */
+        .totals-section {
+            background: #f8f9fa;
+            border-top: 2px solid #333;
+        }
+        .totals-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        .totals-table td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #ddd;
+            font-variant-numeric: tabular-nums;
+        }
+        .totals-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+            padding-left: 20px;
+        }
+        .totals-table td { text-align: right; padding-right: 20px; }
+        .totals-table tr:last-child td { border-bottom: none; }
+        .totals-table .net-row td {
+            background: #1a1a2e;
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.05rem;
+            padding: 14px 20px;
+        }
+
+        /* Annotation callouts */
+        .annotation {
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid #e9ecef;
+            padding: 20px 24px;
+            margin-bottom: 20px;
+        }
+        .annotation h3 {
+            font-size: 1rem;
+            color: #0f3460;
+            margin-bottom: 10px;
+        }
+        .annotation p {
+            font-size: 0.9rem;
+            color: #37474f;
+            margin-bottom: 6px;
+        }
+        .annotation .highlight {
+            background: #fff8e1;
+            border: 1px solid #ffe082;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-top: 10px;
+            font-size: 0.88rem;
+        }
+        .annotation .highlight strong { color: #e65100; }
+
+        /* Legend dots */
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.82rem;
+        }
+        .legend-dot {
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .dot-tax { background: #e94560; }
+        .dot-fica { background: #f9a825; }
+        .dot-benefit { background: #2e7d32; }
+        .dot-savings { background: #1565c0; }
+
+        .bottom-note {
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.78rem;
+            margin-top: 8px;
+            padding: 8px;
+        }
+
+        @media print {
+            body { background: #fff; padding: 12px; }
+            .pay-stub {
+                box-shadow: none;
+                border: 2px solid #000;
+            }
+            .stub-header {
+                background: #1a1a2e !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                color: #fff !important;
+            }
+            .totals-table .net-row td {
+                background: #1a1a2e !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                color: #fff !important;
+            }
+            .employee-bar {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .annotation { break-inside: avoid; }
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 16px; }
+            .stub-header { flex-direction: column; text-align: center; gap: 8px; }
+            .stub-label { text-align: center; }
+            .employee-bar { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="lesson-tag">Unit 4: Earning &amp; Taxes &bull; Lesson 8 &bull; Ages 13+</div>
+
+<!-- PAY STUB DOCUMENT -->
+<div class="pay-stub">
+
+    <!-- Company Header -->
+    <div class="stub-header">
+        <div class="company-info">
+            <h2>Clearview Technologies, Inc.</h2>
+            <div class="address">4200 Innovation Blvd, Suite 300 &bull; Orlando, FL 32801</div>
+        </div>
+        <div class="stub-label">
+            <div class="doc-type">Earnings Statement</div>
+            <div class="doc-sub">Keep for your records</div>
+        </div>
+    </div>
+
+    <!-- Employee Info -->
+    <div class="employee-bar">
+        <div class="emp-field">
+            <div class="label">Employee Name</div>
+            <div class="value">Jordan Smith</div>
+        </div>
+        <div class="emp-field">
+            <div class="label">Employee ID</div>
+            <div class="value">CT-004827</div>
+        </div>
+        <div class="emp-field">
+            <div class="label">Pay Period</div>
+            <div class="value">03/01/2026 &ndash; 03/15/2026</div>
+        </div>
+        <div class="emp-field">
+            <div class="label">Pay Date</div>
+            <div class="value">03/20/2026</div>
+        </div>
+        <div class="emp-field">
+            <div class="label">Pay Frequency</div>
+            <div class="value">Bi-Weekly</div>
+        </div>
+    </div>
+
+    <!-- Earnings -->
+    <div class="stub-section">
+        <h3>Earnings</h3>
+        <table class="stub-table">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Hours</th>
+                    <th>Rate</th>
+                    <th>Current</th>
+                    <th>YTD</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Regular</td>
+                    <td>80.00</td>
+                    <td>$25.00</td>
+                    <td>$2,000.00</td>
+                    <td>$8,000.00</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Deductions -->
+    <div class="stub-section">
+        <h3>Deductions</h3>
+        <table class="stub-table">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Current</th>
+                    <th>YTD</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Federal Income Tax</td>
+                    <td>$186.00</td>
+                    <td>$744.00</td>
+                </tr>
+                <tr>
+                    <td>State Income Tax</td>
+                    <td>$0.00</td>
+                    <td>$0.00</td>
+                </tr>
+                <tr>
+                    <td>Social Security (OASDI) &mdash; 6.2%</td>
+                    <td>$124.00</td>
+                    <td>$496.00</td>
+                </tr>
+                <tr>
+                    <td>Medicare &mdash; 1.45%</td>
+                    <td>$29.00</td>
+                    <td>$116.00</td>
+                </tr>
+                <tr>
+                    <td>Health Insurance (Employee Share)</td>
+                    <td>$74.00</td>
+                    <td>$296.00</td>
+                </tr>
+                <tr>
+                    <td>401(k) Retirement &mdash; 3%</td>
+                    <td>$60.00</td>
+                    <td>$240.00</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Totals -->
+    <div class="stub-section totals-section">
+        <table class="totals-table">
+            <tr>
+                <td>Gross Pay</td>
+                <td>$2,000.00</td>
+                <td>$8,000.00</td>
+            </tr>
+            <tr>
+                <td>Total Deductions</td>
+                <td>$473.00</td>
+                <td>$1,892.00</td>
+            </tr>
+            <tr class="net-row">
+                <td>NET PAY</td>
+                <td>$1,527.00</td>
+                <td>$6,108.00</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<!-- ANNOTATIONS -->
+<div class="annotation">
+    <h3>Understanding This Pay Stub</h3>
+
+    <div class="legend">
+        <div class="legend-item"><div class="legend-dot dot-tax"></div> Taxes (go to the government)</div>
+        <div class="legend-item"><div class="legend-dot dot-fica"></div> FICA (Social Security + Medicare)</div>
+        <div class="legend-item"><div class="legend-dot dot-benefit"></div> Benefits (health insurance)</div>
+        <div class="legend-item"><div class="legend-dot dot-savings"></div> Retirement savings (goes to YOU)</div>
+    </div>
+</div>
+
+<div class="annotation">
+    <h3>Key Terms</h3>
+    <p><strong>Gross Pay:</strong> The total amount earned BEFORE anything is taken out. This is "$25/hour x 80 hours = $2,000."</p>
+    <p><strong>Net Pay:</strong> The amount actually deposited in your bank account. This is what you take home.</p>
+    <p><strong>YTD (Year-To-Date):</strong> The running total for the entire year so far. Since this is pay period 4 of the year, YTD = Current x 4.</p>
+    <p><strong>FICA:</strong> Federal Insurance Contributions Act. This combines Social Security (6.2%) and Medicare (1.45%) &mdash; together, 7.65% of every paycheck.</p>
+    <p><strong>401(k):</strong> A voluntary retirement savings plan through your employer. Many employers MATCH your contribution &mdash; so if you put in 3%, they add another 3%. That's free money.</p>
+
+    <div class="highlight">
+        <strong>Why is State Income Tax $0?</strong> Jordan lives and works in Florida, which is one of several states with <strong>no state income tax</strong>. Other no-income-tax states include Texas, Nevada, and Washington. If Jordan lived in California or New York, this line would show a significant deduction.
+    </div>
+</div>
+
+<div class="annotation">
+    <h3>Where Does Each Deduction Go?</h3>
+    <p><strong>Federal Income Tax ($186)</strong> &rarr; The federal government. Funds everything from military to roads to Medicare to NASA.</p>
+    <p><strong>Social Security ($124)</strong> &rarr; A federal trust fund that pays monthly benefits to retired and disabled Americans.</p>
+    <p><strong>Medicare ($29)</strong> &rarr; A federal program that provides healthcare for Americans age 65 and older.</p>
+    <p><strong>Health Insurance ($74)</strong> &rarr; Jordan's health insurance company. The employer pays the other portion of the premium.</p>
+    <p><strong>401(k) ($60)</strong> &rarr; Jordan's own retirement investment account. This money is still Jordan's &mdash; it's just being saved for the future.</p>
+
+    <div class="highlight">
+        <strong>The bottom line:</strong> Jordan earns $2,000 but takes home $1,527. That's $473 in deductions &mdash; about <strong>23.65%</strong> of the paycheck. Over a full year, that adds up to roughly $12,298 in deductions from a $52,000 salary. But remember: $1,560 of that goes into Jordan's OWN retirement (401(k)), and $1,924 pays for Jordan's OWN health insurance.
+    </div>
+</div>
+
+<div class="bottom-note">
+    This is a fictional pay stub created for educational purposes.<br>
+    Unit 4: Earning &amp; Taxes &bull; Lesson 8 &bull; Mock Pay Stub
+</div>
+
+</body>
+</html>

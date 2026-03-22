@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Your Life - Primary (K-1)</title>
+<style>
+  @media print {
+    body { margin: 0.4in; }
+    .page-break { page-break-before: always; }
+    .no-break { page-break-inside: avoid; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.5; color: #2d3436; max-width: 800px; margin: 0 auto; padding: 20px; }
+  h1 { font-size: 2.2em; text-align: center; color: #fdcb6e; text-shadow: 2px 2px 0 #e17055; margin-bottom: 4px; }
+  .subtitle { text-align: center; font-size: 1.1em; color: #636e72; margin-bottom: 8px; }
+  .name-line { text-align: center; font-size: 1.3em; margin: 12px 0 20px; }
+  .name-line span { border-bottom: 2px solid #2d3436; display: inline-block; width: 220px; }
+
+  /* MY JOB SECTION */
+  .job-section { border: 3px solid #fdcb6e; border-radius: 16px; padding: 16px; margin: 20px 0; background: #ffeaa710; }
+  .job-section h2 { color: #e17055; font-size: 1.4em; text-align: center; margin-bottom: 6px; }
+  .job-section .helper-text { text-align: center; font-size: 0.95em; color: #636e72; margin-bottom: 12px; }
+  .job-grid { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .job-card { border: 3px solid #dfe6e9; border-radius: 16px; padding: 14px; text-align: center; width: 210px; }
+  .job-card:hover { background: #ffeaa720; }
+  .job-icon { font-size: 3em; }
+  .job-name { font-size: 1.15em; font-weight: bold; margin: 4px 0 2px; }
+  .job-desc { font-size: 0.85em; color: #636e72; }
+  .job-pay { font-size: 1.2em; font-weight: bold; color: #00b894; margin-top: 4px; }
+  .job-checkbox { width: 26px; height: 26px; border: 3px solid #b2bec3; border-radius: 6px; margin: 8px auto 0; }
+  .job-custom { border: 3px dashed #b2bec3; border-radius: 16px; padding: 14px; text-align: center; width: 210px; }
+  .job-custom .write-long { border-bottom: 2px solid #b2bec3; display: inline-block; width: 160px; min-height: 22px; }
+
+  /* INCOME BANNER */
+  .income-banner { background: #fdcb6e; color: #2d3436; text-align: center; padding: 14px; border-radius: 12px; font-size: 1.4em; font-weight: bold; margin: 18px 0; }
+  .income-banner .amount { font-size: 1.6em; color: #d63031; }
+
+  /* CATEGORIES */
+  .category { border: 3px solid #dfe6e9; border-radius: 16px; padding: 16px; margin: 20px 0; }
+  .category h2 { font-size: 1.3em; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 3px dashed; }
+  .cat-home h2 { color: #e17055; border-color: #e17055; }
+  .cat-food h2 { color: #00b894; border-color: #00b894; }
+  .cat-ride h2 { color: #0984e3; border-color: #0984e3; }
+  .cat-fun h2 { color: #6c5ce7; border-color: #6c5ce7; }
+  .cat-help h2 { color: #e84393; border-color: #e84393; }
+  .cat-save h2 { color: #fdcb6e; border-color: #fdcb6e; }
+  .cat-protect h2 { color: #00cec9; border-color: #00cec9; }
+
+  .option { display: flex; align-items: center; border: 2px solid #dfe6e9; border-radius: 12px; padding: 10px 14px; margin: 8px 0; }
+  .option:hover { background: #ffeaa720; }
+  .checkbox { width: 28px; height: 28px; border: 3px solid #b2bec3; border-radius: 6px; margin-right: 12px; flex-shrink: 0; }
+  .option-icon { font-size: 2em; margin-right: 12px; flex-shrink: 0; width: 50px; text-align: center; }
+  .option-details { flex: 1; }
+  .option-name { font-size: 1.1em; font-weight: bold; }
+  .option-desc { font-size: 0.85em; color: #636e72; }
+  .option-price { font-size: 1.3em; font-weight: bold; color: #d63031; margin-left: 8px; white-space: nowrap; }
+  .category-note { font-size: 0.9em; color: #636e72; font-style: italic; margin-top: 8px; text-align: center; }
+
+  /* PROTECTION INFO BOX */
+  .protect-info { background: #dfe6e930; border-radius: 10px; padding: 12px; margin-bottom: 12px; font-size: 0.95em; color: #636e72; line-height: 1.6; }
+
+  /* TRACKER */
+  .tracker { background: #f5f6fa; border: 3px solid #6c5ce7; border-radius: 16px; padding: 20px; margin: 24px 0; }
+  .tracker h2 { color: #6c5ce7; text-align: center; margin-bottom: 12px; }
+  .tracker-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 2px dotted #dfe6e9; font-size: 1.1em; }
+  .tracker-row:last-child { border-bottom: none; }
+  .tracker-total { display: flex; justify-content: space-between; padding: 12px 0 0; border-top: 3px solid #6c5ce7; font-size: 1.3em; font-weight: bold; margin-top: 8px; }
+  .write-line { border-bottom: 2px solid #b2bec3; display: inline-block; width: 80px; }
+  .over-check { text-align: center; margin-top: 14px; font-size: 1.15em; }
+  .over-check .circle-option { display: inline-block; border: 3px solid #b2bec3; border-radius: 50%; width: 50px; height: 50px; line-height: 44px; text-align: center; font-weight: bold; font-size: 1.1em; margin: 0 10px; }
+  .change-lines { margin-top: 12px; font-size: 1em; }
+  .change-lines .write-long { border-bottom: 2px solid #b2bec3; display: inline-block; width: 100%; min-height: 22px; }
+
+  /* SIDE HUSTLE */
+  .hustle-box { border: 3px dashed #00b894; border-radius: 16px; padding: 20px; margin: 24px 0; }
+  .hustle-box h2 { color: #00b894; text-align: center; margin-bottom: 12px; }
+  .draw-box { border: 2px solid #dfe6e9; border-radius: 12px; height: 200px; margin: 12px 0; display: flex; align-items: center; justify-content: center; color: #b2bec3; font-size: 1.1em; font-style: italic; }
+  .hustle-lines { margin-top: 12px; }
+  .hustle-lines p { margin-bottom: 10px; font-size: 1.05em; }
+  .hustle-lines .write-long { border-bottom: 2px solid #b2bec3; display: inline-block; width: 100%; min-height: 22px; }
+</style>
+</head>
+<body>
+
+<h1>&#127752; Build Your Life! &#127752;</h1>
+<p class="subtitle">Primary Edition &mdash; For Little Learners (K&ndash;1)</p>
+<div class="name-line">My Name: <span>&nbsp;</span></div>
+
+<!-- ===== MY JOB ===== -->
+<div class="job-section no-break">
+  <h2>&#128188; My Job</h2>
+  <p class="helper-text">Pick a job! Check the box under the one you want. All jobs pay <strong>$500 each month</strong>.</p>
+  <div class="job-grid">
+    <div class="job-card">
+      <div class="job-icon">&#128054;</div>
+      <div class="job-name">Pet Helper</div>
+      <div class="job-desc">Walk dogs and feed cats!</div>
+      <div class="job-pay">$500/month</div>
+      <div class="job-checkbox"></div>
+    </div>
+    <div class="job-card">
+      <div class="job-icon">&#127912;</div>
+      <div class="job-name">Artist</div>
+      <div class="job-desc">Draw pictures people buy!</div>
+      <div class="job-pay">$500/month</div>
+      <div class="job-checkbox"></div>
+    </div>
+    <div class="job-card">
+      <div class="job-icon">&#128722;</div>
+      <div class="job-name">Store Helper</div>
+      <div class="job-desc">Help people at a store!</div>
+      <div class="job-pay">$500/month</div>
+      <div class="job-checkbox"></div>
+    </div>
+    <div class="job-custom">
+      <div class="job-icon">&#9997;&#65039;</div>
+      <div class="job-name">My Own Idea!</div>
+      <div class="job-desc">Write or draw your job:</div>
+      <div><span class="write-long">&nbsp;</span></div>
+      <div class="job-pay">$500/month</div>
+      <div class="job-checkbox"></div>
+    </div>
+  </div>
+</div>
+
+<!-- INCOME BANNER -->
+<div class="income-banner">
+  &#128176; My Monthly Money: <span class="amount">$500</span>
+  <br><span style="font-size: 0.6em; font-weight: normal;">This is how much you earn each month at your job!</span>
+</div>
+
+<p style="text-align: center; font-size: 1em; color: #636e72; margin-bottom: 8px;">
+  <strong>&#128073; Directions:</strong> Check the box next to <strong>ONE</strong> choice in each group.<br>
+  Write the price in your Money Tracker at the bottom. Can you make it all fit?
+</p>
+
+<!-- ===== WHERE YOU LIVE ===== -->
+<div class="category cat-home no-break">
+  <h2>&#127968; Where You Live</h2>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-icon">&#128101;</div>
+    <div class="option-details">
+      <div class="option-name">Share a Room with a Friend</div>
+      <div class="option-desc">You share a place with a buddy. Cozy and cheap!</div>
+    </div>
+    <div class="option-price">$100</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-icon">&#127960;</div>
+    <div class="option-details">
+      <div class="option-name">Your Own Little Apartment</div>
+      <div class="option-desc">A small place that is all yours!</div>
+    </div>
+    <div class="option-price">$150</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-icon">&#127969;</div>
+    <div class="option-details">
+      <div class="option-name">A House with a Yard</div>
+      <div class="option-desc">A big house with grass to play in!</div>
+    </div>
+    <div class="option-price">$250</div>
+  </div>
+</div>
+
+<!-- ===== WHAT YOU EAT ===== -->
+<div class="category cat-food no-break">
+  <h2>&#127834; What You Eat</h2>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-icon">&#129367;</div>
+    <div class="option-details">
+      <div class="option-name">Cook Yummy Food at Home</div>
+      <div class="option-desc">You make your own meals &mdash; pasta, soup, yum!</div>
+    </div>
+    <div class="option-price">$75</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-icon">&#127829;</div>
+    <div class="option-details">
+      <div class="option-name">Cook + Pizza Night Once a Week</div>
+      <div class="option-desc">Mostly cooking, but pizza on Fridays!</div>
+    </div>
+    <div class="option-price">$125</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-icon">&#127828;</div>
+    <div class="option-details">
+      <div class="option-name">Eat at Restaurants a Lot</div>
+      <div class="option-desc">Eating out most days. Yummy but costs more!</div>
+    </div>
+    <div class="option-price">$200</div>
+  </div>
+</div>
+
+<!-- ===== GETTING AROUND ===== -->
+<div class="category cat-ride no-break">
+  <h2>&#128663; Getting Around</h2>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-icon">&#128694;</div>
+    <div class="option-details">
+      <div class="option-name">Walk and Ride Your Bike</div>
+      <div class="option-desc">Use your feet and your bike. Free and healthy!</div>
+    </div>
+    <div class="option-price">$0</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-icon">&#128652;</div>
+    <div class="option-details">
+      <div class="option-name">Take the Bus</div>
+      <div class="option-desc">Ride the bus wherever you need to go.</div>
+    </div>
+    <div class="option-price">$25</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-icon">&#128664;</div>
+    <div class="option-details">
+      <div class="option-name">Your Own Car</div>
+      <div class="option-desc">A car to drive anywhere you want!</div>
+    </div>
+    <div class="option-price">$100</div>
+  </div>
+</div>
+
+<!-- ===== FUN STUFF ===== -->
+<div class="category cat-fun no-break">
+  <h2>&#127922; Fun Stuff</h2>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-icon">&#127795;</div>
+    <div class="option-details">
+      <div class="option-name">Free Fun</div>
+      <div class="option-desc">Parks, drawing, playing outside &mdash; all free!</div>
+    </div>
+    <div class="option-price">$0</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-icon">&#127916;</div>
+    <div class="option-details">
+      <div class="option-name">Some Games and Shows</div>
+      <div class="option-desc">A game or show sometimes. Fun treats!</div>
+    </div>
+    <div class="option-price">$25</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-icon">&#127923;</div>
+    <div class="option-details">
+      <div class="option-name">Lots of Games, Shows, and Toys</div>
+      <div class="option-desc">Movies, games, toys, and going out to do fun things!</div>
+    </div>
+    <div class="option-price">$75</div>
+  </div>
+</div>
+
+<!-- ===== HELPING OTHERS ===== -->
+<div class="category cat-help no-break">
+  <h2>&#128150; Helping Others</h2>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-icon">&#129309;</div>
+    <div class="option-details">
+      <div class="option-name">Help a Neighbor for Free</div>
+      <div class="option-desc">Lend a hand &mdash; it costs nothing to be kind!</div>
+    </div>
+    <div class="option-price">$0</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-icon">&#127873;</div>
+    <div class="option-details">
+      <div class="option-name">Give a Little</div>
+      <div class="option-desc">Share a small amount to help people who need it.</div>
+    </div>
+    <div class="option-price">$10</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-icon">&#128155;</div>
+    <div class="option-details">
+      <div class="option-name">Give More to Charity</div>
+      <div class="option-desc">Give more to make a bigger difference!</div>
+    </div>
+    <div class="option-price">$25</div>
+  </div>
+  <p class="category-note">&#11088; Helping others feels great and makes the world better!</p>
+</div>
+
+<!-- ===== SAVINGS JAR ===== -->
+<div class="category cat-save no-break">
+  <h2>&#128176; Savings Jar</h2>
+  <p style="margin-bottom: 10px; color: #636e72; font-size: 0.95em;">Saving money means putting some away for later. It's how you buy big things someday!</p>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-icon">&#129371;</div>
+    <div class="option-details">
+      <div class="option-name">Save a Little</div>
+      <div class="option-desc">Put a small amount in your jar each month.</div>
+    </div>
+    <div class="option-price">$25</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-icon">&#128179;</div>
+    <div class="option-details">
+      <div class="option-name">Save Some</div>
+      <div class="option-desc">A good chunk for your future!</div>
+    </div>
+    <div class="option-price">$50</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-icon">&#129297;</div>
+    <div class="option-details">
+      <div class="option-name">Super Saver</div>
+      <div class="option-desc">Save a lot! You'll have so much saved up!</div>
+    </div>
+    <div class="option-price">$100</div>
+  </div>
+</div>
+
+<!-- ===== PROTECTION ===== -->
+<div class="category cat-protect no-break">
+  <h2>&#128737;&#65039; Protection</h2>
+  <div class="protect-info">
+    &#129300; Sometimes bad things happen &mdash; your bike breaks or you get sick.
+    You can pay a little each month to be <strong>PROTECTED</strong>, so if something bad happens, you don't lose all your money!
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-icon">&#128566;</div>
+    <div class="option-details">
+      <div class="option-name">No Protection</div>
+      <div class="option-desc">Free now, but if something bad happens it costs A LOT!</div>
+    </div>
+    <div class="option-price">$0</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-icon">&#128170;</div>
+    <div class="option-details">
+      <div class="option-name">Some Protection</div>
+      <div class="option-desc">You're covered for some things that might go wrong.</div>
+    </div>
+    <div class="option-price">$15</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-icon">&#129302;</div>
+    <div class="option-details">
+      <div class="option-name">Lots of Protection</div>
+      <div class="option-desc">You're safe if almost anything bad happens!</div>
+    </div>
+    <div class="option-price">$25</div>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ===== MY MONEY TRACKER ===== -->
+<div class="tracker no-break">
+  <h2>&#128202; My Money Tracker</h2>
+  <div style="text-align: center; margin-bottom: 12px; font-size: 0.95em; color: #636e72;">Write down what you picked and how much it costs.</div>
+
+  <div style="text-align: center; font-size: 1.3em; font-weight: bold; margin-bottom: 14px; color: #00b894;">
+    &#128176; My monthly money: <span style="color: #d63031; font-size: 1.2em;">$500</span>
+  </div>
+
+  <div class="tracker-row">
+    <span>&#127968; Where I Live</span>
+    <span>$ <span class="write-line">&nbsp;</span></span>
+  </div>
+  <div class="tracker-row">
+    <span>&#127834; What I Eat</span>
+    <span>$ <span class="write-line">&nbsp;</span></span>
+  </div>
+  <div class="tracker-row">
+    <span>&#128663; Getting Around</span>
+    <span>$ <span class="write-line">&nbsp;</span></span>
+  </div>
+  <div class="tracker-row">
+    <span>&#127922; Fun Stuff</span>
+    <span>$ <span class="write-line">&nbsp;</span></span>
+  </div>
+  <div class="tracker-row">
+    <span>&#128150; Helping Others</span>
+    <span>$ <span class="write-line">&nbsp;</span></span>
+  </div>
+  <div class="tracker-row">
+    <span>&#128176; Savings Jar</span>
+    <span>$ <span class="write-line">&nbsp;</span></span>
+  </div>
+  <div class="tracker-row">
+    <span>&#128737;&#65039; Protection</span>
+    <span>$ <span class="write-line">&nbsp;</span></span>
+  </div>
+
+  <div class="tracker-total">
+    <span>Total I Spent</span>
+    <span>$ <span class="write-line">&nbsp;</span></span>
+  </div>
+  <div class="tracker-total" style="color: #00b894; border-top: none; padding-top: 4px;">
+    <span>Money Left Over ($500 &minus; Total)</span>
+    <span>$ <span class="write-line">&nbsp;</span></span>
+  </div>
+
+  <div class="over-check">
+    <p style="margin-bottom: 8px;"><strong>Am I over?</strong> Circle one:</p>
+    <span class="circle-option">YES</span>
+    <span class="circle-option">NO</span>
+  </div>
+
+  <div class="change-lines" style="margin-top: 16px;">
+    <p><strong>If YES, what would I change?</strong></p>
+    <p><span class="write-long">&nbsp;</span></p>
+    <p><span class="write-long">&nbsp;</span></p>
+  </div>
+</div>
+
+<!-- ===== MY MONEY-MAKING IDEA ===== -->
+<div class="hustle-box no-break">
+  <h2>&#128161; My Money-Making Idea!</h2>
+  <p style="text-align: center; color: #636e72; margin-bottom: 8px;">Want more money? Think of something you could do to earn extra!</p>
+
+  <div class="hustle-lines">
+    <p>&#9997;&#65039; What could you do to earn extra money?</p>
+    <p><span class="write-long">&nbsp;</span></p>
+    <p><span class="write-long">&nbsp;</span></p>
+  </div>
+
+  <div class="hustle-lines">
+    <p>&#129328; Who would pay you?</p>
+    <p><span class="write-long">&nbsp;</span></p>
+  </div>
+
+  <div class="hustle-lines">
+    <p>&#128181; How much could you earn? $ <span class="write-line">&nbsp;</span></p>
+  </div>
+
+  <p style="margin-top: 14px; font-weight: bold; font-size: 1.1em;">&#127912; Draw a picture of your idea!</p>
+  <div class="draw-box">[ Draw here! ]</div>
+</div>
+
+</body>
+</html>

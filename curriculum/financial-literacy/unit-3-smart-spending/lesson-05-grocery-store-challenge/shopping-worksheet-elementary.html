@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grocery Store Challenge - Elementary Worksheet</title>
+<style>
+  @media print {
+    body { margin: 0.3in; font-size: 9.5pt; }
+    .no-print { display: none; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.4; color: #2d3436; max-width: 850px; margin: 0 auto; padding: 14px; }
+  h1 { font-size: 1.6em; text-align: center; color: #00b894; margin-bottom: 2px; }
+  .subtitle { text-align: center; font-size: 0.95em; color: #636e72; margin-bottom: 4px; }
+  .header-row { display: flex; justify-content: space-between; align-items: center; margin: 6px 0 10px; font-size: 0.95em; }
+  .header-row .write { border-bottom: 2px solid #2d3436; display: inline-block; width: 160px; }
+
+  .mission { background: #e0f8f0; border: 2px solid #00b894; border-radius: 10px; padding: 10px 14px; margin: 8px 0; display: flex; justify-content: space-between; align-items: center; }
+  .mission-text { flex: 1; }
+  .mission-text h2 { font-size: 1.1em; color: #00b894; margin-bottom: 2px; }
+  .budget-badge { background: #00b894; color: white; padding: 6px 16px; border-radius: 16px; font-size: 1.3em; font-weight: bold; flex-shrink: 0; }
+
+  .meal-plan { background: #f5f6fa; border: 2px solid #dfe6e9; border-radius: 10px; padding: 10px 14px; margin: 8px 0; }
+  .meal-plan h3 { font-size: 1em; color: #6c5ce7; margin-bottom: 4px; }
+  .plan-write { border-bottom: 2px solid #b2bec3; display: block; width: 100%; min-height: 20px; margin: 3px 0; }
+  .requirements { display: flex; gap: 8px; margin-top: 6px; font-size: 0.85em; }
+  .req-tag { border: 2px solid #dfe6e9; border-radius: 8px; padding: 3px 10px; display: flex; align-items: center; gap: 4px; }
+  .req-check { width: 16px; height: 16px; border: 2px solid #b2bec3; border-radius: 3px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 0.88em; }
+  th { background: #00b894; color: white; padding: 5px 6px; text-align: left; font-size: 0.85em; border: 1px solid #00a884; }
+  td { border: 1px solid #dfe6e9; padding: 5px 6px; height: 26px; }
+  tr:nth-child(even) { background: #f8f8fa; }
+  .row-num { width: 24px; text-align: center; color: #b2bec3; font-size: 0.85em; }
+  .col-item { width: 28%; }
+  .col-brand { width: 22%; }
+  .col-price { width: 14%; }
+  .col-qty { width: 10%; }
+  .col-total { width: 14%; }
+
+  .compare-section { background: #f0e6ff; border: 2px solid #6c5ce7; border-radius: 10px; padding: 10px 14px; margin: 8px 0; }
+  .compare-section h3 { font-size: 0.95em; color: #6c5ce7; margin-bottom: 6px; }
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; font-size: 0.9em; }
+  .compare-grid .label { color: #636e72; }
+  .write-sm { border-bottom: 2px solid #b2bec3; display: inline-block; width: 110px; }
+  .write-price { border-bottom: 2px solid #b2bec3; display: inline-block; width: 65px; }
+  .savings-line { margin-top: 6px; font-weight: bold; color: #00b894; font-size: 0.95em; }
+
+  .total-section { background: #e0f8f0; border: 2px solid #00b894; border-radius: 10px; padding: 10px 14px; margin: 8px 0; }
+  .total-row { display: flex; justify-content: space-between; align-items: center; font-size: 1.1em; margin: 4px 0; }
+  .total-row .write-price { width: 80px; font-weight: bold; border-bottom-color: #2d3436; }
+  .under-over { display: flex; gap: 16px; justify-content: center; margin-top: 6px; font-size: 0.95em; }
+  .under-over div { border: 2px solid #dfe6e9; border-radius: 8px; padding: 4px 14px; }
+</style>
+</head>
+<body>
+
+<h1>The Grocery Store Challenge</h1>
+<p class="subtitle">Elementary &mdash; Plan One Dinner for 6 People</p>
+<div class="header-row">
+  <span>Name: <span class="write"></span></span>
+  <span>Date: <span class="write" style="width: 100px;"></span></span>
+</div>
+
+<div class="mission">
+  <div class="mission-text">
+    <h2>Your Mission</h2>
+    <p>Buy ingredients to cook <strong>one complete dinner</strong> for 6 people.</p>
+  </div>
+  <div class="budget-badge">$20</div>
+</div>
+
+<div class="meal-plan">
+  <h3>My Meal Plan</h3>
+  <p style="font-size: 0.88em; color: #636e72;">What will you make? Write it here before you start shopping.</p>
+  <div class="plan-write" style="margin-top: 6px;"></div>
+  <div class="requirements">
+    <div class="req-tag"><div class="req-check"></div> Protein</div>
+    <div class="req-tag"><div class="req-check"></div> Starch / Grain</div>
+    <div class="req-tag"><div class="req-check"></div> Vegetable</div>
+  </div>
+</div>
+
+<table>
+  <tr>
+    <th class="row-num">#</th>
+    <th class="col-item">Item</th>
+    <th class="col-brand">Brand</th>
+    <th class="col-price">Price</th>
+    <th class="col-qty">Qty</th>
+    <th class="col-total">Total</th>
+  </tr>
+  <tr><td class="row-num">1</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">2</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">3</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">4</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">5</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">6</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">7</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">8</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">9</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">10</td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+
+<p style="font-size: 0.82em; color: #636e72; text-align: right;">Running Total &mdash; add up the Total column as you go: ________</p>
+
+<div class="compare-section">
+  <h3>Price Comparison Challenge</h3>
+  <p style="font-size: 0.85em; color: #636e72; margin-bottom: 6px;">Find ONE item where the store brand is cheaper than the name brand.</p>
+  <div class="compare-grid">
+    <div><span class="label">Name Brand:</span> <span class="write-sm"></span></div>
+    <div><span class="label">Price:</span> $ <span class="write-price"></span></div>
+    <div><span class="label">Store Brand:</span> <span class="write-sm"></span></div>
+    <div><span class="label">Price:</span> $ <span class="write-price"></span></div>
+  </div>
+  <p class="savings-line">I saved $ <span class="write-price"></span> by choosing store brand!</p>
+</div>
+
+<div class="total-section">
+  <div class="total-row"><span>My Total:</span> <span>$ <span class="write-price"></span></span></div>
+  <div class="total-row"><span>My Budget Was:</span> <span>$ 20.00</span></div>
+  <div class="under-over">
+    <div>Under budget by: $ ________</div>
+    <div>Over budget by: $ ________</div>
+  </div>
+</div>
+
+</body>
+</html>

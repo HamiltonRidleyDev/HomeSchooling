@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Penny Challenge | Compound Interest Visualized</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 850px; margin: 0 auto; padding: 24px;
+    color: #1a1a2e; line-height: 1.6; background: #fff;
+  }
+
+  /* Header */
+  .hero {
+    background: linear-gradient(135deg, #0d1b2a 0%, #1b3a4b 60%, #006d77 100%);
+    color: #fff; border-radius: 14px; padding: 40px 32px; margin-bottom: 28px;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; bottom: -60px; left: -60px;
+    width: 180px; height: 180px; border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .hero h1 {
+    font-size: 2rem; margin-bottom: 6px; letter-spacing: -0.5px;
+  }
+  .hero h1 .highlight { color: #7ecfc0; }
+  .hero .vs {
+    font-size: 2.8rem; font-weight: 800; margin: 10px 0;
+    display: flex; align-items: center; justify-content: center; gap: 18px;
+  }
+  .hero .vs .option {
+    background: rgba(255,255,255,0.1); padding: 10px 24px;
+    border-radius: 10px; font-size: 1.2rem;
+  }
+  .hero .vs .or { font-size: 1rem; font-weight: 400; opacity: 0.6; }
+  .hero .answer {
+    margin-top: 16px; font-size: 1.1rem; opacity: 0.85;
+    font-style: italic;
+  }
+
+  /* Day table */
+  .day-table-wrapper { margin: 24px 0; }
+  .day-table-wrapper h2 {
+    font-size: 1.3rem; color: #0d1b2a; margin-bottom: 12px;
+    text-align: center;
+  }
+  .day-table {
+    width: 100%; border-collapse: collapse; font-size: 0.92rem;
+  }
+  .day-table th {
+    background: #0d1b2a; color: #fff; padding: 8px 10px;
+    font-weight: 600; text-align: center;
+  }
+  .day-table td {
+    padding: 7px 10px; border: 1px solid #d0d7de; text-align: center;
+  }
+  .day-table tr:nth-child(even) { background: #f6f8fa; }
+  .day-table .day-col { width: 50px; font-weight: 700; color: #555; }
+  .day-table .val-col { font-family: 'Consolas', 'Courier New', monospace; }
+
+  /* Color escalation for values */
+  .val-tiny { color: #999; font-size: 0.88rem; }
+  .val-small { color: #666; }
+  .val-medium { color: #2e7d32; font-weight: 600; }
+  .val-large { color: #006d77; font-weight: 700; font-size: 1rem; }
+  .val-huge { color: #006d77; font-weight: 800; font-size: 1.1rem; }
+  .val-massive {
+    color: #004d40; font-weight: 900; font-size: 1.2rem;
+    background: linear-gradient(to right, #e0f7e6, #c8f0d4);
+    border-radius: 4px;
+  }
+
+  /* Highlight box */
+  .reveal-box {
+    background: linear-gradient(135deg, #e0f7e6, #c8f0d4);
+    border: 3px solid #2e7d32; border-radius: 12px;
+    padding: 24px; margin: 28px 0; text-align: center;
+  }
+  .reveal-box .big { font-size: 2.4rem; font-weight: 900; color: #1b5e20; }
+  .reveal-box p { margin-top: 8px; font-size: 1rem; color: #2e7d32; }
+
+  .comparison-box {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0;
+  }
+  .comp-card {
+    padding: 20px; border-radius: 10px; text-align: center;
+  }
+  .comp-card.flat {
+    background: #fff3e0; border: 2px solid #e65100;
+  }
+  .comp-card.flat .label { color: #e65100; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; }
+  .comp-card.flat .amount { font-size: 1.5rem; font-weight: 800; color: #bf360c; margin: 6px 0; }
+  .comp-card.boom {
+    background: #e8f5e9; border: 2px solid #2e7d32;
+  }
+  .comp-card.boom .label { color: #2e7d32; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; }
+  .comp-card.boom .amount { font-size: 1.5rem; font-weight: 800; color: #1b5e20; margin: 6px 0; }
+
+  /* SVG chart */
+  .chart-section {
+    margin: 32px 0; text-align: center;
+  }
+  .chart-section h2 {
+    font-size: 1.3rem; color: #0d1b2a; margin-bottom: 16px;
+  }
+  .chart-container {
+    background: #fafbfc; border: 1px solid #e0e6ed;
+    border-radius: 10px; padding: 20px; overflow-x: auto;
+  }
+  svg text { font-family: 'Segoe UI', Tahoma, sans-serif; }
+
+  /* Lesson callout */
+  .lesson-callout {
+    background: linear-gradient(135deg, #fff7e6, #fff3cd);
+    border-left: 5px solid #f0a500; border-radius: 10px;
+    padding: 22px 26px; margin: 28px 0;
+  }
+  .lesson-callout .title {
+    font-weight: 800; color: #b37800; font-size: 1.05rem;
+    margin-bottom: 8px;
+  }
+  .lesson-callout p { color: #5a4600; }
+
+  /* Coloring section for young kids */
+  .coloring-section {
+    margin: 32px 0; padding: 24px;
+    background: #f9f0ff; border: 2px dashed #7b1fa2;
+    border-radius: 12px;
+  }
+  .coloring-section h2 {
+    color: #7b1fa2; font-size: 1.2rem; margin-bottom: 12px;
+    text-align: center;
+  }
+  .coloring-section p {
+    text-align: center; color: #6a1b9a; margin-bottom: 16px;
+    font-size: 0.95rem;
+  }
+  .stacks-row {
+    display: flex; align-items: flex-end; justify-content: center;
+    gap: 6px; height: 220px; padding: 0 8px;
+  }
+  .stack-col {
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: flex-end;
+  }
+  .stack-bar {
+    width: 22px; border: 2px solid #7b1fa2;
+    border-radius: 4px 4px 0 0; background: #f3e5f5;
+    min-height: 2px;
+  }
+  .stack-label {
+    font-size: 0.65rem; font-weight: 700; color: #7b1fa2;
+    margin-top: 3px; text-align: center;
+  }
+  .stack-value {
+    font-size: 0.55rem; color: #999; margin-top: 1px;
+  }
+
+  footer {
+    margin-top: 40px; padding-top: 16px; border-top: 1px solid #e0e6ed;
+    font-size: 0.82rem; color: #888; text-align: center;
+  }
+
+  @media print {
+    body { padding: 0; font-size: 11pt; }
+    .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chart-container, .reveal-box, .coloring-section { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>THE PENNY CHALLENGE</h1>
+  <div class="vs">
+    <div class="option">$1,000,000 today</div>
+    <div class="or">or</div>
+    <div class="option">A magic penny?</div>
+  </div>
+  <div class="answer">A single penny that doubles every day for 30 days...</div>
+</div>
+
+<!-- 30-DAY TABLE -->
+<div class="day-table-wrapper">
+  <h2>The Magic Penny: Day by Day</h2>
+  <table class="day-table">
+    <thead>
+      <tr><th>Day</th><th>Value</th><th></th><th>Day</th><th>Value</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="day-col">1</td><td class="val-col val-tiny">$0.01</td><td></td>
+        <td class="day-col">16</td><td class="val-col val-small">$327.68</td>
+      </tr>
+      <tr>
+        <td class="day-col">2</td><td class="val-col val-tiny">$0.02</td><td></td>
+        <td class="day-col">17</td><td class="val-col val-small">$655.36</td>
+      </tr>
+      <tr>
+        <td class="day-col">3</td><td class="val-col val-tiny">$0.04</td><td></td>
+        <td class="day-col">18</td><td class="val-col val-medium">$1,310.72</td>
+      </tr>
+      <tr>
+        <td class="day-col">4</td><td class="val-col val-tiny">$0.08</td><td></td>
+        <td class="day-col">19</td><td class="val-col val-medium">$2,621.44</td>
+      </tr>
+      <tr>
+        <td class="day-col">5</td><td class="val-col val-tiny">$0.16</td><td></td>
+        <td class="day-col">20</td><td class="val-col val-medium">$5,242.88</td>
+      </tr>
+      <tr>
+        <td class="day-col">6</td><td class="val-col val-tiny">$0.32</td><td></td>
+        <td class="day-col">21</td><td class="val-col val-large">$10,485.76</td>
+      </tr>
+      <tr>
+        <td class="day-col">7</td><td class="val-col val-tiny">$0.64</td><td></td>
+        <td class="day-col">22</td><td class="val-col val-large">$20,971.52</td>
+      </tr>
+      <tr>
+        <td class="day-col">8</td><td class="val-col val-tiny">$1.28</td><td></td>
+        <td class="day-col">23</td><td class="val-col val-large">$41,943.04</td>
+      </tr>
+      <tr>
+        <td class="day-col">9</td><td class="val-col val-tiny">$2.56</td><td></td>
+        <td class="day-col">24</td><td class="val-col val-huge">$83,886.08</td>
+      </tr>
+      <tr>
+        <td class="day-col">10</td><td class="val-col val-tiny">$5.12</td><td></td>
+        <td class="day-col">25</td><td class="val-col val-huge">$167,772.16</td>
+      </tr>
+      <tr>
+        <td class="day-col">11</td><td class="val-col val-tiny">$10.24</td><td></td>
+        <td class="day-col">26</td><td class="val-col val-huge">$335,544.32</td>
+      </tr>
+      <tr>
+        <td class="day-col">12</td><td class="val-col val-tiny">$20.48</td><td></td>
+        <td class="day-col">27</td><td class="val-col val-massive">$671,088.64</td>
+      </tr>
+      <tr>
+        <td class="day-col">13</td><td class="val-col val-small">$40.96</td><td></td>
+        <td class="day-col">28</td><td class="val-col val-massive">$1,342,177.28</td>
+      </tr>
+      <tr>
+        <td class="day-col">14</td><td class="val-col val-small">$81.92</td><td></td>
+        <td class="day-col">29</td><td class="val-col val-massive">$2,684,354.56</td>
+      </tr>
+      <tr>
+        <td class="day-col">15</td><td class="val-col val-small">$163.84</td><td></td>
+        <td class="day-col">30</td><td class="val-col val-massive">$5,368,709.12</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- REVEAL -->
+<div class="reveal-box">
+  <div class="big">The penny wins: $5,368,709.12</div>
+  <p>That's over FIVE MILLION DOLLARS &mdash; from a single cent.</p>
+</div>
+
+<!-- COMPARISON -->
+<div class="comparison-box">
+  <div class="comp-card flat">
+    <div class="label">First 20 Days (two-thirds of the time)</div>
+    <div class="amount">$5,242.88</div>
+    <p style="font-size:0.85rem; color:#bf360c;">Barely anything. Feels like a waste.</p>
+  </div>
+  <div class="comp-card boom">
+    <div class="label">Last 10 Days (one-third of the time)</div>
+    <div class="amount">$5,363,466.24</div>
+    <p style="font-size:0.85rem; color:#1b5e20;">99.9% of all growth happens HERE.</p>
+  </div>
+</div>
+
+<!-- HOCKEY STICK CHART -->
+<div class="chart-section">
+  <h2>The "Hockey Stick" &mdash; How Compound Growth Actually Looks</h2>
+  <div class="chart-container">
+    <svg viewBox="0 0 700 340" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      <!-- Grid -->
+      <rect x="60" y="10" width="620" height="280" fill="#f8faf8" stroke="#d0d7de" rx="4"/>
+      <!-- Y-axis labels -->
+      <text x="55" y="290" text-anchor="end" font-size="10" fill="#888">$0</text>
+      <text x="55" y="220" text-anchor="end" font-size="10" fill="#888">$1M</text>
+      <text x="55" y="150" text-anchor="end" font-size="10" fill="#888">$2M</text>
+      <text x="55" y="80" text-anchor="end" font-size="10" fill="#888">$3M</text>
+      <text x="55" y="22" text-anchor="end" font-size="10" fill="#888">$5.4M</text>
+      <!-- Gridlines -->
+      <line x1="60" y1="220" x2="680" y2="220" stroke="#e8e8e8" stroke-dasharray="4"/>
+      <line x1="60" y1="150" x2="680" y2="150" stroke="#e8e8e8" stroke-dasharray="4"/>
+      <line x1="60" y1="80" x2="680" y2="80" stroke="#e8e8e8" stroke-dasharray="4"/>
+      <!-- X-axis labels -->
+      <text x="80" y="308" text-anchor="middle" font-size="10" fill="#888">1</text>
+      <text x="142" y="308" text-anchor="middle" font-size="10" fill="#888">4</text>
+      <text x="204" y="308" text-anchor="middle" font-size="10" fill="#888">7</text>
+      <text x="266" y="308" text-anchor="middle" font-size="10" fill="#888">10</text>
+      <text x="328" y="308" text-anchor="middle" font-size="10" fill="#888">13</text>
+      <text x="390" y="308" text-anchor="middle" font-size="10" fill="#888">16</text>
+      <text x="452" y="308" text-anchor="middle" font-size="10" fill="#888">19</text>
+      <text x="514" y="308" text-anchor="middle" font-size="10" fill="#888">22</text>
+      <text x="576" y="308" text-anchor="middle" font-size="10" fill="#888">25</text>
+      <text x="638" y="308" text-anchor="middle" font-size="10" fill="#888">28</text>
+      <text x="660" y="308" text-anchor="middle" font-size="10" fill="#888">30</text>
+      <text x="370" y="335" text-anchor="middle" font-size="12" fill="#555" font-weight="600">Day</text>
+      <!-- The growth curve -->
+      <!-- Flat portion days 1-20 -->
+      <polyline fill="none" stroke="#2e7d32" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+        points="
+          80,289.9
+          100.7,289.9
+          121.3,289.9
+          142,289.9
+          162.7,289.9
+          183.3,289.9
+          204,289.9
+          224.7,289.9
+          245.3,289.9
+          266,289.9
+          286.7,289.9
+          307.3,289.8
+          328,289.8
+          348.7,289.6
+          369.3,289.2
+          390,288.3
+          410.7,286.6
+          431.3,283.3
+          452,276.6
+          472.7,263.1
+        "/>
+      <!-- Explosion portion days 20-30 -->
+      <polyline fill="none" stroke="#006d77" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"
+        points="
+          472.7,263.1
+          493.3,236.2
+          514,182.5
+          534.7,75.0
+          555.3,289
+          555.3,289
+        "/>
+      <!-- Re-draw with correct exponential: -->
+      <!-- Let's map value to Y where Y = 290 - (value/5368709)*270 -->
+      <!-- Day 20: 5242.88 -> 290 - 0.26 = 289.7 -->
+      <!-- Day 21: 10485.76 -> 289.5 -->
+      <!-- Day 22: 20971.52 -> 288.9 -->
+      <!-- Day 23: 41943.04 -> 287.9 -->
+      <!-- Day 24: 83886.08 -> 285.8 -->
+      <!-- Day 25: 167772.16 -> 281.6 -->
+      <!-- Day 26: 335544.32 -> 273.1 -->
+      <!-- Day 27: 671088.64 -> 256.3 -->
+      <!-- Day 28: 1342177.28 -> 222.5 -->
+      <!-- Day 29: 2684354.56 -> 155.0 -->
+      <!-- Day 30: 5368709.12 -> 20.0 -->
+      <polyline fill="url(#grad)" stroke="none" opacity="0.15"
+        points="
+          80,290 100.7,290 121.3,290 142,290 162.7,290 183.3,290
+          204,290 224.7,290 245.3,290 266,290 286.7,290 307.3,290
+          328,290 348.7,290 369.3,290 390,290 410.7,290 431.3,290
+          452,290 472.7,289.7 493.3,289.5 514,288.9 534.7,287.9
+          555.3,285.8 576,281.6 596.7,273.1 617.3,256.3
+          638,222.5 652,155 666,20
+          666,290 80,290
+        "/>
+      <polyline fill="none" stroke="#006d77" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"
+        points="
+          80,290 100.7,290 121.3,290 142,290 162.7,290 183.3,290
+          204,290 224.7,290 245.3,290 266,290 286.7,290 307.3,290
+          328,290 348.7,290 369.3,290 390,290 410.7,290 431.3,290
+          452,290 472.7,289.7 493.3,289.5 514,288.9 534.7,287.9
+          555.3,285.8 576,281.6 596.7,273.1 617.3,256.3
+          638,222.5 652,155 666,20
+        "/>
+      <defs>
+        <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2e7d32" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#2e7d32" stop-opacity="0.02"/>
+        </linearGradient>
+      </defs>
+      <!-- Dot on day 30 -->
+      <circle cx="666" cy="20" r="6" fill="#006d77" stroke="#fff" stroke-width="2"/>
+      <text x="652" y="14" text-anchor="end" font-size="11" fill="#006d77" font-weight="700">$5.37M</text>
+      <!-- Annotation: flat zone -->
+      <rect x="120" y="248" width="200" height="28" rx="5" fill="#fff3e0" stroke="#e65100" stroke-width="1"/>
+      <text x="220" y="266" text-anchor="middle" font-size="10" fill="#e65100" font-weight="600">"Nothing is happening..." (Days 1-20)</text>
+      <!-- Annotation: explosion zone -->
+      <rect x="555" y="100" width="115" height="28" rx="5" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1"/>
+      <text x="612" y="118" text-anchor="middle" font-size="10" fill="#1b5e20" font-weight="600">THE EXPLOSION</text>
+      <!-- Arrow -->
+      <line x1="612" y1="128" x2="650" y2="160" stroke="#2e7d32" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <defs>
+        <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#2e7d32"/>
+        </marker>
+      </defs>
+    </svg>
+  </div>
+</div>
+
+<!-- KEY LESSON -->
+<div class="lesson-callout">
+  <div class="title">This Is EXACTLY What Happens With Investing</div>
+  <p>For years it feels like nothing is happening. Your account barely grows. It's tempting to quit, spend the money, do something else.</p>
+  <p style="margin-top:8px;"><strong>Then suddenly, it takes off.</strong> The growth in the last 10-15 years of investing dwarfs everything that came before. The people who gave up during the flat part missed the explosion.</p>
+  <p style="margin-top:8px;">The secret? <strong>Patience.</strong> Just keep going. The penny didn't look like much on Day 15. But everything it did in those boring early days made the explosion possible.</p>
+</div>
+
+<!-- COLORING SECTION FOR YOUNG KIDS -->
+<div class="coloring-section">
+  <h2>For Our Youngest Learners: Color the Penny Stacks!</h2>
+  <p>Each bar is a stack of pennies. Color them in! Watch how they start tiny and get ENORMOUS.</p>
+  <div class="stacks-row">
+    <div class="stack-col">
+      <div class="stack-bar" style="height: 2px;"></div>
+      <div class="stack-label">Day 1</div>
+      <div class="stack-value">1&cent;</div>
+    </div>
+    <div class="stack-col">
+      <div class="stack-bar" style="height: 2px;"></div>
+      <div class="stack-label">Day 2</div>
+      <div class="stack-value">2&cent;</div>
+    </div>
+    <div class="stack-col">
+      <div class="stack-bar" style="height: 2px;"></div>
+      <div class="stack-label">Day 3</div>
+      <div class="stack-value">4&cent;</div>
+    </div>
+    <div class="stack-col">
+      <div class="stack-bar" style="height: 2px;"></div>
+      <div class="stack-label">Day 4</div>
+      <div class="stack-value">8&cent;</div>
+    </div>
+    <div class="stack-col">
+      <div class="stack-bar" style="height: 2px;"></div>
+      <div class="stack-label">Day 5</div>
+      <div class="stack-value">16&cent;</div>
+    </div>
+    <div class="stack-col">
+      <div class="stack-bar" style="height: 3px;"></div>
+      <div class="stack-label">Day 8</div>
+      <div class="stack-value">$1.28</div>
+    </div>
+    <div class="stack-col">
+      <div class="stack-bar" style="height: 4px;"></div>
+      <div class="stack-label">Day 10</div>
+      <div class="stack-value">$5.12</div>
+    </div>
+    <div class="stack-col">
+      <div class="stack-bar" style="height: 5px;"></div>
+      <div class="stack-label">Day 12</div>
+      <div class="stack-value">$20</div>
+    </div>
+    <div class="stack-col">
+      <div class="stack-bar" style="height: 6px;"></div>
+      <div class="stack-label">Day 14</div>
+      <div class="stack-value">$82</div>
+    </div>
+    <div class="stack-col">
+      <div class="stack-bar" style="height: 7px;"></div>
+      <div class="stack-label">Day 16</div>
+      <div class="stack-value">$328</div>
+    </div>
+    <div class="stack-col">
+      <div class="stack-bar" style="height: 8px;"></div>
+      <div class="stack-label">Day 18</div>
+      <div class="stack-value">$1.3K</div>
+    </div>
+    <div class="stack-col">
+      <div class="stack-bar" style="height: 10px;"></div>
+      <div class="stack-label">Day 20</div>
+      <div class="stack-value">$5.2K</div>
+    </div>
+    <div class="stack-col">
+      <div class="stack-bar" style="height: 16px;"></div>
+      <div class="stack-label">Day 22</div>
+      <div class="stack-value">$21K</div>
+    </div>
+    <div class="stack-col">
+      <div class="stack-bar" style="height: 30px;"></div>
+      <div class="stack-label">Day 24</div>
+      <div class="stack-value">$84K</div>
+    </div>
+    <div class="stack-col">
+      <div class="stack-bar" style="height: 60px;"></div>
+      <div class="stack-label">Day 26</div>
+      <div class="stack-value">$336K</div>
+    </div>
+    <div class="stack-col">
+      <div class="stack-bar" style="height: 110px;"></div>
+      <div class="stack-label">Day 28</div>
+      <div class="stack-value">$1.3M</div>
+    </div>
+    <div class="stack-col">
+      <div class="stack-bar" style="height: 200px; background: linear-gradient(to top, #f3e5f5, #ce93d8); border-color: #6a1b9a;"></div>
+      <div class="stack-label">Day 30</div>
+      <div class="stack-value" style="font-weight:700; color:#6a1b9a;">$5.4M!</div>
+    </div>
+  </div>
+  <p style="margin-top: 16px; font-size: 0.88rem;"><strong>Activity:</strong> Color each bar with a crayon or colored pencil. Use light colors for the small stacks and dark colors for the big ones. Can you see how the last few stacks are SO much bigger than all the others combined?</p>
+</div>
+
+<footer>
+  The Lost Boys Adventure &mdash; Financial Literacy Curriculum<br>
+  Unit 5: Growing Wealth &bull; Lesson 9: The Power of Compound Interest &bull; Penny Doubling Worksheet
+</footer>
+
+</body>
+</html>

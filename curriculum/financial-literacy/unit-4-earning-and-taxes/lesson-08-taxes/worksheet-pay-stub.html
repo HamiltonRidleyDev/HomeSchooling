@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Stub Detective — Worksheet</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 32px 24px;
+            color: #1a1a2e;
+            background: #f8f9fa;
+            line-height: 1.65;
+        }
+
+        /* Header */
+        .ws-header {
+            background: linear-gradient(135deg, #e94560 0%, #c62828 100%);
+            color: #fff;
+            padding: 30px 28px;
+            border-radius: 16px;
+            margin-bottom: 28px;
+            text-align: center;
+        }
+        .ws-header h1 { font-size: 1.7rem; margin-bottom: 4px; }
+        .ws-header .sub { opacity: 0.9; font-size: 0.95rem; }
+        .ws-header .age-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            margin-top: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Name line */
+        .name-line {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        .name-line .field {
+            flex: 1;
+            min-width: 180px;
+            border-bottom: 2px solid #1a1a2e;
+            padding: 6px 4px;
+            font-size: 0.95rem;
+        }
+        .name-line .field span { color: #6c757d; font-size: 0.85rem; }
+
+        /* Sections */
+        .ws-section {
+            background: #fff;
+            border-radius: 14px;
+            border: 1px solid #e9ecef;
+            padding: 24px 28px;
+            margin-bottom: 24px;
+        }
+        .ws-section h2 {
+            font-size: 1.15rem;
+            color: #c62828;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #fce4ec;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .ws-section h2 .section-num {
+            background: #c62828;
+            color: #fff;
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* Questions */
+        .question {
+            margin-bottom: 18px;
+        }
+        .question p {
+            font-size: 0.92rem;
+            margin-bottom: 6px;
+        }
+        .question .q-label {
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+        .question .hint {
+            font-size: 0.8rem;
+            color: #888;
+            font-style: italic;
+        }
+        .answer-blank {
+            display: inline-block;
+            min-width: 100px;
+            border-bottom: 2px solid #1a1a2e;
+            margin: 0 4px;
+            padding: 0 4px;
+        }
+        .answer-blank.wide { min-width: 200px; }
+        .answer-blank.full {
+            display: block;
+            width: 100%;
+            min-height: 24px;
+            margin: 4px 0;
+        }
+
+        /* Multi-line answer */
+        .answer-lines {
+            border-bottom: 1.5px solid #ccc;
+            min-height: 28px;
+            margin-bottom: 6px;
+        }
+
+        /* Math work area */
+        .math-box {
+            background: #f8f9fa;
+            border: 1px dashed #bbb;
+            border-radius: 10px;
+            padding: 16px;
+            margin: 8px 0 16px;
+            min-height: 50px;
+        }
+        .math-box .math-label {
+            font-size: 0.78rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .math-box .formula {
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        /* Reflection box */
+        .reflection-q {
+            background: #fff8e1;
+            border: 1px solid #ffe082;
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-bottom: 14px;
+        }
+        .reflection-q p {
+            font-weight: 600;
+            font-size: 0.92rem;
+            margin-bottom: 6px;
+        }
+
+        .bottom-note {
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.78rem;
+            margin-top: 8px;
+            padding: 8px;
+        }
+
+        @media print {
+            body { background: #fff; padding: 12px; font-size: 10.5pt; }
+            .ws-header {
+                background: #c62828 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .ws-section { break-inside: avoid; border: 1px solid #ccc; }
+            .math-box {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 16px; }
+            .ws-header { padding: 22px 18px; }
+            .ws-header h1 { font-size: 1.3rem; }
+            .ws-section { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="ws-header">
+    <h1>&#x1F50D; Pay Stub Detective</h1>
+    <div class="sub">Decode a Real Paycheck</div>
+    <div class="age-tag">Ages 13+ &bull; Use with the Mock Pay Stub</div>
+</div>
+
+<div class="name-line">
+    <div class="field"><span>Name:</span></div>
+    <div class="field"><span>Date:</span></div>
+</div>
+
+<!-- SECTION 1: Reading the Pay Stub -->
+<div class="ws-section">
+    <h2><span class="section-num">1</span> Reading the Pay Stub</h2>
+    <p style="color:#6c757d; font-size:0.88rem; margin-bottom:16px;">Look at Jordan Smith's pay stub and answer these questions.</p>
+
+    <div class="question">
+        <p class="q-label">What is Jordan's hourly rate?</p>
+        <p>$ <span class="answer-blank"></span></p>
+    </div>
+
+    <div class="question">
+        <p class="q-label">How many hours did Jordan work this pay period?</p>
+        <p><span class="answer-blank"></span> hours</p>
+    </div>
+
+    <div class="question">
+        <p class="q-label">What is Jordan's gross pay (before deductions)?</p>
+        <p>$ <span class="answer-blank"></span></p>
+    </div>
+
+    <div class="question">
+        <p class="q-label">What is Jordan's net pay (what they actually receive)?</p>
+        <p>$ <span class="answer-blank"></span></p>
+    </div>
+
+    <div class="question">
+        <p class="q-label">How much was taken out of Jordan's paycheck total?</p>
+        <p>$ <span class="answer-blank"></span></p>
+    </div>
+
+    <div class="question">
+        <p class="q-label">What percentage of gross pay went to deductions?</p>
+        <p><span class="answer-blank"></span> %</p>
+        <p class="hint">Hint: (Total Deductions / Gross Pay) x 100</p>
+    </div>
+</div>
+
+<!-- SECTION 2: Understanding Each Deduction -->
+<div class="ws-section">
+    <h2><span class="section-num">2</span> Understanding Each Deduction</h2>
+    <p style="color:#6c757d; font-size:0.88rem; margin-bottom:16px;">For each deduction, explain where the money goes or what it pays for.</p>
+
+    <div class="question">
+        <p class="q-label">Federal Income Tax goes to:</p>
+        <div class="answer-lines"></div>
+    </div>
+
+    <div class="question">
+        <p class="q-label">Social Security goes to:</p>
+        <div class="answer-lines"></div>
+    </div>
+
+    <div class="question">
+        <p class="q-label">Medicare goes to:</p>
+        <div class="answer-lines"></div>
+    </div>
+
+    <div class="question">
+        <p class="q-label">Health insurance pays for:</p>
+        <div class="answer-lines"></div>
+    </div>
+
+    <div class="question">
+        <p class="q-label">401(k) is:</p>
+        <div class="answer-lines"></div>
+        <p class="hint">Hint: It's retirement savings &mdash; and the employer often MATCHES this. That means free money!</p>
+    </div>
+
+    <div class="question">
+        <p class="q-label">Why is state income tax $0 on Jordan's pay stub?</p>
+        <div class="answer-lines"></div>
+    </div>
+</div>
+
+<!-- SECTION 3: The Math -->
+<div class="ws-section">
+    <h2><span class="section-num">3</span> The Math</h2>
+    <p style="color:#6c757d; font-size:0.88rem; margin-bottom:16px;">Verify the numbers on the pay stub. Show your work in each box.</p>
+
+    <div class="question">
+        <p class="q-label">Verify: Gross Pay &minus; Total Deductions = Net Pay</p>
+        <div class="math-box">
+            <div class="math-label">Show your work</div>
+            <div class="formula">$__________ &minus; $__________ = $__________</div>
+            <p style="margin-top:8px;">Does it match the pay stub? <span class="answer-blank" style="min-width:60px;"></span></p>
+        </div>
+    </div>
+
+    <div class="question">
+        <p class="q-label">Jordan earns $25/hr &times; 80 hours = $__________</p>
+        <div class="math-box">
+            <div class="math-label">Show your work</div>
+            <div class="formula">$25.00 &times; 80 = $__________</div>
+            <p style="margin-top:8px;">Does this match gross pay on the stub? <span class="answer-blank" style="min-width:60px;"></span></p>
+        </div>
+    </div>
+
+    <div class="question">
+        <p class="q-label">Social Security is 6.2% of gross pay. Calculate:</p>
+        <div class="math-box">
+            <div class="math-label">Show your work</div>
+            <div class="formula">$2,000.00 &times; 0.062 = $__________</div>
+            <p style="margin-top:8px;">Does this match the Social Security deduction? <span class="answer-blank" style="min-width:60px;"></span></p>
+        </div>
+    </div>
+
+    <div class="question">
+        <p class="q-label">Medicare is 1.45% of gross pay. Calculate:</p>
+        <div class="math-box">
+            <div class="math-label">Show your work</div>
+            <div class="formula">$2,000.00 &times; 0.0145 = $__________</div>
+            <p style="margin-top:8px;">Does this match the Medicare deduction? <span class="answer-blank" style="min-width:60px;"></span></p>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 4: Big Picture -->
+<div class="ws-section">
+    <h2><span class="section-num">4</span> Big Picture</h2>
+    <p style="color:#6c757d; font-size:0.88rem; margin-bottom:16px;">Zoom out and see the full-year impact.</p>
+
+    <div class="question">
+        <p class="q-label">Jordan's annual gross salary:</p>
+        <div class="math-box">
+            <div class="math-label">Show your work</div>
+            <div class="formula">$25/hr &times; 40 hrs/week &times; 52 weeks = $__________</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <p class="q-label">Jordan's approximate annual take-home pay:</p>
+        <div class="math-box">
+            <div class="math-label">Show your work</div>
+            <div class="formula">$1,527 per paycheck &times; 26 pay periods = $__________</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <p class="q-label">Annual amount "lost" to deductions:</p>
+        <div class="math-box">
+            <div class="math-label">Show your work</div>
+            <div class="formula">$__________ (gross) &minus; $__________ (take-home) = $__________</div>
+        </div>
+    </div>
+
+    <div class="question">
+        <p class="q-label">Challenge: If Jordan got a raise to $30/hr, what would the new gross pay be per paycheck?</p>
+        <div class="math-box">
+            <div class="math-label">Show your work</div>
+            <div class="formula">$30/hr &times; 80 hrs = $__________</div>
+            <p style="margin-top:6px;">How much more per paycheck (gross)? $__________</p>
+            <p>But taxes take a bigger percentage at higher incomes. The extra $400 might only result in about $280&ndash;$300 more in net pay. Why?</p>
+            <div style="min-height:32px; border-bottom:1.5px solid #ccc; margin-top:8px;"></div>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 5: Reflection -->
+<div class="ws-section">
+    <h2><span class="section-num">5</span> Reflection</h2>
+
+    <div class="reflection-q">
+        <p>Was the amount taken out of Jordan's paycheck more or less than you expected?</p>
+        <div class="answer-lines"></div>
+        <div class="answer-lines"></div>
+        <div class="answer-lines"></div>
+    </div>
+
+    <div class="reflection-q">
+        <p>Which deduction surprised you the most? Why?</p>
+        <div class="answer-lines"></div>
+        <div class="answer-lines"></div>
+        <div class="answer-lines"></div>
+    </div>
+
+    <div class="reflection-q">
+        <p>Is the 401(k) deduction different from the other deductions? Why?</p>
+        <p class="hint" style="font-weight:400;">Hint: Think about where the money goes. Does it go to the government, or somewhere else?</p>
+        <div class="answer-lines" style="margin-top:8px;"></div>
+        <div class="answer-lines"></div>
+        <div class="answer-lines"></div>
+    </div>
+</div>
+
+<div class="bottom-note">
+    Unit 4: Earning &amp; Taxes &bull; Lesson 8 &bull; Pay Stub Worksheet
+</div>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grocery Store Challenge - Reflection Sheet</title>
+<style>
+  @media print {
+    body { margin: 0.3in; font-size: 9.5pt; }
+    .no-print { display: none; }
+    .page-break { page-break-before: always; }
+    .no-break { page-break-inside: avoid; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.45; color: #2d3436; max-width: 850px; margin: 0 auto; padding: 16px; }
+  h1 { font-size: 1.6em; text-align: center; color: #2d3436; border-bottom: 4px solid #00b894; padding-bottom: 6px; margin-bottom: 4px; }
+  .subtitle { text-align: center; font-size: 0.9em; color: #636e72; margin-bottom: 8px; }
+  .header-row { display: flex; justify-content: space-between; margin: 6px 0 12px; font-size: 0.92em; }
+  .write { border-bottom: 2px solid #b2bec3; display: inline-block; width: 160px; }
+  .write-long { border-bottom: 2px solid #b2bec3; display: block; width: 100%; min-height: 20px; margin: 4px 0; }
+  .write-price { border-bottom: 2px solid #b2bec3; display: inline-block; width: 70px; }
+
+  .section { border: 2px solid #dfe6e9; border-radius: 10px; padding: 12px 16px; margin: 10px 0; }
+  .section h2 { font-size: 1.1em; margin-bottom: 8px; padding-bottom: 4px; border-bottom: 2px dashed; }
+
+  .section.all { border-color: #00b894; }
+  .section.all h2 { color: #00b894; border-color: #00b894; }
+
+  .section.elem { border-color: #6c5ce7; }
+  .section.elem h2 { color: #6c5ce7; border-color: #6c5ce7; }
+
+  .section.middle { border-color: #e17055; }
+  .section.middle h2 { color: #e17055; border-color: #e17055; }
+
+  .section.high { border-color: #2d3436; }
+  .section.high h2 { color: #2d3436; border-color: #2d3436; }
+
+  .age-label { display: inline-block; background: #dfe6e9; color: #636e72; font-size: 0.75em; padding: 1px 8px; border-radius: 8px; margin-left: 6px; font-weight: normal; }
+
+  .question { margin: 8px 0; font-size: 0.92em; }
+  .question strong { color: #2d3436; }
+
+  .budget-summary { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin: 6px 0; font-size: 0.95em; }
+  .budget-summary .field { display: flex; align-items: center; gap: 4px; }
+
+  .over-under { display: flex; gap: 14px; margin: 6px 0; }
+  .over-under div { border: 2px solid #dfe6e9; border-radius: 8px; padding: 4px 14px; font-size: 0.9em; }
+
+  .math-row { background: #f5f6fa; border-radius: 8px; padding: 8px 12px; margin: 6px 0; font-size: 0.9em; }
+  .math-row .calc { font-family: 'Courier New', monospace; font-size: 0.95em; }
+
+  .invest-box { background: #e0f8f0; border: 2px solid #00b894; border-radius: 8px; padding: 8px 12px; margin: 6px 0; font-size: 0.88em; }
+  .invest-box strong { color: #00b894; }
+</style>
+</head>
+<body>
+
+<h1>Grocery Store Challenge &mdash; Reflection</h1>
+<p class="subtitle">How did you do? Let's find out.</p>
+<div class="header-row">
+  <span>Name: <span class="write"></span></span>
+  <span>Date: <span class="write" style="width: 100px;"></span></span>
+</div>
+
+<!-- ALL AGES -->
+<div class="section all no-break">
+  <h2>Everyone Answers This <span class="age-label">All Ages</span></h2>
+
+  <div class="question">
+    <strong>What did I make?</strong>
+    <div class="write-long"></div>
+  </div>
+
+  <div class="question">
+    <strong>My budget and spending:</strong>
+    <div class="budget-summary">
+      <div class="field">My budget was: $ <span class="write-price"></span></div>
+      <div class="field">I spent: $ <span class="write-price"></span></div>
+    </div>
+    <div class="over-under">
+      <div>Under budget by: $ ________</div>
+      <div>Over budget by: $ ________</div>
+    </div>
+  </div>
+
+  <div class="question">
+    <strong>What was the most expensive thing I bought?</strong>
+    <div class="write-long"></div>
+  </div>
+
+  <div class="question">
+    <strong>What surprised me about prices?</strong>
+    <div class="write-long"></div>
+    <div class="write-long"></div>
+  </div>
+</div>
+
+<!-- AGES 9+ -->
+<div class="section elem no-break">
+  <h2>Smart Shopper Questions <span class="age-label">Ages 9+</span></h2>
+
+  <div class="question">
+    <strong>Store brand vs. name brand: How much did I save by choosing store brand?</strong>
+    <div class="write-long"></div>
+  </div>
+
+  <div class="question">
+    <strong>If I did this grocery trip every week, my monthly grocery bill would be:</strong>
+    <div class="math-row">
+      <span class="calc">$ ________ (my total) &times; 4 weeks = $ ________ per month</span>
+    </div>
+  </div>
+
+  <div class="question">
+    <strong>What would I do differently next time?</strong>
+    <div class="write-long"></div>
+    <div class="write-long"></div>
+  </div>
+</div>
+
+<!-- AGES 11+ -->
+<div class="section middle no-break">
+  <h2>Cost Analysis <span class="age-label">Ages 11+</span></h2>
+
+  <div class="question">
+    <strong>My cost per serving was:</strong> $ <span class="write-price"></span>
+  </div>
+
+  <div class="question">
+    <strong>Compare with your siblings &mdash; who got the best cost per serving?</strong>
+    <table style="width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 0.88em;">
+      <tr>
+        <th style="background: #e17055; color: white; padding: 4px 8px; text-align: left; border: 1px solid #d05040;">Name</th>
+        <th style="background: #e17055; color: white; padding: 4px 8px; text-align: left; border: 1px solid #d05040;">Assignment</th>
+        <th style="background: #e17055; color: white; padding: 4px 8px; text-align: left; border: 1px solid #d05040;">Total Spent</th>
+        <th style="background: #e17055; color: white; padding: 4px 8px; text-align: left; border: 1px solid #d05040;">Servings</th>
+        <th style="background: #e17055; color: white; padding: 4px 8px; text-align: left; border: 1px solid #d05040;">Cost/Serving</th>
+      </tr>
+      <tr><td style="border:1px solid #dfe6e9; padding:4px 8px; height:24px;"></td><td style="border:1px solid #dfe6e9; padding:4px 8px;"></td><td style="border:1px solid #dfe6e9; padding:4px 8px;"></td><td style="border:1px solid #dfe6e9; padding:4px 8px;"></td><td style="border:1px solid #dfe6e9; padding:4px 8px;"></td></tr>
+      <tr><td style="border:1px solid #dfe6e9; padding:4px 8px; height:24px; background:#f8f8fa;"></td><td style="border:1px solid #dfe6e9; padding:4px 8px; background:#f8f8fa;"></td><td style="border:1px solid #dfe6e9; padding:4px 8px; background:#f8f8fa;"></td><td style="border:1px solid #dfe6e9; padding:4px 8px; background:#f8f8fa;"></td><td style="border:1px solid #dfe6e9; padding:4px 8px; background:#f8f8fa;"></td></tr>
+      <tr><td style="border:1px solid #dfe6e9; padding:4px 8px; height:24px;"></td><td style="border:1px solid #dfe6e9; padding:4px 8px;"></td><td style="border:1px solid #dfe6e9; padding:4px 8px;"></td><td style="border:1px solid #dfe6e9; padding:4px 8px;"></td><td style="border:1px solid #dfe6e9; padding:4px 8px;"></td></tr>
+      <tr><td style="border:1px solid #dfe6e9; padding:4px 8px; height:24px; background:#f8f8fa;"></td><td style="border:1px solid #dfe6e9; padding:4px 8px; background:#f8f8fa;"></td><td style="border:1px solid #dfe6e9; padding:4px 8px; background:#f8f8fa;"></td><td style="border:1px solid #dfe6e9; padding:4px 8px; background:#f8f8fa;"></td><td style="border:1px solid #dfe6e9; padding:4px 8px; background:#f8f8fa;"></td></tr>
+    </table>
+  </div>
+
+  <div class="question">
+    <strong>How does my spending compare to the Price Catalog from Build Your Life?</strong>
+    <div class="write-long"></div>
+  </div>
+</div>
+
+<!-- AGE 15 -->
+<div class="section high no-break">
+  <h2>The Big Picture <span class="age-label">Age 15</span></h2>
+
+  <div class="question">
+    <strong>Restaurant equivalent:</strong>
+    <div class="math-row">
+      If my family ate at a restaurant for every meal today, estimated cost: $ <span class="write-price"></span><br>
+      I spent: $ <span class="write-price"></span><br>
+      <strong>I saved by cooking: $ <span class="write-price"></span></strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <strong>Scale it up &mdash; what does this look like over time?</strong>
+    <div class="math-row">
+      <span class="calc">My weekly meal-prep cost: $ ________ &times; 7 days = $ ________ /week</span><br>
+      <span class="calc">Monthly food cost (cooking): $ ________ &times; 4 = $ ________</span><br>
+      <span class="calc">Monthly food cost (eating out): $ ________ &times; 4 = $ ________</span><br>
+      <span class="calc">Monthly savings by cooking: $ ________</span><br>
+      <span class="calc"><strong>Annual savings: $ ________ &times; 12 = $ ________</strong></span>
+    </div>
+  </div>
+
+  <div class="invest-box">
+    <strong>What if you invested that annual savings?</strong><br>
+    If you invested $ ________ per year at ~8% average return for 10 years, it would grow to approximately $ ________.<br><br>
+    <em>Hint: A rough estimate is (annual amount &times; 14.5) for 10 years at 8%. So $3,000/year becomes ~$43,500.</em>
+  </div>
+</div>
+
+</body>
+</html>

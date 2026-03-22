@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stock Market Vocabulary Cards</title>
+<style>
+  :root {
+    --navy: #1a2744;
+    --blue: #2563eb;
+    --light-blue: #dbeafe;
+    --green: #16a34a;
+    --light-green: #dcfce7;
+    --amber: #d97706;
+    --light-amber: #fef3c7;
+    --purple: #7c3aed;
+    --light-purple: #ede9fe;
+    --teal: #0d9488;
+    --light-teal: #ccfbf1;
+    --red: #dc2626;
+    --light-red: #fee2e2;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-600: #4b5563;
+    --gray-800: #1f2937;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--gray-800);
+    line-height: 1.5;
+    background: var(--gray-50);
+  }
+
+  .page {
+    max-width: 850px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px 48px;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .page { padding: 10px 0; max-width: 100%; }
+    .header { margin-bottom: 16px; padding-bottom: 12px; }
+    .cards-grid { gap: 0; }
+    .card {
+      border: 2px solid var(--gray-300) !important;
+      break-inside: avoid;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .instructions { display: none; }
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid var(--navy);
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+  }
+  .header .unit-tag {
+    display: inline-block;
+    background: var(--navy);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 26px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .header .subtitle {
+    font-size: 14px;
+    color: var(--gray-600);
+  }
+
+  .instructions {
+    background: var(--light-blue);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    color: var(--navy);
+    border-left: 4px solid var(--blue);
+  }
+  .instructions strong { color: var(--blue); }
+
+  /* Cards grid: 3 columns */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  /* Individual card */
+  .card {
+    border: 2px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 16px 14px;
+    display: flex;
+    flex-direction: column;
+    min-height: 170px;
+  }
+
+  .card-term {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .card-definition {
+    font-size: 12.5px;
+    color: var(--gray-800);
+    margin-bottom: 8px;
+    flex: 1;
+  }
+
+  .card-example {
+    font-size: 11.5px;
+    color: var(--gray-600);
+    background: var(--gray-50);
+    border-radius: 6px;
+    padding: 8px 10px;
+    border-left: 3px solid var(--gray-300);
+    font-style: italic;
+  }
+
+  /* Color accents per card */
+  .card-blue { border-color: var(--blue); }
+  .card-blue .card-term { color: var(--blue); }
+  .card-blue .card-example { border-left-color: var(--blue); background: var(--light-blue); }
+
+  .card-green { border-color: var(--green); }
+  .card-green .card-term { color: var(--green); }
+  .card-green .card-example { border-left-color: var(--green); background: var(--light-green); }
+
+  .card-purple { border-color: var(--purple); }
+  .card-purple .card-term { color: var(--purple); }
+  .card-purple .card-example { border-left-color: var(--purple); background: var(--light-purple); }
+
+  .card-amber { border-color: var(--amber); }
+  .card-amber .card-term { color: var(--amber); }
+  .card-amber .card-example { border-left-color: var(--amber); background: var(--light-amber); }
+
+  .card-teal { border-color: var(--teal); }
+  .card-teal .card-term { color: var(--teal); }
+  .card-teal .card-example { border-left-color: var(--teal); background: var(--light-teal); }
+
+  .card-red { border-color: var(--red); }
+  .card-red .card-term { color: var(--red); }
+  .card-red .card-example { border-left-color: var(--red); background: var(--light-red); }
+
+  .card-navy { border-color: var(--navy); }
+  .card-navy .card-term { color: var(--navy); }
+  .card-navy .card-example { border-left-color: var(--navy); background: var(--light-blue); }
+
+  @media (max-width: 700px) {
+    .page { padding: 24px 16px; }
+    .cards-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .cards-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="unit-tag">Unit 5 — Growing Wealth &bull; Lesson 10</div>
+    <h1>Stock Market Vocabulary Cards</h1>
+    <div class="subtitle">15 Key Terms &mdash; Cut Out, Review, Quiz Each Other</div>
+  </div>
+
+  <div class="instructions">
+    <strong>How to use:</strong> Print and cut along the card borders. Use for review, quizzing each other, or play a matching game (term on one side, cover definition and guess). Great for family game night review!
+  </div>
+
+  <!-- Cards Grid: 3 per row, 5 rows = 15 cards -->
+  <div class="cards-grid">
+
+    <!-- Row 1 -->
+    <div class="card card-blue">
+      <div class="card-term">Stock</div>
+      <div class="card-definition">A tiny piece of ownership in a company. When you buy a stock, you become a part-owner of that company.</div>
+      <div class="card-example">If you buy 1 stock of Apple, you own a tiny piece of Apple. If Apple grows, your piece is worth more!</div>
+    </div>
+
+    <div class="card card-blue">
+      <div class="card-term">Share</div>
+      <div class="card-definition">One unit of stock. "Share" and "stock" mean almost the same thing. "I own 5 shares" = "I own 5 pieces of that company."</div>
+      <div class="card-example">Think of a pizza cut into 1,000 slices. Each slice is one "share" of the pizza company.</div>
+    </div>
+
+    <div class="card card-green">
+      <div class="card-term">Stock Exchange</div>
+      <div class="card-definition">A marketplace where stocks are bought and sold. Like eBay, but for pieces of companies.</div>
+      <div class="card-example">The NYSE (New York Stock Exchange) and NASDAQ are the two biggest in the US. Thousands of companies trade there.</div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="card card-purple">
+      <div class="card-term">Ticker Symbol</div>
+      <div class="card-definition">A short code of letters that represents a company on the stock exchange. Every listed company has one.</div>
+      <div class="card-example">AAPL = Apple, DIS = Disney, NKE = Nike, RBLX = Roblox, TSLA = Tesla, GOOG = Google</div>
+    </div>
+
+    <div class="card card-teal">
+      <div class="card-term">Index Fund</div>
+      <div class="card-definition">An investment that buys pieces of MANY companies at once, instead of just one. A basket of stocks.</div>
+      <div class="card-example">An S&amp;P 500 index fund owns pieces of 500 big companies. If one goes down, others go up. Warren Buffett recommends them!</div>
+    </div>
+
+    <div class="card card-teal">
+      <div class="card-term">S&amp;P 500</div>
+      <div class="card-definition">An index that tracks the 500 biggest public companies in America. The most popular way to measure "how the market is doing."</div>
+      <div class="card-example">Includes Apple, Microsoft, Amazon, Google, Disney, Nike, and 494 others. Has averaged ~10% growth per year over 100 years.</div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="card card-green">
+      <div class="card-term">Dividend</div>
+      <div class="card-definition">Cash that some companies pay you just for owning their stock. Like a thank-you payment, usually every 3 months.</div>
+      <div class="card-example">Coca-Cola pays dividends. If you own their stock, they send you a small cash payment every quarter just for being an owner.</div>
+    </div>
+
+    <div class="card card-amber">
+      <div class="card-term">Portfolio</div>
+      <div class="card-definition">Your personal collection of all your investments &mdash; stocks, index funds, bonds, everything. Like a folder for your financial stuff.</div>
+      <div class="card-example">"My portfolio has an S&amp;P 500 index fund, 10 shares of Disney, and some bonds." That's your whole collection.</div>
+    </div>
+
+    <div class="card card-purple">
+      <div class="card-term">Diversification</div>
+      <div class="card-definition">Spreading your money across many different investments so you don't lose everything if one goes bad.</div>
+      <div class="card-example">"Don't put all your eggs in one basket." If you drop the basket, ALL your eggs break. Spread them across many baskets!</div>
+    </div>
+
+    <!-- Row 4 -->
+    <div class="card card-green">
+      <div class="card-term">Bull Market</div>
+      <div class="card-definition">When the stock market is going UP overall. Investors are optimistic and buying. Good times!</div>
+      <div class="card-example">Called "bull" because a bull attacks by thrusting its horns UPWARD. Bull = UP.</div>
+    </div>
+
+    <div class="card card-red">
+      <div class="card-term">Bear Market</div>
+      <div class="card-definition">When the stock market is going DOWN overall. Investors are worried and selling. Tough times.</div>
+      <div class="card-example">Called "bear" because a bear attacks by swiping its paws DOWNWARD. Bear = DOWN.</div>
+    </div>
+
+    <div class="card card-navy">
+      <div class="card-term">Market Cap</div>
+      <div class="card-definition">Short for "market capitalization." The total value of ALL shares of a company combined. Tells you how "big" a company is.</div>
+      <div class="card-example">Apple's market cap is over $3 trillion &mdash; it's one of the biggest companies in the world.</div>
+    </div>
+
+    <!-- Row 5 -->
+    <div class="card card-amber">
+      <div class="card-term">IPO</div>
+      <div class="card-definition">Initial Public Offering. When a company sells stock to the public for the very first time. Also called "going public."</div>
+      <div class="card-example">Before its IPO, you couldn't buy Roblox stock. After it went public in 2021, anyone could buy shares (ticker: RBLX).</div>
+    </div>
+
+    <div class="card card-blue">
+      <div class="card-term">Broker</div>
+      <div class="card-definition">A company or app that lets you buy and sell stocks. You need a broker to trade &mdash; you can't just walk up to the stock exchange.</div>
+      <div class="card-example">Fidelity, Charles Schwab, and Vanguard are popular brokers. They're like the "store" where you go to buy stocks.</div>
+    </div>
+
+    <div class="card card-green">
+      <div class="card-term">Compound Interest</div>
+      <div class="card-definition">When your money earns returns, and then those returns earn returns too. Your money grows faster and faster over time.</div>
+      <div class="card-example">$100 growing at 10%/year: Year 1 = $110, Year 2 = $121, Year 3 = $133... After 30 years = $1,745! Time is your superpower.</div>
+    </div>
+
+  </div><!-- end cards-grid -->
+
+</div>
+</body>
+</html>

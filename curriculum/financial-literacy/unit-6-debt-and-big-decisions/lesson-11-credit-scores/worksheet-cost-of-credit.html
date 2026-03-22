@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cost of Credit — Calculation Worksheet</title>
+<style>
+  :root {
+    --navy: #1a2744;
+    --blue: #2563eb;
+    --light-blue: #dbeafe;
+    --green: #16a34a;
+    --dark-green: #15803d;
+    --light-green: #dcfce7;
+    --bright-green: #22c55e;
+    --amber: #d97706;
+    --light-amber: #fef3c7;
+    --red: #dc2626;
+    --dark-red: #b91c1c;
+    --light-red: #fee2e2;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-600: #4b5563;
+    --gray-800: #1f2937;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--gray-800);
+    line-height: 1.5;
+    background: var(--gray-50);
+  }
+
+  .page {
+    max-width: 850px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 36px 44px;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .page { padding: 16px 0; max-width: 100%; }
+    .scenario-block { break-inside: avoid; }
+    .reflection-section { break-inside: avoid; }
+    .shock-box { break-inside: avoid; }
+    .age-label { break-inside: avoid; }
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .header .unit-tag {
+    display: inline-block;
+    background: var(--navy);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 28px;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  .header .tagline {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--red);
+    margin-bottom: 4px;
+  }
+  .header .subtitle {
+    font-size: 14px;
+    color: var(--gray-600);
+    font-style: italic;
+  }
+
+  .name-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .name-line .line {
+    flex: 1;
+    border-bottom: 2px solid var(--gray-200);
+    height: 1px;
+  }
+
+  h2 {
+    font-size: 20px;
+    color: var(--navy);
+    margin: 28px 0 12px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--light-blue);
+  }
+
+  /* Age labels */
+  .age-label {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+  .age-all { background: var(--light-blue); color: var(--blue); }
+  .age-11 { background: var(--light-green); color: var(--dark-green); }
+  .age-15 { background: var(--light-amber); color: var(--amber); }
+
+  /* Scenario blocks */
+  .scenario-block {
+    margin-bottom: 28px;
+    border: 2px solid var(--gray-200);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .scenario-header {
+    background: var(--navy);
+    color: #fff;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .scenario-header h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+  }
+  .scenario-header .loan-details {
+    font-size: 13px;
+    opacity: 0.85;
+  }
+  .scenario-body {
+    padding: 0;
+  }
+
+  /* Cost tables */
+  .cost-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .cost-table thead th {
+    background: var(--gray-100);
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--gray-600);
+    border-bottom: 2px solid var(--gray-200);
+  }
+  .cost-table tbody td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--gray-100);
+    vertical-align: middle;
+  }
+
+  /* Row highlighting */
+  .row-excellent td {
+    background: #f0fdf4;
+  }
+  .row-excellent td:first-child {
+    font-weight: 700;
+    color: var(--dark-green);
+  }
+  .row-good td {
+    background: #fefce8;
+  }
+  .row-fair td {
+    background: #fff7ed;
+  }
+  .row-poor td {
+    background: #fef2f2;
+  }
+  .row-poor td:first-child {
+    font-weight: 700;
+    color: var(--dark-red);
+  }
+
+  /* Score badge in table */
+  .score-badge {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+  .score-excellent { background: var(--light-green); color: var(--dark-green); }
+  .score-good { background: #fef9c3; color: #a16207; }
+  .score-fair { background: #fff7ed; color: #c2410c; }
+  .score-poor { background: var(--light-red); color: var(--dark-red); }
+
+  /* Interest column */
+  .interest-paid {
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .row-excellent .interest-paid { color: var(--dark-green); }
+  .row-good .interest-paid { color: #a16207; }
+  .row-fair .interest-paid { color: #c2410c; }
+  .row-poor .interest-paid { color: var(--dark-red); }
+
+  /* Shock box */
+  .shock-box {
+    margin: 0;
+    padding: 16px 20px;
+    text-align: center;
+    border-top: 3px solid var(--red);
+    background: linear-gradient(135deg, #fef2f2, #fff5f5);
+  }
+  .shock-box .shock-number {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--red);
+    line-height: 1.2;
+  }
+  .shock-box .shock-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-800);
+  }
+  .shock-box .shock-context {
+    font-size: 13px;
+    color: var(--gray-600);
+    font-style: italic;
+    margin-top: 4px;
+  }
+
+  /* Good credit savings box */
+  .savings-box {
+    margin: 0;
+    padding: 14px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #dcfce7, #f0fdf4);
+    border-top: 3px solid var(--green);
+  }
+  .savings-box .savings-number {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--dark-green);
+    line-height: 1.2;
+  }
+  .savings-box .savings-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dark-green);
+  }
+
+  /* Credit card scenario - different layout */
+  .cc-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .cc-table thead th {
+    background: var(--gray-100);
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--gray-600);
+    border-bottom: 2px solid var(--gray-200);
+  }
+  .cc-table tbody td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .cc-row-bad td { background: #fef2f2; }
+  .cc-row-ok td { background: #fefce8; }
+  .cc-row-great td { background: #f0fdf4; }
+
+  .cc-interest {
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .cc-row-bad .cc-interest { color: var(--dark-red); }
+  .cc-row-ok .cc-interest { color: #a16207; }
+  .cc-row-great .cc-interest { color: var(--dark-green); }
+
+  /* Reflection section */
+  .reflection-section {
+    margin-top: 32px;
+    border: 2px solid var(--navy);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .reflection-header {
+    background: var(--navy);
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .reflection-body {
+    padding: 20px;
+  }
+  .question {
+    margin-bottom: 20px;
+  }
+  .question .q-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .question .q-line {
+    border-bottom: 2px solid var(--gray-200);
+    height: 28px;
+    margin-bottom: 4px;
+  }
+  .question .q-hint {
+    font-size: 12px;
+    color: var(--gray-600);
+    font-style: italic;
+  }
+  .question .q-fill {
+    display: inline-block;
+    border-bottom: 3px solid var(--navy);
+    min-width: 100px;
+    height: 24px;
+    margin: 0 4px;
+  }
+
+  /* Comparison callout */
+  .vs-callout {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin: 20px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid var(--gray-200);
+  }
+  .vs-side {
+    flex: 1;
+    padding: 16px 20px;
+    text-align: center;
+  }
+  .vs-good {
+    background: linear-gradient(135deg, #dcfce7, #f0fdf4);
+  }
+  .vs-bad {
+    background: linear-gradient(135deg, #fef2f2, #fff5f5);
+  }
+  .vs-side .vs-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .vs-good .vs-label { color: var(--dark-green); }
+  .vs-bad .vs-label { color: var(--dark-red); }
+  .vs-side .vs-amount {
+    font-size: 26px;
+    font-weight: 900;
+  }
+  .vs-good .vs-amount { color: var(--dark-green); }
+  .vs-bad .vs-amount { color: var(--dark-red); }
+  .vs-side .vs-desc {
+    font-size: 12px;
+    color: var(--gray-600);
+  }
+  .vs-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--navy);
+    color: #fff;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 0 12px;
+    writing-mode: vertical-rl;
+    letter-spacing: 2px;
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 16px; }
+    .shock-box .shock-number { font-size: 24px; }
+    .vs-callout { flex-direction: column; }
+    .vs-divider { writing-mode: horizontal-tb; padding: 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="unit-tag">Unit 6 &middot; Lesson 11 &middot; Worksheet</div>
+    <h1>The Cost of Credit</h1>
+    <div class="tagline">The Same Stuff. Different Price. All Because of a Number.</div>
+    <div class="subtitle">See how your credit score changes the price of EVERYTHING you buy with a loan</div>
+  </div>
+
+  <div class="name-line">
+    Name: <span class="line"></span> Date: <span class="line" style="max-width:160px"></span>
+  </div>
+
+  <!-- ===== SCENARIO 1: CAR ===== -->
+  <div class="age-label age-all">All Ages (9+)</div>
+  <div class="scenario-block">
+    <div class="scenario-header">
+      <h3>Scenario 1: Buying a Car</h3>
+      <div class="loan-details">$30,000 loan &middot; 5-year term</div>
+    </div>
+    <div class="scenario-body">
+      <table class="cost-table">
+        <thead>
+          <tr>
+            <th>Credit Score</th>
+            <th>Interest Rate</th>
+            <th>Monthly Payment</th>
+            <th>Total Paid</th>
+            <th>Interest Paid</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-excellent">
+            <td><span class="score-badge score-excellent">760+ Excellent</span></td>
+            <td>5.5%</td>
+            <td>$573</td>
+            <td>$34,380</td>
+            <td class="interest-paid">$4,380</td>
+          </tr>
+          <tr class="row-good">
+            <td><span class="score-badge score-good">700 Good</span></td>
+            <td>7.5%</td>
+            <td>$601</td>
+            <td>$36,060</td>
+            <td class="interest-paid">$6,060</td>
+          </tr>
+          <tr class="row-fair">
+            <td><span class="score-badge score-fair">650 Fair</span></td>
+            <td>11%</td>
+            <td>$652</td>
+            <td>$39,120</td>
+            <td class="interest-paid">$9,120</td>
+          </tr>
+          <tr class="row-poor">
+            <td><span class="score-badge score-poor">580 Poor</span></td>
+            <td>15%</td>
+            <td>$714</td>
+            <td>$42,840</td>
+            <td class="interest-paid">$12,840</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="shock-box">
+        <div class="shock-number">$8,460 MORE</div>
+        <div class="shock-label">for the exact same car &mdash; just because of a lower credit score</div>
+        <div class="shock-context">That's like throwing $8,460 out the car window as you drive off the lot.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vs-callout">
+    <div class="vs-side vs-good">
+      <div class="vs-label">Excellent Credit Pays</div>
+      <div class="vs-amount">$34,380</div>
+      <div class="vs-desc">total for the car</div>
+    </div>
+    <div class="vs-divider">VS</div>
+    <div class="vs-side vs-bad">
+      <div class="vs-label">Poor Credit Pays</div>
+      <div class="vs-amount">$42,840</div>
+      <div class="vs-desc">total for the SAME car</div>
+    </div>
+  </div>
+
+  <!-- ===== SCENARIO 2: HOUSE ===== -->
+  <div class="age-label age-11">Ages 11+ (Middle &amp; High School)</div>
+  <div class="scenario-block">
+    <div class="scenario-header">
+      <h3>Scenario 2: Buying a House</h3>
+      <div class="loan-details">$250,000 mortgage &middot; 30-year fixed</div>
+    </div>
+    <div class="scenario-body">
+      <table class="cost-table">
+        <thead>
+          <tr>
+            <th>Credit Score</th>
+            <th>Interest Rate</th>
+            <th>Monthly Payment</th>
+            <th>Total Paid</th>
+            <th>Interest Paid</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-excellent">
+            <td><span class="score-badge score-excellent">760+ Excellent</span></td>
+            <td>6.5%</td>
+            <td>$1,580</td>
+            <td>$568,800</td>
+            <td class="interest-paid">$318,800</td>
+          </tr>
+          <tr class="row-good">
+            <td><span class="score-badge score-good">700 Good</span></td>
+            <td>7.0%</td>
+            <td>$1,663</td>
+            <td>$598,680</td>
+            <td class="interest-paid">$348,680</td>
+          </tr>
+          <tr class="row-fair">
+            <td><span class="score-badge score-fair">650 Fair</span></td>
+            <td>7.5%</td>
+            <td>$1,748</td>
+            <td>$629,280</td>
+            <td class="interest-paid">$379,280</td>
+          </tr>
+          <tr class="row-poor">
+            <td><span class="score-badge score-poor">580 Poor</span></td>
+            <td>8.5%</td>
+            <td>$1,922</td>
+            <td>$691,920</td>
+            <td class="interest-paid">$441,920</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="shock-box">
+        <div class="shock-number">$123,120 MORE</div>
+        <div class="shock-label">for the exact same house &mdash; that's enough to buy a WHOLE OTHER HOUSE</div>
+        <div class="shock-context">Bad credit doesn't just cost you extra. It costs you a second house worth of money.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vs-callout">
+    <div class="vs-side vs-good">
+      <div class="vs-label">Excellent Credit Pays</div>
+      <div class="vs-amount">$568,800</div>
+      <div class="vs-desc">total for the house</div>
+    </div>
+    <div class="vs-divider">VS</div>
+    <div class="vs-side vs-bad">
+      <div class="vs-label">Poor Credit Pays</div>
+      <div class="vs-amount">$691,920</div>
+      <div class="vs-desc">total for the SAME house</div>
+    </div>
+  </div>
+
+  <!-- ===== SCENARIO 3: CREDIT CARD ===== -->
+  <div class="age-label age-15">Age 15 (High School)</div>
+  <div class="scenario-block">
+    <div class="scenario-header">
+      <h3>Scenario 3: Credit Card Debt</h3>
+      <div class="loan-details">$5,000 balance &middot; 24% APR</div>
+    </div>
+    <div class="scenario-body">
+      <table class="cc-table">
+        <thead>
+          <tr>
+            <th>Approach</th>
+            <th>Monthly Payment</th>
+            <th>Time to Pay Off</th>
+            <th>Total Paid</th>
+            <th>Interest Paid</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="cc-row-bad">
+            <td><strong>Minimum payments only</strong></td>
+            <td>$100/mo</td>
+            <td style="font-weight:700; color:var(--dark-red);">9+ years</td>
+            <td>$9,800</td>
+            <td class="cc-interest">$4,800</td>
+          </tr>
+          <tr class="cc-row-ok">
+            <td><strong>Aggressive payoff</strong></td>
+            <td>$300/mo</td>
+            <td>19 months</td>
+            <td>$5,720</td>
+            <td class="cc-interest">$720</td>
+          </tr>
+          <tr class="cc-row-great">
+            <td><strong>Paid in full each month</strong></td>
+            <td>Full balance</td>
+            <td>1 month</td>
+            <td>$5,000</td>
+            <td class="cc-interest">$0</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="shock-box">
+        <div class="shock-number">$5,000 becomes $9,800</div>
+        <div class="shock-label">Minimum payments nearly DOUBLE the cost &mdash; and take 9 YEARS</div>
+        <div class="shock-context">Credit card companies love minimum payments. That's how they make their money. Don't fall for it.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== REFLECTION QUESTIONS ===== -->
+  <div class="reflection-section">
+    <div class="reflection-header">Reflection Questions</div>
+    <div class="reflection-body">
+
+      <div class="question">
+        <div class="q-text">1. How much extra does bad credit cost on a car loan?</div>
+        <div class="q-text">$ <span class="q-fill"></span></div>
+        <div class="q-hint">Look at the difference between Excellent (760+) and Poor (580) in Scenario 1</div>
+      </div>
+
+      <div class="question">
+        <div class="q-text">2. How much extra does bad credit cost on a house?</div>
+        <div class="q-text">$ <span class="q-fill"></span></div>
+        <div class="q-hint">Look at the difference between Excellent and Poor in Scenario 2</div>
+      </div>
+
+      <div class="question">
+        <div class="q-text">3. If you invested the house difference ($123,120) instead, and it grew at 8% per year for 20 years, what would it be worth?</div>
+        <div class="q-text">$ <span class="q-fill"></span></div>
+        <div class="q-hint">Use the formula: $123,120 x (1.08)^20 = $123,120 x 4.66 = ?</div>
+      </div>
+
+      <div class="question">
+        <div class="q-text">4. Is a good credit score worth building? Why or why not?</div>
+        <div class="q-line"></div>
+        <div class="q-line"></div>
+        <div class="q-line"></div>
+      </div>
+
+      <div class="question">
+        <div class="q-text">5. What is the single most important thing you can do for your credit score?</div>
+        <div class="q-line"></div>
+        <div class="q-hint">Hint: It accounts for 35% of your score</div>
+      </div>
+
+      <div class="question">
+        <div class="q-text">6. Name one way you could start building credit before age 18.</div>
+        <div class="q-line"></div>
+        <div class="q-line"></div>
+      </div>
+
+      <div class="question" style="margin-bottom:0;">
+        <div class="age-label age-15" style="margin-bottom:4px;">Age 15 Bonus</div>
+        <div class="q-text">7. Design your credit-building plan. What will you do at each stage?</div>
+        <div class="q-text" style="font-size:13px; color:var(--gray-600);">Age 13&ndash;17:</div>
+        <div class="q-line"></div>
+        <div class="q-text" style="font-size:13px; color:var(--gray-600);">Age 18:</div>
+        <div class="q-line"></div>
+        <div class="q-text" style="font-size:13px; color:var(--gray-600);">Age 20+:</div>
+        <div class="q-line"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom savings summary -->
+  <div style="margin-top:24px; text-align:center; padding:20px; background:linear-gradient(135deg, var(--navy), #2d3a5c); border-radius:14px; color:#fff;">
+    <div style="font-size:13px; text-transform:uppercase; letter-spacing:1.5px; opacity:0.8; margin-bottom:6px;">Lifetime savings of excellent credit vs. poor credit</div>
+    <div style="font-size:36px; font-weight:900; color:#4ade80; line-height:1.2;">$131,580+</div>
+    <div style="font-size:14px; opacity:0.85; margin-top:4px;">Just on ONE car and ONE house. Over a lifetime, the difference is even bigger.</div>
+    <div style="font-size:16px; font-weight:700; margin-top:12px; color:#93c5fd;">Pay on time. Every time. No exceptions.</div>
+  </div>
+
+</div>
+</body>
+</html>

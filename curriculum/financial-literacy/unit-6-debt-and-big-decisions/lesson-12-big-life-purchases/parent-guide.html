@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Guide — Big Life Purchases: The Car and The House</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            color: #2d2d2d;
+            line-height: 1.6;
+            background: #f8f9fa;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a237e, #283593);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .header h1 { font-size: 1.9em; margin-bottom: 6px; }
+        .header .subtitle { font-size: 1.1em; opacity: 0.9; }
+        .header .meta {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            font-size: 0.95em;
+            opacity: 0.85;
+        }
+
+        .two-session-note {
+            background: #e8eaf6;
+            border: 2px solid #5c6bc0;
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin-bottom: 25px;
+        }
+        .two-session-note h3 { color: #283593; margin-bottom: 8px; font-size: 1.05em; }
+        .two-session-note p { font-size: 0.95em; }
+        .session-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .session-option {
+            background: white;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border-left: 4px solid #5c6bc0;
+        }
+        .session-option strong { color: #283593; }
+
+        .materials-needed {
+            background: #fff3e0;
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin-bottom: 25px;
+            border: 1px solid #ffcc80;
+        }
+        .materials-needed h3 { color: #e65100; margin-bottom: 10px; }
+        .materials-needed ul { margin-left: 20px; }
+        .materials-needed li { margin-bottom: 4px; font-size: 0.95em; }
+
+        .part-header {
+            background: linear-gradient(135deg, #1565c0, #1976d2);
+            color: white;
+            padding: 18px 22px;
+            border-radius: 10px 10px 0 0;
+            margin-top: 30px;
+        }
+        .part-header h2 { font-size: 1.4em; }
+        .part-header .time { font-size: 0.9em; opacity: 0.85; margin-top: 4px; }
+
+        .part-body {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-top: none;
+            border-radius: 0 0 10px 10px;
+            padding: 22px;
+            margin-bottom: 10px;
+        }
+
+        .step {
+            margin-bottom: 22px;
+            padding-bottom: 18px;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+        .step:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .step-number {
+            display: inline-block;
+            background: #1565c0;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .step h3 { display: inline; font-size: 1.05em; color: #1a237e; }
+        .step-time {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1565c0;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin-left: 8px;
+        }
+        .step p, .step ul { margin-top: 10px; font-size: 0.95em; }
+        .step ul { margin-left: 20px; }
+        .step li { margin-bottom: 5px; }
+
+        .hook-box {
+            background: #fce4ec;
+            border-left: 4px solid #c62828;
+            padding: 14px 18px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 10px;
+            font-size: 0.95em;
+        }
+        .hook-box .say-this { font-weight: bold; color: #c62828; margin-bottom: 6px; font-size: 0.85em; text-transform: uppercase; }
+
+        .surprise-box {
+            background: #fff8e1;
+            border: 2px solid #ff8f00;
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-top: 12px;
+        }
+        .surprise-box .label { font-weight: bold; color: #e65100; margin-bottom: 6px; }
+
+        .facilitator-note {
+            background: #e8f5e9;
+            border-left: 4px solid #2e7d32;
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        .facilitator-note strong { color: #2e7d32; }
+
+        .age-tiers {
+            background: #f3e5f5;
+            border-radius: 10px;
+            padding: 20px 22px;
+            margin-top: 30px;
+            margin-bottom: 25px;
+            border: 1px solid #ce93d8;
+        }
+        .age-tiers h3 { color: #6a1b9a; margin-bottom: 14px; font-size: 1.1em; }
+
+        .tier {
+            background: white;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            border-left: 4px solid #8e24aa;
+        }
+        .tier:last-child { margin-bottom: 0; }
+        .tier .tier-label {
+            font-weight: bold;
+            color: #6a1b9a;
+            font-size: 0.95em;
+            margin-bottom: 6px;
+        }
+        .tier ul { margin-left: 18px; font-size: 0.9em; }
+        .tier li { margin-bottom: 3px; }
+
+        .connections {
+            background: #e0f2f1;
+            border-radius: 10px;
+            padding: 20px 22px;
+            margin-bottom: 25px;
+            border: 1px solid #80cbc4;
+        }
+        .connections h3 { color: #00695c; margin-bottom: 12px; font-size: 1.1em; }
+        .connection-item {
+            background: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid #00897b;
+        }
+        .connection-item:last-child { margin-bottom: 0; }
+        .connection-item strong { color: #00695c; }
+        .connection-item p { font-size: 0.9em; margin-top: 4px; }
+
+        .wrapup {
+            background: linear-gradient(135deg, #1a237e, #283593);
+            color: white;
+            padding: 22px;
+            border-radius: 10px;
+            margin-top: 25px;
+        }
+        .wrapup h3 { margin-bottom: 10px; font-size: 1.1em; }
+        .wrapup .say-this { opacity: 0.7; font-size: 0.85em; text-transform: uppercase; margin-bottom: 6px; }
+        .wrapup p { font-size: 0.95em; line-height: 1.7; }
+        .wrapup .key-takeaway {
+            background: rgba(255,255,255,0.15);
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-top: 14px;
+            font-style: italic;
+        }
+
+        @media print {
+            body { background: white; padding: 15px; font-size: 11pt; }
+            .header { background: #1a237e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .part-header { background: #1565c0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .wrapup { background: #1a237e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .step, .tier, .connection-item { break-inside: avoid; }
+        }
+
+        @media (max-width: 600px) {
+            .session-options { grid-template-columns: 1fr; }
+            .header h1 { font-size: 1.5em; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Big Life Purchases — The Car and The House</h1>
+        <div class="subtitle">Unit 6: Debt and Big Decisions &bull; Lesson 12</div>
+        <div class="meta">
+            <span>Ages 6-15 (6 kids)</span>
+            <span>45-60 minutes total</span>
+            <span>Two-Part Lesson</span>
+        </div>
+    </div>
+
+    <div class="two-session-note">
+        <h3>Flexible Scheduling: One Session or Two</h3>
+        <p>This lesson covers two major purchases. Run it as one longer session or split into two shorter ones:</p>
+        <div class="session-options">
+            <div class="session-option">
+                <strong>Option 1: Single Session</strong><br>
+                45-60 minutes total<br>
+                Part A (Cars) then Part B (Houses) with a 2-minute stretch break between
+            </div>
+            <div class="session-option">
+                <strong>Option 2: Two Sessions</strong><br>
+                Session 1: Part A — Cars (25-30 min)<br>
+                Session 2: Part B — Houses (25-30 min)
+            </div>
+        </div>
+    </div>
+
+    <div class="materials-needed">
+        <h3>Materials Needed</h3>
+        <ul>
+            <li><strong>Reference Sheet: Cars</strong> (reference-cars.html) — print copies or display on screen</li>
+            <li><strong>Reference Sheet: Houses</strong> (reference-houses.html) — print copies or display on screen</li>
+            <li><strong>Worksheet: Car Purchase</strong> (worksheet-car-purchase.html) — one per child (middle school and up do full version)</li>
+            <li><strong>Worksheet: Rent vs. Buy</strong> (worksheet-rent-vs-buy.html) — one per child (middle school and up)</li>
+            <li>Pencils and calculators (phones work fine for older kids)</li>
+            <li>Optional: whiteboard or large paper for writing the "shock numbers"</li>
+        </ul>
+    </div>
+
+    <!-- PART A: CARS -->
+    <div class="part-header">
+        <h2>Part A — Buying a Car</h2>
+        <div class="time">20-25 minutes</div>
+    </div>
+    <div class="part-body">
+
+        <div class="step">
+            <span class="step-number">1</span>
+            <h3>The Hook: Depreciation Shock</h3>
+            <span class="step-time">3 min</span>
+
+            <div class="hook-box">
+                <div class="say-this">Say This:</div>
+                "Imagine you just bought a brand new car for $30,000. You're so excited. You drive it off the lot, wave to the salesperson, pull into your driveway... and your car is now worth $24,000. You just lost $6,000 in the time it takes to drive home. That's called <strong>depreciation</strong> — and it's the cost nobody tells you about."
+            </div>
+
+            <div class="facilitator-note">
+                <strong>Facilitator Tip:</strong> Write "$30,000" on the board, then dramatically cross it out and write "$24,000" below it. Let the kids react. Ask: "Where did that $6,000 go? Did someone steal it? No — the car just became 'used' the moment you drove it."
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <h3>Walk Through the Reference Sheet</h3>
+            <span class="step-time">5-7 min</span>
+
+            <p>Hand out or display <strong>reference-cars.html</strong>. Walk through together:</p>
+            <ul>
+                <li><strong>The REAL costs of a car</strong> — it's not just the sticker price. Go through each line: payment, insurance, gas, maintenance, registration, depreciation.</li>
+                <li><strong>New vs. Used comparison table</strong> — read through each row. Let it sink in that the $30K new car costs $860/month while the $8K older car costs $310/month.</li>
+                <li><strong>The depreciation timeline</strong> — your $30K car is worth $13,500 after 5 years. You lost $16,500. Pause here for reactions.</li>
+                <li><strong>Car buying tips</strong> — read through these together. Emphasize the dealer trick: "They want you focused on the monthly payment. You need to focus on the TOTAL price."</li>
+            </ul>
+
+            <div class="facilitator-note">
+                <strong>For younger kids:</strong> Focus on the comparison table and the depreciation numbers. Those are the "wow" moments. They don't need to understand interest rates yet — just that a new car costs WAY more than people think.
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            <h3>Car Buying Exercise</h3>
+            <span class="step-time">8-10 min</span>
+
+            <p>Hand out <strong>worksheet-car-purchase.html</strong>. Each kid "buys" a car and calculates the real total cost.</p>
+            <ul>
+                <li>Let each kid pick their car (Options A-D). Expect some to want the new car — that's the point.</li>
+                <li>Walk them through filling in each monthly cost using the reference sheet.</li>
+                <li>Older kids (12-15): Do the full calculation including depreciation and 5-year total.</li>
+                <li>Younger kids (6-9): Help them fill in the monthly costs and add them up. Focus on the monthly total comparison.</li>
+                <li>Middle kids (10-11): Do monthly costs independently, help with 5-year multiplication.</li>
+            </ul>
+
+            <div class="facilitator-note">
+                <strong>Facilitator Tip:</strong> If a kid chose Option D (pick your own car), help them look up a real car price online. This makes it personal and memorable.
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">4</span>
+            <h3>The Surprise Comparison</h3>
+            <span class="step-time">4-5 min</span>
+
+            <div class="surprise-box">
+                <div class="label">The Big Reveal</div>
+                <p>Write these numbers side by side on the board:</p>
+                <p style="margin-top:8px;">
+                    <strong>$30,000 New Car — 5-Year Total Cost: $51,600</strong><br>
+                    <strong>$15,000 Used Car — 5-Year Total Cost: $35,700</strong><br>
+                    <strong>Difference: $15,900</strong>
+                </p>
+                <p style="margin-top:8px;">"The new car cost you almost $16,000 MORE over 5 years. That's enough for a whole second car. Or a year of college. Or an amazing vacation every single year for five years."</p>
+            </div>
+
+            <p style="margin-top: 12px;">Ask the group: "Now that you see the REAL cost, who would change their choice?" Let them discuss. There's no wrong answer — just informed decisions.</p>
+        </div>
+    </div>
+
+    <!-- If splitting into two sessions -->
+    <div style="background: #e8eaf6; padding: 14px 20px; border-radius: 8px; margin: 20px 0; text-align: center; font-size: 0.95em; color: #283593;">
+        <strong>If splitting into two sessions:</strong> End Part A here. Quick recap: "What's depreciation? Why do used cars save you money?" Start Part B next session with a 1-minute review.
+    </div>
+
+    <!-- PART B: HOUSES -->
+    <div class="part-header" style="background: linear-gradient(135deg, #2e7d32, #388e3c);">
+        <h2>Part B — Rent vs. Own a Home</h2>
+        <div class="time">20-25 minutes</div>
+    </div>
+    <div class="part-body">
+
+        <div class="step">
+            <span class="step-number">1</span>
+            <h3>The Hook: Mortgage Shock</h3>
+            <span class="step-time">3 min</span>
+
+            <div class="hook-box">
+                <div class="say-this">Say This:</div>
+                "A house costs $300,000. That's a lot, right? But here's the thing — by the time you're done paying for it, you'll have spent over <strong>$860,000</strong>. That's almost THREE TIMES the price on the sign. Where does all that extra money go? <strong>Interest.</strong> The bank charges you for borrowing their money — for 30 years."
+            </div>
+
+            <div class="facilitator-note">
+                <strong>Facilitator Tip:</strong> Write "$300,000" on the board. Then below it, write "$860,000." Draw an arrow between them and write "30 years of interest, taxes, insurance, and repairs." Let the kids react to the gap.
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <h3>Walk Through the Reference Sheet</h3>
+            <span class="step-time">5-7 min</span>
+
+            <p>Hand out or display <strong>reference-houses.html</strong>. Walk through together:</p>
+            <ul>
+                <li><strong>What is a mortgage?</strong> — A loan for a house. The bank actually owns it until you pay it off. Takes 15-30 years.</li>
+                <li><strong>The numbers on a $300K house</strong> — Walk through the down payment ($60,000 just to START), then the monthly costs. Show how $1,597 in mortgage becomes $2,200-$2,600 when you add everything else.</li>
+                <li><strong>The total cost breakdown</strong> — Go through each line item. Let the $860,000 grand total hit hard.</li>
+                <li><strong>The good news: Equity</strong> — "But unlike a car, a house usually goes UP in value. And every payment builds ownership. When it's paid off, you live there almost free."</li>
+                <li><strong>Rent vs. Buy table</strong> — Read through each factor. Emphasize: neither is always better. It depends on your situation.</li>
+            </ul>
+
+            <div class="facilitator-note">
+                <strong>For younger kids:</strong> Focus on three numbers: the price ($300,000), the total cost ($860,000), and what the house might be worth later ($500,000+). The concept of "you pay way more than the price, but you also own something valuable" is the key takeaway.
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            <h3>Rent vs. Buy Worksheet</h3>
+            <span class="step-time">8-10 min</span>
+
+            <p>Hand out <strong>worksheet-rent-vs-buy.html</strong>. Walk through the 10-year comparison together.</p>
+            <ul>
+                <li>Read through the renting scenario first — note how rent goes UP every year (3% increases). Total: ~$206,000 over 10 years.</li>
+                <li>Then the buying scenario — higher monthly cost, but building equity. Total payments: ~$288,000, but you get ~$215,000 back when you sell.</li>
+                <li>Have them fill in the comparison and answer the big questions at the bottom.</li>
+                <li>Key discussion: "Is owning ALWAYS better?" Guide them to see that renting is smarter when you need flexibility, can't afford the down payment, or won't stay long.</li>
+            </ul>
+
+            <div class="facilitator-note">
+                <strong>For younger kids:</strong> Skip the worksheet. Instead, use the reference sheet and ask: "Would you rather pay $1,500/month and own nothing, or pay $2,400/month but eventually own the whole house?" Let them discuss.
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">4</span>
+            <h3>The Nuance: Renting Isn't "Throwing Money Away"</h3>
+            <span class="step-time">4-5 min</span>
+
+            <div class="surprise-box">
+                <div class="label">Important Discussion</div>
+                <p>Many adults say "renting is throwing money away." Challenge this:</p>
+                <ul style="margin-top:8px; margin-left:18px;">
+                    <li><strong>Flexibility:</strong> "What if you get a dream job in another city? A renter gives 30 days notice. A homeowner spends months selling and pays 5-6% in fees."</li>
+                    <li><strong>Expensive markets:</strong> "In some cities, a house costs $800,000+. Renting and investing the difference can build MORE wealth."</li>
+                    <li><strong>Short-term stays:</strong> "If you're only staying 2-3 years, buying almost always loses money after closing costs."</li>
+                    <li><strong>Surprise costs:</strong> "A new roof costs $10,000-$20,000. A renter calls the landlord. A homeowner writes a check."</li>
+                </ul>
+            </div>
+
+            <p style="margin-top: 12px;">The point isn't that one is always better — it's that you need to understand the math and your situation before deciding.</p>
+        </div>
+    </div>
+
+    <!-- WRAP-UP -->
+    <div class="wrapup">
+        <div class="say-this">Wrap-Up — Say This:</div>
+        <h3>The Bottom Line on Big Purchases</h3>
+        <p>"A car and a house — these are the two biggest purchases most people ever make. And here's what we learned today: the sticker price is NEVER the real price. A $30,000 car costs over $50,000. A $300,000 house costs over $860,000. Understanding the REAL cost — not just the number on the sign — is what separates smart buyers from broke ones."</p>
+        <div class="key-takeaway">
+            "The person who buys a 3-year-old car with cash and rents until they can truly afford a house? They might end up wealthier than the person with the brand new car in the driveway and a house they can barely afford."
+        </div>
+    </div>
+
+    <!-- AGE TIERS -->
+    <div class="age-tiers">
+        <h3>Age-Specific Adaptations</h3>
+
+        <div class="tier">
+            <div class="tier-label">Primary — Ages 6-7</div>
+            <ul>
+                <li>Focus on the "surprise numbers" — they love big, shocking facts</li>
+                <li>Key takeaway: "Cars cost a LOT more than the price, and houses cost EVEN MORE"</li>
+                <li>Skip worksheets; let them listen during reference sheet discussions</li>
+                <li>Have them draw their "dream car" and write the real cost vs. sticker price next to it</li>
+                <li>Use the simplified "Houses cost a LOT" sections on worksheets</li>
+            </ul>
+        </div>
+
+        <div class="tier">
+            <div class="tier-label">Elementary — Ages 8-11</div>
+            <ul>
+                <li>Do the simplified car worksheet (fill in monthly costs, add them up)</li>
+                <li>Help with multiplication for 5-year totals (or use calculators)</li>
+                <li>For houses: focus on the reference sheet comparison table and discussion</li>
+                <li>They can attempt the rent-vs-buy worksheet with guidance</li>
+                <li>Key takeaway: "Used cars save a TON of money" and "Houses cost way more than the price"</li>
+            </ul>
+        </div>
+
+        <div class="tier">
+            <div class="tier-label">Middle School — Ages 12-13</div>
+            <ul>
+                <li>Complete both worksheets with full calculations</li>
+                <li>Challenge them to explain WHY used cars are cheaper (depreciation)</li>
+                <li>Have them calculate the actual interest paid on the mortgage ($574,920 - $240,000 = $334,920 in interest!)</li>
+                <li>Discuss: "When would you choose to rent instead of buy?"</li>
+            </ul>
+        </div>
+
+        <div class="tier">
+            <div class="tier-label">High School — Age 15</div>
+            <ul>
+                <li>Full analysis with all math, including interest calculations</li>
+                <li>Option D on car worksheet: research a real car they'd want, get real insurance quotes</li>
+                <li>Calculate the opportunity cost: "If you invested the $15,900 car savings at 8% for 30 years..."</li>
+                <li>Discuss mortgage pre-approval, credit score impact on rates, and the "28/36 rule" (housing should be &lt;28% of gross income)</li>
+                <li>Connection to credit lesson: "How would a 620 vs 780 credit score change these numbers?"</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- CONNECTIONS -->
+    <div class="connections">
+        <h3>Connections to Other Lessons</h3>
+
+        <div class="connection-item">
+            <strong>Build Your Life Budget Simulation</strong>
+            <p>In the Build Your Life exercise, housing and transportation were the two BIGGEST budget items. Now kids see why. Ask: "Remember when you picked your housing and car in Build Your Life? Now that you know the REAL costs, would you change anything?" This is the "aha" moment where abstract budget numbers become concrete.</p>
+        </div>
+
+        <div class="connection-item">
+            <strong>Credit Scores Lesson</strong>
+            <p>Your credit score directly affects the interest rate on car loans and mortgages. A person with a 620 score might pay 11% on a car loan; a person with 780 might pay 5%. On a $240,000 mortgage, the difference between 6% and 8% interest is over <strong>$130,000</strong> in extra payments over 30 years. Bad credit literally costs six figures on a house.</p>
+        </div>
+
+        <div class="connection-item">
+            <strong>Compound Interest / Investing Lessons</strong>
+            <p>The money saved by buying used or renting strategically can be invested. The $15,900 saved choosing used over new, invested at 8% for 30 years, becomes approximately <strong>$160,000</strong>. Smart car buying funds retirement.</p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Money Safety - Parent Guide</title>
+<style>
+  @media print {
+    body { margin: 0.4in; font-size: 10pt; }
+    .no-print { display: none; }
+    .page-break { page-break-before: always; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.55; color: #2d3436; max-width: 850px; margin: 0 auto; padding: 20px; }
+  h1 { font-size: 1.9em; color: #2d3436; border-bottom: 4px solid #d63031; padding-bottom: 8px; margin-bottom: 12px; }
+  h2 { font-size: 1.3em; color: #d63031; margin: 22px 0 10px; }
+  h3 { font-size: 1.05em; color: #00b894; margin: 14px 0 6px; }
+  p, li { font-size: 0.92em; margin-bottom: 6px; }
+  ul, ol { padding-left: 22px; }
+
+  .overview { background: #f5f6fa; border-left: 5px solid #d63031; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 14px 0; }
+
+  .flow-step { display: flex; gap: 12px; margin: 12px 0; padding: 12px 14px; border-radius: 8px; background: #fafafa; border: 1.5px solid #dfe6e9; }
+  .flow-num { background: #d63031; color: white; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; font-size: 0.95em; }
+  .flow-content { flex: 1; }
+  .flow-content strong { color: #2d3436; }
+  .flow-content .time { color: #636e72; font-size: 0.85em; font-style: italic; }
+
+  .tier { border: 2px solid #dfe6e9; border-radius: 10px; padding: 14px 18px; margin: 10px 0; }
+  .tier h3 { margin-top: 0; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.75em; font-weight: bold; color: white; margin-right: 4px; }
+  .tag.age { background: #6c5ce7; }
+  .tag.focus { background: #00b894; }
+
+  .tip { background: #fff3cd; border-left: 4px solid #fdcb6e; padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 10px 0; font-size: 0.88em; }
+  .important { background: #ffe0e0; border-left: 4px solid #d63031; padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 10px 0; font-size: 0.88em; }
+  .connection { background: #e0f0ff; border-left: 4px solid #0984e3; padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 10px 0; font-size: 0.88em; }
+
+  .say-this { background: #f0f0f0; border-left: 4px solid #636e72; padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 8px 0; font-size: 0.88em; font-style: italic; }
+
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.88em; }
+  th, td { border: 1px solid #dfe6e9; padding: 6px 10px; text-align: left; }
+  th { background: #d63031; color: white; font-size: 0.85em; }
+  tr:nth-child(even) { background: #f8f8fa; }
+
+  .materials-list { columns: 2; column-gap: 20px; }
+  .materials-list li { break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<h1>Digital Money Safety</h1>
+<p><strong>Parent Guide &amp; Facilitator Notes</strong> &mdash; Unit 2, Lesson 4</p>
+
+<div class="overview">
+  <strong>What is this?</strong> A hands-on lesson about protecting money in the digital world. Kids learn to recognize scams, build strong passwords, and develop safe habits online. This is digital self-defense &mdash; practical skills they will use every single day.
+  <br><br>
+  <strong>Time:</strong> 25&ndash;30 minutes
+  <br><strong>Ages:</strong> 6&ndash;15 (6 kids, differentiated by age tier)
+  <br><strong>Materials:</strong> Printed scam examples sheet, scenario cards (cut apart), password challenge worksheets, pencils, optional: a device to demonstrate password crackers online
+</div>
+
+<div class="connection">
+  <strong>Connection to Previous Lesson:</strong> In the Banking 101 lesson, kids learned how banks hold and protect money. This lesson picks up right there &mdash; now that they understand banking, they need to understand how thieves try to get past those protections, and how to stop them. Frame it as: "You learned where money lives. Now let's learn how to guard it."
+</div>
+
+<!-- =========================================== -->
+<h2>Lesson Flow</h2>
+
+<div class="flow-step">
+  <div class="flow-num">1</div>
+  <div class="flow-content">
+    <strong>Hook: The World Changed</strong> <span class="time">(3 minutes)</span>
+    <div class="say-this">
+      "In the old days, someone had to physically steal your wallet. They had to be right next to you. Now they can steal your money from the other side of the world while you sleep. They don't need a weapon &mdash; just a computer and a convincing message. But here's the good news: <strong>you can stop them</strong>. Today we're learning digital self-defense."
+    </div>
+    <p>Ask the group: <em>"Has anyone ever gotten a weird text or email that seemed fake?"</em> Let a few kids share. Most will have seen something. This establishes that scams are everywhere, not rare events.</p>
+    <p>For the youngest: <em>"Some sneaky people try to trick you on computers and phones. We're going to learn how to spot their tricks, like detectives."</em></p>
+  </div>
+</div>
+
+<div class="flow-step">
+  <div class="flow-num">2</div>
+  <div class="flow-content">
+    <strong>Scam Gallery Walk</strong> <span class="time">(8 minutes)</span>
+    <p>Hand out or display the <strong>scam-examples.html</strong> sheet. Go through each example together as a group.</p>
+    <p>For each scam, ask: <strong>"Would you fall for this one?"</strong> Be honest that many adults fall for these &mdash; no shame in it. The point is learning the patterns.</p>
+
+    <div class="important">
+      <strong>Key Teaching Point:</strong> Scammers use two weapons &mdash; <strong>URGENCY</strong> and <strong>FEAR</strong>. They want you to act <em>right now</em> before you have time to think. The #1 defense is simple: <strong>STOP. THINK. VERIFY.</strong> Any time a message makes you feel panicked or rushed, that itself is a red flag.
+    </div>
+
+    <p><strong>Walk-through tips:</strong></p>
+    <ul>
+      <li>For examples 1-3, point out the specific red flags: sender address, generic greetings, suspicious links</li>
+      <li>For the IRS phone scam (#4), emphasize: <em>"No real government agency asks for gift cards. Ever."</em></li>
+      <li>For the fake website (#5), have kids look carefully at the URLs &mdash; this is a visual puzzle they enjoy</li>
+      <li>For the QR code (#8), explain this is a newer scam &mdash; even adults don't know about it yet</li>
+    </ul>
+
+    <p><strong>For ages 6-7:</strong> Focus on just 3-4 examples. Key message: <em>"If something on a screen asks you for information or says something scary, don't do anything &mdash; just come tell a parent."</em></p>
+  </div>
+</div>
+
+<div class="flow-step">
+  <div class="flow-num">3</div>
+  <div class="flow-content">
+    <strong>Password Challenge</strong> <span class="time">(7 minutes)</span>
+    <p>Hand out the <strong>password-challenge.html</strong> worksheet. Each kid creates the strongest password they can.</p>
+
+    <p><strong>Running the activity:</strong></p>
+    <ol>
+      <li>Give everyone 2 minutes to write their best password on the worksheet</li>
+      <li>Reveal the crack-time examples on the sheet &mdash; let them see how short passwords are nearly instant to break</li>
+      <li>Teach the passphrase method: 4+ random words strung together. Let them try again.</li>
+      <li>Briefly discuss password managers: <em>"It's like a locked vault that remembers all your passwords so you don't have to."</em></li>
+      <li>Explain 2FA: <em>"Even if someone steals your password, they still can't get in without your phone."</em></li>
+    </ol>
+
+    <div class="tip">
+      <strong>Optional demo:</strong> If you have a device available, visit <strong>howsecureismypassword.net</strong> (or similar) and type in example passwords (NOT real ones) to show crack times. Kids love watching the numbers change as you add characters.
+    </div>
+
+    <p><strong>For ages 6-7:</strong> Skip the password creation. Focus on: <em>"Never tell anyone your password except Mom or Dad. Not friends, not teachers, not anyone online."</em> They can draw a picture of a "locked treasure chest" representing their password.</p>
+  </div>
+</div>
+
+<div class="flow-step">
+  <div class="flow-num">4</div>
+  <div class="flow-content">
+    <strong>Scenario Cards</strong> <span class="time">(7 minutes)</span>
+    <p>Cut apart the <strong>scenario-cards.html</strong> cards ahead of time. Place them face-down in a pile.</p>
+
+    <p><strong>How to play:</strong></p>
+    <ol>
+      <li>Each kid draws one card and reads it aloud (help younger ones)</li>
+      <li>The group discusses: <em>"What would you do?"</em></li>
+      <li>You guide toward the right answer, but let them reason through it first</li>
+      <li>If time allows, draw additional cards. Try to get through at least 6.</li>
+    </ol>
+
+    <p><strong>Good follow-up questions:</strong></p>
+    <ul>
+      <li>"What's the worst that could happen if you fell for this?"</li>
+      <li>"Who would you tell about this?"</li>
+      <li>"How is this similar to the scam examples we just looked at?"</li>
+    </ul>
+
+    <p><strong>For ages 6-7:</strong> Pre-select easier cards (the ones about sharing personal info, weird messages from strangers). For every scenario, the answer is always safe for them to default to: <em>"Tell a parent."</em></p>
+  </div>
+</div>
+
+<div class="flow-step">
+  <div class="flow-num">5</div>
+  <div class="flow-content">
+    <strong>Family Security Audit</strong> <span class="time">(5 minutes)</span>
+    <p>Use the checklist at the bottom of the password-challenge worksheet. Go through it together as a family.</p>
+
+    <p><strong>Discussion points:</strong></p>
+    <ul>
+      <li><strong>Password reuse:</strong> <em>"Does anyone here use the same password for multiple things?"</em> (Be honest yourself &mdash; it's powerful if you admit you need to fix this too.)</li>
+      <li><strong>2FA check:</strong> Commit to turning on 2FA for banking, email, and social media accounts this week.</li>
+      <li><strong>Family rule:</strong> Establish a rule: <em>"If any text, email, or call says something urgent about money, STOP. Don't click. Don't call back. Go directly to the real website or call the real number."</em></li>
+      <li><strong>Phone number memorization:</strong> Can each kid recite your phone number from memory? If not, start practicing now. If their phone is lost or stolen, they need to be able to reach you.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Make it real:</strong> If you're comfortable, set up a password manager together this week as a family project. 1Password, Bitwarden, or Apple/Google built-in managers all work. The best one is the one you'll actually use.
+    </div>
+  </div>
+</div>
+
+<!-- =========================================== -->
+<h2>Age-Specific Notes</h2>
+
+<div class="tier">
+  <h3>Primary <span class="tag age">Ages 6&ndash;7</span> <span class="tag focus">Awareness</span></h3>
+  <p><strong>Core message:</strong> "Never share personal information online. If something feels weird or scary on a screen, don't do anything &mdash; come tell a parent right away."</p>
+  <ul>
+    <li>They participate in the group discussion but don't need to do the full password worksheet</li>
+    <li>For the scam gallery, focus on the concept: <em>"Some people pretend to be someone they're not to trick you"</em></li>
+    <li>Their scenario cards should be read to them; the answer is always: <em>"Tell a grown-up"</em></li>
+    <li>Personal info they should never share: full name, address, school name, birthday, phone number, passwords</li>
+    <li>Use the analogy: <em>"Just like you wouldn't open the front door for a stranger, don't open messages or click things from strangers online"</em></li>
+  </ul>
+</div>
+
+<div class="tier">
+  <h3>Elementary <span class="tag age">Ages 8&ndash;10</span> <span class="tag focus">Recognition</span></h3>
+  <p><strong>Core message:</strong> "Learn to spot the tricks. If it feels urgent, that's the trick."</p>
+  <ul>
+    <li>Can do the full password challenge &mdash; they'll enjoy trying to make the longest passphrase</li>
+    <li>Can identify red flags in the scam examples with guidance</li>
+    <li>Understand the concept: scammers pretend to be banks, companies, even friends</li>
+    <li>Good age to introduce: <em>"Check the website address (URL) before typing any information"</em></li>
+    <li>They should know your phone number by heart</li>
+  </ul>
+</div>
+
+<div class="tier">
+  <h3>Middle School <span class="tag age">Ages 11&ndash;13</span> <span class="tag focus">Critical Thinking</span></h3>
+  <p><strong>Core message:</strong> "Think like a scammer to beat a scammer. Understand their tactics."</p>
+  <ul>
+    <li>Can analyze <em>why</em> each scam works psychologically (urgency, fear, greed, trust)</li>
+    <li>Introduce social engineering: <em>"The most dangerous hacking targets people, not computers"</em></li>
+    <li>Discuss data breaches &mdash; their info may already be out there</li>
+    <li>They should understand 2FA conceptually and help set it up on family accounts</li>
+    <li>Good age to discuss: what happens if someone gets into your email (they can reset all your other passwords)</li>
+  </ul>
+</div>
+
+<div class="tier">
+  <h3>High School <span class="tag age">Ages 14&ndash;15</span> <span class="tag focus">Independence</span></h3>
+  <p><strong>Core message:</strong> "You're approaching the age where you'll manage your own accounts. Build habits now."</p>
+  <ul>
+    <li>Can lead discussion of some scam examples &mdash; have them explain to younger kids</li>
+    <li>Discuss: identity theft, credit monitoring, freezing your credit</li>
+    <li>Introduce password manager setup &mdash; they may want their own vault</li>
+    <li>Discuss privacy settings on social media and what information they're sharing publicly</li>
+    <li>Challenge: <em>"Could you write a scam email that would fool someone? What makes it convincing?"</em> (Understanding the craft helps you defend against it)</li>
+  </ul>
+</div>
+
+<!-- =========================================== -->
+<h2>Tone &amp; Framing Notes</h2>
+
+<div class="important">
+  <strong>Real but not scary.</strong> The goal is awareness and empowerment, not anxiety. Frame every threat alongside its defense. Never say <em>"this could happen to you and there's nothing you can do."</em> Always say <em>"this is what they try, and here's exactly how you beat it."</em>
+</div>
+
+<ul>
+  <li><strong>For younger kids:</strong> Avoid specifics about identity theft or financial ruin. Keep it at: <em>"Tricky people try to steal information. We know how to spot them and stay safe."</em></li>
+  <li><strong>For older kids:</strong> Be more direct about consequences, but always paired with: <em>"and here's how you prevent it."</em></li>
+  <li><strong>For everyone:</strong> Emphasize that smart people fall for scams every day. This isn't about being dumb &mdash; it's about being prepared. Scammers are professionals. No shame in getting tricked; the only mistake is not learning from it.</li>
+</ul>
+
+<!-- =========================================== -->
+<h2>Materials Checklist</h2>
+
+<table>
+  <tr>
+    <th>Material</th>
+    <th>File</th>
+    <th>Prep Needed</th>
+  </tr>
+  <tr>
+    <td>Scam Examples Gallery</td>
+    <td>scam-examples.html</td>
+    <td>Print 1&ndash;2 copies (or display on screen)</td>
+  </tr>
+  <tr>
+    <td>Scenario Cards</td>
+    <td>scenario-cards.html</td>
+    <td>Print and cut apart along dotted lines</td>
+  </tr>
+  <tr>
+    <td>Password Challenge</td>
+    <td>password-challenge.html</td>
+    <td>Print one per kid (ages 8+); primary kids share one copy</td>
+  </tr>
+  <tr>
+    <td>Pencils</td>
+    <td>&mdash;</td>
+    <td>One per kid</td>
+  </tr>
+  <tr>
+    <td>Device (optional)</td>
+    <td>&mdash;</td>
+    <td>For live password strength demo</td>
+  </tr>
+</table>
+
+<div class="tip">
+  <strong>Prep time:</strong> About 10 minutes. Print the sheets, cut the scenario cards, and skim through the scam examples so you're comfortable walking through them. No other setup needed.
+</div>
+
+</body>
+</html>

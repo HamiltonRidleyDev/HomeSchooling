@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parent Guide — Death by a Thousand Cuts: The Latte Factor</title>
+<style>
+  :root {
+    --navy: #1a2744;
+    --blue: #2563eb;
+    --light-blue: #dbeafe;
+    --green: #16a34a;
+    --light-green: #dcfce7;
+    --amber: #d97706;
+    --light-amber: #fef3c7;
+    --red: #dc2626;
+    --light-red: #fee2e2;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-600: #4b5563;
+    --gray-800: #1f2937;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--gray-800);
+    line-height: 1.6;
+    background: var(--gray-50);
+  }
+
+  .page {
+    max-width: 850px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px 48px;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .page { padding: 20px 0; max-width: 100%; }
+    .flow-step { break-inside: avoid; }
+    .age-grid { break-inside: avoid; }
+    .callout { break-inside: avoid; }
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid var(--navy);
+    padding-bottom: 20px;
+    margin-bottom: 32px;
+  }
+  .header .unit-tag {
+    display: inline-block;
+    background: var(--navy);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 28px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .header .subtitle {
+    font-size: 16px;
+    color: var(--gray-600);
+  }
+
+  /* Meta bar */
+  .meta-bar {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    background: var(--gray-100);
+    border-radius: 10px;
+    padding: 14px 20px;
+    margin-bottom: 28px;
+    font-size: 14px;
+  }
+  .meta-bar .item { display: flex; align-items: center; gap: 6px; }
+  .meta-bar .label { font-weight: 600; color: var(--gray-600); }
+
+  /* Section headings */
+  h2 {
+    font-size: 20px;
+    color: var(--navy);
+    margin: 28px 0 12px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--light-blue);
+  }
+  h3 { font-size: 16px; color: var(--blue); margin: 16px 0 8px; }
+
+  p, li { font-size: 15px; }
+  p { margin-bottom: 10px; }
+  ul, ol { padding-left: 24px; margin-bottom: 12px; }
+  li { margin-bottom: 4px; }
+
+  /* Lesson flow steps */
+  .flow-step {
+    border-left: 4px solid var(--blue);
+    background: #fff;
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .flow-step.session2 {
+    border-left-color: var(--green);
+  }
+  .flow-step .step-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .flow-step .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--blue);
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  .flow-step.session2 .step-number {
+    background: var(--green);
+  }
+  .flow-step .step-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .flow-step .step-time {
+    font-size: 13px;
+    font-weight: 600;
+    background: var(--light-blue);
+    color: var(--blue);
+    padding: 2px 10px;
+    border-radius: 12px;
+  }
+  .flow-step.session2 .step-time {
+    background: var(--light-green);
+    color: var(--green);
+  }
+
+  /* Call-out boxes */
+  .callout {
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 14px;
+  }
+  .callout-title {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .callout.say {
+    background: var(--light-blue);
+    border-left: 4px solid var(--blue);
+  }
+  .callout.say .callout-title { color: var(--blue); }
+  .callout.tip {
+    background: var(--light-green);
+    border-left: 4px solid var(--green);
+  }
+  .callout.tip .callout-title { color: var(--green); }
+  .callout.warn {
+    background: var(--light-amber);
+    border-left: 4px solid var(--amber);
+  }
+  .callout.warn .callout-title { color: var(--amber); }
+  .callout.connect {
+    background: var(--light-red);
+    border-left: 4px solid var(--red);
+  }
+  .callout.connect .callout-title { color: var(--red); }
+
+  /* Age badges */
+  .age-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .age-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  .age-card .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+  }
+  .age-card.primary .badge { background: #fce7f3; color: #be185d; }
+  .age-card.elementary .badge { background: #dbeafe; color: #1d4ed8; }
+  .age-card.middle .badge { background: #dcfce7; color: #15803d; }
+  .age-card.high .badge { background: #fef3c7; color: #b45309; }
+
+  /* Session divider */
+  .session-divider {
+    background: var(--navy);
+    color: #fff;
+    text-align: center;
+    padding: 14px 20px;
+    border-radius: 10px;
+    margin: 32px 0 20px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .session-divider .session-sub {
+    font-size: 13px;
+    font-weight: 400;
+    opacity: 0.85;
+    margin-top: 2px;
+  }
+
+  /* Gap week callout */
+  .gap-week {
+    background: linear-gradient(135deg, var(--light-amber), #fff8ed);
+    border: 2px dashed var(--amber);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 28px 0;
+    text-align: center;
+  }
+  .gap-week .icon { font-size: 32px; margin-bottom: 6px; }
+  .gap-week h3 { color: var(--amber); font-size: 18px; margin-bottom: 8px; }
+  .gap-week p { font-size: 14px; color: var(--gray-600); }
+
+  /* Materials list */
+  .materials-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .materials-list .mat-item {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  .materials-list .mat-item strong { color: var(--navy); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="unit-tag">Unit 3 &middot; Smart Spending &middot; Lesson 6</div>
+    <h1>Death by a Thousand Cuts</h1>
+    <div class="subtitle">The Latte Factor &mdash; How Small Purchases Drain Big Wealth</div>
+  </div>
+
+  <!-- Meta bar -->
+  <div class="meta-bar">
+    <div class="item"><span class="label">Format:</span> Split Lesson (2 sessions + tracking week)</div>
+    <div class="item"><span class="label">Session 1:</span> 15 min</div>
+    <div class="item"><span class="label">Gap:</span> 1 week of tracking</div>
+    <div class="item"><span class="label">Session 2:</span> 20 min</div>
+    <div class="item"><span class="label">Ages:</span> 6&ndash;15 (all tiers)</div>
+  </div>
+
+  <!-- Big Idea -->
+  <h2>The Big Idea</h2>
+  <p>Small, daily purchases feel harmless in the moment, but they compound into enormous amounts over time. A $6 coffee every workday costs $1,560 a year. A $15 DoorDash order three times a week costs $2,340 a year. And if you <em>invested</em> that money instead at 10% annual returns, it would grow to over $100,000 in 20 years.</p>
+  <p>The "surprise moment" in this lesson comes when your family tallies up a real week of small purchases and sees the total projected out over years. This is not about deprivation &mdash; it is about awareness. Some small purchases are absolutely worth it. But most of us have no idea how much we are actually spending on autopilot.</p>
+
+  <!-- Materials -->
+  <h2>Materials Needed</h2>
+  <div class="materials-list">
+    <div class="mat-item"><strong>Reference Sheet:</strong> Common Small Purchases</div>
+    <div class="mat-item"><strong>Weekly Tracker:</strong> 1 per family member</div>
+    <div class="mat-item"><strong>Calculation Worksheet:</strong> 1 per participant</div>
+    <div class="mat-item"><strong>Pencils/pens</strong> for each tracker</div>
+    <div class="mat-item"><strong>Calculator</strong> (phone is fine)</div>
+    <div class="mat-item"><strong>Clipboards or folders</strong> to carry trackers</div>
+  </div>
+
+  <!-- SESSION 1 -->
+  <div class="session-divider">
+    Session 1 &mdash; The Hook
+    <div class="session-sub">15 minutes &middot; Introduction &amp; tracker handout</div>
+  </div>
+
+  <div class="flow-step">
+    <div class="step-header">
+      <div><span class="step-number">1</span><span class="step-title">The $6-to-$100K Chain</span></div>
+      <div class="step-time">5 min</div>
+    </div>
+    <div class="callout say">
+      <div class="callout-title">Say This</div>
+      "I'm going to show you how $6 can become $100,000. Ready?"
+    </div>
+    <p>Write the math chain on a whiteboard, big paper, or just say it out loud while everyone watches:</p>
+    <ul>
+      <li><strong>$6 per day</strong> (one coffee shop latte)</li>
+      <li><strong>$42 per week</strong> (7 days)</li>
+      <li><strong>$182 per month</strong></li>
+      <li><strong>$2,184 per year</strong></li>
+      <li><strong>$21,840 in 10 years</strong> (just the cash!)</li>
+      <li><strong>$139,000+ invested over 30 years</strong> at 10% annual returns</li>
+    </ul>
+    <p>Pause after the last number. Let the shock register. Ask: "From SIX dollars a day?"</p>
+    <div class="callout tip">
+      <div class="callout-title">Tip</div>
+      For younger kids, simplify: "If I gave you $6 every single day for a whole year, you'd have over two thousand dollars. That's enough to buy [something they want]."
+    </div>
+  </div>
+
+  <div class="flow-step">
+    <div class="step-header">
+      <div><span class="step-number">2</span><span class="step-title">Walk Through the Reference Sheet</span></div>
+      <div class="step-time">5 min</div>
+    </div>
+    <p>Hand out the <strong>Common Small Purchases</strong> reference sheet. Read through the items together as a family.</p>
+    <p>For each row, ask: <em>"Does our family do this? How often?"</em></p>
+    <p>Point out the "Invested 20yr" column. Let the kids react to the big green numbers. Don't lecture &mdash; the numbers do the talking.</p>
+    <div class="callout say">
+      <div class="callout-title">Say This</div>
+      "Nobody is saying you can never buy coffee or eat out. The question is: do you KNOW how much it adds up to? Most people have no idea. This week, we're going to find out."
+    </div>
+  </div>
+
+  <div class="flow-step">
+    <div class="step-header">
+      <div><span class="step-number">3</span><span class="step-title">Hand Out Trackers</span></div>
+      <div class="step-time">3 min</div>
+    </div>
+    <p>Give each family member a <strong>Weekly Tracking Sheet</strong>. Explain the rules:</p>
+    <ul>
+      <li>Write down every small purchase anyone in the family notices &mdash; coffee, snacks, vending machines, impulse Amazon buys, app purchases, fast food, convenience store runs.</li>
+      <li>Include the cost and whether it was a need or a want.</li>
+      <li>Carry your tracker everywhere for the next 7 days.</li>
+      <li>No judgment &mdash; we are just observing, like scientists collecting data.</li>
+    </ul>
+    <div class="callout warn">
+      <div class="callout-title">Important</div>
+      This works MUCH better if parents track too. If the kids see that Mom and Dad are writing down their own coffee purchases and impulse buys, it becomes a family project instead of a lecture. Be honest about your own habits.
+    </div>
+  </div>
+
+  <div class="flow-step">
+    <div class="step-header">
+      <div><span class="step-number">4</span><span class="step-title">Set the Challenge</span></div>
+      <div class="step-time">2 min</div>
+    </div>
+    <div class="callout say">
+      <div class="callout-title">Say This</div>
+      "In one week, we are going to add up everything. I want to see how much our family really spends on small stuff. My prediction: it's going to be way more than any of us think. Let's find out who's right."
+    </div>
+    <p>Decide where trackers will live (on the fridge, in backpacks, etc.) and set a daily check-in time if helpful.</p>
+  </div>
+
+  <!-- GAP WEEK -->
+  <div class="gap-week">
+    <div class="icon">&#128203;</div>
+    <h3>Tracking Week &mdash; 7 Days</h3>
+    <p>Everyone carries their tracker. Write down every small purchase.<br>
+    Check in briefly each evening: "Did you write down everything today?"<br>
+    No shaming. No restricting. Just observe and record.</p>
+  </div>
+
+  <!-- SESSION 2 -->
+  <div class="session-divider" style="background: var(--green);">
+    Session 2 &mdash; The Big Reveal
+    <div class="session-sub">20 minutes &middot; Calculation &amp; debrief</div>
+  </div>
+
+  <div class="flow-step session2">
+    <div class="step-header">
+      <div><span class="step-number">1</span><span class="step-title">Collect and Total</span></div>
+      <div class="step-time">5 min</div>
+    </div>
+    <p>Everyone brings their completed tracker to the table. Each person totals their week if they have not already.</p>
+    <p>Go around the table &mdash; each person shares:</p>
+    <ul>
+      <li>Their weekly total</li>
+      <li>How many purchases they made</li>
+      <li>Their biggest single purchase</li>
+      <li>Their most common purchase</li>
+    </ul>
+    <p>Then calculate the <strong>family total</strong> for the week. Write it big where everyone can see.</p>
+  </div>
+
+  <div class="flow-step session2">
+    <div class="step-header">
+      <div><span class="step-number">2</span><span class="step-title">Fill Out the Calculation Worksheet</span></div>
+      <div class="step-time">5 min</div>
+    </div>
+    <p>Hand out the <strong>Calculation Worksheet</strong>. Walk through each section together:</p>
+    <ul>
+      <li><strong>Section 1:</strong> Take the weekly total and multiply out to monthly, yearly, 5 years, 10 years.</li>
+      <li><strong>Section 2:</strong> Use the lookup tables to see what that money could become if invested.</li>
+    </ul>
+    <div class="callout tip">
+      <div class="callout-title">Tip</div>
+      Younger kids can use a calculator or have an older sibling help with the math. The point is seeing the big number, not doing long multiplication by hand.
+    </div>
+  </div>
+
+  <div class="flow-step session2">
+    <div class="step-header">
+      <div><span class="step-number">3</span><span class="step-title">The Big Reveal</span></div>
+      <div class="step-time">3 min</div>
+    </div>
+    <div class="callout say">
+      <div class="callout-title">Say This</div>
+      "Our family spent $____ on small purchases this week. That's $____ per year. If we invested that instead, it would become $____ in 20 years."
+    </div>
+    <p>Fill in the real numbers. Let everyone react. This is usually the moment where jaws drop.</p>
+    <div class="callout warn">
+      <div class="callout-title">Keep It Positive</div>
+      Don't make anyone feel guilty. The point is awareness, not shame. Say: "This isn't about never spending money on things we enjoy. It's about making sure we're spending on purpose, not on autopilot."
+    </div>
+  </div>
+
+  <div class="flow-step session2">
+    <div class="step-header">
+      <div><span class="step-number">4</span><span class="step-title">Worth It or Mindless?</span></div>
+      <div class="step-time">4 min</div>
+    </div>
+    <p>Go back through the trackers together. For each purchase (or category), ask:</p>
+    <div class="callout say">
+      <div class="callout-title">Discussion Questions</div>
+      <ul>
+        <li>"Which of these purchases were WORTH it &mdash; brought you real joy or filled a real need?"</li>
+        <li>"Which were mindless &mdash; you barely remember them or wouldn't miss them?"</li>
+        <li>"Which were habit purchases &mdash; things you buy automatically without thinking?"</li>
+        <li>"What could you have done instead for free or cheaper?"</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="flow-step session2">
+    <div class="step-header">
+      <div><span class="step-number">5</span><span class="step-title">The Cut List Challenge</span></div>
+      <div class="step-time">3 min</div>
+    </div>
+    <p>Each person fills out <strong>Section 3</strong> of the Calculation Worksheet: pick 1&ndash;3 small expenses they would be willing to eliminate or reduce.</p>
+    <p>They calculate the monthly savings, annual savings, and what it would grow to if invested over 20 years.</p>
+    <p>Then <strong>Section 4</strong>: "What would you DO with that money instead?" Let each person share their answer.</p>
+    <div class="callout tip">
+      <div class="callout-title">Make It Concrete</div>
+      Help them connect the savings to something real. "Giving up vending machine snacks saves $528 a year &mdash; that's a new gaming console." Or "Cooking instead of DoorDash 3 times a week saves $2,340 &mdash; that's a family vacation."
+    </div>
+  </div>
+
+  <!-- Age Differentiation -->
+  <h2>Age Differentiation</h2>
+  <div class="age-grid">
+    <div class="age-card primary">
+      <div class="badge">Primary (Age 6)</div>
+      <p><strong>Tracker:</strong> Uses the simplified version &mdash; tally marks for "how many small things did we buy today?" with a number line to circle. No dollar amounts needed.</p>
+      <p><strong>Debrief:</strong> Count total tallies for the week. Ask: "Was that a lot or a little?" Simple counting and "what would you buy with $___?"</p>
+    </div>
+    <div class="age-card elementary">
+      <div class="badge">Elementary (Ages 8&ndash;10)</div>
+      <p><strong>Tracker:</strong> Full tracker with dollar amounts. May need help looking up prices.</p>
+      <p><strong>Debrief:</strong> Basic multiplication (weekly x 4, weekly x 52). Use a calculator. Focus on the yearly number.</p>
+    </div>
+    <div class="age-card middle">
+      <div class="badge">Middle School (Ages 11&ndash;13)</div>
+      <p><strong>Tracker:</strong> Full tracker independently. Encouraged to also track digital purchases (in-app, subscriptions).</p>
+      <p><strong>Debrief:</strong> Complete the full worksheet including the lookup tables for investment growth.</p>
+    </div>
+    <div class="age-card high">
+      <div class="badge">High School (Age 15)</div>
+      <p><strong>Tracker:</strong> Full tracker plus categorizing purchases (food, entertainment, convenience, digital).</p>
+      <p><strong>Debrief:</strong> Full worksheet with investment calculations. Challenge: calculate exact compound interest using the formula or a compound interest calculator online.</p>
+    </div>
+  </div>
+
+  <!-- Family Participation -->
+  <h2>Family Participation Tips</h2>
+  <div class="callout tip">
+    <div class="callout-title">Everyone Tracks, Not Just Kids</div>
+    <p>This lesson has the biggest impact when parents participate honestly. Kids are watching to see if you hold yourself to the same standard. Track your own coffee runs, impulse Amazon orders, and convenience purchases. When you share your total alongside theirs, it builds trust and makes the lesson stick.</p>
+  </div>
+  <ul>
+    <li><strong>Make it a game, not a punishment.</strong> See who can spot the most purchases during the week. Celebrate good tracking, not low spending.</li>
+    <li><strong>Evening check-ins help.</strong> Spend 30 seconds at dinner asking "Did everyone write down their purchases today?" This keeps the trackers from getting forgotten.</li>
+    <li><strong>Include everything.</strong> Grocery store impulse grabs, gas station candy, "it was only $3" purchases. Those are the whole point.</li>
+    <li><strong>No shaming during the week.</strong> If someone buys a $7 smoothie, they write it down. That is all. Discussion happens in Session 2.</li>
+  </ul>
+
+  <!-- Build Your Life Connection -->
+  <h2>Connection to Build Your Life</h2>
+  <div class="callout connect">
+    <div class="callout-title">Build Your Life Link</div>
+    <p>In the Build Your Life game (Lesson 1), each family set up a monthly budget for their household. Remind the kids: "Remember how tight the budget got when surprises hit? Small purchases are one of the biggest reasons real budgets fall apart &mdash; they don't show up as a single big line item, but they add up to hundreds or thousands a year."</p>
+    <p>If you kept the Build Your Life budgets, look back at them: "Where would these small purchases have fit? Would they have blown your budget?"</p>
+    <p>The money saved by cutting mindless small purchases is money that can go toward the goals they set in Build Your Life &mdash; saving for a car, building an emergency fund, or investing for the future.</p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reference — The REAL Cost of a Car</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            color: #2d2d2d;
+            line-height: 1.6;
+            background: #f8f9fa;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #b71c1c, #c62828);
+            color: white;
+            padding: 28px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .header h1 { font-size: 1.8em; margin-bottom: 4px; }
+        .header .subtitle { font-size: 1.15em; opacity: 0.9; font-style: italic; }
+        .header .meta { margin-top: 10px; font-size: 0.85em; opacity: 0.7; }
+
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 22px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+        .section h2 {
+            color: #b71c1c;
+            font-size: 1.2em;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #ffcdd2;
+        }
+
+        .cost-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .cost-item {
+            background: #fef2f2;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border-left: 3px solid #ef5350;
+            font-size: 0.95em;
+        }
+        .cost-item strong { color: #c62828; }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 14px 0;
+            font-size: 0.9em;
+        }
+        .comparison-table th {
+            background: #1a237e;
+            color: white;
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 0.9em;
+        }
+        .comparison-table th:first-child { border-radius: 8px 0 0 0; }
+        .comparison-table th:last-child { border-radius: 0 8px 0 0; }
+        .comparison-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .comparison-table tr:nth-child(even) { background: #f5f5f5; }
+        .comparison-table tr:last-child td { border-bottom: none; }
+        .comparison-table tr:last-child {
+            background: #1a237e;
+            color: white;
+            font-weight: bold;
+        }
+        .comparison-table tr:last-child td { border-bottom: none; }
+        .cost-red { color: #c62828; font-weight: bold; }
+        .cost-green { color: #2e7d32; font-weight: bold; }
+        .total-row td {
+            font-weight: bold;
+            font-size: 1.05em;
+        }
+
+        /* Depreciation */
+        .depreciation-box {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            border: 2px solid #ff8f00;
+            border-radius: 10px;
+            padding: 22px;
+            margin: 14px 0;
+        }
+        .depreciation-box h3 { color: #e65100; margin-bottom: 12px; font-size: 1.1em; }
+        .dep-timeline {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 14px 0;
+        }
+        .dep-step {
+            text-align: center;
+            flex: 1;
+            min-width: 100px;
+        }
+        .dep-value {
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+        .dep-label {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 2px;
+        }
+        .dep-arrow {
+            display: flex;
+            align-items: center;
+            font-size: 1.5em;
+            color: #c62828;
+            font-weight: bold;
+        }
+        .dep-loss {
+            font-size: 0.75em;
+            color: #c62828;
+            font-weight: bold;
+        }
+
+        .shock-number {
+            text-align: center;
+            padding: 18px;
+            margin: 14px 0;
+            border-radius: 10px;
+        }
+        .shock-number.red {
+            background: #fce4ec;
+            border: 2px solid #c62828;
+        }
+        .shock-number.green {
+            background: #e8f5e9;
+            border: 2px solid #2e7d32;
+        }
+        .shock-number .big {
+            font-size: 2.2em;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+        .shock-number.red .big { color: #c62828; }
+        .shock-number.green .big { color: #2e7d32; }
+        .shock-number .label {
+            font-size: 0.95em;
+            color: #555;
+            margin-top: 4px;
+        }
+
+        /* Tips */
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+        .tips-list li {
+            padding: 10px 14px;
+            margin-bottom: 8px;
+            background: #e8f5e9;
+            border-radius: 8px;
+            border-left: 4px solid #2e7d32;
+            font-size: 0.95em;
+        }
+        .tips-list li strong { color: #1b5e20; }
+
+        .callout {
+            background: #e3f2fd;
+            border-left: 4px solid #1565c0;
+            padding: 14px 18px;
+            border-radius: 0 8px 8px 0;
+            margin: 14px 0;
+            font-size: 0.95em;
+        }
+        .callout strong { color: #0d47a1; }
+
+        .five-year-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-top: 14px;
+        }
+        .five-year-card {
+            text-align: center;
+            padding: 16px;
+            border-radius: 10px;
+            border: 2px solid;
+        }
+        .five-year-card.new { border-color: #c62828; background: #fef2f2; }
+        .five-year-card.used { border-color: #f57f17; background: #fffde7; }
+        .five-year-card.cash { border-color: #2e7d32; background: #e8f5e9; }
+        .five-year-card .card-title {
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-bottom: 6px;
+        }
+        .five-year-card.new .card-title { color: #c62828; }
+        .five-year-card.used .card-title { color: #e65100; }
+        .five-year-card.cash .card-title { color: #2e7d32; }
+        .five-year-card .card-price {
+            font-size: 1.6em;
+            font-weight: bold;
+        }
+        .five-year-card.new .card-price { color: #c62828; }
+        .five-year-card.used .card-price { color: #e65100; }
+        .five-year-card.cash .card-price { color: #2e7d32; }
+        .five-year-card .card-sub {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        @media print {
+            body { background: white; padding: 15px; font-size: 10pt; }
+            .header { background: #b71c1c !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .comparison-table th { background: #1a237e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .comparison-table tr:last-child { background: #1a237e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .section { break-inside: avoid; }
+            .shock-number, .depreciation-box, .five-year-comparison { break-inside: avoid; }
+        }
+
+        @media (max-width: 600px) {
+            .cost-list { grid-template-columns: 1fr; }
+            .dep-timeline { flex-direction: column; align-items: center; }
+            .dep-arrow { transform: rotate(90deg); }
+            .five-year-comparison { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>The REAL Cost of a Car</h1>
+        <div class="subtitle">It's Not Just the Sticker Price</div>
+        <div class="meta">Unit 6: Debt and Big Decisions &bull; Lesson 12 Reference Sheet A</div>
+    </div>
+
+    <!-- WHAT YOU ACTUALLY PAY FOR -->
+    <div class="section">
+        <h2>What You ACTUALLY Pay For When You Own a Car</h2>
+        <p style="margin-bottom: 12px;">The price on the window? That's just the beginning. Here's everything you really pay:</p>
+        <div class="cost-list">
+            <div class="cost-item"><strong>Monthly Payment</strong> (if financed)</div>
+            <div class="cost-item"><strong>Insurance</strong> (required by law)</div>
+            <div class="cost-item"><strong>Gas / Fuel</strong></div>
+            <div class="cost-item"><strong>Maintenance &amp; Repairs</strong></div>
+            <div class="cost-item"><strong>Registration &amp; Taxes</strong></div>
+            <div class="cost-item"><strong>Depreciation</strong> (value you lose over time)</div>
+        </div>
+        <div class="callout">
+            <strong>The Hidden Cost:</strong> Depreciation is the money you "lose" because your car is worth less every year. You don't write a check for it, but it's REAL money you've lost. A $30,000 car worth $13,500 in 5 years means you lost $16,500 — even if nothing went wrong.
+        </div>
+    </div>
+
+    <!-- NEW VS USED COMPARISON -->
+    <div class="section">
+        <h2>New vs. Used: The Side-by-Side Comparison</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Cost Category</th>
+                    <th>New Car ($30,000)</th>
+                    <th>Used Car ($15,000)</th>
+                    <th>Older Used ($8,000 cash)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Monthly Payment</strong></td>
+                    <td class="cost-red">$550/mo <span style="font-size:0.8em">(60 mo, 6%)</span></td>
+                    <td>$290/mo <span style="font-size:0.8em">(60 mo, 7%)</span></td>
+                    <td class="cost-green">$0 <span style="font-size:0.8em">(paid in full!)</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Insurance</strong></td>
+                    <td class="cost-red">$180/mo</td>
+                    <td>$130/mo</td>
+                    <td class="cost-green">$90/mo</td>
+                </tr>
+                <tr>
+                    <td><strong>Gas (average)</strong></td>
+                    <td>$100/mo</td>
+                    <td>$100/mo</td>
+                    <td>$120/mo <span style="font-size:0.8em">(less efficient)</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Maintenance</strong></td>
+                    <td class="cost-green">$30/mo <span style="font-size:0.8em">(warranty)</span></td>
+                    <td>$75/mo</td>
+                    <td class="cost-red">$100/mo <span style="font-size:0.8em">(more repairs)</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Year 1 Depreciation</strong></td>
+                    <td class="cost-red">-$6,000 (20%!)</td>
+                    <td>-$1,500 (10%)</td>
+                    <td class="cost-green">-$800 (5%)</td>
+                </tr>
+                <tr>
+                    <td><strong>Total Monthly Cost</strong></td>
+                    <td class="cost-red">$860</td>
+                    <td>$595</td>
+                    <td class="cost-green">$310</td>
+                </tr>
+                <tr>
+                    <td><strong>TOTAL 5-YEAR COST</strong></td>
+                    <td>$51,600</td>
+                    <td>$35,700</td>
+                    <td>$18,600 + repairs</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="five-year-comparison">
+            <div class="five-year-card new">
+                <div class="card-title">New Car ($30K)</div>
+                <div class="card-price">$51,600</div>
+                <div class="card-sub">5-year total cost</div>
+            </div>
+            <div class="five-year-card used">
+                <div class="card-title">Used Car ($15K)</div>
+                <div class="card-price">$35,700</div>
+                <div class="card-sub">5-year total cost</div>
+            </div>
+            <div class="five-year-card cash">
+                <div class="card-title">Older Used ($8K)</div>
+                <div class="card-price">$18,600</div>
+                <div class="card-sub">5-year total cost + repairs</div>
+            </div>
+        </div>
+
+        <div class="shock-number red" style="margin-top: 18px;">
+            <div class="big">$15,900</div>
+            <div class="label">The extra cost of buying new instead of used over just 5 years</div>
+        </div>
+    </div>
+
+    <!-- DEPRECIATION -->
+    <div class="section">
+        <h2>Key Concept: DEPRECIATION</h2>
+        <p style="margin-bottom: 8px;">Your brand new $30,000 car loses value every single year — whether you drive it or not:</p>
+
+        <div class="depreciation-box">
+            <h3>The Depreciation Timeline</h3>
+            <div class="dep-timeline">
+                <div class="dep-step">
+                    <div class="dep-value" style="color:#2e7d32;">$30,000</div>
+                    <div class="dep-label">Day 1</div>
+                </div>
+                <div class="dep-arrow">&rarr;</div>
+                <div class="dep-step">
+                    <div class="dep-value" style="color:#e65100;">$24,000</div>
+                    <div class="dep-label">Year 1</div>
+                    <div class="dep-loss">-20%</div>
+                </div>
+                <div class="dep-arrow">&rarr;</div>
+                <div class="dep-step">
+                    <div class="dep-value" style="color:#c62828;">$18,000</div>
+                    <div class="dep-label">Year 3</div>
+                    <div class="dep-loss">-40%</div>
+                </div>
+                <div class="dep-arrow">&rarr;</div>
+                <div class="dep-step">
+                    <div class="dep-value" style="color:#b71c1c;">$13,500</div>
+                    <div class="dep-label">Year 5</div>
+                    <div class="dep-loss">-55%</div>
+                </div>
+            </div>
+
+            <div class="shock-number red">
+                <div class="big">You lost $16,500 in 5 years</div>
+                <div class="label">Just by owning it. Not from accidents, not from damage — just from time.</div>
+            </div>
+
+            <div class="callout" style="background: #fff8e1; border-color: #ff8f00; margin-top: 14px;">
+                <strong>The Smart Move:</strong> A 3-year-old used car already took the biggest depreciation hit — someone ELSE paid for that $12,000 loss. You get a car that's still in great shape, but at a fraction of the real cost.
+            </div>
+        </div>
+    </div>
+
+    <!-- CAR BUYING TIPS -->
+    <div class="section">
+        <h2>Car Buying Tips</h2>
+        <ul class="tips-list">
+            <li><strong>Buy 2-3 years used</strong> — let someone else pay for the steepest depreciation. A 3-year-old car still has years of good life, but costs 30-40% less.</li>
+            <li><strong>Get pre-approved for a loan BEFORE going to the dealer</strong> — your bank or credit union will almost always give you a better rate than the dealership. Walk in knowing your rate.</li>
+            <li><strong>Focus on TOTAL price, not monthly payment</strong> — the dealer's trick is to ask "What monthly payment works for you?" Then they stretch the loan to 72-84 months. You pay WAY more in interest. YOUR question should be: "What's the total out-the-door price?"</li>
+            <li><strong>Get an insurance quote BEFORE you buy</strong> — that sporty car might seem affordable until you find out insurance is $250/month. Call your insurance company with the car's make, model, and year before you commit.</li>
+            <li><strong>Never buy the most car you can "afford"</strong> — just because you're approved for $40,000 doesn't mean you should spend $40,000. Leave room in your budget for life. Aim for car costs to be under 15% of your take-home pay.</li>
+            <li><strong>Save for a bigger down payment</strong> — the more you put down, the less you finance, and the less interest you pay. 20% down is ideal. Paying cash is even better.</li>
+        </ul>
+    </div>
+
+    <!-- BOTTOM LINE -->
+    <div style="background: linear-gradient(135deg, #b71c1c, #c62828); color: white; padding: 22px; border-radius: 10px; text-align: center;">
+        <h3 style="margin-bottom: 8px; font-size: 1.2em;">The Bottom Line</h3>
+        <p style="font-size: 1.05em; max-width: 650px; margin: 0 auto; line-height: 1.7;">
+            The sticker price is a starting point — not the real cost. When you add payments, insurance, gas, maintenance, and depreciation, a car costs <strong>far more</strong> than most people realize. The smart move? Buy a reliable 2-3 year old car, put money down, and keep it for as long as it runs well.
+        </p>
+    </div>
+
+</body>
+</html>

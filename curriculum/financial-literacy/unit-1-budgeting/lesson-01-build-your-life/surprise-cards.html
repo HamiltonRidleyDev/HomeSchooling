@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surprise Cards — With Conditional Outcomes</title>
+<style>
+  @media print {
+    body { margin: 0.3in; font-size: 9pt; }
+    .card { page-break-inside: avoid; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 900px; margin: 0 auto; padding: 16px; line-height: 1.4; color: #2d3436; }
+  h1 { text-align: center; font-size: 1.5em; margin-bottom: 2px; }
+  .subtitle { text-align: center; font-size: 0.85em; color: #636e72; margin-bottom: 6px; }
+  .instructions { background: #f5f6fa; border-left: 4px solid #d63031; padding: 8px 12px; font-size: 0.82em; margin-bottom: 14px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .card { border: 2.5px solid; border-radius: 12px; padding: 12px; min-height: 180px; display: flex; flex-direction: column; }
+  .card.expense { border-color: #d63031; background: #fff5f5; }
+  .card.windfall { border-color: #00b894; background: #f0fff8; }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .card-icon { font-size: 1.6em; }
+  .card-type { font-size: 0.65em; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+  .card.expense .card-type { color: #d63031; }
+  .card.windfall .card-type { color: #00b894; }
+  .card-title { font-size: 1em; font-weight: bold; margin-bottom: 4px; }
+  .card-desc { font-size: 0.8em; color: #636e72; margin-bottom: 8px; }
+
+  .outcomes { background: #f8f8f8; border-radius: 6px; padding: 8px 10px; font-size: 0.78em; flex: 1; }
+  .outcomes .label { font-weight: bold; font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.5px; color: #636e72; margin-bottom: 4px; }
+  .outcome-row { display: flex; justify-content: space-between; padding: 2px 0; border-bottom: 1px dotted #e0e0e0; }
+  .outcome-row:last-child { border-bottom: none; }
+  .outcome-condition { flex: 1; }
+  .outcome-cost { font-weight: bold; color: #d63031; white-space: nowrap; margin-left: 8px; }
+  .outcome-cost.good { color: #00b894; }
+  .outcome-cost.neutral { color: #636e72; }
+  .lesson { font-size: 0.72em; color: #6c5ce7; font-style: italic; margin-top: 6px; padding-top: 4px; border-top: 1px solid #e0e0e0; }
+
+  .section-label { text-align: center; font-weight: bold; font-size: 1em; margin: 16px 0 8px; padding: 6px; border-radius: 6px; color: white; }
+  .page-break { page-break-before: always; }
+</style>
+</head>
+<body>
+
+<h1>Surprise Cards</h1>
+<p class="subtitle">Life throws curveballs. Your past choices determine how hard they hit.</p>
+<div class="instructions">
+  <strong>How these work:</strong> Draw a card mid-exercise. Your cost depends on what you chose earlier — insurance, savings, car type, etc. The kid who paid for better insurance or saved an emergency fund comes out better. <strong>That's the whole lesson.</strong>
+  <br><strong>Ages K-4th:</strong> Parent reads the card and picks the simple outcome.
+  <br><strong>Ages 5th+:</strong> Kid finds their own outcome based on their budget choices.
+</div>
+
+<div class="section-label" style="background: #d63031;">Expense Cards — Your choices determine the damage</div>
+
+<div class="grid">
+
+<!-- CAR ACCIDENT -->
+<div class="card expense">
+  <div class="card-header"><span class="card-icon">&#128165;</span><span class="card-type">Expense — Car</span></div>
+  <div class="card-title">Car Accident!</div>
+  <div class="card-desc">Someone rear-ended you at a stoplight. Your car needs repairs and you need to get to work.</div>
+  <div class="outcomes">
+    <div class="label">What do you owe?</div>
+    <div class="outcome-row"><span class="outcome-condition">No car (walk/bike/bus)</span><span class="outcome-cost neutral">$0 — doesn't affect you!</span></div>
+    <div class="outcome-row"><span class="outcome-condition">Car + Premium insurance (low deductible)</span><span class="outcome-cost">-$250</span></div>
+    <div class="outcome-row"><span class="outcome-condition">Car + Standard insurance</span><span class="outcome-cost">-$1,000</span></div>
+    <div class="outcome-row"><span class="outcome-condition">Car + Basic/liability-only insurance</span><span class="outcome-cost">-$2,500 (you pay for your own repairs)</span></div>
+  </div>
+  <div class="lesson">Lesson: Better insurance costs more per month but protects you when it matters. Liability-only means they don't fix YOUR car.</div>
+</div>
+
+<!-- HOUSE FIRE -->
+<div class="card expense">
+  <div class="card-header"><span class="card-icon">&#128293;</span><span class="card-type">Expense — Home</span></div>
+  <div class="card-title">Kitchen Fire!</div>
+  <div class="card-desc">A grease fire damaged your kitchen and destroyed some of your belongings — electronics, clothes, furniture.</div>
+  <div class="outcomes">
+    <div class="label">What do you owe?</div>
+    <div class="outcome-row"><span class="outcome-condition">Have renter's/home insurance</span><span class="outcome-cost">-$500 (deductible only — insurance covers the rest)</span></div>
+    <div class="outcome-row"><span class="outcome-condition">NO renter's insurance</span><span class="outcome-cost">-$4,500 (replace everything yourself)</span></div>
+  </div>
+  <div class="lesson">Lesson: Renter's insurance costs $15-25/month. Without it, one bad event can wipe out months of savings. That $15 just saved you $4,000.</div>
+</div>
+
+<!-- MEDICAL EMERGENCY -->
+<div class="card expense">
+  <div class="card-header"><span class="card-icon">&#127973;</span><span class="card-type">Expense — Health</span></div>
+  <div class="card-title">Broken Arm!</div>
+  <div class="card-desc">You slipped and broke your arm. You need an ER visit, X-rays, a cast, and follow-up appointments.</div>
+  <div class="outcomes">
+    <div class="label">What do you owe?</div>
+    <div class="outcome-row"><span class="outcome-condition">Premium health insurance (low deductible)</span><span class="outcome-cost">-$150 (copays only)</span></div>
+    <div class="outcome-row"><span class="outcome-condition">Standard health insurance</span><span class="outcome-cost">-$800</span></div>
+    <div class="outcome-row"><span class="outcome-condition">Basic / high deductible health insurance</span><span class="outcome-cost">-$2,500</span></div>
+    <div class="outcome-row"><span class="outcome-condition">No health insurance</span><span class="outcome-cost">-$7,500 (full ER bill)</span></div>
+  </div>
+  <div class="lesson">Lesson: An ER visit without insurance can cost $5,000-$10,000+. Health insurance is expensive but medical debt is the #1 cause of bankruptcy in America.</div>
+</div>
+
+<!-- PHONE CRACKED -->
+<div class="card expense">
+  <div class="card-header"><span class="card-icon">&#128241;</span><span class="card-type">Expense — Tech</span></div>
+  <div class="card-title">Phone Screen Shattered!</div>
+  <div class="card-desc">Your phone fell out of your pocket and the screen cracked. You need it for work and daily life.</div>
+  <div class="outcomes">
+    <div class="label">What do you owe?</div>
+    <div class="outcome-row"><span class="outcome-condition">Budget phone plan (cheaper phone)</span><span class="outcome-cost">-$80 (screen repair)</span></div>
+    <div class="outcome-row"><span class="outcome-condition">Flagship phone, no protection plan</span><span class="outcome-cost">-$250 (screen repair)</span></div>
+    <div class="outcome-row"><span class="outcome-condition">Have emergency fund with $500+</span><span class="outcome-cost">Pay from emergency fund — annoying but manageable</span></div>
+    <div class="outcome-row"><span class="outcome-condition">No emergency fund</span><span class="outcome-cost">Put it on credit card — now you're paying interest</span></div>
+  </div>
+  <div class="lesson">Lesson: Emergency funds exist for exactly this. Without one, small emergencies become debt spirals.</div>
+</div>
+
+<!-- CAR BREAKDOWN -->
+<div class="card expense">
+  <div class="card-header"><span class="card-icon">&#128663;</span><span class="card-type">Expense — Car</span></div>
+  <div class="card-title">Car Won't Start!</div>
+  <div class="card-desc">Your car's transmission is failing. You can't drive it. You need it for work.</div>
+  <div class="outcomes">
+    <div class="label">What do you owe?</div>
+    <div class="outcome-row"><span class="outcome-condition">New car (under warranty)</span><span class="outcome-cost good">$0 — warranty covers it!</span></div>
+    <div class="outcome-row"><span class="outcome-condition">Reliable used car + premium insurance with roadside</span><span class="outcome-cost">-$400 (some repair cost)</span></div>
+    <div class="outcome-row"><span class="outcome-condition">Older used car, basic insurance</span><span class="outcome-cost">-$1,800 (transmission repair)</span></div>
+    <div class="outcome-row"><span class="outcome-condition">No car</span><span class="outcome-cost neutral">$0 — doesn't affect you</span></div>
+  </div>
+  <div class="lesson">Lesson: Cheap cars save on payments but cost more in repairs. New cars cost more monthly but come with warranties. There's a trade-off either way.</div>
+</div>
+
+<!-- THEFT -->
+<div class="card expense">
+  <div class="card-header"><span class="card-icon">&#128374;</span><span class="card-type">Expense — Home</span></div>
+  <div class="card-title">Apartment Break-In!</div>
+  <div class="card-desc">Someone broke into your apartment and stole your laptop, TV, and some jewelry. You feel violated and need to replace essentials.</div>
+  <div class="outcomes">
+    <div class="label">What do you owe?</div>
+    <div class="outcome-row"><span class="outcome-condition">Have renter's insurance</span><span class="outcome-cost">-$500 deductible (insurance replaces items)</span></div>
+    <div class="outcome-row"><span class="outcome-condition">No renter's insurance</span><span class="outcome-cost">-$2,800 (replace laptop + essentials yourself)</span></div>
+  </div>
+  <div class="lesson">Lesson: Another reason renter's insurance is worth every penny. It covers theft, fire, water damage, and more.</div>
+</div>
+
+<!-- JOB HOURS CUT -->
+<div class="card expense">
+  <div class="card-header"><span class="card-icon">&#128188;</span><span class="card-type">Expense — Income</span></div>
+  <div class="card-title">Hours Cut at Work!</div>
+  <div class="card-desc">Business is slow and your boss cut your hours. Your income drops for 2 months.</div>
+  <div class="outcomes">
+    <div class="label">Impact:</div>
+    <div class="outcome-row"><span class="outcome-condition">Your income this month</span><span class="outcome-cost">-25% of your monthly take-home</span></div>
+    <div class="outcome-row"><span class="outcome-condition">Have emergency fund with 1+ month of expenses</span><span class="outcome-cost neutral">Tight but you survive — this is what it's for</span></div>
+    <div class="outcome-row"><span class="outcome-condition">No emergency fund</span><span class="outcome-cost">You can't pay all your bills. Which ones do you skip?</span></div>
+    <div class="outcome-row"><span class="outcome-condition">Have a side hustle</span><span class="outcome-cost good">Your extra income covers the gap!</span></div>
+  </div>
+  <div class="lesson">Lesson: This is why emergency funds AND multiple income streams matter. A side hustle isn't just extra cash — it's a safety net.</div>
+</div>
+
+<!-- FRIEND'S WEDDING -->
+<div class="card expense">
+  <div class="card-header"><span class="card-icon">&#128141;</span><span class="card-type">Expense — Social</span></div>
+  <div class="card-title">Best Friend's Wedding!</div>
+  <div class="card-desc">Your best friend is getting married in another city. You need travel, hotel, outfit, and a gift. You don't want to miss it.</div>
+  <div class="outcomes">
+    <div class="label">What do you owe?</div>
+    <div class="outcome-row"><span class="outcome-condition">Full cost (flights + hotel + outfit + gift)</span><span class="outcome-cost">-$600</span></div>
+    <div class="outcome-row"><span class="outcome-condition">Budget version (drive, share room, modest gift)</span><span class="outcome-cost">-$250</span></div>
+    <div class="outcome-row"><span class="outcome-condition">Can your savings/emergency fund handle it?</span><span class="outcome-cost neutral">This is a WANT, not a NEED. Savings or skip?</span></div>
+  </div>
+  <div class="lesson">Lesson: Not all expenses are emergencies. Some are choices. Budgeting means you can say YES to things that matter without going into debt.</div>
+</div>
+
+</div>
+
+<div class="page-break"></div>
+
+<div class="section-label" style="background: #00b894;">Windfall Cards — Good things happen too</div>
+
+<div class="grid">
+
+<div class="card windfall">
+  <div class="card-header"><span class="card-icon">&#128188;</span><span class="card-type">Windfall</span></div>
+  <div class="card-title">Work Bonus!</div>
+  <div class="card-desc">Your boss noticed your hard work and gave you a $500 bonus this month.</div>
+  <div class="outcomes">
+    <div class="label">What will you do with it?</div>
+    <div class="outcome-row"><span class="outcome-condition">Put it all in savings/investments</span><span class="outcome-cost good">+$500 to savings</span></div>
+    <div class="outcome-row"><span class="outcome-condition">Split it — half save, half spend</span><span class="outcome-cost good">+$250 savings + something fun</span></div>
+    <div class="outcome-row"><span class="outcome-condition">Spend it all</span><span class="outcome-cost neutral">Fun now, gone tomorrow</span></div>
+    <div class="outcome-row"><span class="outcome-condition">Pay off debt with it</span><span class="outcome-cost good">Reduces interest you'll pay!</span></div>
+  </div>
+  <div class="lesson">Lesson: What you do with EXTRA money reveals your financial habits. The 50/50 split is a great balanced approach.</div>
+</div>
+
+<div class="card windfall">
+  <div class="card-icon">&#128176;</div>
+  <div class="card-title">Tax Refund!</div>
+  <div class="card-desc">You filed your taxes and got $800 back from the government.</div>
+  <div class="outcomes">
+    <div class="label">What will you do with it?</div>
+    <div class="outcome-row"><span class="outcome-condition">Build emergency fund</span><span class="outcome-cost good">+$800 — now you have a cushion</span></div>
+    <div class="outcome-row"><span class="outcome-condition">Invest it</span><span class="outcome-cost good">At 10%/yr, this becomes ~$2,000 in 10 years</span></div>
+    <div class="outcome-row"><span class="outcome-condition">Pay off credit card debt</span><span class="outcome-cost good">Saves you hundreds in interest</span></div>
+    <div class="outcome-row"><span class="outcome-condition">Treat yourself</span><span class="outcome-cost neutral">Feels great today. Write down what you'd buy.</span></div>
+  </div>
+  <div class="lesson">Lesson: A tax refund means you overpaid taxes all year — it's YOUR money coming back. Using it strategically compounds over time.</div>
+</div>
+
+<div class="card windfall">
+  <div class="card-header"><span class="card-icon">&#128640;</span><span class="card-type">Windfall</span></div>
+  <div class="card-title">Side Hustle Blew Up!</div>
+  <div class="card-desc">Your side hustle had a great month — a big order, a viral post, or a lucky break.</div>
+  <div class="outcomes">
+    <div class="label">One-time boost:</div>
+    <div class="outcome-row"><span class="outcome-condition">Extra income this month</span><span class="outcome-cost good">+$750</span></div>
+    <div class="outcome-row"><span class="outcome-condition">But you could reinvest $300 into the business to grow it...</span><span class="outcome-cost neutral">Spend $300 now → potentially earn more every month</span></div>
+  </div>
+  <div class="lesson">Lesson: Entrepreneurs face this choice constantly — take profit now or reinvest to grow? Both are valid. What's your strategy?</div>
+</div>
+
+<div class="card windfall">
+  <div class="card-header"><span class="card-icon">&#127873;</span><span class="card-type">Windfall</span></div>
+  <div class="card-title">Birthday Money!</div>
+  <div class="card-desc">Family and friends gave you $300 for your birthday. It's a gift — no strings attached.</div>
+  <div class="outcomes">
+    <div class="label">Your choice:</div>
+    <div class="outcome-row"><span class="outcome-condition">You decide!</span><span class="outcome-cost good">+$300</span></div>
+    <div class="outcome-row"><span class="outcome-condition">Write down exactly what you'd do with it:</span><span class="outcome-cost neutral">_____________</span></div>
+  </div>
+  <div class="lesson">Lesson: Gifts are a great test of your financial priorities. What you do with free money shows what you really value.</div>
+</div>
+
+<div class="card windfall">
+  <div class="card-header"><span class="card-icon">&#128200;</span><span class="card-type">Windfall</span></div>
+  <div class="card-title">Investment Growth!</div>
+  <div class="card-desc">If you chose to invest any money, your investments had a great month.</div>
+  <div class="outcomes">
+    <div class="label">Result:</div>
+    <div class="outcome-row"><span class="outcome-condition">You invested money monthly</span><span class="outcome-cost good">Your portfolio grew 8% this quarter — it's working!</span></div>
+    <div class="outcome-row"><span class="outcome-condition">You didn't invest anything</span><span class="outcome-cost neutral">You missed out — your money in a checking account earned $0.02</span></div>
+  </div>
+  <div class="lesson">Lesson: Money in a checking account loses value to inflation. Invested money grows. Time in the market beats timing the market.</div>
+</div>
+
+<div class="card windfall">
+  <div class="card-header"><span class="card-icon">&#129309;</span><span class="card-type">Windfall</span></div>
+  <div class="card-title">Community Payback!</div>
+  <div class="card-desc">If you donated to charity or volunteered, someone you helped connected you with a new opportunity.</div>
+  <div class="outcomes">
+    <div class="label">Result:</div>
+    <div class="outcome-row"><span class="outcome-condition">You gave to charity / helped your community</span><span class="outcome-cost good">You get a referral that earns +$400 this month</span></div>
+    <div class="outcome-row"><span class="outcome-condition">You didn't give or volunteer</span><span class="outcome-cost neutral">No effect — but think about what giving could open up</span></div>
+  </div>
+  <div class="lesson">Lesson: Generosity isn't just about the money — it builds relationships and reputation. What goes around often comes around.</div>
+</div>
+
+</div>
+
+<div style="text-align: center; margin-top: 16px; padding-top: 8px; border-top: 2px dashed #dfe6e9; font-size: 0.78em; color: #b2bec3;">
+  &#9986; Cut apart. Place expense cards and windfall cards in separate face-down piles.
+  <br>Each person draws 1 expense card and 1 windfall card during the exercise.
+  <br>The lesson in italics on each card is for discussion — read it aloud after the card is resolved.
+</div>
+
+</body>
+</html>

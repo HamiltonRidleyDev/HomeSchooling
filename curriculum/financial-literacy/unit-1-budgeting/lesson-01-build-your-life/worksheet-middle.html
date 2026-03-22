@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Your Life - Middle School Edition (5th-7th Grade)</title>
+<style>
+  @media print {
+    body { margin: 0.4in; font-size: 10pt; }
+    .page-break { page-break-before: always; }
+    .category, .section { page-break-inside: avoid; }
+    .build-section { page-break-inside: avoid; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.45; color: #2d3436; max-width: 850px; margin: 0 auto; padding: 20px; }
+  h1 { font-size: 1.8em; text-align: center; color: #0984e3; margin-bottom: 2px; }
+  .subtitle { text-align: center; font-size: 1em; color: #636e72; margin-bottom: 2px; }
+  .header-row { display: flex; justify-content: space-between; margin: 10px 0 14px; font-size: 0.95em; }
+  .header-row span { border-bottom: 1.5px solid #2d3436; display: inline-block; width: 160px; }
+
+  .directions { background: #f5f6fa; border-left: 4px solid #0984e3; padding: 10px 14px; font-size: 0.85em; margin-bottom: 14px; }
+
+  .category { border: 1.5px solid #dfe6e9; border-radius: 10px; padding: 12px; margin: 14px 0; }
+  .category h2 { font-size: 1.05em; margin-bottom: 6px; padding-bottom: 4px; border-bottom: 2px solid; }
+  .cat-note { font-size: 0.8em; color: #636e72; margin-bottom: 6px; font-style: italic; }
+  .option { display: flex; align-items: center; border: 1px solid #f0f0f0; border-radius: 6px; padding: 6px 10px; margin: 4px 0; font-size: 0.9em; }
+  .cb { width: 18px; height: 18px; border: 2px solid #b2bec3; border-radius: 3px; margin-right: 8px; flex-shrink: 0; }
+  .od { flex: 1; }
+  .on { font-weight: bold; font-size: 0.9em; }
+  .os { font-size: 0.78em; color: #636e72; }
+  .op { font-weight: bold; color: #d63031; white-space: nowrap; margin-left: 6px; font-size: 0.95em; }
+
+  .section { border: 1.5px solid #dfe6e9; border-radius: 10px; padding: 14px; margin: 18px 0; }
+  .section h2 { margin-bottom: 8px; font-size: 1.05em; }
+  .section h3 { font-size: 0.95em; margin: 10px 0 6px; }
+  .q { margin: 8px 0; font-size: 0.9em; }
+
+  .wl { border-bottom: 1.5px solid #b2bec3; display: inline-block; width: 65px; }
+  .wl-med { border-bottom: 1.5px solid #b2bec3; display: inline-block; width: 120px; }
+  .wl-long { border-bottom: 1.5px solid #b2bec3; display: inline-block; width: 100%; }
+  .wl-xl { border-bottom: 1.5px solid #b2bec3; display: inline-block; width: 100%; min-height: 1.4em; }
+
+  /* Build-your-own sections */
+  .build-section { border: 2px solid; border-radius: 10px; padding: 14px; margin: 14px 0; background: #fffdf7; }
+  .build-section h2 { font-size: 1.05em; margin-bottom: 4px; padding-bottom: 4px; border-bottom: 2px solid; }
+  .build-note { font-size: 0.82em; color: #636e72; margin-bottom: 8px; font-style: italic; background: #fff3e0; border-left: 3px solid #e17055; padding: 6px 10px; border-radius: 0 6px 6px 0; }
+  .build-table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 0.88em; }
+  .build-table th { background: #f5f6fa; text-align: left; padding: 6px 8px; border: 1px solid #dfe6e9; font-size: 0.85em; }
+  .build-table td { padding: 8px; border: 1px solid #dfe6e9; min-height: 28px; }
+  .build-table td.cost-col { width: 110px; text-align: right; }
+  .build-table td.meal-col { width: 80px; font-weight: bold; font-size: 0.85em; }
+  .build-total { text-align: right; font-weight: bold; font-size: 0.95em; margin-top: 6px; padding-top: 6px; border-top: 2px solid; }
+
+  /* Smart money section */
+  .smart-section { border: 1.5px solid #dfe6e9; border-radius: 10px; padding: 14px; margin: 14px 0; }
+  .smart-section h2 { font-size: 1.05em; margin-bottom: 6px; padding-bottom: 4px; border-bottom: 2px solid; }
+  .smart-section h3 { font-size: 0.92em; margin: 10px 0 4px; }
+  .explainer { font-size: 0.8em; color: #444; background: #eef6ff; border-left: 3px solid #0984e3; padding: 6px 10px; margin: 6px 0; border-radius: 0 6px 6px 0; }
+  .required-badge { display: inline-block; background: #d63031; color: white; font-size: 0.65em; padding: 1px 6px; border-radius: 3px; vertical-align: middle; margin-left: 6px; }
+
+  /* Tracker */
+  .tracker { background: #f5f6fa; border: 2px solid #0984e3; border-radius: 10px; padding: 14px; margin: 18px 0; }
+  .tracker h2 { color: #0984e3; text-align: center; margin-bottom: 8px; font-size: 1.1em; }
+  .tr { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px dotted #dfe6e9; font-size: 0.9em; }
+  .tt { display: flex; justify-content: space-between; padding: 8px 0 0; border-top: 2.5px solid #0984e3; font-size: 1.1em; font-weight: bold; margin-top: 4px; }
+  .remaining { display: flex; justify-content: space-between; padding: 6px 0 0; font-size: 1.05em; font-weight: bold; color: #00b894; }
+  .over { color: #d63031; }
+
+  .reflect-box { background: #f9f0ff; border: 1.5px solid #6c5ce7; border-radius: 10px; padding: 14px; margin: 14px 0; }
+  .reflect-box h3 { color: #6c5ce7; margin-bottom: 8px; font-size: 0.95em; }
+
+  .hustle-box { border: 2px dashed #00b894; border-radius: 10px; padding: 14px; margin: 18px 0; }
+  .hustle-box h2 { color: #00b894; text-align: center; margin-bottom: 8px; font-size: 1.1em; }
+  .hustle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 8px 0; }
+  .hustle-grid .q { margin: 4px 0; }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<h1>Build Your Life!</h1>
+<p class="subtitle">Middle School Edition (5th&ndash;7th Grade)</p>
+<div class="header-row">
+  <div>Name: <span>&nbsp;</span></div>
+  <div>Date: <span>&nbsp;</span></div>
+</div>
+
+<div class="directions">
+  <strong>How This Works:</strong> You'll choose a career, find out your income, then make real spending decisions. Some categories let you pick from a list. But for <strong>Food</strong> and <strong>Entertainment</strong>, you'll build your own budget using the <strong>Price Catalog</strong>. This is how real budgeting works &mdash; you have to plan, look up actual prices, and add it all up yourself. Take your time. Every dollar matters.
+</div>
+
+<!-- ===== 1. MY CAREER ===== -->
+<div class="section">
+  <h2 style="color: #0984e3; border-bottom: 2px solid #0984e3;">&#128188; My Career</h2>
+  <p class="cat-note">Pick a career from the Career Cards. Write it here.</p>
+  <div class="q">My career: <span class="wl-med">&nbsp;</span></div>
+  <div class="q">Gross yearly salary: $<span class="wl">&nbsp;</span></div>
+  <div class="q">Monthly take-home pay: $<span class="wl">&nbsp;</span></div>
+  <div class="explainer">
+    <strong>What's "take-home pay"?</strong> Your gross salary is what your job pays. But the government takes out taxes (federal, state, Social Security, Medicare) before you get paid. Take-home pay is what actually lands in your bank account. Check your Career Card for both numbers.
+  </div>
+</div>
+
+<!-- ===== 2. LIFE SITUATION ===== -->
+<div class="section">
+  <h2 style="color: #6c5ce7; border-bottom: 2px solid #6c5ce7;">&#127922; Life Situation</h2>
+  <p class="cat-note">Draw a Life Situation Card. Write it here and apply the budget impact.</p>
+  <div class="q">My situation: <span class="wl-long">&nbsp;</span></div>
+  <div class="q">Budget impact: <span class="wl-long">&nbsp;</span></div>
+  <div class="q" style="font-weight: bold; font-size: 1em;">My adjusted monthly income: $<span class="wl">&nbsp;</span></div>
+</div>
+
+<!-- ===== 3. BUDGET CATEGORIES ===== -->
+
+<!-- HOUSING -->
+<div class="category">
+  <h2 style="color: #e17055; border-color: #e17055;">&#127968; Housing</h2>
+  <p class="cat-note">Choose ONE. This is your biggest expense &mdash; choose carefully.</p>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Room in a Shared House</div><div class="os">Rent a bedroom, share kitchen and bathroom with roommates.</div></div><div class="op">$500</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Studio Apartment</div><div class="os">One room that's bedroom + living room. Small but all yours.</div></div><div class="op">$750</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">1-Bedroom Apartment</div><div class="os">Separate bedroom, living room, kitchen. Solid choice.</div></div><div class="op">$1,000</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Nice 2-Bedroom Apartment</div><div class="os">Extra room for office or guests. Good location, updated.</div></div><div class="op">$1,350</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Small House</div><div class="os">Your own house with a yard and garage. But the rent is steep.</div></div><div class="op">$1,700</div></div>
+</div>
+
+<!-- UTILITIES -->
+<div class="category">
+  <h2 style="color: #fdcb6e; border-color: #fdcb6e;">&#128161; Utilities (Electric, Water, Internet, Gas)</h2>
+  <p class="cat-note">Linked to your housing choice. Bigger space = higher bills. Pick the one that matches.</p>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Shared House / Studio</div></div><div class="op">$80</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">1-Bedroom Apartment</div></div><div class="op">$130</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">2-Bedroom Apartment</div></div><div class="op">$170</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">House</div></div><div class="op">$230</div></div>
+</div>
+
+<!-- ===== FOOD & GROCERIES — BUILD YOUR OWN ===== -->
+<div class="build-section" style="border-color: #00b894;">
+  <h2 style="color: #00b894; border-color: #00b894;">&#127834; Food &amp; Groceries &mdash; BUILD YOUR OWN</h2>
+  <div class="build-note">
+    <strong>&#128214; Grab the Price Catalog!</strong> You need to plan what you'll actually eat. You need 3 meals a day, 7 days a week. Use real prices from the catalog to build your food budget. No guessing &mdash; look it up!
+  </div>
+
+  <p style="font-size: 0.88em; font-weight: bold; margin-bottom: 6px;">Plan a Sample WEEK of Meals</p>
+  <p style="font-size: 0.78em; color: #636e72; margin-bottom: 6px;">Think about what you'd realistically eat. Use the Price Catalog to find costs. A "weekly cost" means how much that meal costs you for all 7 days.</p>
+
+  <table class="build-table">
+    <thead>
+      <tr>
+        <th style="width: 80px;">Meal</th>
+        <th>What You'd Eat (be specific!)</th>
+        <th style="width: 110px;">Weekly Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="meal-col">Breakfast</td>
+        <td>&nbsp;</td>
+        <td class="cost-col">$</td>
+      </tr>
+      <tr>
+        <td class="meal-col">Lunch</td>
+        <td>&nbsp;</td>
+        <td class="cost-col">$</td>
+      </tr>
+      <tr>
+        <td class="meal-col">Dinner</td>
+        <td>&nbsp;</td>
+        <td class="cost-col">$</td>
+      </tr>
+      <tr>
+        <td class="meal-col">Snacks</td>
+        <td>&nbsp;</td>
+        <td class="cost-col">$</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="build-total" style="border-color: #00b894;">
+    Weekly food total: $<span class="wl">&nbsp;</span>
+  </div>
+  <div class="q" style="font-size: 0.9em;">Monthly food budget (weekly total x 4): $<span class="wl">&nbsp;</span></div>
+  <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed #dfe6e9;">
+    <p style="font-size: 0.88em; font-weight: bold; margin-bottom: 4px;">Eating Out</p>
+    <div class="q" style="font-size: 0.88em;">How many times per month do you eat out? <span class="wl" style="width: 40px;">&nbsp;</span> x $<span class="wl" style="width: 50px;">&nbsp;</span> per meal = $<span class="wl">&nbsp;</span></div>
+  </div>
+  <div class="build-total" style="border-color: #00b894; font-size: 1.05em; margin-top: 10px;">
+    TOTAL Monthly Food: $<span class="wl">&nbsp;</span>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- TRANSPORTATION -->
+<div class="category">
+  <h2 style="color: #0984e3; border-color: #0984e3;">&#128663; Transportation</h2>
+  <p class="cat-note">Choose ONE. Remember: a car also means insurance, gas, and maintenance.</p>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Walk / Bike</div><div class="os">Free! But you need to live close to work and stores.</div></div><div class="op">$0</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Public Transit (Bus / Train Pass)</div><div class="os">Monthly pass. Gets you most places, takes longer.</div></div><div class="op">$60</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Older Used Car</div><div class="os">It runs! Might need repairs. Includes gas money.</div></div><div class="op">$250</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Reliable Used Car</div><div class="os">Good condition, fewer surprises. Payment + gas.</div></div><div class="op">$400</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">New Car</div><div class="os">Brand new, warranty, nice features. Big monthly payment + gas.</div></div><div class="op">$600</div></div>
+</div>
+
+<!-- PHONE -->
+<div class="category">
+  <h2 style="color: #a29bfe; border-color: #a29bfe;">&#128241; Phone Plan</h2>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Budget Plan (Mint, Visible)</div><div class="os">Works fine for calls, texts, and some data. Bring your own phone.</div></div><div class="op">$25</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Standard Plan</div><div class="os">More data, better coverage. Most popular choice.</div></div><div class="op">$55</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Unlimited + Phone Financing</div><div class="os">Unlimited everything + newest phone paid monthly.</div></div><div class="op">$100</div></div>
+</div>
+
+<!-- ===== ENTERTAINMENT — BUILD YOUR OWN ===== -->
+<div class="build-section" style="border-color: #6c5ce7;">
+  <h2 style="color: #6c5ce7; border-color: #6c5ce7;">&#127918; Entertainment &mdash; BUILD YOUR OWN</h2>
+  <div class="build-note">
+    <strong>&#128214; Use the Price Catalog!</strong> Pick the SPECIFIC services and subscriptions you want. Don't just guess &mdash; look up actual prices. Every subscription adds up fast.
+  </div>
+
+  <p style="font-size: 0.88em; font-weight: bold; margin-bottom: 6px;">My Subscriptions &amp; Services</p>
+  <table class="build-table">
+    <thead>
+      <tr>
+        <th>Service / Activity (e.g., Netflix, Spotify, gym, gaming)</th>
+        <th style="width: 120px;">Monthly Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>&nbsp;</td><td class="cost-col">$</td></tr>
+      <tr><td>&nbsp;</td><td class="cost-col">$</td></tr>
+      <tr><td>&nbsp;</td><td class="cost-col">$</td></tr>
+      <tr><td>&nbsp;</td><td class="cost-col">$</td></tr>
+      <tr><td>&nbsp;</td><td class="cost-col">$</td></tr>
+      <tr><td>&nbsp;</td><td class="cost-col">$</td></tr>
+      <tr><td>&nbsp;</td><td class="cost-col">$</td></tr>
+      <tr><td>&nbsp;</td><td class="cost-col">$</td></tr>
+    </tbody>
+  </table>
+
+  <div class="q" style="font-size: 0.88em; margin-top: 6px;">Going out budget (movies, events, activities): $<span class="wl">&nbsp;</span>/month</div>
+  <div class="build-total" style="border-color: #6c5ce7; font-size: 1.05em;">
+    TOTAL Monthly Entertainment: $<span class="wl">&nbsp;</span>
+  </div>
+</div>
+
+<!-- CLOTHING -->
+<div class="category">
+  <h2 style="color: #fd79a8; border-color: #fd79a8;">&#128085; Clothing</h2>
+  <p class="cat-note">Averaged monthly. Think about what you'd spend across a whole year.</p>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Thrift / Minimal</div><div class="os">Thrift stores, sales, keep it simple.</div></div><div class="op">$25</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Mid-Range</div><div class="os">Target, Old Navy, some nicer pieces.</div></div><div class="op">$65</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Name Brand</div><div class="os">Nike, trendy brands, latest styles.</div></div><div class="op">$150</div></div>
+</div>
+
+<!-- HEALTH & PERSONAL CARE -->
+<div class="category">
+  <h2 style="color: #00cec9; border-color: #00cec9;">&#129657; Health &amp; Personal Care</h2>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Basics</div><div class="os">Soap, toothpaste, deodorant, haircuts a few times a year.</div></div><div class="op">$30</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Standard (Gym + Products)</div><div class="os">Gym membership, decent products, regular haircuts.</div></div><div class="op">$75</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Premium</div><div class="os">Nice gym, quality products, salon visits.</div></div><div class="op">$150</div></div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ===== 5. SMART MONEY CHOICES ===== -->
+<div style="background: #eef6ff; border: 2px solid #0984e3; border-radius: 10px; padding: 14px 14px 4px; margin: 18px 0;">
+  <h2 style="color: #0984e3; text-align: center; font-size: 1.15em; margin-bottom: 4px;">&#128161; Smart Money Choices</h2>
+  <p style="text-align: center; font-size: 0.82em; color: #636e72; margin-bottom: 8px;">Things Most Kids Don't Know About &mdash; but every adult needs</p>
+</div>
+
+<!-- INSURANCE -->
+<div class="smart-section">
+  <h2 style="color: #e17055; border-color: #e17055;">&#128737; Insurance &mdash; Your Financial Shield</h2>
+  <div class="explainer">
+    <strong>What is insurance?</strong> It's a deal: you pay a small amount every month, and if something terrible happens (fire, car crash, medical emergency), the insurance company pays most of the cost. Without it, one bad event can completely wreck your finances. A <strong>"deductible"</strong> is the amount YOU pay first before insurance kicks in.
+  </div>
+
+  <h3 style="color: #e17055;">Renter's Insurance</h3>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Skip It</div><div class="os">$0/mo &mdash; but if there's a fire or theft, YOU pay thousands out of pocket.</div></div><div class="op">$0</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Basic Coverage</div><div class="os">$500 deductible. Covers fire, theft, some water damage.</div></div><div class="op">$20</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Better Coverage</div><div class="os">$250 deductible, more coverage, liability protection.</div></div><div class="op">$35</div></div>
+
+  <h3 style="color: #e17055; margin-top: 12px;">Car Insurance <span style="font-size: 0.8em; font-weight: normal; color: #636e72;">(only if you chose a car above)</span></h3>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Basic / Liability Only</div><div class="os">$2,000 deductible. Covers the OTHER car but won't fix yours.</div></div><div class="op">$100</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Standard / Full Coverage</div><div class="os">$1,000 deductible. Covers both cars.</div></div><div class="op">$150</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Premium</div><div class="os">$250 deductible, roadside assistance, rental car if yours is in the shop.</div></div><div class="op">$220</div></div>
+
+  <h3 style="color: #e17055; margin-top: 12px;">Health Insurance <span style="font-size: 0.8em; font-weight: normal; color: #636e72;">(beyond what your employer covers)</span></h3>
+  <div class="explainer" style="font-size: 0.78em;">Most jobs give you basic health insurance, but you can pay extra for better coverage. A "copay" is what you pay each time you visit a doctor.</div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Basic (High Deductible)</div><div class="os">$0 extra &mdash; employer covers it, but you pay $2,500 before it kicks in.</div></div><div class="op">$0</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Standard</div><div class="os">Lower deductible ($1,000), reasonable copays.</div></div><div class="op">$50</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Premium</div><div class="os">Low deductible ($250), low copays, dental + vision included.</div></div><div class="op">$125</div></div>
+</div>
+
+<!-- SAVINGS -->
+<div class="smart-section">
+  <h2 style="color: #00b894; border-color: #00b894;">&#128176; Savings<span class="required-badge">REQUIRED</span></h2>
+  <p class="cat-note">Pay yourself first! This money goes into a savings account for future goals (car, college, house, travel).</p>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">$50/month</div><div class="os">$600/year. A start!</div></div><div class="op">$50</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">$100/month</div><div class="os">$1,200/year. Building nicely.</div></div><div class="op">$100</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">$200/month</div><div class="os">$2,400/year. Serious saver.</div></div><div class="op">$200</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">$300/month</div><div class="os">$3,600/year. Future millionaire moves.</div></div><div class="op">$300</div></div>
+</div>
+
+<!-- EMERGENCY FUND -->
+<div class="smart-section">
+  <h2 style="color: #d63031; border-color: #d63031;">&#127973; Emergency Fund<span class="required-badge">REQUIRED</span></h2>
+  <div class="explainer">
+    <strong>Why?</strong> Life throws surprises &mdash; a car breakdown, a medical bill, losing your job. Financial experts say you need 3&ndash;6 months of expenses saved. This is money you NEVER touch unless it's a real emergency.
+  </div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">$25/month</div><div class="os">Slow and steady.</div></div><div class="op">$25</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">$75/month</div><div class="os">Solid buffer growing over time.</div></div><div class="op">$75</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">$150/month</div><div class="os">You'll have a full emergency fund within a year or two.</div></div><div class="op">$150</div></div>
+</div>
+
+<!-- INVESTING -->
+<div class="smart-section">
+  <h2 style="color: #6c5ce7; border-color: #6c5ce7;">&#128200; Investing &mdash; Making Your Money Grow</h2>
+  <div class="explainer">
+    <strong>What's an index fund?</strong> Instead of picking one company's stock, you invest in hundreds at once &mdash; like a basket of stocks. Over time, the stock market has averaged about 10% growth per year. The earlier you start, the more your money multiplies thanks to <strong>compound interest</strong>.
+  </div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Don't invest yet</div><div class="os">Keep your money in savings for now.</div></div><div class="op">$0</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Start Small &mdash; $50/mo</div><div class="os">In 20 years at 10%, this becomes ~$38,000!</div></div><div class="op">$50</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Invest More &mdash; $100/mo</div><div class="os">In 20 years, this becomes ~$76,000!</div></div><div class="op">$100</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Aggressive Saver &mdash; $200/mo</div><div class="os">In 20 years, ~$152,000! Time is your superpower.</div></div><div class="op">$200</div></div>
+</div>
+
+<!-- GIVING / CHARITY -->
+<div class="smart-section">
+  <h2 style="color: #fdcb6e; border-color: #fdcb6e;">&#128156; Giving / Charity</h2>
+  <p class="cat-note">Many people give back to their community, church, or causes they care about.</p>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">None right now</div><div class="os">Focus on getting stable first.</div></div><div class="op">$0</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Small amount</div><div class="os">A little goes a long way.</div></div><div class="op">$25</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Generous</div><div class="os">Making a real difference.</div></div><div class="op">$75</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Tithe (10% of gross income)</div><div class="os">Calculate 10% of your gross yearly salary &divide; 12</div></div><div class="op">$<span class="wl" style="width: 50px;">&nbsp;</span></div></div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ===== 6. BUDGET TRACKER ===== -->
+<div class="tracker">
+  <h2>&#128202; Budget Tracker</h2>
+  <p style="text-align: center; font-size: 0.82em; color: #636e72; margin-bottom: 10px;">Write in the amount you chose for each category. Add it ALL up.</p>
+  <div class="tr"><span>My Adjusted Monthly Income</span> <span>$<span class="wl">&nbsp;</span></span></div>
+  <div style="height: 8px;"></div>
+  <div class="tr"><span>Housing</span> <span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Utilities</span> <span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Food &amp; Groceries (your build)</span> <span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Transportation</span> <span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Phone</span> <span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Entertainment (your build)</span> <span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Clothing</span> <span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Health &amp; Personal Care</span> <span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Renter's Insurance</span> <span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Car Insurance</span> <span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Health Insurance (extra)</span> <span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Savings</span> <span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Emergency Fund</span> <span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Investing</span> <span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Giving / Charity</span> <span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tt"><span>TOTAL SPENDING</span> <span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="remaining"><span>INCOME &minus; TOTAL = REMAINING</span> <span>$<span class="wl">&nbsp;</span></span></div>
+</div>
+
+<!-- REFLECTION -->
+<div class="reflect-box">
+  <h3>&#129504; Budget Reflection</h3>
+  <div class="q">Are you over budget? If so, what would you cut or downgrade?</div>
+  <div class="q"><span class="wl-xl">&nbsp;</span></div>
+  <div class="q"><span class="wl-xl">&nbsp;</span></div>
+  <div class="q" style="margin-top: 12px;">What percentage of your income goes to each?</div>
+  <div style="display: flex; gap: 20px; margin: 6px 0; font-size: 0.9em;">
+    <div>NEEDS: <span class="wl" style="width: 45px;">&nbsp;</span> %</div>
+    <div>WANTS: <span class="wl" style="width: 45px;">&nbsp;</span> %</div>
+    <div>SAVINGS: <span class="wl" style="width: 45px;">&nbsp;</span> %</div>
+  </div>
+  <div class="explainer" style="margin-top: 6px;">
+    <strong>The 50/30/20 Rule:</strong> Many experts suggest ~50% needs, ~30% wants, ~20% savings. How close are you?
+  </div>
+  <div class="q" style="margin-top: 10px;">What was the hardest choice you had to make?</div>
+  <div class="q"><span class="wl-xl">&nbsp;</span></div>
+  <div class="q"><span class="wl-xl">&nbsp;</span></div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ===== 7. SURPRISE EXPENSE ===== -->
+<div class="section" style="border-color: #d63031;">
+  <h2 style="color: #d63031; border-bottom: 2px solid #d63031;">&#9888;&#65039; Surprise Expense!</h2>
+  <p class="cat-note">Draw a Surprise Card. Your insurance choices affect the outcome!</p>
+  <div class="q">What happened: <span class="wl-long">&nbsp;</span></div>
+  <div class="q" style="margin-top: 4px;"><span class="wl-long">&nbsp;</span></div>
+  <div class="q">My insurance situation: <span class="wl-long">&nbsp;</span></div>
+  <div class="q">What I owe: $<span class="wl">&nbsp;</span></div>
+  <div style="display: flex; align-items: center; gap: 10px; margin: 10px 0; font-size: 0.9em;">
+    <span>Can my emergency fund cover it?</span>
+    <span style="border: 1.5px solid #00b894; border-radius: 4px; padding: 2px 10px;">YES</span>
+    <span style="border: 1.5px solid #fdcb6e; border-radius: 4px; padding: 2px 10px;">PARTLY</span>
+    <span style="border: 1.5px solid #d63031; border-radius: 4px; padding: 2px 10px;">NO</span>
+  </div>
+  <div class="q">If not fully covered, what do I cut from my budget?</div>
+  <div class="q"><span class="wl-xl">&nbsp;</span></div>
+  <div class="q"><span class="wl-xl">&nbsp;</span></div>
+</div>
+
+<!-- ===== 8. SIDE HUSTLE PITCH ===== -->
+<div class="hustle-box">
+  <h2>&#128640; Side Hustle Pitch</h2>
+  <p style="text-align: center; font-size: 0.82em; color: #636e72; margin-bottom: 10px;">Design a small business or side job. Convince your family it would actually work!</p>
+
+  <div class="q"><strong>Business idea / What you do or sell:</strong></div>
+  <div class="q"><span class="wl-xl">&nbsp;</span></div>
+
+  <div class="q"><strong>What problem does it solve? Who needs it?</strong></div>
+  <div class="q"><span class="wl-xl">&nbsp;</span></div>
+  <div class="q"><span class="wl-xl">&nbsp;</span></div>
+
+  <div class="hustle-grid">
+    <div class="q">What would you charge? $<span class="wl" style="width: 40px;">&nbsp;</span> per <span class="wl" style="width: 70px;">&nbsp;</span></div>
+    <div class="q">What does it cost you? (supplies, materials) $<span class="wl">&nbsp;</span></div>
+  </div>
+
+  <div style="background: #f5f6fa; border-radius: 8px; padding: 10px; margin: 10px 0;">
+    <p style="font-weight: bold; font-size: 0.9em; margin-bottom: 6px;">Monthly Profit Calculation</p>
+    <div class="hustle-grid">
+      <div class="q">Revenue per month: $<span class="wl">&nbsp;</span></div>
+      <div class="q">Costs per month: $<span class="wl">&nbsp;</span></div>
+    </div>
+    <div class="q" style="font-weight: bold; font-size: 1em;">PROFIT per month (revenue &minus; costs): $<span class="wl">&nbsp;</span></div>
+  </div>
+
+  <div class="q"><strong>Why would this work? Convince your family!</strong></div>
+  <div class="q"><span class="wl-xl">&nbsp;</span></div>
+  <div class="q"><span class="wl-xl">&nbsp;</span></div>
+
+  <div style="background: #e0f7e9; border-radius: 8px; padding: 10px; margin-top: 10px;">
+    <p style="font-weight: bold; font-size: 0.95em; color: #00b894;">New Income Calculation</p>
+    <div class="q">Base monthly income: $<span class="wl">&nbsp;</span> + Side hustle profit: $<span class="wl">&nbsp;</span> = <strong>New total: $<span class="wl">&nbsp;</span></strong></div>
+    <div class="q">What would you upgrade with the extra income?</div>
+    <div class="q"><span class="wl-xl">&nbsp;</span></div>
+  </div>
+</div>
+
+<div style="text-align: center; margin-top: 24px; padding: 12px; background: #f5f6fa; border-radius: 10px; font-size: 0.85em; color: #636e72;">
+  <strong>Great work!</strong> Budgeting is one of the most important life skills you can learn. The choices you practiced today are the same ones every adult faces. The better you get at this, the more freedom you'll have in real life.
+</div>
+
+</body>
+</html>

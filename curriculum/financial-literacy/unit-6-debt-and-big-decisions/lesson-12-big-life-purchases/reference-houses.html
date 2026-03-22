@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reference — Buying a Home: The Biggest Purchase of Your Life</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            color: #2d2d2d;
+            line-height: 1.6;
+            background: #f8f9fa;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1b5e20, #2e7d32);
+            color: white;
+            padding: 28px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .header h1 { font-size: 1.8em; margin-bottom: 4px; }
+        .header .subtitle { font-size: 1.15em; opacity: 0.9; font-style: italic; }
+        .header .meta { margin-top: 10px; font-size: 0.85em; opacity: 0.7; }
+
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 22px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+        .section h2 {
+            color: #1b5e20;
+            font-size: 1.2em;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #c8e6c9;
+        }
+
+        .mortgage-explainer {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 12px 0;
+        }
+        .mortgage-point {
+            background: #f1f8e9;
+            padding: 12px 14px;
+            border-radius: 8px;
+            border-left: 3px solid #43a047;
+            font-size: 0.95em;
+        }
+        .mortgage-point strong { color: #2e7d32; }
+
+        /* Tables */
+        .cost-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 14px 0;
+            font-size: 0.9em;
+        }
+        .cost-table th {
+            background: #1b5e20;
+            color: white;
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 0.9em;
+        }
+        .cost-table th:first-child { border-radius: 8px 0 0 0; }
+        .cost-table th:last-child { border-radius: 0 8px 0 0; }
+        .cost-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .cost-table tr:nth-child(even) { background: #f5f5f5; }
+        .cost-table tr.total-row {
+            background: #1b5e20;
+            color: white;
+            font-weight: bold;
+        }
+        .cost-table tr.total-row td { border-bottom: none; font-size: 1.05em; }
+
+        .cost-red { color: #c62828; font-weight: bold; }
+        .cost-green { color: #2e7d32; font-weight: bold; }
+
+        /* Shock numbers */
+        .shock-number {
+            text-align: center;
+            padding: 20px;
+            margin: 16px 0;
+            border-radius: 10px;
+        }
+        .shock-number.red {
+            background: #fce4ec;
+            border: 2px solid #c62828;
+        }
+        .shock-number.green {
+            background: #e8f5e9;
+            border: 2px solid #2e7d32;
+        }
+        .shock-number.blue {
+            background: #e3f2fd;
+            border: 2px solid #1565c0;
+        }
+        .shock-number .big {
+            font-size: 2.4em;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+        .shock-number.red .big { color: #c62828; }
+        .shock-number.green .big { color: #2e7d32; }
+        .shock-number.blue .big { color: #1565c0; }
+        .shock-number .label {
+            font-size: 0.95em;
+            color: #555;
+            margin-top: 6px;
+        }
+
+        /* Total cost breakdown */
+        .total-breakdown {
+            background: linear-gradient(135deg, #fce4ec, #ffcdd2);
+            border: 2px solid #c62828;
+            border-radius: 10px;
+            padding: 22px;
+            margin: 16px 0;
+        }
+        .total-breakdown h3 { color: #b71c1c; margin-bottom: 12px; font-size: 1.1em; }
+        .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px dashed #e0a0a0;
+            font-size: 0.95em;
+        }
+        .breakdown-item:last-of-type { border-bottom: none; }
+        .breakdown-total {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0 0;
+            margin-top: 8px;
+            border-top: 3px solid #c62828;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #b71c1c;
+        }
+
+        /* Equity box */
+        .equity-box {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border: 2px solid #2e7d32;
+            border-radius: 10px;
+            padding: 22px;
+            margin: 16px 0;
+        }
+        .equity-box h3 { color: #1b5e20; margin-bottom: 12px; font-size: 1.1em; }
+        .equity-points {
+            list-style: none;
+            padding: 0;
+        }
+        .equity-points li {
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            background: white;
+            border-radius: 6px;
+            border-left: 3px solid #43a047;
+            font-size: 0.95em;
+        }
+
+        /* Rent vs Buy */
+        .rvb-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 14px 0;
+            font-size: 0.88em;
+        }
+        .rvb-table th {
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 0.9em;
+        }
+        .rvb-table th:nth-child(1) { background: #37474f; color: white; border-radius: 8px 0 0 0; }
+        .rvb-table th:nth-child(2) { background: #e65100; color: white; }
+        .rvb-table th:nth-child(3) { background: #1b5e20; color: white; border-radius: 0 8px 0 0; }
+        .rvb-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
+        }
+        .rvb-table tr:nth-child(even) { background: #f5f5f5; }
+        .rvb-table td:nth-child(2) { border-left: 2px solid #ffcc80; }
+        .rvb-table td:nth-child(3) { border-left: 2px solid #a5d6a7; }
+
+        .wisdom-box {
+            background: #e8eaf6;
+            border: 2px solid #5c6bc0;
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin: 16px 0;
+            text-align: center;
+        }
+        .wisdom-box p {
+            font-size: 1.05em;
+            line-height: 1.7;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        .wisdom-box .quote { font-style: italic; color: #283593; }
+
+        .callout {
+            background: #e3f2fd;
+            border-left: 4px solid #1565c0;
+            padding: 14px 18px;
+            border-radius: 0 8px 8px 0;
+            margin: 14px 0;
+            font-size: 0.95em;
+        }
+        .callout strong { color: #0d47a1; }
+
+        .numbers-box {
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 18px;
+            margin: 12px 0;
+        }
+        .numbers-box .number-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 0.95em;
+        }
+        .numbers-box .number-row:last-child { border-bottom: none; }
+        .numbers-box .number-row .value { font-weight: bold; }
+
+        @media print {
+            body { background: white; padding: 15px; font-size: 10pt; }
+            .header { background: #1b5e20 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .cost-table th { background: #1b5e20 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .cost-table tr.total-row { background: #1b5e20 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .rvb-table th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .section { break-inside: avoid; }
+            .shock-number, .total-breakdown, .equity-box { break-inside: avoid; }
+        }
+
+        @media (max-width: 600px) {
+            .mortgage-explainer { grid-template-columns: 1fr; }
+            .header h1 { font-size: 1.5em; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Buying a Home</h1>
+        <div class="subtitle">The Biggest Purchase of Your Life</div>
+        <div class="meta">Unit 6: Debt and Big Decisions &bull; Lesson 12 Reference Sheet B</div>
+    </div>
+
+    <!-- WHAT IS A MORTGAGE -->
+    <div class="section">
+        <h2>What Is a Mortgage?</h2>
+        <div class="mortgage-explainer">
+            <div class="mortgage-point"><strong>A loan for a house</strong> — specifically designed for buying real estate. Much larger than any other loan most people ever take.</div>
+            <div class="mortgage-point"><strong>15 or 30 years to pay back</strong> — most people choose 30 years. That's a long time to make payments every single month.</div>
+            <div class="mortgage-point"><strong>The bank technically owns it</strong> — until you pay off the loan completely. If you stop paying, the bank can take the house (foreclosure).</div>
+            <div class="mortgage-point"><strong>You pay interest the entire time</strong> — and with a 30-year loan, you end up paying MORE in interest than the house originally cost.</div>
+        </div>
+        <div class="callout">
+            <strong>Key Terms:</strong>
+            <strong>Principal</strong> = the amount you borrowed.
+            <strong>Interest</strong> = what the bank charges you for borrowing.
+            <strong>Down Payment</strong> = cash you pay upfront (usually 5-20% of the price).
+            <strong>Equity</strong> = the portion of the home you actually own (home value minus what you still owe).
+        </div>
+    </div>
+
+    <!-- THE NUMBERS -->
+    <div class="section">
+        <h2>The Numbers on a $300,000 House</h2>
+
+        <div class="numbers-box">
+            <div class="number-row">
+                <span>Home price</span>
+                <span class="value">$300,000</span>
+            </div>
+            <div class="number-row">
+                <span>Down payment (20%)</span>
+                <span class="value cost-red">$60,000 <span style="font-weight:normal;font-size:0.85em">you need this saved BEFORE buying</span></span>
+            </div>
+            <div class="number-row">
+                <span>Mortgage amount (what you borrow)</span>
+                <span class="value">$240,000</span>
+            </div>
+            <div class="number-row">
+                <span>Interest rate</span>
+                <span class="value">7%</span>
+            </div>
+            <div class="number-row">
+                <span>Monthly mortgage payment</span>
+                <span class="value">$1,597</span>
+            </div>
+        </div>
+
+        <p style="margin-top: 14px; font-weight: bold; color: #c62828; font-size: 1.05em;">But the mortgage payment is NOT all you pay every month:</p>
+
+        <table class="cost-table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Monthly Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Mortgage</strong> (principal + interest)</td>
+                    <td>$1,597</td>
+                </tr>
+                <tr>
+                    <td><strong>Property Taxes</strong></td>
+                    <td>$250</td>
+                </tr>
+                <tr>
+                    <td><strong>Home Insurance</strong></td>
+                    <td>$125</td>
+                </tr>
+                <tr>
+                    <td><strong>PMI</strong> (if less than 20% down)</td>
+                    <td>$0 - $150</td>
+                </tr>
+                <tr>
+                    <td><strong>Maintenance</strong> (1% of home value per year)</td>
+                    <td>$250</td>
+                </tr>
+                <tr>
+                    <td><strong>HOA</strong> (if applicable)</td>
+                    <td>$0 - $300</td>
+                </tr>
+                <tr class="total-row">
+                    <td>True Monthly Cost</td>
+                    <td>$2,222 - $2,672</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout">
+            <strong>What is PMI?</strong> Private Mortgage Insurance. If you put less than 20% down, the bank makes you pay extra insurance to protect THEM in case you stop paying. It adds $100-$200/month until you build 20% equity. Another reason to save a big down payment.
+        </div>
+    </div>
+
+    <!-- TOTAL COST -->
+    <div class="section">
+        <h2>Total Cost of a $300,000 House (30-Year Mortgage at 7%)</h2>
+
+        <div class="total-breakdown">
+            <h3>Where Does All the Money Go?</h3>
+            <div class="breakdown-item">
+                <span>Monthly payments over 30 years (principal + interest)</span>
+                <span class="cost-red">$574,920</span>
+            </div>
+            <div class="breakdown-item">
+                <span>Down payment</span>
+                <span class="cost-red">$60,000</span>
+            </div>
+            <div class="breakdown-item">
+                <span>Property taxes (30 years)</span>
+                <span class="cost-red">~$90,000</span>
+            </div>
+            <div class="breakdown-item">
+                <span>Home insurance (30 years)</span>
+                <span class="cost-red">~$45,000</span>
+            </div>
+            <div class="breakdown-item">
+                <span>Maintenance and repairs (30 years)</span>
+                <span class="cost-red">~$90,000</span>
+            </div>
+            <div class="breakdown-total">
+                <span>GRAND TOTAL</span>
+                <span>~$860,000</span>
+            </div>
+        </div>
+
+        <div class="shock-number red">
+            <div class="big">$860,000</div>
+            <div class="label">The true cost of a "$300,000" house over 30 years</div>
+        </div>
+
+        <div class="shock-number red" style="margin-top: 10px;">
+            <div class="big">$334,920</div>
+            <div class="label">Interest alone — you pay the bank more in interest than the house even cost</div>
+        </div>
+    </div>
+
+    <!-- EQUITY - THE GOOD NEWS -->
+    <div class="section">
+        <h2>But Here's the Good News: EQUITY</h2>
+
+        <div class="equity-box">
+            <h3>Why Buying a Home Can Still Be Smart</h3>
+            <ul class="equity-points">
+                <li><strong>You build ownership.</strong> Unlike rent, every mortgage payment increases the portion of the home that's YOURS. This is called equity.</li>
+                <li><strong>Homes historically appreciate 3-5% per year.</strong> Your $300,000 home might be worth $400,000 in 10 years and $500,000+ in 15-20 years.</li>
+                <li><strong>You can use your equity.</strong> Sell the home and keep the profit, refinance to a better loan, or borrow against it for other investments.</li>
+                <li><strong>When it's paid off, you live there (almost) free.</strong> After 30 years, no more mortgage payments. You only pay taxes, insurance, and maintenance — a fraction of the cost.</li>
+                <li><strong>Tax benefits.</strong> You can deduct mortgage interest from your taxes, which saves money every year.</li>
+            </ul>
+        </div>
+
+        <div class="shock-number green">
+            <div class="big">$500,000+</div>
+            <div class="label">What your $300,000 home could be worth in 15 years (at ~3.5% annual appreciation)</div>
+        </div>
+
+        <div class="shock-number green" style="margin-top: 10px;">
+            <div class="big">$0 / month</div>
+            <div class="label">Your mortgage payment after 30 years — you own it free and clear</div>
+        </div>
+    </div>
+
+    <!-- RENT VS BUY -->
+    <div class="section">
+        <h2>Rent vs. Buy: The Comparison</h2>
+
+        <table class="rvb-table">
+            <thead>
+                <tr>
+                    <th>Factor</th>
+                    <th>Renting</th>
+                    <th>Buying</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Monthly cost</strong></td>
+                    <td>Rent: ~$1,500</td>
+                    <td>Mortgage + all costs: ~$2,400</td>
+                </tr>
+                <tr>
+                    <td><strong>Builds equity?</strong></td>
+                    <td class="cost-red">No — landlord keeps it all</td>
+                    <td class="cost-green">Yes — you're building ownership</td>
+                </tr>
+                <tr>
+                    <td><strong>Maintenance?</strong></td>
+                    <td class="cost-green">Landlord fixes everything</td>
+                    <td class="cost-red">YOU fix everything (can be expensive)</td>
+                </tr>
+                <tr>
+                    <td><strong>Flexibility?</strong></td>
+                    <td class="cost-green">Move when lease ends</td>
+                    <td class="cost-red">Selling takes months, costs 5-6% in fees</td>
+                </tr>
+                <tr>
+                    <td><strong>Tax benefits?</strong></td>
+                    <td>None</td>
+                    <td class="cost-green">Mortgage interest deduction</td>
+                </tr>
+                <tr>
+                    <td><strong>Upfront cost</strong></td>
+                    <td class="cost-green">Security deposit (~$1,500)</td>
+                    <td class="cost-red">Down payment ($60,000!)</td>
+                </tr>
+                <tr>
+                    <td><strong>Best when...</strong></td>
+                    <td>Short-term stay, need flexibility, expensive market, building savings</td>
+                    <td>Staying 5+ years, stable job, can afford upfront costs and repairs</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="wisdom-box">
+            <p class="quote">"The common wisdom is 'renting is throwing money away.' But buying when you're not ready can be MUCH worse. A house you can't afford leads to stress, debt, and possibly foreclosure."</p>
+            <p style="margin-top: 10px; font-size: 0.95em;"><strong>The right choice depends on YOUR situation.</strong> There is no one-size-fits-all answer.</p>
+        </div>
+    </div>
+
+    <!-- WHEN TO RENT, WHEN TO BUY -->
+    <div class="section">
+        <h2>When to Rent vs. When to Buy</h2>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px;">
+            <div style="background: #fff3e0; padding: 16px; border-radius: 10px; border: 2px solid #ff8f00;">
+                <h3 style="color: #e65100; font-size: 1em; margin-bottom: 10px;">Rent When...</h3>
+                <ul style="margin-left: 16px; font-size: 0.9em;">
+                    <li>You might move in less than 5 years</li>
+                    <li>You don't have a solid emergency fund + down payment</li>
+                    <li>You're in an expensive market where buying costs way more than renting</li>
+                    <li>Your job or life situation might change soon</li>
+                    <li>You want someone else to handle repairs</li>
+                    <li>You're young and still figuring out where to settle</li>
+                </ul>
+            </div>
+            <div style="background: #e8f5e9; padding: 16px; border-radius: 10px; border: 2px solid #43a047;">
+                <h3 style="color: #1b5e20; font-size: 1em; margin-bottom: 10px;">Buy When...</h3>
+                <ul style="margin-left: 16px; font-size: 0.9em;">
+                    <li>You plan to stay at least 5-7 years</li>
+                    <li>You have 20% down payment saved (or at least 10%)</li>
+                    <li>You have a stable income and good credit</li>
+                    <li>You have an emergency fund PLUS repair savings</li>
+                    <li>Monthly cost (with ALL expenses) is under 28% of gross income</li>
+                    <li>You want to build long-term wealth through equity</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTTOM LINE -->
+    <div style="background: linear-gradient(135deg, #1b5e20, #2e7d32); color: white; padding: 22px; border-radius: 10px; text-align: center;">
+        <h3 style="margin-bottom: 8px; font-size: 1.2em;">The Bottom Line</h3>
+        <p style="font-size: 1.05em; max-width: 680px; margin: 0 auto; line-height: 1.7;">
+            A home is the biggest purchase most people ever make. The sticker price is just the beginning — interest, taxes, insurance, and maintenance can nearly <strong>triple</strong> the real cost over 30 years. But unlike almost anything else you buy, a home can grow in value and eventually be yours free and clear. The key is buying only when you're truly ready — financially and personally.
+        </p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Item Cards — Wants vs. Needs</title>
+<style>
+  @media print {
+    body { margin: 0.25in; font-size: 9pt; }
+    .card { page-break-inside: avoid; }
+    .instructions { display: none; }
+    h1, .subtitle { display: none; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 900px; margin: 0 auto; padding: 16px; line-height: 1.4; color: #2d3436; }
+  h1 { text-align: center; font-size: 1.5em; margin-bottom: 2px; }
+  .subtitle { text-align: center; font-size: 0.85em; color: #636e72; margin-bottom: 6px; }
+  .instructions { background: #f5f6fa; border-left: 4px solid #6c5ce7; padding: 8px 12px; font-size: 0.82em; margin-bottom: 14px; }
+  .section-label { text-align: center; font-weight: bold; font-size: 1em; margin: 16px 0 8px; padding: 6px 12px; border-radius: 6px; color: white; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+  .card {
+    border: 2.5px solid #dfe6e9;
+    border-radius: 10px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 120px;
+    background: white;
+  }
+  .card-icon { font-size: 2em; margin-bottom: 2px; line-height: 1.2; }
+  .card-name { font-weight: bold; font-size: 0.88em; margin-bottom: 2px; }
+  .card-cost { font-size: 0.78em; color: #e17055; font-weight: 600; margin-bottom: 2px; }
+  .card-desc { font-size: 0.68em; color: #636e72; flex: 1; }
+
+  .card.need { border-color: #00b894; }
+  .card.want { border-color: #e17055; }
+  .card.gray { border-color: #fdcb6e; }
+
+  .page-break { page-break-before: always; }
+</style>
+</head>
+<body>
+
+<h1>Item Cards</h1>
+<p class="subtitle">Cut these out. Sort each card into NEEDS, GRAY AREA, or WANTS.</p>
+<div class="instructions">
+  <strong>How to use:</strong> Print all pages. Cut along card borders. Shuffle the deck. Sort each card onto the sorting mat. There are no perfectly right answers for many of these &mdash; that's the point!
+  <br><strong>Hint:</strong> Green-bordered cards are usually needs. Orange are usually wants. Yellow are gray area. But don't tell the kids that &mdash; let them figure it out!
+</div>
+
+<!-- OBVIOUS NEEDS -->
+<div class="section-label" style="background: #00b894;">Deck Cards &mdash; Page 1</div>
+<div class="grid">
+
+<div class="card need">
+  <div class="card-icon">&#127968;</div>
+  <div class="card-name">Rent / Housing</div>
+  <div class="card-cost">$800&ndash;$2,000/mo</div>
+  <div class="card-desc">A place to live &mdash; apartment, house, or room</div>
+</div>
+
+<div class="card need">
+  <div class="card-icon">&#127822;</div>
+  <div class="card-name">Groceries</div>
+  <div class="card-cost">$200&ndash;$600/mo</div>
+  <div class="card-desc">Basic food to cook at home and stay healthy</div>
+</div>
+
+<div class="card need">
+  <div class="card-icon">&#128167;</div>
+  <div class="card-name">Clean Water</div>
+  <div class="card-cost">$30&ndash;$60/mo</div>
+  <div class="card-desc">Water for drinking, cooking, and washing</div>
+</div>
+
+<div class="card need">
+  <div class="card-icon">&#9889;</div>
+  <div class="card-name">Electricity</div>
+  <div class="card-cost">$80&ndash;$200/mo</div>
+  <div class="card-desc">Powers lights, fridge, stove, and heat</div>
+</div>
+
+<div class="card need">
+  <div class="card-icon">&#128138;</div>
+  <div class="card-name">Health Insurance</div>
+  <div class="card-cost">$200&ndash;$500/mo</div>
+  <div class="card-desc">Covers doctor visits, emergencies, medicine</div>
+</div>
+
+<div class="card need">
+  <div class="card-icon">&#128090;</div>
+  <div class="card-name">Basic Clothing</div>
+  <div class="card-cost">$30&ndash;$80/mo</div>
+  <div class="card-desc">Simple, functional clothes to wear daily</div>
+</div>
+
+<div class="card need">
+  <div class="card-icon">&#129656;</div>
+  <div class="card-name">Prescription Medicine</div>
+  <div class="card-cost">$10&ndash;$300/mo</div>
+  <div class="card-desc">Medicine a doctor says you must take</div>
+</div>
+
+<div class="card need">
+  <div class="card-icon">&#128716;</div>
+  <div class="card-name">A Bed / Mattress</div>
+  <div class="card-cost">$20&ndash;$80/mo (amortized)</div>
+  <div class="card-desc">A place to sleep safely and comfortably</div>
+</div>
+
+<div class="card need">
+  <div class="card-icon">&#129532;</div>
+  <div class="card-name">Soap / Hygiene Products</div>
+  <div class="card-cost">$15&ndash;$40/mo</div>
+  <div class="card-desc">Soap, toothpaste, shampoo, deodorant</div>
+</div>
+
+<div class="card need">
+  <div class="card-icon">&#127777;&#65039;</div>
+  <div class="card-name">Heating in Winter</div>
+  <div class="card-cost">$50&ndash;$200/mo</div>
+  <div class="card-desc">Gas or electric heat when it's cold outside</div>
+</div>
+
+<div class="card need">
+  <div class="card-icon">&#128222;</div>
+  <div class="card-name">Basic Phone Service</div>
+  <div class="card-cost">$15&ndash;$30/mo</div>
+  <div class="card-desc">A way to call 911, reach doctors, employers</div>
+</div>
+
+<div class="card need">
+  <div class="card-icon">&#129469;</div>
+  <div class="card-name">One Pair of Shoes</div>
+  <div class="card-cost">$5&ndash;$15/mo (amortized)</div>
+  <div class="card-desc">Basic footwear to protect your feet</div>
+</div>
+
+</div>
+
+<!-- GRAY AREA -->
+<div class="page-break"></div>
+<div class="section-label" style="background: #fdcb6e; color: #2d3436;">Deck Cards &mdash; Page 2</div>
+<div class="grid">
+
+<div class="card gray">
+  <div class="card-icon">&#128241;</div>
+  <div class="card-name">Smartphone</div>
+  <div class="card-cost">$40&ndash;$120/mo</div>
+  <div class="card-desc">Internet, maps, email, apps &mdash; all in your pocket</div>
+</div>
+
+<div class="card gray">
+  <div class="card-icon">&#128187;</div>
+  <div class="card-name">Internet at Home</div>
+  <div class="card-cost">$50&ndash;$90/mo</div>
+  <div class="card-desc">WiFi for school, work, and staying connected</div>
+</div>
+
+<div class="card gray">
+  <div class="card-icon">&#128663;</div>
+  <div class="card-name">Car</div>
+  <div class="card-cost">$300&ndash;$700/mo</div>
+  <div class="card-desc">Payment + insurance + gas to get around</div>
+</div>
+
+<div class="card gray">
+  <div class="card-icon">&#10052;&#65039;</div>
+  <div class="card-name">Air Conditioning</div>
+  <div class="card-cost">$40&ndash;$150/mo</div>
+  <div class="card-desc">Keeps your home cool in hot weather</div>
+</div>
+
+<div class="card gray">
+  <div class="card-icon">&#127947;</div>
+  <div class="card-name">Gym Membership</div>
+  <div class="card-cost">$25&ndash;$60/mo</div>
+  <div class="card-desc">Access to equipment, classes, and a place to exercise</div>
+</div>
+
+<div class="card gray">
+  <div class="card-icon">&#128049;</div>
+  <div class="card-name">Pet (Dog or Cat)</div>
+  <div class="card-cost">$80&ndash;$200/mo</div>
+  <div class="card-desc">Food, vet visits, supplies for a furry companion</div>
+</div>
+
+<div class="card gray">
+  <div class="card-icon">&#128188;</div>
+  <div class="card-name">Work Clothes</div>
+  <div class="card-cost">$30&ndash;$100/mo</div>
+  <div class="card-desc">Professional clothing for your job</div>
+</div>
+
+<div class="card gray">
+  <div class="card-icon">&#127891;</div>
+  <div class="card-name">College Education</div>
+  <div class="card-cost">$200&ndash;$800/mo (loans)</div>
+  <div class="card-desc">A degree that may lead to higher-paying jobs</div>
+</div>
+
+<div class="card gray">
+  <div class="card-icon">&#128136;</div>
+  <div class="card-name">Vitamins / Supplements</div>
+  <div class="card-cost">$15&ndash;$50/mo</div>
+  <div class="card-desc">Extra nutrition your diet might be missing</div>
+</div>
+
+<div class="card gray">
+  <div class="card-icon">&#9986;&#65039;</div>
+  <div class="card-name">Haircuts</div>
+  <div class="card-cost">$15&ndash;$60/mo</div>
+  <div class="card-desc">Regular grooming to look presentable</div>
+</div>
+
+<div class="card gray">
+  <div class="card-icon">&#128092;</div>
+  <div class="card-name">Second Pair of Shoes</div>
+  <div class="card-cost">$5&ndash;$15/mo (amortized)</div>
+  <div class="card-desc">Boots for rain/snow, or shoes for different activities</div>
+</div>
+
+<div class="card gray">
+  <div class="card-icon">&#127873;</div>
+  <div class="card-name">Birthday Gifts for Friends</div>
+  <div class="card-cost">$15&ndash;$40/mo</div>
+  <div class="card-desc">Presents to celebrate the people you care about</div>
+</div>
+
+<div class="card gray">
+  <div class="card-icon">&#128187;</div>
+  <div class="card-name">Laptop Computer</div>
+  <div class="card-cost">$30&ndash;$80/mo (amortized)</div>
+  <div class="card-desc">For schoolwork, job applications, or remote work</div>
+</div>
+
+<div class="card gray">
+  <div class="card-icon">&#128176;</div>
+  <div class="card-name">Life Insurance</div>
+  <div class="card-cost">$20&ndash;$50/mo</div>
+  <div class="card-desc">Protects your family financially if something happens to you</div>
+</div>
+
+<div class="card gray">
+  <div class="card-icon">&#128664;</div>
+  <div class="card-name">Car Insurance</div>
+  <div class="card-cost">$80&ndash;$200/mo</div>
+  <div class="card-desc">Required by law if you own a car</div>
+</div>
+
+<div class="card gray">
+  <div class="card-icon">&#127859;</div>
+  <div class="card-name">Eating Out (Occasionally)</div>
+  <div class="card-cost">$50&ndash;$150/mo</div>
+  <div class="card-desc">Restaurant meals once or twice a week</div>
+</div>
+
+</div>
+
+<!-- WANTS -->
+<div class="page-break"></div>
+<div class="section-label" style="background: #e17055;">Deck Cards &mdash; Page 3</div>
+<div class="grid">
+
+<div class="card want">
+  <div class="card-icon">&#127918;</div>
+  <div class="card-name">Gaming Console</div>
+  <div class="card-cost">$20&ndash;$50/mo (amortized)</div>
+  <div class="card-desc">PlayStation, Xbox, or Switch for gaming fun</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#128084;</div>
+  <div class="card-name">Designer Clothes</div>
+  <div class="card-cost">$100&ndash;$400/mo</div>
+  <div class="card-desc">Trendy name-brand fashion and accessories</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#127911;</div>
+  <div class="card-name">Concert Tickets</div>
+  <div class="card-cost">$30&ndash;$100/mo</div>
+  <div class="card-desc">Live music and events with friends</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#9749;</div>
+  <div class="card-name">Fancy Coffee Daily</div>
+  <div class="card-cost">$120&ndash;$180/mo</div>
+  <div class="card-desc">$5&ndash;$7 lattes from a coffee shop every day</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#128250;</div>
+  <div class="card-name">Streaming Services</div>
+  <div class="card-cost">$15&ndash;$60/mo</div>
+  <div class="card-desc">Netflix, Disney+, YouTube Premium, etc.</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#127829;</div>
+  <div class="card-name">Food Delivery Apps</div>
+  <div class="card-cost">$100&ndash;$300/mo</div>
+  <div class="card-desc">DoorDash, UberEats &mdash; meals delivered to your door</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#128083;</div>
+  <div class="card-name">Brand-Name Sunglasses</div>
+  <div class="card-cost">$10&ndash;$30/mo (amortized)</div>
+  <div class="card-desc">Ray-Ban, Oakley &mdash; look cool in the sun</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#128247;</div>
+  <div class="card-name">Latest Phone Upgrade</div>
+  <div class="card-cost">$40&ndash;$60/mo</div>
+  <div class="card-desc">Newest model every year &mdash; even if yours works fine</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#127908;</div>
+  <div class="card-name">Music Subscription</div>
+  <div class="card-cost">$10&ndash;$17/mo</div>
+  <div class="card-desc">Spotify, Apple Music &mdash; unlimited songs</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#128186;</div>
+  <div class="card-name">Video Games (New Releases)</div>
+  <div class="card-cost">$30&ndash;$70/mo</div>
+  <div class="card-desc">Buying new games when they come out</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#9992;&#65039;</div>
+  <div class="card-name">Vacation Travel</div>
+  <div class="card-cost">$100&ndash;$400/mo (saving up)</div>
+  <div class="card-desc">Trips, flights, hotels &mdash; exploring new places</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#128141;</div>
+  <div class="card-name">Jewelry / Accessories</div>
+  <div class="card-cost">$20&ndash;$100/mo</div>
+  <div class="card-desc">Rings, watches, necklaces, bracelets</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#127846;</div>
+  <div class="card-name">Candy &amp; Snacks</div>
+  <div class="card-cost">$20&ndash;$60/mo</div>
+  <div class="card-desc">Treats, chips, cookies &mdash; the fun stuff</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#128302;</div>
+  <div class="card-name">Collectibles / Toys</div>
+  <div class="card-cost">$20&ndash;$100/mo</div>
+  <div class="card-desc">Trading cards, figurines, LEGO sets, hobby items</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#128591;</div>
+  <div class="card-name">Spa / Massage</div>
+  <div class="card-cost">$50&ndash;$150/mo</div>
+  <div class="card-desc">Pampering and relaxation treatments</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#128250;</div>
+  <div class="card-name">Cable TV Package</div>
+  <div class="card-cost">$60&ndash;$150/mo</div>
+  <div class="card-desc">Hundreds of channels including sports and movies</div>
+</div>
+
+</div>
+
+<!-- MORE GRAY + WANTS -->
+<div class="page-break"></div>
+<div class="section-label" style="background: #6c5ce7;">Deck Cards &mdash; Page 4</div>
+<div class="grid">
+
+<div class="card gray">
+  <div class="card-icon">&#128218;</div>
+  <div class="card-name">Books / Reading Material</div>
+  <div class="card-cost">$10&ndash;$40/mo</div>
+  <div class="card-desc">Books, magazines, or a library card (free!)</div>
+</div>
+
+<div class="card gray">
+  <div class="card-icon">&#128690;</div>
+  <div class="card-name">Bicycle</div>
+  <div class="card-cost">$10&ndash;$25/mo (amortized)</div>
+  <div class="card-desc">A cheap, healthy way to get around town</div>
+</div>
+
+<div class="card gray">
+  <div class="card-icon">&#128137;</div>
+  <div class="card-name">Dental Insurance</div>
+  <div class="card-cost">$20&ndash;$50/mo</div>
+  <div class="card-desc">Covers cleanings, fillings, and dental emergencies</div>
+</div>
+
+<div class="card gray">
+  <div class="card-icon">&#128272;</div>
+  <div class="card-name">Renter's Insurance</div>
+  <div class="card-cost">$15&ndash;$30/mo</div>
+  <div class="card-desc">Protects your stuff if there's a fire, theft, or flood</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#128054;</div>
+  <div class="card-name">Dog Walker / Pet Sitter</div>
+  <div class="card-cost">$50&ndash;$200/mo</div>
+  <div class="card-desc">Someone to care for your pet while you're busy</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#127828;</div>
+  <div class="card-name">Fast Food (Weekly)</div>
+  <div class="card-cost">$40&ndash;$100/mo</div>
+  <div class="card-desc">Burgers, tacos, drive-thru meals once a week</div>
+</div>
+
+<div class="card gray">
+  <div class="card-icon">&#128587;</div>
+  <div class="card-name">Childcare / Babysitter</div>
+  <div class="card-cost">$500&ndash;$1,500/mo</div>
+  <div class="card-desc">Someone to watch your kids while you work</div>
+</div>
+
+<div class="card gray">
+  <div class="card-icon">&#128652;</div>
+  <div class="card-name">Public Transit Pass</div>
+  <div class="card-cost">$50&ndash;$130/mo</div>
+  <div class="card-desc">Bus or subway to get to work and around town</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#128241;</div>
+  <div class="card-name">Tablet (iPad)</div>
+  <div class="card-cost">$15&ndash;$40/mo (amortized)</div>
+  <div class="card-desc">For watching, reading, drawing, or games</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#128248;</div>
+  <div class="card-name">Nice Camera</div>
+  <div class="card-cost">$20&ndash;$50/mo (amortized)</div>
+  <div class="card-desc">A real camera for photography hobby</div>
+</div>
+
+<div class="card gray">
+  <div class="card-icon">&#128176;</div>
+  <div class="card-name">Emergency Savings</div>
+  <div class="card-cost">$50&ndash;$200/mo</div>
+  <div class="card-desc">Money set aside for unexpected expenses</div>
+</div>
+
+<div class="card gray">
+  <div class="card-icon">&#128150;</div>
+  <div class="card-name">Charity / Donations</div>
+  <div class="card-cost">$10&ndash;$100/mo</div>
+  <div class="card-desc">Giving money to help others in need</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#127928;</div>
+  <div class="card-name">Music Lessons</div>
+  <div class="card-cost">$80&ndash;$200/mo</div>
+  <div class="card-desc">Piano, guitar, drums &mdash; learning an instrument</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#128692;</div>
+  <div class="card-name">Sports League Fees</div>
+  <div class="card-cost">$30&ndash;$100/mo</div>
+  <div class="card-desc">Playing on an organized team with a coach</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#128571;</div>
+  <div class="card-name">Makeup / Cosmetics</div>
+  <div class="card-cost">$20&ndash;$80/mo</div>
+  <div class="card-desc">Foundation, lipstick, skincare products</div>
+</div>
+
+<div class="card want">
+  <div class="card-icon">&#127871;</div>
+  <div class="card-name">Movie Theater Trips</div>
+  <div class="card-cost">$30&ndash;$60/mo</div>
+  <div class="card-desc">Big screen, popcorn, the full experience</div>
+</div>
+
+</div>
+
+</body>
+</html>

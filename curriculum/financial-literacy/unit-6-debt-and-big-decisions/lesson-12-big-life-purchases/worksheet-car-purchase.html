@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worksheet — Car Purchase Exercise</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            color: #2d2d2d;
+            line-height: 1.6;
+            background: #f8f9fa;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #e65100, #f57c00);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .header h1 { font-size: 1.7em; margin-bottom: 4px; }
+        .header .subtitle { font-size: 1.1em; opacity: 0.9; }
+        .header .meta { margin-top: 8px; font-size: 0.85em; opacity: 0.7; }
+
+        .name-line {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 22px;
+            font-size: 1em;
+        }
+        .name-line span {
+            border-bottom: 2px solid #999;
+            flex: 1;
+            padding-bottom: 4px;
+        }
+        .name-line label { font-weight: bold; white-space: nowrap; }
+
+        .step-section {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            overflow: hidden;
+        }
+        .step-header {
+            background: #e65100;
+            color: white;
+            padding: 12px 18px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        .step-body {
+            padding: 20px;
+        }
+
+        .car-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 12px 0;
+        }
+        .car-option {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 16px;
+            cursor: default;
+            transition: border-color 0.2s;
+        }
+        .car-option:hover { border-color: #e65100; }
+        .car-option .option-label {
+            font-weight: bold;
+            font-size: 1.05em;
+            margin-bottom: 4px;
+        }
+        .car-option.option-a { border-left: 5px solid #c62828; }
+        .car-option.option-b { border-left: 5px solid #f57f17; }
+        .car-option.option-c { border-left: 5px solid #2e7d32; }
+        .car-option.option-d { border-left: 5px solid #1565c0; }
+        .car-option .price {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin: 4px 0;
+        }
+        .car-option.option-a .price { color: #c62828; }
+        .car-option.option-b .price { color: #e65100; }
+        .car-option.option-c .price { color: #2e7d32; }
+        .car-option.option-d .price { color: #1565c0; }
+        .car-option .details { font-size: 0.85em; color: #666; }
+
+        .choice-line {
+            background: #fff3e0;
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-top: 14px;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .choice-line strong { color: #e65100; }
+        .fill-blank {
+            border-bottom: 2px solid #e65100;
+            min-width: 120px;
+            display: inline-block;
+            height: 24px;
+        }
+        .fill-blank.wide { min-width: 200px; }
+        .fill-blank.full { min-width: 100%; display: block; height: 28px; margin-top: 6px; }
+
+        /* Payment lookup table */
+        .lookup-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 0.88em;
+        }
+        .lookup-table th {
+            background: #37474f;
+            color: white;
+            padding: 8px 10px;
+            text-align: left;
+        }
+        .lookup-table th:first-child { border-radius: 6px 0 0 0; }
+        .lookup-table th:last-child { border-radius: 0 6px 0 0; }
+        .lookup-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .lookup-table tr:nth-child(even) { background: #f5f5f5; }
+
+        /* Calculation table */
+        .calc-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 14px 0;
+        }
+        .calc-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 0.95em;
+        }
+        .calc-table td:first-child { font-weight: bold; width: 55%; }
+        .calc-table td:last-child {
+            border-bottom-style: dashed;
+            border-bottom-color: #e65100;
+            min-width: 140px;
+        }
+        .calc-table tr.total-row td {
+            border-top: 3px solid #e65100;
+            border-bottom: 3px solid #e65100;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #e65100;
+            background: #fff3e0;
+        }
+
+        .helper-note {
+            background: #e3f2fd;
+            border-left: 4px solid #1565c0;
+            padding: 10px 14px;
+            border-radius: 0 8px 8px 0;
+            margin: 10px 0;
+            font-size: 0.88em;
+            color: #0d47a1;
+        }
+
+        .comparison-box {
+            background: #fce4ec;
+            border: 2px solid #c62828;
+            border-radius: 10px;
+            padding: 18px;
+            margin: 12px 0;
+        }
+        .comparison-box h3 { color: #c62828; margin-bottom: 10px; }
+        .compare-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #e0a0a0;
+            font-size: 0.95em;
+        }
+        .compare-row:last-child { border-bottom: none; }
+
+        .reflection-box {
+            background: #f3e5f5;
+            border: 2px solid #8e24aa;
+            border-radius: 10px;
+            padding: 18px;
+            margin: 12px 0;
+        }
+        .reflection-box h3 { color: #6a1b9a; margin-bottom: 10px; }
+        .reflection-question {
+            margin-bottom: 14px;
+        }
+        .reflection-question p {
+            font-size: 0.95em;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #4a148c;
+        }
+        .answer-lines {
+            border-bottom: 1px solid #ce93d8;
+            height: 28px;
+            margin-bottom: 4px;
+        }
+
+        .age-note {
+            background: #e8eaf6;
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            border: 1px solid #c5cae9;
+        }
+        .age-note strong { color: #283593; }
+
+        @media print {
+            body { background: white; padding: 15px; font-size: 10pt; }
+            .header { background: #e65100 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .step-header { background: #e65100 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .lookup-table th { background: #37474f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .step-section { break-inside: avoid; }
+            .car-options { break-inside: avoid; }
+        }
+
+        @media (max-width: 600px) {
+            .car-options { grid-template-columns: 1fr; }
+            .name-line { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Car Purchase Exercise</h1>
+        <div class="subtitle">You're buying a car. Let's see what it REALLY costs.</div>
+        <div class="meta">Unit 6: Debt and Big Decisions &bull; Lesson 12 Worksheet A</div>
+    </div>
+
+    <div class="name-line">
+        <div><label>Name: </label><span>&nbsp;</span></div>
+        <div><label>Date: </label><span>&nbsp;</span></div>
+    </div>
+
+    <div class="age-note">
+        <strong>Ages 6-9:</strong> Focus on Step 1 (pick your car) and Step 2 (fill in monthly costs with help). The big takeaway is how much cars REALLY cost each month.
+        <br><strong>Ages 10-13:</strong> Complete Steps 1-4. Use a calculator for the multiplication.
+        <br><strong>Age 15:</strong> Complete all steps including Step 5 connections. Try Option D with a real car you'd want.
+    </div>
+
+    <!-- STEP 1: PICK YOUR CAR -->
+    <div class="step-section">
+        <div class="step-header">Step 1: Pick Your Car</div>
+        <div class="step-body">
+            <p style="margin-bottom: 12px;">Choose one of these options. Circle it or write it below:</p>
+
+            <div class="car-options">
+                <div class="car-option option-a">
+                    <div class="option-label">Option A: Brand New Car</div>
+                    <div class="price">$32,000</div>
+                    <div class="details">4-year loan at 6.5% interest<br>Monthly payment: $760</div>
+                </div>
+                <div class="car-option option-b">
+                    <div class="option-label">Option B: Used Car (3 years old)</div>
+                    <div class="price">$18,000</div>
+                    <div class="details">4-year loan at 7.5% interest<br>Monthly payment: $435</div>
+                </div>
+                <div class="car-option option-c">
+                    <div class="option-label">Option C: Older Used Car</div>
+                    <div class="price">$7,500 CASH</div>
+                    <div class="details">No loan needed — paid in full!<br>Monthly payment: $0</div>
+                </div>
+                <div class="car-option option-d">
+                    <div class="option-label">Option D: Your Dream Car</div>
+                    <div class="price">$ ________</div>
+                    <div class="details">Look up a real car you'd want.<br>Monthly payment: $_____</div>
+                </div>
+            </div>
+
+            <div class="choice-line">
+                <strong>I choose:</strong> <span class="fill-blank wide"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- STEP 2: MONTHLY COSTS -->
+    <div class="step-section">
+        <div class="step-header">Step 2: Calculate Your Monthly Costs</div>
+        <div class="step-body">
+            <p style="margin-bottom: 8px;">Use the numbers from your car choice and the reference sheet to fill in each cost:</p>
+
+            <div class="helper-note">
+                <strong>Quick Reference:</strong> Insurance — New car ~$180/mo, Used ~$130/mo, Older used ~$90/mo. Gas — average $100-$120/mo. Maintenance — New $30/mo (warranty), Used $75/mo, Older $100/mo. Registration — about $8/mo ($100/year divided by 12).
+            </div>
+
+            <table class="calc-table">
+                <tr>
+                    <td>Car payment (from Step 1)</td>
+                    <td>$ <span class="fill-blank"></span> /month</td>
+                </tr>
+                <tr>
+                    <td>Insurance</td>
+                    <td>$ <span class="fill-blank"></span> /month</td>
+                </tr>
+                <tr>
+                    <td>Gas <span style="font-weight:normal;font-size:0.85em;">(estimate: $0.15-$0.25 per mile x miles driven)</span></td>
+                    <td>$ <span class="fill-blank"></span> /month</td>
+                </tr>
+                <tr>
+                    <td>Maintenance &amp; repairs</td>
+                    <td>$ <span class="fill-blank"></span> /month</td>
+                </tr>
+                <tr>
+                    <td>Registration &amp; fees ($100/year &div; 12)</td>
+                    <td>$ <span class="fill-blank"></span> /month</td>
+                </tr>
+                <tr class="total-row">
+                    <td>TOTAL MONTHLY COST</td>
+                    <td>$ <span class="fill-blank"></span> /month</td>
+                </tr>
+            </table>
+
+            <div class="helper-note">
+                <strong>Younger kids:</strong> Just add up the numbers! Use a calculator if you need to. The total might surprise you.
+            </div>
+        </div>
+    </div>
+
+    <!-- STEP 3: 5-YEAR TOTAL -->
+    <div class="step-section">
+        <div class="step-header">Step 3: Total 5-Year Cost</div>
+        <div class="step-body">
+            <p style="margin-bottom: 12px;">Now let's see what this car costs over 5 full years of ownership:</p>
+
+            <table class="calc-table">
+                <tr>
+                    <td>Monthly total (from Step 2) x 60 months</td>
+                    <td>$ <span class="fill-blank"></span></td>
+                </tr>
+                <tr>
+                    <td>
+                        Depreciation loss over 5 years
+                        <div class="helper-note" style="margin: 6px 0 0; padding: 8px 10px; font-size: 0.85em;">
+                            New car: ~55% loss = price x 0.55<br>
+                            Used car (3 yr old): ~30% loss = price x 0.30<br>
+                            Older used: ~25% loss = price x 0.25
+                        </div>
+                    </td>
+                    <td>$ <span class="fill-blank"></span></td>
+                </tr>
+                <tr class="total-row">
+                    <td>TOTAL 5-YEAR COST OF OWNING THIS CAR</td>
+                    <td>$ <span class="fill-blank"></span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- STEP 4: COMPARE -->
+    <div class="step-section">
+        <div class="step-header">Step 4: Compare the Options</div>
+        <div class="step-body">
+            <div class="comparison-box">
+                <h3>The Big Comparison</h3>
+                <p style="font-size: 0.9em; margin-bottom: 12px;">Fill in the 5-year totals for each option (use the reference sheet if needed):</p>
+                <div class="compare-row">
+                    <span><strong>Option A</strong> (New, $32,000):</span>
+                    <span>5-year total: $ <span class="fill-blank"></span></span>
+                </div>
+                <div class="compare-row">
+                    <span><strong>Option B</strong> (Used, $18,000):</span>
+                    <span>5-year total: $ <span class="fill-blank"></span></span>
+                </div>
+                <div class="compare-row">
+                    <span><strong>Option C</strong> (Older, $7,500 cash):</span>
+                    <span>5-year total: $ <span class="fill-blank"></span></span>
+                </div>
+            </div>
+
+            <div style="margin-top: 16px;">
+                <p style="font-weight: bold; margin-bottom: 8px;">How much MORE does Option A cost over 5 years compared to Option B?</p>
+                <div style="display: flex; gap: 8px; align-items: center;">
+                    <span>$ <span class="fill-blank"></span> - $ <span class="fill-blank"></span> = $ <span class="fill-blank wide"></span></span>
+                </div>
+            </div>
+
+            <div style="margin-top: 16px;">
+                <p style="font-weight: bold; margin-bottom: 8px; color: #6a1b9a;">What could you do with that difference? (vacations, savings, investing, etc.)</p>
+                <div class="answer-lines"></div>
+                <div class="answer-lines"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STEP 5: BUILD YOUR LIFE CONNECTION -->
+    <div class="step-section">
+        <div class="step-header" style="background: #6a1b9a;">Step 5: Connection to Build Your Life</div>
+        <div class="step-body">
+            <div class="reflection-box">
+                <h3>Think Back to Your Budget</h3>
+
+                <div class="reflection-question">
+                    <p>What did you pick for transportation in Build Your Life?</p>
+                    <div class="answer-lines"></div>
+                </div>
+
+                <div class="reflection-question">
+                    <p>How much did you budget per month for your car?</p>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        $ <span class="fill-blank wide"></span> /month
+                    </div>
+                </div>
+
+                <div class="reflection-question">
+                    <p>Now that you see the REAL cost (payment + insurance + gas + maintenance), does your budget still work?</p>
+                    <div class="answer-lines"></div>
+                </div>
+
+                <div class="reflection-question">
+                    <p>Would you change your transportation choice? If so, what would you pick instead?</p>
+                    <div class="answer-lines"></div>
+                    <div class="answer-lines"></div>
+                </div>
+            </div>
+
+            <div class="helper-note" style="margin-top: 14px;">
+                <strong>For older students:</strong> Think about how your credit score (from our credit lesson) would affect the interest rate on your car loan. A person with a 620 score might pay 11% instead of 6.5%. How much more would Option A cost per month at 11%? (Hint: a LOT more.)
+            </div>
+        </div>
+    </div>
+
+    <!-- MONTHLY PAYMENT LOOKUP TABLE -->
+    <div class="step-section">
+        <div class="step-header" style="background: #37474f;">Reference: Monthly Payment Lookup (4-Year / 48-Month Loan)</div>
+        <div class="step-body">
+            <table class="lookup-table">
+                <thead>
+                    <tr>
+                        <th>Amount Borrowed</th>
+                        <th>At 6% interest</th>
+                        <th>At 7% interest</th>
+                        <th>At 8% interest</th>
+                        <th>At 10% interest</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>$5,000</td>
+                        <td>$117</td>
+                        <td>$120</td>
+                        <td>$122</td>
+                        <td>$127</td>
+                    </tr>
+                    <tr>
+                        <td>$10,000</td>
+                        <td>$235</td>
+                        <td>$239</td>
+                        <td>$244</td>
+                        <td>$254</td>
+                    </tr>
+                    <tr>
+                        <td>$15,000</td>
+                        <td>$352</td>
+                        <td>$359</td>
+                        <td>$366</td>
+                        <td>$380</td>
+                    </tr>
+                    <tr>
+                        <td>$18,000</td>
+                        <td>$423</td>
+                        <td>$431</td>
+                        <td>$439</td>
+                        <td>$456</td>
+                    </tr>
+                    <tr>
+                        <td>$20,000</td>
+                        <td>$470</td>
+                        <td>$479</td>
+                        <td>$488</td>
+                        <td>$507</td>
+                    </tr>
+                    <tr>
+                        <td>$25,000</td>
+                        <td>$587</td>
+                        <td>$598</td>
+                        <td>$610</td>
+                        <td>$634</td>
+                    </tr>
+                    <tr>
+                        <td>$30,000</td>
+                        <td>$704</td>
+                        <td>$718</td>
+                        <td>$732</td>
+                        <td>$761</td>
+                    </tr>
+                    <tr>
+                        <td>$32,000</td>
+                        <td>$751</td>
+                        <td>$766</td>
+                        <td>$781</td>
+                        <td>$812</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 0.85em; color: #666; margin-top: 6px;">Use this table to find the approximate monthly payment for your car loan. Find the row closest to your loan amount and the column closest to your interest rate.</p>
+        </div>
+    </div>
+
+</body>
+</html>

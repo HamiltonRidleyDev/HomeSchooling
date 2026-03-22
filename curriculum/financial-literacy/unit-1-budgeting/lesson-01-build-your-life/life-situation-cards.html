@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Life Situation Cards</title>
+<style>
+  @media print {
+    body { margin: 0.3in; }
+    .card { page-break-inside: avoid; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 900px; margin: 0 auto; padding: 16px; line-height: 1.4; color: #2d3436; }
+  h1 { text-align: center; font-size: 1.5em; margin-bottom: 2px; }
+  .subtitle { text-align: center; font-size: 0.85em; color: #636e72; margin-bottom: 6px; }
+  .instructions { background: #f5f6fa; border-left: 4px solid #e17055; padding: 8px 12px; font-size: 0.82em; margin-bottom: 14px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .card { border: 2.5px solid; border-radius: 12px; padding: 14px; min-height: 150px; display: flex; flex-direction: column; }
+  .card-icon { font-size: 2em; text-align: center; margin-bottom: 6px; }
+  .card-title { font-weight: bold; font-size: 1.05em; text-align: center; margin-bottom: 6px; }
+  .card-desc { font-size: 0.85em; color: #636e72; text-align: center; margin-bottom: 8px; flex: 1; }
+  .card-effect { background: #f5f6fa; border-radius: 6px; padding: 8px 10px; font-size: 0.82em; }
+  .card-effect strong { color: #d63031; }
+  .card-effect .good { color: #00b894; font-weight: bold; }
+
+  .card.tough { border-color: #e17055; background: #fff5f2; }
+  .card.moderate { border-color: #fdcb6e; background: #fffdf2; }
+  .card.lucky { border-color: #00b894; background: #f0fff8; }
+  .card.complex { border-color: #a29bfe; background: #f8f7ff; }
+
+  .section-label { text-align: center; font-weight: bold; font-size: 1em; margin: 16px 0 8px; padding: 6px 12px; border-radius: 6px; color: white; }
+</style>
+</head>
+<body>
+
+<h1>Life Situation Cards</h1>
+<p class="subtitle">Draw one before you start budgeting. This is your life — deal with it!</p>
+<div class="instructions">
+  <strong>How to use:</strong> Print, cut apart, and place face-down. Each kid draws ONE card before starting their budget. The card adds a real-life condition that changes their budget. Some make things harder. Some make things easier. That's life!
+  <br><strong>For younger kids (K-4th):</strong> Parent reads the card and explains it. Simplify the math if needed.
+  <br><strong>For ages 11+:</strong> They handle the full effect on their own.
+  <br><strong>Optional:</strong> Let the 15-year-old draw TWO cards for extra challenge.
+</div>
+
+<div class="section-label" style="background: #e17055;">Tough Situations — Life isn't always easy</div>
+<div class="grid">
+
+<div class="card tough">
+  <div class="card-icon">&#127891;</div>
+  <div class="card-title">Student Loan Debt</div>
+  <div class="card-desc">You went to college and have student loans to pay back. Education opened doors, but it came with a price tag.</div>
+  <div class="card-effect"><strong>Budget impact: -$300/month</strong> for student loan payment. This lasts for 10 years. You can't skip it — missing payments wrecks your credit score.</div>
+</div>
+
+<div class="card tough">
+  <div class="card-icon">&#128118;</div>
+  <div class="card-title">You Have a Young Child</div>
+  <div class="card-desc">You're a parent! Your child needs daycare while you work, plus food, clothes, and diapers.</div>
+  <div class="card-effect"><strong>Budget impact: -$1,000/month</strong> ($800 daycare + $200 child expenses). You need at least a 1-bedroom apartment. Life insurance becomes important.</div>
+</div>
+
+<div class="card tough">
+  <div class="card-icon">&#127751;</div>
+  <div class="card-title">Expensive City</div>
+  <div class="card-desc">Your job is in a big city where everything costs more — rent, food, parking, going out.</div>
+  <div class="card-effect"><strong>Budget impact: Housing costs 40% more</strong> than the mid-range prices on the catalog. Food +$75/month. But your job might pay more too — add 15% to your career income.</div>
+</div>
+
+<div class="card tough">
+  <div class="card-icon">&#129657;</div>
+  <div class="card-title">Ongoing Medical Costs</div>
+  <div class="card-desc">You have a health condition that needs regular medication and doctor visits. Very common — millions of people deal with this.</div>
+  <div class="card-effect"><strong>Budget impact: -$200/month</strong> for medication + copays. You should strongly consider a better health insurance plan to keep costs manageable.</div>
+</div>
+
+<div class="card tough">
+  <div class="card-icon">&#128179;</div>
+  <div class="card-title">Credit Card Debt</div>
+  <div class="card-desc">Before you learned about budgeting, you racked up $4,000 in credit card debt at 22% interest. Ouch.</div>
+  <div class="card-effect"><strong>Budget impact: -$175/month</strong> minimum payment. If you only pay the minimum, it takes 3+ years and you pay $1,400 in interest. Paying more = getting free faster.</div>
+</div>
+
+<div class="card tough">
+  <div class="card-icon">&#128663;</div>
+  <div class="card-title">Car Broke Down</div>
+  <div class="card-desc">Your old car died. You need transportation but you're starting from scratch — no car, no savings for one.</div>
+  <div class="card-effect"><strong>Budget impact:</strong> You MUST choose a transportation option that isn't "walk/bike" unless your job is within 2 miles. If you buy a car, you need a loan — you can't buy outright.</div>
+</div>
+
+</div>
+
+<div class="section-label" style="background: #fdcb6e; color: #2d3436;">Moderate Situations — Some good, some tricky</div>
+<div class="grid">
+
+<div class="card moderate">
+  <div class="card-icon">&#128054;</div>
+  <div class="card-title">You Have a Dog</div>
+  <div class="card-desc">You have a furry best friend! Dogs bring joy but also bills — food, vet visits, toys, grooming.</div>
+  <div class="card-effect"><strong>Budget impact: -$125/month</strong> (food $50, vet fund $40, supplies $35). Your apartment must allow pets — some charge pet rent (+$25-$50/mo).</div>
+</div>
+
+<div class="card moderate">
+  <div class="card-icon">&#127968;</div>
+  <div class="card-title">Supporting a Family Member</div>
+  <div class="card-desc">Your parent or sibling needs financial help. You want to support them because family matters.</div>
+  <div class="card-effect"><strong>Budget impact: -$200/month</strong> that you send to help. This is a choice, not a bill — but it's important to you.</div>
+</div>
+
+<div class="card moderate">
+  <div class="card-icon">&#128218;</div>
+  <div class="card-title">Going to School Part-Time</div>
+  <div class="card-desc">You're working AND going to school at night to get a better degree or certification. Busy but investing in your future.</div>
+  <div class="card-effect"><strong>Budget impact: -$150/month</strong> for tuition (after aid). Less free time, but in 2 years your income goes up by $800/month. Worth it?</div>
+</div>
+
+<div class="card moderate">
+  <div class="card-icon">&#127758;</div>
+  <div class="card-title">Small Town Living</div>
+  <div class="card-desc">You live in a small town. Housing is cheap, but there are fewer job options and you definitely need a car.</div>
+  <div class="card-effect"><strong>Budget impact:</strong> <span class="good">Housing costs 30% LESS</span> than mid-range prices. But you MUST have a car — no public transit option. Fewer entertainment options too.</div>
+</div>
+
+</div>
+
+<div class="section-label" style="background: #00b894;">Lucky Situations — Some people catch a break</div>
+<div class="grid">
+
+<div class="card lucky">
+  <div class="card-icon">&#127968;</div>
+  <div class="card-title">Living with Family</div>
+  <div class="card-desc">Your parents or relatives let you live with them for cheap while you save up. Smart move!</div>
+  <div class="card-effect"><strong>Budget impact:</strong> <span class="good">Housing = only $400/month</span> (you contribute to the household). Utilities included. Great chance to save aggressively or pay off debt.</div>
+</div>
+
+<div class="card lucky">
+  <div class="card-icon">&#127891;</div>
+  <div class="card-title">Scholarship Graduate</div>
+  <div class="card-desc">You earned scholarships and graduated with NO student debt. All your income is yours!</div>
+  <div class="card-effect"><strong>Budget impact:</strong> <span class="good">No student loan payment!</span> You have an extra $200-$400/month compared to most graduates. Use it wisely — save, invest, or enjoy.</div>
+</div>
+
+<div class="card lucky">
+  <div class="card-icon">&#128176;</div>
+  <div class="card-title">Small Inheritance</div>
+  <div class="card-desc">A relative left you $5,000. It's not life-changing, but it's a head start.</div>
+  <div class="card-effect"><strong>Budget impact:</strong> <span class="good">You start with $5,000 in savings.</span> This could be an emergency fund, a car down payment (lowers monthly payments), or seed money for a business. What will you do with it?</div>
+</div>
+
+<div class="card lucky">
+  <div class="card-icon">&#128587;</div>
+  <div class="card-title">Great Roommate Situation</div>
+  <div class="card-desc">Your best friend wants to split a 2-bedroom apartment 50/50. Two incomes, one rent!</div>
+  <div class="card-effect"><strong>Budget impact:</strong> <span class="good">You can get a 2-bedroom apartment for HALF the listed price.</span> Split utilities too. Living with someone you trust is a real financial cheat code.</div>
+</div>
+
+</div>
+
+<div class="section-label" style="background: #a29bfe;">Complex Situations — Multiple things happening (Ages 13+)</div>
+<div class="grid">
+
+<div class="card complex">
+  <div class="card-icon">&#128104;&#8205;&#128105;&#8205;&#128103;</div>
+  <div class="card-title">Single Parent + Student Loans</div>
+  <div class="card-desc">You're raising a child alone AND paying off college. Life is full but tight.</div>
+  <div class="card-effect"><strong>Budget impact: -$300/mo loans AND -$1,000/mo child costs.</strong> You need a solid plan. But you also qualify for tax credits that give you an extra +$250/mo. Net: -$1,050/mo. This is why budgeting matters.</div>
+</div>
+
+<div class="card complex">
+  <div class="card-icon">&#128640;</div>
+  <div class="card-title">Side Hustle Already Running</div>
+  <div class="card-desc">You already started a small business on the side before this exercise! It's making money but costs money too.</div>
+  <div class="card-effect"><strong>Budget impact:</strong> <span class="good">+$500/mo extra income</span>, BUT -$150/mo in business expenses (website, supplies, ads). Net: <span class="good">+$350/mo</span>. Your side hustle pitch can be about growing this!</div>
+</div>
+
+</div>
+
+<div style="text-align: center; margin-top: 16px; padding-top: 8px; border-top: 2px dashed #dfe6e9; font-size: 0.78em; color: #b2bec3;">
+  &#9986; Cut along card borders. Place face-down. Each person draws 1 card. For extra challenge (age 13+), draw 2.
+  <br>These situations are based on real life — talk about which ones feel familiar and what you'd do.
+</div>
+
+</body>
+</html>

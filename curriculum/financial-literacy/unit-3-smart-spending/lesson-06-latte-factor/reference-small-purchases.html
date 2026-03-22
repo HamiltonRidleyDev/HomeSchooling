@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Real Cost of Small Purchases</title>
+<style>
+  :root {
+    --navy: #1a2744;
+    --blue: #2563eb;
+    --light-blue: #dbeafe;
+    --green: #16a34a;
+    --dark-green: #15803d;
+    --light-green: #dcfce7;
+    --bright-green: #22c55e;
+    --amber: #d97706;
+    --light-amber: #fef3c7;
+    --red: #dc2626;
+    --light-red: #fee2e2;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-600: #4b5563;
+    --gray-800: #1f2937;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--gray-800);
+    line-height: 1.5;
+    background: var(--gray-50);
+  }
+
+  .page {
+    max-width: 850px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 36px 44px;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .page { padding: 16px 0; max-width: 100%; }
+    .cost-table { break-inside: avoid; }
+    .callout-box { break-inside: avoid; }
+    .alternatives { break-inside: avoid; }
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .header .unit-tag {
+    display: inline-block;
+    background: var(--navy);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 30px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .header .subtitle {
+    font-size: 15px;
+    color: var(--gray-600);
+    font-style: italic;
+  }
+
+  /* Shock stat */
+  .shock-stat {
+    background: linear-gradient(135deg, var(--navy), #2d3a5c);
+    color: #fff;
+    text-align: center;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 28px;
+  }
+  .shock-stat .chain {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    line-height: 1.8;
+  }
+  .shock-stat .chain .arrow { color: #fbbf24; margin: 0 6px; }
+  .shock-stat .final {
+    font-size: 32px;
+    font-weight: 800;
+    color: #4ade80;
+    margin-top: 6px;
+  }
+  .shock-stat .final-label {
+    font-size: 13px;
+    color: #94a3b8;
+    letter-spacing: 0.5px;
+  }
+
+  /* Cost table */
+  .cost-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 28px;
+    font-size: 14px;
+  }
+  .cost-table thead th {
+    background: var(--navy);
+    color: #fff;
+    padding: 10px 12px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .cost-table thead th:first-child {
+    text-align: left;
+    border-radius: 8px 0 0 0;
+  }
+  .cost-table thead th:last-child {
+    border-radius: 0 8px 0 0;
+    background: var(--dark-green);
+  }
+  .cost-table tbody tr {
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .cost-table tbody tr:nth-child(even) {
+    background: var(--gray-50);
+  }
+  .cost-table tbody tr:hover {
+    background: #fefce8;
+  }
+  .cost-table tbody td {
+    padding: 10px 12px;
+    text-align: center;
+  }
+  .cost-table tbody td:first-child {
+    text-align: left;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .cost-table .freq {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--gray-600);
+  }
+  .cost-table .col-day { color: var(--gray-600); }
+  .cost-table .col-month { color: var(--gray-800); }
+  .cost-table .col-year { color: var(--navy); font-weight: 600; }
+  .cost-table .col-decade { color: var(--red); font-weight: 700; font-size: 15px; }
+  .cost-table .col-invested {
+    background: #f0fdf4;
+    color: var(--dark-green);
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: -0.3px;
+  }
+
+  /* Callout box */
+  .callout-box {
+    background: linear-gradient(135deg, #fef3c7, #fffbeb);
+    border: 3px solid var(--amber);
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin: 28px 0;
+    text-align: center;
+  }
+  .callout-box h2 {
+    color: var(--amber);
+    font-size: 22px;
+    margin-bottom: 10px;
+    border: none;
+    padding: 0;
+  }
+  .callout-box p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--gray-800);
+  }
+  .callout-box .big-range {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--dark-green);
+    display: block;
+    margin: 8px 0;
+  }
+  .callout-box .uses {
+    font-size: 14px;
+    color: var(--gray-600);
+    margin-top: 8px;
+  }
+
+  /* Alternatives section */
+  .alternatives {
+    margin-top: 28px;
+  }
+  .alternatives h2 {
+    font-size: 20px;
+    color: var(--navy);
+    margin-bottom: 14px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--light-green);
+  }
+  .alt-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .alt-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .alt-card .versus {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    min-width: 70px;
+  }
+  .alt-card .price-old {
+    background: var(--light-red);
+    color: var(--red);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    text-decoration: line-through;
+  }
+  .alt-card .price-new {
+    background: var(--light-green);
+    color: var(--dark-green);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+  .alt-card .arrow-down {
+    color: var(--green);
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .alt-card .alt-text {
+    font-size: 14px;
+  }
+  .alt-card .alt-text strong {
+    display: block;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  .alt-card .alt-text span {
+    color: var(--gray-600);
+  }
+
+  /* Bottom note */
+  .bottom-note {
+    margin-top: 24px;
+    padding: 14px 18px;
+    background: var(--light-blue);
+    border-radius: 10px;
+    font-size: 13px;
+    color: var(--gray-600);
+    text-align: center;
+  }
+  .bottom-note strong { color: var(--navy); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="unit-tag">Unit 3 &middot; Lesson 6 &middot; Reference Sheet</div>
+    <h1>The Real Cost of Small Purchases</h1>
+    <div class="subtitle">"It's only $6." &mdash; The most expensive sentence in the English language.</div>
+  </div>
+
+  <!-- Shock stat -->
+  <div class="shock-stat">
+    <div class="chain">
+      $6/day <span class="arrow">&#9654;</span> $42/week <span class="arrow">&#9654;</span> $182/month <span class="arrow">&#9654;</span> $2,184/year
+    </div>
+    <div class="final-label">Invested at 10% for 30 years:</div>
+    <div class="final">$139,000+</div>
+  </div>
+
+  <!-- Main cost table -->
+  <table class="cost-table">
+    <thead>
+      <tr>
+        <th>Daily Habit</th>
+        <th>Per Day</th>
+        <th>Per Month</th>
+        <th>Per Year</th>
+        <th>10 Years</th>
+        <th>Invested 20yr @10%</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Coffee shop latte<span class="freq">daily</span></td>
+        <td class="col-day">$6</td>
+        <td class="col-month">$130</td>
+        <td class="col-year">$1,560</td>
+        <td class="col-decade">$15,600</td>
+        <td class="col-invested">~$99,000</td>
+      </tr>
+      <tr>
+        <td>Vending machine snack<span class="freq">daily</span></td>
+        <td class="col-day">$2</td>
+        <td class="col-month">$44</td>
+        <td class="col-year">$528</td>
+        <td class="col-decade">$5,280</td>
+        <td class="col-invested">~$33,500</td>
+      </tr>
+      <tr>
+        <td>Fast food lunch<span class="freq">daily (workdays)</span></td>
+        <td class="col-day">$12</td>
+        <td class="col-month">$264</td>
+        <td class="col-year">$3,168</td>
+        <td class="col-decade">$31,680</td>
+        <td class="col-invested">~$201,000</td>
+      </tr>
+      <tr>
+        <td>DoorDash delivery<span class="freq">3x/week</span></td>
+        <td class="col-day">$15</td>
+        <td class="col-month">$195</td>
+        <td class="col-year">$2,340</td>
+        <td class="col-decade">$23,400</td>
+        <td class="col-invested">~$148,500</td>
+      </tr>
+      <tr>
+        <td>Impulse Amazon buy<span class="freq">1x/week</span></td>
+        <td class="col-day">$20</td>
+        <td class="col-month">$87</td>
+        <td class="col-year">$1,040</td>
+        <td class="col-decade">$10,400</td>
+        <td class="col-invested">~$66,000</td>
+      </tr>
+      <tr>
+        <td>Bottled water (vs tap)<span class="freq">daily</span></td>
+        <td class="col-day">$2</td>
+        <td class="col-month">$44</td>
+        <td class="col-year">$528</td>
+        <td class="col-decade">$5,280</td>
+        <td class="col-invested">~$33,500</td>
+      </tr>
+      <tr>
+        <td>Unused subscription<span class="freq">monthly</span></td>
+        <td class="col-day">&mdash;</td>
+        <td class="col-month">$15</td>
+        <td class="col-year">$180</td>
+        <td class="col-decade">$1,800</td>
+        <td class="col-invested">~$11,400</td>
+      </tr>
+      <tr>
+        <td>Movie theater outing<span class="freq">1x/month</span></td>
+        <td class="col-day">&mdash;</td>
+        <td class="col-month">$30</td>
+        <td class="col-year">$360</td>
+        <td class="col-decade">$3,600</td>
+        <td class="col-invested">~$22,800</td>
+      </tr>
+      <tr>
+        <td>Gas station snacks<span class="freq">daily</span></td>
+        <td class="col-day">$3</td>
+        <td class="col-month">$66</td>
+        <td class="col-year">$792</td>
+        <td class="col-decade">$7,920</td>
+        <td class="col-invested">~$50,300</td>
+      </tr>
+      <tr>
+        <td>In-app purchases<span class="freq">~daily</span></td>
+        <td class="col-day">$5</td>
+        <td class="col-month">$109</td>
+        <td class="col-year">$1,300</td>
+        <td class="col-decade">$13,000</td>
+        <td class="col-invested">~$82,500</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Big callout -->
+  <div class="callout-box">
+    <h2>The 3-Cut Challenge</h2>
+    <p>Pick any 3 items from the table above. Eliminate them.</p>
+    <p>You just found:</p>
+    <span class="big-range">$3,000 &ndash; $7,000 per year</span>
+    <p class="uses">That is enough for a family vacation, a fully-funded emergency fund, or a down payment on a car.</p>
+  </div>
+
+  <!-- Alternatives -->
+  <div class="alternatives">
+    <h2>Free or Cheaper Alternatives</h2>
+    <div class="alt-grid">
+      <div class="alt-card">
+        <div class="versus">
+          <span class="price-old">$6.00</span>
+          <span class="arrow-down">&#8595;</span>
+          <span class="price-new">$0.25</span>
+        </div>
+        <div class="alt-text">
+          <strong>Coffee shop &#8594; Make it at home</strong>
+          <span>Same caffeine. A bag of good coffee costs ~$12 and makes 40+ cups.</span>
+        </div>
+      </div>
+      <div class="alt-card">
+        <div class="versus">
+          <span class="price-old">$15&ndash;25</span>
+          <span class="arrow-down">&#8595;</span>
+          <span class="price-new">$5.00</span>
+        </div>
+        <div class="alt-text">
+          <strong>DoorDash &#8594; Cook the same meal</strong>
+          <span>Same food, skip the delivery fee, service fee, and tip markup.</span>
+        </div>
+      </div>
+      <div class="alt-card">
+        <div class="versus">
+          <span class="price-old">$2.00</span>
+          <span class="arrow-down">&#8595;</span>
+          <span class="price-new">$0.00</span>
+        </div>
+        <div class="alt-text">
+          <strong>Bottled water &#8594; Reusable bottle</strong>
+          <span>Tap water is free (and often cleaner than bottled). One bottle lasts years.</span>
+        </div>
+      </div>
+      <div class="alt-card">
+        <div class="versus">
+          <span class="price-old">$2&ndash;3</span>
+          <span class="arrow-down">&#8595;</span>
+          <span class="price-new">$0.30</span>
+        </div>
+        <div class="alt-text">
+          <strong>Vending machine &#8594; Pack snacks from home</strong>
+          <span>Buy in bulk. A box of granola bars costs less than 2 vending machine trips.</span>
+        </div>
+      </div>
+      <div class="alt-card">
+        <div class="versus">
+          <span class="price-old">$40/mo</span>
+          <span class="arrow-down">&#8595;</span>
+          <span class="price-new">$0.00</span>
+        </div>
+        <div class="alt-text">
+          <strong>Gym membership &#8594; YouTube workouts</strong>
+          <span>Thousands of free, high-quality workout videos. No commute either.</span>
+        </div>
+      </div>
+      <div class="alt-card">
+        <div class="versus">
+          <span class="price-old">$12</span>
+          <span class="arrow-down">&#8595;</span>
+          <span class="price-new">$3.00</span>
+        </div>
+        <div class="alt-text">
+          <strong>Fast food lunch &#8594; Pack a lunch</strong>
+          <span>Leftovers, sandwiches, or meal prep. Healthier too.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom note -->
+  <div class="bottom-note">
+    <strong>Note:</strong> Investment calculations assume 10% average annual return (the historical average of the S&amp;P 500) with monthly contributions. Actual returns will vary. The point is not the exact number &mdash; it is the <strong>massive</strong> difference between spending small and investing small.
+  </div>
+
+</div>
+</body>
+</html>

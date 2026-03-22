@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Company Research Worksheet — Stock Market Basics</title>
+<style>
+  :root {
+    --navy: #1a2744;
+    --blue: #2563eb;
+    --light-blue: #dbeafe;
+    --green: #16a34a;
+    --light-green: #dcfce7;
+    --amber: #d97706;
+    --light-amber: #fef3c7;
+    --purple: #7c3aed;
+    --light-purple: #ede9fe;
+    --teal: #0d9488;
+    --light-teal: #ccfbf1;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-600: #4b5563;
+    --gray-800: #1f2937;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--gray-800);
+    line-height: 1.6;
+    background: var(--gray-50);
+  }
+
+  .page {
+    max-width: 850px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px 48px;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .page { padding: 20px 0; max-width: 100%; }
+    .section { break-inside: avoid; }
+    .primary-section { page-break-before: always; }
+    .drawing-box { break-inside: avoid; }
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid var(--navy);
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+  }
+  .header .unit-tag {
+    display: inline-block;
+    background: var(--navy);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 28px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .header .subtitle {
+    font-size: 15px;
+    color: var(--gray-600);
+    font-style: italic;
+  }
+
+  /* Name/Date row */
+  .name-row {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .name-row .field {
+    flex: 1;
+    font-size: 15px;
+  }
+  .name-row .field-label {
+    font-weight: 600;
+    color: var(--gray-600);
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+  .name-row .field-line {
+    border-bottom: 2px solid var(--gray-300);
+    min-height: 28px;
+  }
+
+  /* Intro text */
+  .intro {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    border-left: 4px solid var(--blue);
+  }
+
+  /* Section cards */
+  .section {
+    border: 2px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .section-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .section-age {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  .section-basic { border-color: var(--green); }
+  .section-basic .section-icon { background: var(--light-green); }
+  .section-basic .section-age { background: var(--light-green); color: var(--green); }
+
+  .section-9plus { border-color: var(--blue); }
+  .section-9plus .section-icon { background: var(--light-blue); }
+  .section-9plus .section-age { background: var(--light-blue); color: var(--blue); }
+
+  .section-13plus { border-color: var(--purple); }
+  .section-13plus .section-icon { background: var(--light-purple); }
+  .section-13plus .section-age { background: var(--light-purple); color: var(--purple); }
+
+  .section-pitch { border-color: var(--amber); }
+  .section-pitch .section-icon { background: var(--light-amber); }
+  .section-pitch .section-age { background: var(--light-amber); color: var(--amber); }
+
+  .section-primary { border-color: #f59e0b; border-width: 3px; }
+  .section-primary .section-icon { background: #fef3c7; }
+  .section-primary .section-age { background: #fef3c7; color: #92400e; }
+
+  /* Form fields */
+  .field-group {
+    margin-bottom: 14px;
+  }
+  .field-label-q {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 4px;
+  }
+  .answer-line {
+    border-bottom: 2px solid var(--gray-200);
+    min-height: 30px;
+    margin-bottom: 2px;
+  }
+  .answer-line-tall {
+    border-bottom: 2px solid var(--gray-200);
+    min-height: 30px;
+    margin-bottom: 6px;
+  }
+  .answer-box {
+    border: 2px solid var(--gray-200);
+    border-radius: 8px;
+    min-height: 80px;
+    padding: 8px;
+  }
+  .inline-fields {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .inline-field {
+    flex: 1;
+    min-width: 180px;
+  }
+
+  /* Drawing box */
+  .drawing-box {
+    border: 3px dashed var(--amber);
+    border-radius: 12px;
+    min-height: 260px;
+    margin: 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-300);
+    font-size: 16px;
+    font-style: italic;
+  }
+
+  /* Circle option */
+  .circle-option {
+    display: inline-flex;
+    gap: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 8px 0;
+  }
+  .circle-option span {
+    border: 3px solid var(--gray-300);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Calculation helper */
+  .calc-helper {
+    background: var(--gray-50);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--gray-600);
+    margin-top: 8px;
+  }
+
+  /* Divider */
+  .page-divider {
+    border: none;
+    border-top: 3px dashed var(--gray-200);
+    margin: 32px 0;
+  }
+
+  @media (max-width: 700px) {
+    .page { padding: 24px 20px; }
+    .inline-fields { flex-direction: column; }
+    .name-row { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="unit-tag">Unit 5 — Growing Wealth &bull; Lesson 10</div>
+    <h1>Company Deep Dive</h1>
+    <div class="subtitle">Stock Market Research Worksheet</div>
+  </div>
+
+  <!-- Name / Date -->
+  <div class="name-row">
+    <div class="field">
+      <div class="field-label">Name</div>
+      <div class="field-line"></div>
+    </div>
+    <div class="field" style="max-width: 200px;">
+      <div class="field-label">Date</div>
+      <div class="field-line"></div>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <div class="intro">
+    <strong>Pick a company you're interested in.</strong> It could be one you use every day, one from the Career Cards industry, or one you're just curious about. There are no wrong answers &mdash; the goal is to think like an investor.
+  </div>
+
+  <!-- ===================== BASIC INFO (EVERYONE) ===================== -->
+  <div class="section section-basic">
+    <div class="section-header">
+      <div class="section-icon">1</div>
+      <div class="section-title">Basic Info</div>
+      <div class="section-age">All Ages</div>
+    </div>
+
+    <div class="inline-fields">
+      <div class="inline-field">
+        <div class="field-group">
+          <div class="field-label-q">Company Name</div>
+          <div class="answer-line"></div>
+        </div>
+      </div>
+      <div class="inline-field" style="max-width: 200px;">
+        <div class="field-group">
+          <div class="field-label-q">Ticker Symbol</div>
+          <div class="answer-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <div class="field-label-q">What does this company do / make / sell?</div>
+      <div class="answer-line"></div>
+      <div class="answer-line"></div>
+    </div>
+
+    <div class="field-group">
+      <div class="field-label-q">Do YOU use this company's products? Which ones?</div>
+      <div class="answer-line"></div>
+      <div class="answer-line"></div>
+    </div>
+
+    <div class="inline-fields">
+      <div class="inline-field">
+        <div class="field-group">
+          <div class="field-label-q">Current Stock Price: $</div>
+          <div class="answer-line"></div>
+        </div>
+      </div>
+      <div class="inline-field">
+        <div class="field-group">
+          <div class="field-label-q">If you bought 1 share, what would it cost? $</div>
+          <div class="answer-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="calc-helper">
+      How to find it: Google "[company name] stock price" &mdash; the current price IS the cost of 1 share.
+    </div>
+  </div>
+
+  <!-- ===================== AGES 9+ ===================== -->
+  <div class="section section-9plus">
+    <div class="section-header">
+      <div class="section-icon">2</div>
+      <div class="section-title">Competitive Analysis</div>
+      <div class="section-age">Ages 9+</div>
+    </div>
+
+    <div class="field-group">
+      <div class="field-label-q">Who are this company's competitors? (Name 2-3)</div>
+      <div class="answer-line"></div>
+      <div class="answer-line"></div>
+    </div>
+
+    <div class="field-group">
+      <div class="field-label-q">Why do people choose THIS company over competitors?</div>
+      <div class="answer-line"></div>
+      <div class="answer-line"></div>
+    </div>
+
+    <div class="field-group">
+      <div class="field-label-q">What is this company's "big idea" or advantage? (What makes them special?)</div>
+      <div class="answer-line"></div>
+      <div class="answer-line"></div>
+    </div>
+
+    <div class="field-group">
+      <div class="field-label-q">Is this company growing? (Look it up: Are they making more money each year?)</div>
+      <div class="answer-line"></div>
+    </div>
+
+    <div class="field-group">
+      <div class="field-label-q">One risk or challenge this company faces:</div>
+      <div class="answer-line"></div>
+      <div class="answer-line"></div>
+    </div>
+  </div>
+
+  <!-- ===================== AGES 13+ ===================== -->
+  <div class="section section-13plus">
+    <div class="section-header">
+      <div class="section-icon">3</div>
+      <div class="section-title">Deep Dive Analysis</div>
+      <div class="section-age">Ages 13+</div>
+    </div>
+
+    <div class="inline-fields">
+      <div class="inline-field">
+        <div class="field-group">
+          <div class="field-label-q">Market Cap (how big is this company?): $</div>
+          <div class="answer-line"></div>
+        </div>
+      </div>
+      <div class="inline-field">
+        <div class="field-group">
+          <div class="field-label-q">Does this company pay dividends?</div>
+          <div class="answer-line"></div>
+          <div class="calc-helper" style="margin-top: 4px;">If yes, how much per share? $___</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-group" style="margin-top: 16px;">
+      <div class="field-label-q">5-Year Stock Price Comparison</div>
+      <div class="inline-fields" style="margin-top: 8px;">
+        <div class="inline-field">
+          <div class="field-label-q" style="font-size: 13px; color: var(--gray-600);">Price 5 Years Ago: $</div>
+          <div class="answer-line"></div>
+        </div>
+        <div class="inline-field">
+          <div class="field-label-q" style="font-size: 13px; color: var(--gray-600);">Current Price: $</div>
+          <div class="answer-line"></div>
+        </div>
+        <div class="inline-field">
+          <div class="field-label-q" style="font-size: 13px; color: var(--gray-600);">Change: ___%</div>
+          <div class="answer-line"></div>
+        </div>
+      </div>
+      <div class="calc-helper">
+        How to calculate: (Current Price - Old Price) &divide; Old Price &times; 100 = % Change<br>
+        Example: ($150 - $100) &divide; $100 &times; 100 = 50% increase
+      </div>
+    </div>
+
+    <div class="field-group" style="margin-top: 16px;">
+      <div class="field-label-q">If you had invested $100 in this company 5 years ago, it would be worth $_____ today.</div>
+      <div class="answer-line"></div>
+      <div class="calc-helper">
+        How to calculate: $100 &times; (Current Price &divide; Price 5 Years Ago) = Value Today<br>
+        Example: $100 &times; ($150 &divide; $100) = $150
+      </div>
+    </div>
+
+    <div class="field-group" style="margin-top: 20px;">
+      <div class="field-label-q">Would you invest your own money in this company?</div>
+      <div class="circle-option">
+        <span>YES</span>
+        <span>NO</span>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <div class="field-label-q">Write your investment thesis &mdash; why or why not? (2-3 sentences)</div>
+      <div class="answer-box"></div>
+    </div>
+  </div>
+
+  <!-- ===================== PITCH IT (AGES 11+) ===================== -->
+  <div class="section section-pitch">
+    <div class="section-header">
+      <div class="section-icon">&#9733;</div>
+      <div class="section-title">Pitch It!</div>
+      <div class="section-age">Ages 11+</div>
+    </div>
+
+    <p style="font-size: 14px; margin-bottom: 12px;">
+      Present your company to the family in <strong>1 minute</strong>. Use this space to plan your pitch.
+    </p>
+
+    <div class="field-group">
+      <div class="field-label-q">What does this company do? (1 sentence)</div>
+      <div class="answer-line"></div>
+    </div>
+
+    <div class="field-group">
+      <div class="field-label-q">Why is it a good (or bad) investment? (1-2 key reasons)</div>
+      <div class="answer-line"></div>
+      <div class="answer-line"></div>
+    </div>
+
+    <div class="field-group">
+      <div class="field-label-q">Would you buy? What's your recommendation?</div>
+      <div class="answer-line"></div>
+    </div>
+  </div>
+
+  <!-- ===================== PRIMARY VERSION (AGE 6) ===================== -->
+  <hr class="page-divider">
+
+  <div class="section section-primary primary-section">
+    <div class="section-header">
+      <div class="section-icon" style="font-size: 22px;">&#9786;</div>
+      <div class="section-title">My Favorite Company</div>
+      <div class="section-age">Primary (Ages 5-6)</div>
+    </div>
+
+    <div class="field-group">
+      <div class="field-label-q" style="font-size: 16px;">Draw a picture of a company you love!</div>
+      <div class="drawing-box">Draw here!</div>
+    </div>
+
+    <div class="field-group">
+      <div class="field-label-q" style="font-size: 16px;">What does this company make?</div>
+      <div class="answer-line" style="min-height: 36px; border-bottom-width: 3px;"></div>
+    </div>
+
+    <div class="field-group" style="margin-top: 16px;">
+      <div class="field-label-q" style="font-size: 16px;">Would you want to own a piece of this company?</div>
+      <div class="circle-option" style="font-size: 22px; margin: 12px 0;">
+        <span style="width: 56px; height: 56px; border-color: var(--green); color: var(--green);">YES</span>
+        <span style="width: 56px; height: 56px; border-color: var(--amber); color: var(--amber);">NO</span>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <div class="field-label-q" style="font-size: 16px;">Why?</div>
+      <div class="answer-line" style="min-height: 36px; border-bottom-width: 3px;"></div>
+      <div class="answer-line" style="min-height: 36px; border-bottom-width: 3px;"></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reference Sheet — Stock Market Basics</title>
+<style>
+  :root {
+    --navy: #1a2744;
+    --blue: #2563eb;
+    --light-blue: #dbeafe;
+    --green: #16a34a;
+    --light-green: #dcfce7;
+    --amber: #d97706;
+    --light-amber: #fef3c7;
+    --red: #dc2626;
+    --light-red: #fee2e2;
+    --purple: #7c3aed;
+    --light-purple: #ede9fe;
+    --teal: #0d9488;
+    --light-teal: #ccfbf1;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-600: #4b5563;
+    --gray-800: #1f2937;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--gray-800);
+    line-height: 1.6;
+    background: var(--gray-50);
+  }
+
+  .page {
+    max-width: 850px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px 48px;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .page { padding: 20px 0; max-width: 100%; }
+    .concept-card { break-inside: avoid; }
+    .tier-section { break-inside: avoid; }
+    .comparison-table { break-inside: avoid; }
+    .vocab-grid { break-inside: avoid; }
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid var(--navy);
+    padding-bottom: 20px;
+    margin-bottom: 32px;
+  }
+  .header .unit-tag {
+    display: inline-block;
+    background: var(--navy);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 28px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .header .subtitle {
+    font-size: 16px;
+    color: var(--gray-600);
+  }
+
+  /* Tier badges */
+  .tier-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .tier-everyone { background: var(--light-green); color: var(--green); border: 1px solid var(--green); }
+  .tier-9plus { background: var(--light-blue); color: var(--blue); border: 1px solid var(--blue); }
+  .tier-13plus { background: var(--light-purple); color: var(--purple); border: 1px solid var(--purple); }
+
+  /* Section headings */
+  h2 {
+    font-size: 22px;
+    color: var(--navy);
+    margin: 36px 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--light-blue);
+  }
+  h3 {
+    font-size: 18px;
+    color: var(--blue);
+    margin: 20px 0 8px;
+  }
+  h4 {
+    font-size: 15px;
+    color: var(--navy);
+    margin: 12px 0 6px;
+  }
+
+  /* Concept cards */
+  .concept-card {
+    background: var(--gray-50);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 16px 0;
+    border: 1px solid var(--gray-200);
+  }
+  .concept-card h3 {
+    margin-top: 0;
+    font-size: 19px;
+  }
+  .concept-card p, .concept-card li {
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+  .concept-card ul {
+    margin-left: 20px;
+    margin-top: 8px;
+  }
+
+  /* Analogy box */
+  .analogy {
+    background: var(--light-amber);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 12px 0;
+    font-size: 14px;
+    border-left: 4px solid var(--amber);
+  }
+  .analogy-label {
+    font-weight: 700;
+    color: var(--amber);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  /* Key point highlight */
+  .key-point {
+    background: var(--light-green);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 12px 0;
+    font-size: 14px;
+    border-left: 4px solid var(--green);
+  }
+  .key-point strong { color: var(--green); }
+
+  /* Comparison table */
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .comparison-table th {
+    background: var(--navy);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .comparison-table th:first-child {
+    border-radius: 8px 0 0 0;
+  }
+  .comparison-table th:last-child {
+    border-radius: 0 8px 0 0;
+  }
+  .comparison-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .comparison-table tr:nth-child(even) td {
+    background: var(--gray-50);
+  }
+  .comparison-table tr:last-child td:first-child {
+    border-radius: 0 0 0 8px;
+  }
+  .comparison-table tr:last-child td:last-child {
+    border-radius: 0 0 8px 0;
+  }
+
+  /* Vocab grid */
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 16px 0;
+  }
+  .vocab-item {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+  .vocab-item .term {
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 14px;
+  }
+  .vocab-item .def {
+    color: var(--gray-600);
+    font-size: 13px;
+    margin-top: 2px;
+  }
+
+  /* Research checklist */
+  .research-list {
+    list-style: none;
+    margin: 8px 0;
+    padding: 0;
+  }
+  .research-list li {
+    padding: 8px 12px;
+    border-left: 3px solid var(--purple);
+    margin-bottom: 8px;
+    background: var(--light-purple);
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+  }
+  .research-list li strong {
+    color: var(--purple);
+  }
+
+  /* Divider */
+  .tier-divider {
+    border: none;
+    border-top: 2px dashed var(--gray-300);
+    margin: 36px 0 20px;
+  }
+
+  @media (max-width: 700px) {
+    .page { padding: 24px 20px; }
+    .vocab-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="unit-tag">Unit 5 — Growing Wealth</div>
+    <h1>Stock Market Basics</h1>
+    <div class="subtitle">Reference Sheet &mdash; What You're Actually Buying</div>
+  </div>
+
+  <!-- ===================== FOR EVERYONE ===================== -->
+  <div class="tier-badge tier-everyone">For Everyone (All Ages)</div>
+
+  <!-- What Is a Stock? -->
+  <div class="concept-card">
+    <h3>What Is a Stock?</h3>
+    <ul>
+      <li>You buy a <strong>tiny piece of a company</strong>. You are now a part-owner.</li>
+      <li>If the company grows and makes money, your piece becomes <strong>worth more</strong>.</li>
+      <li>You can <strong>sell your piece anytime</strong> for whatever it's worth that day.</li>
+      <li>A "share" is just another word for one piece of stock.</li>
+    </ul>
+    <div class="analogy">
+      <div class="analogy-label">Analogy: The Pizza</div>
+      Imagine a pizza with 1,000 slices. You buy 1 slice for $10. The pizza shop gets really popular. Now people will pay $15 for a slice. Your $10 slice is worth $15! You didn't do anything &mdash; the company grew.
+    </div>
+  </div>
+
+  <!-- What Is a Stock Exchange? -->
+  <div class="concept-card">
+    <h3>What Is a Stock Exchange?</h3>
+    <ul>
+      <li>A <strong>marketplace</strong> where stocks are bought and sold &mdash; like eBay for company ownership.</li>
+      <li><strong>NYSE</strong> (New York Stock Exchange) and <strong>NASDAQ</strong> are the two biggest in the US.</li>
+      <li>Thousands of companies are "listed" &mdash; you can buy pieces of any of them.</li>
+      <li>The stock exchange is open Monday through Friday, 9:30 AM to 4:00 PM Eastern time.</li>
+    </ul>
+    <div class="analogy">
+      <div class="analogy-label">Analogy: The Farmers' Market</div>
+      Think of a farmers' market where every booth sells pieces of a different company instead of fruits and vegetables. You walk around, check the prices, and decide which "pieces" you want to buy. The next time you visit, the prices may have changed.
+    </div>
+  </div>
+
+  <!-- Why Do Stock Prices Go Up and Down? -->
+  <div class="concept-card">
+    <h3>Why Do Stock Prices Go Up and Down?</h3>
+    <ul>
+      <li><strong>Supply and demand:</strong> Lots of people want to buy a stock &rarr; price goes <strong>up</strong>. Lots of people want to sell &rarr; price goes <strong>down</strong>.</li>
+      <li><strong>Good news</strong> (strong sales, exciting new product, growing fast) &rarr; price usually goes up.</li>
+      <li><strong>Bad news</strong> (scandal, lost money, bad economy, product failure) &rarr; price usually goes down.</li>
+    </ul>
+    <div class="key-point">
+      <strong>Key Insight:</strong> Short-term, prices bounce around daily &mdash; sometimes wildly. Long-term, good companies tend to grow. This is why investing is a patience game.
+    </div>
+    <div class="analogy">
+      <div class="analogy-label">Analogy: The Sneaker Drop</div>
+      When a hot new sneaker comes out and everyone wants it, the resale price shoots up. When a shoe isn't popular, the price drops. Stocks work the same way &mdash; the price reflects how badly people want to own a piece of that company.
+    </div>
+  </div>
+
+  <!-- ===================== FOR AGES 9+ ===================== -->
+  <hr class="tier-divider">
+  <div class="tier-badge tier-9plus">For Ages 9+ (Elementary &amp; Up)</div>
+
+  <!-- What Is an Index Fund? -->
+  <div class="concept-card">
+    <h3>What Is an Index Fund?</h3>
+    <ul>
+      <li>Instead of picking <strong>ONE</strong> company, you buy a piece of <strong>ALL of them</strong> (or the 500 biggest ones).</li>
+      <li>The <strong>S&amp;P 500</strong> index fund owns pieces of Apple, Microsoft, Amazon, Google, Nike, Disney, and <strong>494 others</strong>.</li>
+      <li>If some companies go down, others go up &mdash; you're <strong>diversified</strong> (your eggs are in many baskets).</li>
+      <li>Over the last 100 years, the S&amp;P 500 has averaged about <strong>10% growth per year</strong>.</li>
+    </ul>
+    <div class="key-point">
+      <strong>Warren Buffett's Advice:</strong> Warren Buffett &mdash; one of the richest investors in history &mdash; says most people should just buy index funds. He even bet $1 million that an S&amp;P 500 index fund would beat professional stock pickers over 10 years. <strong>He won.</strong>
+    </div>
+    <div class="analogy">
+      <div class="analogy-label">Analogy: The Fruit Basket</div>
+      Picking one stock is like putting all your money on one apple. If that apple goes bad, you've lost everything. An index fund is like buying a basket of 500 different fruits. If one goes bad? No big deal &mdash; you still have 499 others.
+    </div>
+  </div>
+
+  <!-- Individual Stocks vs Index Funds -->
+  <div class="concept-card">
+    <h3>Individual Stocks vs. Index Funds</h3>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Index Fund</th>
+          <th>Individual Stock</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Risk</strong></td>
+          <td>Lower (spread across 500 companies)</td>
+          <td>Higher (one company)</td>
+        </tr>
+        <tr>
+          <td><strong>Reward</strong></td>
+          <td>Steady growth (~10%/year average)</td>
+          <td>Could be huge... or zero</td>
+        </tr>
+        <tr>
+          <td><strong>Effort</strong></td>
+          <td>None (set it and forget it)</td>
+          <td>High (must research constantly)</td>
+        </tr>
+        <tr>
+          <td><strong>Best For</strong></td>
+          <td>Everyone, especially beginners</td>
+          <td>People who enjoy research + accept risk</td>
+        </tr>
+        <tr>
+          <td><strong>Fun Fact</strong></td>
+          <td>Beats ~90% of professional stock pickers over time</td>
+          <td>Even experts often pick wrong</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="key-point">
+      <strong>The Takeaway:</strong> Most professionals who try to beat the index fund <em>can't do it consistently</em>. If the pros can't do it, why would we try? Start with index funds, and only pick individual stocks with money you can afford to lose &mdash; and only if you enjoy the research.
+    </div>
+  </div>
+
+  <!-- ===================== FOR AGES 13+ ===================== -->
+  <hr class="tier-divider">
+  <div class="tier-badge tier-13plus">For Ages 13+ (Middle School &amp; Up)</div>
+
+  <!-- How to Research a Company -->
+  <div class="concept-card">
+    <h3>How to Research a Company</h3>
+    <p>Before buying stock in any company, smart investors ask these questions:</p>
+    <ul class="research-list">
+      <li><strong>What do they sell?</strong> &mdash; Products, services, or both? Who are their customers?</li>
+      <li><strong>Are they growing?</strong> &mdash; Is their revenue (total money coming in) going up year over year?</li>
+      <li><strong>Do they make money?</strong> &mdash; Revenue is different from profit. Are they actually keeping more than they spend? (This is called "earnings.")</li>
+      <li><strong>Who are their competitors?</strong> &mdash; Every company has rivals. How does this one stack up?</li>
+      <li><strong>What's their "moat"?</strong> &mdash; A moat is what makes a company hard to compete with. Apple's moat is its ecosystem (iPhone + Mac + iPad + Watch all work together). Disney's moat is its characters and stories that people love for generations.</li>
+      <li><strong>What could go wrong?</strong> &mdash; Every investment has risks. Government regulation? New competitor? Technology changing? Honest investors think about what could go wrong, not just what could go right.</li>
+    </ul>
+  </div>
+
+  <!-- Key Vocabulary -->
+  <div class="concept-card">
+    <h3>Key Vocabulary</h3>
+    <div class="vocab-grid">
+      <div class="vocab-item">
+        <div class="term">Stock / Share</div>
+        <div class="def">A piece of ownership in a company. Owning 1 share = owning 1 tiny piece.</div>
+      </div>
+      <div class="vocab-item">
+        <div class="term">Ticker Symbol</div>
+        <div class="def">The short code for a stock. AAPL = Apple, DIS = Disney, NKE = Nike, RBLX = Roblox.</div>
+      </div>
+      <div class="vocab-item">
+        <div class="term">Market Cap (Market Capitalization)</div>
+        <div class="def">Total value of all shares combined. Tells you how "big" a company is. Apple's market cap is over $3 trillion.</div>
+      </div>
+      <div class="vocab-item">
+        <div class="term">Dividend</div>
+        <div class="def">Some companies pay you cash just for owning their stock &mdash; like a thank-you payment, usually every 3 months.</div>
+      </div>
+      <div class="vocab-item">
+        <div class="term">Bull Market</div>
+        <div class="def">When stocks are going UP overall. Called "bull" because a bull attacks by thrusting its horns upward.</div>
+      </div>
+      <div class="vocab-item">
+        <div class="term">Bear Market</div>
+        <div class="def">When stocks are going DOWN overall. Called "bear" because a bear attacks by swiping its paws downward.</div>
+      </div>
+      <div class="vocab-item">
+        <div class="term">Portfolio</div>
+        <div class="def">Your collection of all investments &mdash; stocks, index funds, bonds, etc. Like a folder holding all your financial stuff.</div>
+      </div>
+      <div class="vocab-item">
+        <div class="term">Diversification</div>
+        <div class="def">Spreading your money across many different investments to reduce risk. "Don't put all your eggs in one basket."</div>
+      </div>
+      <div class="vocab-item">
+        <div class="term">IPO (Initial Public Offering)</div>
+        <div class="def">When a company sells stock to the public for the first time. "Going public." Before an IPO, you can't buy shares.</div>
+      </div>
+      <div class="vocab-item">
+        <div class="term">Broker</div>
+        <div class="def">A company or app that lets you buy and sell stocks. Examples: Fidelity, Charles Schwab, Robinhood.</div>
+      </div>
+      <div class="vocab-item">
+        <div class="term">S&amp;P 500</div>
+        <div class="def">An index tracking the 500 biggest public companies in the US. The most popular benchmark for "how the market is doing."</div>
+      </div>
+      <div class="vocab-item">
+        <div class="term">Index Fund</div>
+        <div class="def">An investment that automatically buys all the stocks in an index (like the S&amp;P 500). Low cost, low effort, historically strong returns.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Reference: Popular Ticker Symbols -->
+  <div class="concept-card" style="background: var(--light-teal); border-color: var(--teal);">
+    <h3 style="color: var(--teal); margin-top: 0;">Quick Reference: Popular Ticker Symbols</h3>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px 20px; font-size: 14px; margin-top: 8px;">
+      <div><strong>AAPL</strong> &mdash; Apple</div>
+      <div><strong>MSFT</strong> &mdash; Microsoft</div>
+      <div><strong>GOOG</strong> &mdash; Alphabet (Google)</div>
+      <div><strong>AMZN</strong> &mdash; Amazon</div>
+      <div><strong>DIS</strong> &mdash; Disney</div>
+      <div><strong>NKE</strong> &mdash; Nike</div>
+      <div><strong>TSLA</strong> &mdash; Tesla</div>
+      <div><strong>NFLX</strong> &mdash; Netflix</div>
+      <div><strong>RBLX</strong> &mdash; Roblox</div>
+      <div><strong>META</strong> &mdash; Meta (Facebook)</div>
+      <div><strong>NTDOY</strong> &mdash; Nintendo</div>
+      <div><strong>SBUX</strong> &mdash; Starbucks</div>
+      <div><strong>MCD</strong> &mdash; McDonald's</div>
+      <div><strong>KO</strong> &mdash; Coca-Cola</div>
+      <div><strong>WMT</strong> &mdash; Walmart</div>
+    </div>
+    <p style="margin-top: 12px; font-size: 13px; color: var(--gray-600);"><strong>How to look up any stock:</strong> Google "[company name] stock price" or visit finance.yahoo.com</p>
+  </div>
+
+</div>
+</body>
+</html>

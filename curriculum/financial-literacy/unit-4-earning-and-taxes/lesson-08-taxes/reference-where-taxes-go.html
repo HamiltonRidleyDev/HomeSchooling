@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where Your Tax Dollars Go — Visual Reference</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 32px 24px;
+            color: #1a1a2e;
+            background: #f8f9fa;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .poster-header {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a6e 50%, #533483 100%);
+            color: #fff;
+            text-align: center;
+            padding: 40px 32px 36px;
+            border-radius: 20px;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        .poster-header::before {
+            content: '';
+            position: absolute;
+            top: -60px; left: -60px;
+            width: 200px; height: 200px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+        }
+        .poster-header::after {
+            content: '';
+            position: absolute;
+            bottom: -40px; right: -40px;
+            width: 160px; height: 160px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+        }
+        .poster-header h1 {
+            font-size: 2.1rem;
+            margin-bottom: 6px;
+            position: relative;
+        }
+        .poster-header .sub {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            position: relative;
+        }
+        .poster-header .dollar-icon {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Section containers */
+        .chart-section {
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 28px;
+            border: 1px solid #e9ecef;
+        }
+        .chart-section h2 {
+            font-size: 1.35rem;
+            color: #0f3460;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Budget category rows */
+        .budget-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .budget-item:last-child { border-bottom: none; }
+        .budget-icon {
+            font-size: 1.8rem;
+            width: 48px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .budget-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .budget-name {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #1a1a2e;
+        }
+        .budget-desc {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 1px;
+        }
+        .budget-pct {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #0f3460;
+            min-width: 44px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .budget-bar-wrap {
+            width: 100%;
+            height: 22px;
+            background: #eef1f6;
+            border-radius: 11px;
+            margin-top: 6px;
+            overflow: hidden;
+        }
+        .budget-bar {
+            height: 100%;
+            border-radius: 11px;
+            transition: width 0.6s ease;
+        }
+
+        /* Bar colors */
+        .bar-healthcare { background: linear-gradient(90deg, #e94560, #ff6b8a); }
+        .bar-socsec { background: linear-gradient(90deg, #f9a825, #ffd54f); }
+        .bar-military { background: linear-gradient(90deg, #2e7d32, #66bb6a); }
+        .bar-debt { background: linear-gradient(90deg, #6a1b9a, #ab47bc); }
+        .bar-safety { background: linear-gradient(90deg, #e65100, #ff9800); }
+        .bar-veterans { background: linear-gradient(90deg, #1565c0, #42a5f5); }
+        .bar-education { background: linear-gradient(90deg, #00838f, #26c6da); }
+        .bar-transport { background: linear-gradient(90deg, #4e342e, #8d6e63); }
+        .bar-science { background: linear-gradient(90deg, #283593, #5c6bc0); }
+        .bar-law { background: linear-gradient(90deg, #37474f, #78909c); }
+        .bar-intl { background: linear-gradient(90deg, #00695c, #4db6ac); }
+        .bar-enviro { background: linear-gradient(90deg, #33691e, #8bc34a); }
+        .bar-other { background: linear-gradient(90deg, #546e7a, #90a4ae); }
+
+        /* Summary donut visual */
+        .donut-container {
+            text-align: center;
+            margin: 24px 0 16px;
+        }
+        .donut-container svg {
+            max-width: 280px;
+            width: 100%;
+        }
+
+        /* State & Local section */
+        .local-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 14px;
+            margin-top: 16px;
+        }
+        .local-item {
+            background: #f0f7ff;
+            border: 1px solid #bbdefb;
+            border-radius: 12px;
+            padding: 18px 14px;
+            text-align: center;
+        }
+        .local-item .icon { font-size: 2rem; margin-bottom: 6px; }
+        .local-item .name { font-weight: 700; font-size: 0.9rem; color: #0f3460; }
+
+        /* Did You Know */
+        .dyk-section {
+            background: linear-gradient(135deg, #fff8e1, #fff3c4);
+            border: 2px solid #ffe082;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 28px;
+        }
+        .dyk-section h2 {
+            font-size: 1.35rem;
+            color: #e65100;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        .dyk-fact {
+            background: #fff;
+            border-radius: 10px;
+            padding: 16px 18px;
+            margin-bottom: 12px;
+            border-left: 4px solid #f9a825;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .dyk-fact:last-child { margin-bottom: 0; }
+        .dyk-fact .bulb { font-size: 1.4rem; flex-shrink: 0; }
+        .dyk-fact p { font-size: 0.92rem; }
+        .dyk-fact strong { color: #e65100; }
+
+        /* Bottom note */
+        .bottom-note {
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.78rem;
+            margin-top: 8px;
+            padding: 12px;
+        }
+
+        @media print {
+            body { background: #fff; padding: 12px; }
+            .poster-header {
+                background: #0f3460 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .budget-bar-wrap, .budget-bar {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .chart-section, .dyk-section { break-inside: avoid; }
+            .local-item, .dyk-fact {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 16px; }
+            .poster-header { padding: 28px 20px; }
+            .poster-header h1 { font-size: 1.5rem; }
+            .budget-item { flex-wrap: wrap; }
+            .local-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="poster-header">
+    <span class="dollar-icon">&#x1F4B0;</span>
+    <h1>Where Your Tax Dollars Go</h1>
+    <div class="sub">For Every $100 the Federal Government Collects, Here's How It's Spent</div>
+</div>
+
+<!-- FEDERAL BUDGET BREAKDOWN -->
+<div class="chart-section">
+    <h2>&#x1F1FA;&#x1F1F8; Federal Budget Breakdown</h2>
+
+    <!-- Healthcare -->
+    <div class="budget-item">
+        <div class="budget-icon">&#x1F3E5;</div>
+        <div class="budget-info">
+            <div class="budget-name">Medicare &amp; Medicaid</div>
+            <div class="budget-desc">Healthcare for the elderly and low-income families</div>
+            <div class="budget-bar-wrap"><div class="budget-bar bar-healthcare" style="width: 100%;"></div></div>
+        </div>
+        <div class="budget-pct">25&cent;</div>
+    </div>
+
+    <!-- Social Security -->
+    <div class="budget-item">
+        <div class="budget-icon">&#x1F474;</div>
+        <div class="budget-info">
+            <div class="budget-name">Social Security</div>
+            <div class="budget-desc">Monthly retirement checks for elderly Americans</div>
+            <div class="budget-bar-wrap"><div class="budget-bar bar-socsec" style="width: 84%;"></div></div>
+        </div>
+        <div class="budget-pct">21&cent;</div>
+    </div>
+
+    <!-- Military -->
+    <div class="budget-item">
+        <div class="budget-icon">&#x1F6E1;&#xFE0F;</div>
+        <div class="budget-info">
+            <div class="budget-name">Military &amp; Defense</div>
+            <div class="budget-desc">Army, Navy, Air Force, and national security</div>
+            <div class="budget-bar-wrap"><div class="budget-bar bar-military" style="width: 52%;"></div></div>
+        </div>
+        <div class="budget-pct">13&cent;</div>
+    </div>
+
+    <!-- Debt Interest -->
+    <div class="budget-item">
+        <div class="budget-icon">&#x1F4B3;</div>
+        <div class="budget-info">
+            <div class="budget-name">Interest on National Debt</div>
+            <div class="budget-desc">Paying interest on money the government has borrowed</div>
+            <div class="budget-bar-wrap"><div class="budget-bar bar-debt" style="width: 40%;"></div></div>
+        </div>
+        <div class="budget-pct">10&cent;</div>
+    </div>
+
+    <!-- Safety Net -->
+    <div class="budget-item">
+        <div class="budget-icon">&#x1F91D;</div>
+        <div class="budget-info">
+            <div class="budget-name">Safety Net Programs</div>
+            <div class="budget-desc">Food stamps, housing assistance, disability support</div>
+            <div class="budget-bar-wrap"><div class="budget-bar bar-safety" style="width: 32%;"></div></div>
+        </div>
+        <div class="budget-pct">8&cent;</div>
+    </div>
+
+    <!-- Veterans -->
+    <div class="budget-item">
+        <div class="budget-icon">&#x1F396;&#xFE0F;</div>
+        <div class="budget-info">
+            <div class="budget-name">Veterans Benefits</div>
+            <div class="budget-desc">Healthcare and support for military veterans</div>
+            <div class="budget-bar-wrap"><div class="budget-bar bar-veterans" style="width: 16%;"></div></div>
+        </div>
+        <div class="budget-pct">4&cent;</div>
+    </div>
+
+    <!-- Education -->
+    <div class="budget-item">
+        <div class="budget-icon">&#x1F393;</div>
+        <div class="budget-info">
+            <div class="budget-name">Education</div>
+            <div class="budget-desc">Schools, college grants, student programs</div>
+            <div class="budget-bar-wrap"><div class="budget-bar bar-education" style="width: 16%;"></div></div>
+        </div>
+        <div class="budget-pct">4&cent;</div>
+    </div>
+
+    <!-- Transportation -->
+    <div class="budget-item">
+        <div class="budget-icon">&#x1F6E3;&#xFE0F;</div>
+        <div class="budget-info">
+            <div class="budget-name">Transportation</div>
+            <div class="budget-desc">Roads, bridges, airports, and trains</div>
+            <div class="budget-bar-wrap"><div class="budget-bar bar-transport" style="width: 8%;"></div></div>
+        </div>
+        <div class="budget-pct">2&cent;</div>
+    </div>
+
+    <!-- Science -->
+    <div class="budget-item">
+        <div class="budget-icon">&#x1F680;</div>
+        <div class="budget-info">
+            <div class="budget-name">Science &amp; Research</div>
+            <div class="budget-desc">NASA, medical research, new technology</div>
+            <div class="budget-bar-wrap"><div class="budget-bar bar-science" style="width: 8%;"></div></div>
+        </div>
+        <div class="budget-pct">2&cent;</div>
+    </div>
+
+    <!-- Law -->
+    <div class="budget-item">
+        <div class="budget-icon">&#x2696;&#xFE0F;</div>
+        <div class="budget-info">
+            <div class="budget-name">Law Enforcement &amp; Courts</div>
+            <div class="budget-desc">FBI, federal courts, and federal prisons</div>
+            <div class="budget-bar-wrap"><div class="budget-bar bar-law" style="width: 8%;"></div></div>
+        </div>
+        <div class="budget-pct">2&cent;</div>
+    </div>
+
+    <!-- International -->
+    <div class="budget-item">
+        <div class="budget-icon">&#x1F30D;</div>
+        <div class="budget-info">
+            <div class="budget-name">International Affairs</div>
+            <div class="budget-desc">Foreign aid, embassies, and diplomacy</div>
+            <div class="budget-bar-wrap"><div class="budget-bar bar-intl" style="width: 4%;"></div></div>
+        </div>
+        <div class="budget-pct">1&cent;</div>
+    </div>
+
+    <!-- Environment -->
+    <div class="budget-item">
+        <div class="budget-icon">&#x1F332;</div>
+        <div class="budget-info">
+            <div class="budget-name">Environment &amp; Parks</div>
+            <div class="budget-desc">National parks, EPA, clean air and water</div>
+            <div class="budget-bar-wrap"><div class="budget-bar bar-enviro" style="width: 4%;"></div></div>
+        </div>
+        <div class="budget-pct">1&cent;</div>
+    </div>
+
+    <!-- Everything Else -->
+    <div class="budget-item">
+        <div class="budget-icon">&#x1F4C2;</div>
+        <div class="budget-info">
+            <div class="budget-name">Everything Else</div>
+            <div class="budget-desc">Government operations, agriculture, commerce, and more</div>
+            <div class="budget-bar-wrap"><div class="budget-bar bar-other" style="width: 28%;"></div></div>
+        </div>
+        <div class="budget-pct">7&cent;</div>
+    </div>
+
+</div>
+
+<!-- STATE & LOCAL -->
+<div class="chart-section">
+    <h2>&#x1F3D8;&#xFE0F; State &amp; Local Taxes Pay For</h2>
+    <p style="text-align:center; color:#6c757d; margin-bottom:16px; font-size:0.9rem;">These are funded by state income tax, sales tax, and property tax &mdash; separate from federal taxes.</p>
+
+    <div class="local-grid">
+        <div class="local-item">
+            <div class="icon">&#x1F3EB;</div>
+            <div class="name">Public Schools</div>
+        </div>
+        <div class="local-item">
+            <div class="icon">&#x1F693;</div>
+            <div class="name">Police &amp; Fire<br>Departments</div>
+        </div>
+        <div class="local-item">
+            <div class="icon">&#x1F6E3;&#xFE0F;</div>
+            <div class="name">Roads &amp;<br>Highways</div>
+        </div>
+        <div class="local-item">
+            <div class="icon">&#x26BD;</div>
+            <div class="name">Parks &amp;<br>Recreation</div>
+        </div>
+        <div class="local-item">
+            <div class="icon">&#x1F4DA;</div>
+            <div class="name">Libraries</div>
+        </div>
+        <div class="local-item">
+            <div class="icon">&#x1F6B0;</div>
+            <div class="name">Water &amp; Sewage<br>Systems</div>
+        </div>
+        <div class="local-item">
+            <div class="icon">&#x1F3E5;</div>
+            <div class="name">Public<br>Hospitals</div>
+        </div>
+    </div>
+</div>
+
+<!-- DID YOU KNOW -->
+<div class="dyk-section">
+    <h2>&#x1F4A1; Did You Know?</h2>
+
+    <div class="dyk-fact">
+        <div class="bulb">&#x1F4C5;</div>
+        <p><strong>Tax Freedom Day:</strong> The average American works from January 1 to about April 16 just to earn enough to pay all their taxes for the year. Everything you earn after that is yours to keep. That date is called "Tax Freedom Day."</p>
+    </div>
+
+    <div class="dyk-fact">
+        <div class="bulb">&#x1F474;</div>
+        <p><strong>Why Social Security Exists:</strong> Social Security was created in 1935 during the Great Depression so elderly people wouldn't have to work until the day they died. Before it existed, about half of all seniors lived in poverty.</p>
+    </div>
+
+    <div class="dyk-fact">
+        <div class="bulb">&#x1F4E8;</div>
+        <p><strong>150 Million Returns:</strong> The IRS processes about 150 million individual tax returns every single year. That's almost one for every two people in the country.</p>
+    </div>
+</div>
+
+<div class="bottom-note">
+    Approximate figures based on federal budget data. Percentages are simplified for educational purposes and may vary slightly year to year.<br>
+    Unit 4: Earning &amp; Taxes &bull; Lesson 8 &bull; Reference Sheet
+</div>
+
+</body>
+</html>

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Your Life - Elementary Edition (3rd-4th Grade)</title>
+<style>
+  @media print {
+    body { margin: 0.4in; font-size: 11pt; }
+    .page-break { page-break-before: always; }
+    .category, .smart-section { page-break-inside: avoid; }
+    .no-print { display: none; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.55; color: #2d3436; max-width: 850px; margin: 0 auto; padding: 20px; }
+  h1 { font-size: 1.8em; text-align: center; color: #0984e3; margin-bottom: 2px; }
+  .subtitle { text-align: center; font-size: 1em; color: #636e72; margin-bottom: 6px; }
+  .name-date { display: flex; justify-content: space-between; margin: 10px 0 16px; font-size: 1em; }
+  .name-date span { border-bottom: 2px solid #2d3436; display: inline-block; width: 200px; }
+
+  .directions { background: #dfe6e9; border-radius: 8px; padding: 10px 14px; font-size: 0.9em; margin-bottom: 16px; }
+
+  /* Career Section */
+  .career-box { background: linear-gradient(135deg, #0984e3, #74b9ff); color: white; border-radius: 12px; padding: 16px; margin: 16px 0; }
+  .career-box h2 { font-size: 1.2em; margin-bottom: 8px; text-align: center; }
+  .career-box p { font-size: 0.9em; margin-bottom: 10px; text-align: center; }
+  .career-option { display: flex; align-items: center; background: rgba(255,255,255,0.15); border-radius: 8px; padding: 7px 12px; margin: 5px 0; }
+  .career-option .checkbox { width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.7); border-radius: 4px; margin-right: 10px; flex-shrink: 0; background: rgba(255,255,255,0.1); }
+  .career-option .career-name { flex: 1; font-weight: 600; font-size: 0.95em; }
+  .career-option .career-pay { font-weight: bold; font-size: 1.05em; }
+  .career-writein { background: rgba(255,255,255,0.2); border-radius: 8px; padding: 10px 14px; margin-top: 10px; font-size: 0.9em; }
+  .career-writein .wl-light { border-bottom: 1.5px solid rgba(255,255,255,0.7); display: inline-block; width: 140px; }
+  .career-writein .wl-sm { border-bottom: 1.5px solid rgba(255,255,255,0.7); display: inline-block; width: 80px; }
+  .income-banner { background: #ffeaa7; color: #2d3436; text-align: center; padding: 10px; border-radius: 8px; font-size: 1.1em; font-weight: bold; margin: 14px 0; border: 2px solid #fdcb6e; }
+  .income-banner .amount { font-size: 1.4em; color: #d63031; }
+
+  /* Life Situation */
+  .situation-box { border: 2px dashed #e17055; border-radius: 12px; padding: 14px; margin: 16px 0; background: #ffeaa710; }
+  .situation-box h2 { color: #e17055; font-size: 1.1em; margin-bottom: 8px; }
+  .situation-box p { font-size: 0.9em; color: #636e72; margin-bottom: 8px; }
+  .situation-line { margin: 8px 0; font-size: 0.95em; }
+
+  /* Budget Categories */
+  .category { border: 2px solid #dfe6e9; border-radius: 12px; padding: 14px; margin: 16px 0; }
+  .category h2 { font-size: 1.15em; margin-bottom: 8px; padding-bottom: 4px; border-bottom: 2px solid; display: flex; align-items: center; gap: 8px; }
+  .cat-icon { font-size: 1.4em; }
+  .cat-note { font-size: 0.82em; color: #636e72; margin-bottom: 8px; font-style: italic; }
+  .option { display: flex; align-items: center; border: 1.5px solid #f0f0f0; border-radius: 8px; padding: 8px 12px; margin: 6px 0; }
+  .checkbox { width: 22px; height: 22px; border: 2px solid #b2bec3; border-radius: 4px; margin-right: 10px; flex-shrink: 0; }
+  .option-details { flex: 1; }
+  .option-name { font-weight: bold; font-size: 0.95em; }
+  .option-desc { font-size: 0.8em; color: #636e72; }
+  .option-price { font-size: 1.1em; font-weight: bold; color: #d63031; white-space: nowrap; margin-left: 8px; }
+
+  /* Smart Money Section */
+  .smart-header { background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; border-radius: 12px; padding: 14px 18px; margin: 24px 0 4px; text-align: center; }
+  .smart-header h2 { font-size: 1.25em; margin-bottom: 4px; }
+  .smart-header p { font-size: 0.85em; opacity: 0.9; }
+  .smart-section { border: 2px solid #a29bfe; border-radius: 12px; padding: 14px; margin: 12px 0; }
+  .smart-section h3 { font-size: 1.05em; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+  .smart-section .concept { font-size: 0.85em; color: #6c5ce7; background: #f3f0ff; border-radius: 6px; padding: 6px 10px; margin-bottom: 8px; line-height: 1.4; }
+  .smart-section .option { border-color: #e8e4ff; }
+  .smart-section .option-price { color: #6c5ce7; }
+  .option-note { font-size: 0.75em; color: #00b894; font-style: italic; }
+
+  /* Budget Tracker */
+  .tracker { background: #f5f6fa; border: 2px solid #0984e3; border-radius: 12px; padding: 16px; margin: 20px 0; }
+  .tracker h2 { color: #0984e3; text-align: center; margin-bottom: 10px; font-size: 1.2em; }
+  .tracker-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1.5px dotted #dfe6e9; font-size: 0.95em; }
+  .tracker-total { display: flex; justify-content: space-between; padding: 10px 0 0; border-top: 3px solid #0984e3; font-size: 1.15em; font-weight: bold; margin-top: 6px; }
+  .tracker-result { display: flex; justify-content: space-between; padding: 8px 0 0; font-size: 1.05em; font-weight: bold; }
+  .tracker-result.over { color: #d63031; }
+  .tracker-result.under { color: #00b894; }
+  .wl { border-bottom: 1.5px solid #b2bec3; display: inline-block; width: 70px; }
+  .wl-med { border-bottom: 1.5px solid #b2bec3; display: inline-block; width: 120px; }
+  .wl-long { border-bottom: 1.5px solid #b2bec3; display: inline-block; width: 100%; min-width: 200px; }
+  .cutback-area { margin-top: 14px; padding-top: 10px; border-top: 1.5px dashed #dfe6e9; }
+  .cutback-area p { font-size: 0.95em; margin-bottom: 8px; }
+
+  /* Savings Goal */
+  .savings-goal { border: 2px dashed #fdcb6e; border-radius: 12px; padding: 14px; margin: 20px 0; }
+  .savings-goal h2 { color: #e17055; margin-bottom: 8px; font-size: 1.15em; text-align: center; }
+  .goal-line { margin: 8px 0; font-size: 0.95em; }
+
+  /* Side Hustle */
+  .hustle { border: 2px solid #00b894; border-radius: 12px; padding: 16px; margin: 20px 0; background: #f0fff410; }
+  .hustle h2 { color: #00b894; margin-bottom: 6px; font-size: 1.15em; text-align: center; }
+  .hustle p.intro { font-size: 0.88em; color: #636e72; text-align: center; margin-bottom: 12px; }
+  .hustle-q { margin: 10px 0; font-size: 0.95em; }
+  .hustle-calc { background: #e0fcef; border-radius: 8px; padding: 10px 14px; margin-top: 12px; font-size: 0.95em; }
+  .hustle-calc p { margin: 6px 0; }
+</style>
+</head>
+<body>
+
+<!-- =============================== HEADER =============================== -->
+<h1>Build Your Life!</h1>
+<p class="subtitle">Elementary Edition (3rd &ndash; 4th Grade)</p>
+<div class="name-date">
+  <div>Name: <span>&nbsp;</span></div>
+  <div>Date: <span>&nbsp;</span></div>
+</div>
+
+<div class="directions">
+  <strong>How to play:</strong> You're an adult now! Pick a career, choose how you want to live, and see if your money covers it all. Check <strong>one box</strong> in each category, write the price in your Budget Tracker, and add it all up. If you go over &mdash; you'll need to make cuts!
+</div>
+
+<!-- ============================= MY CAREER ============================== -->
+<div class="career-box">
+  <h2>&#128188; Step 1: My Career</h2>
+  <p>Pick a career from the Career Cards, or choose one below.<br>Your career determines your monthly income!</p>
+
+  <div class="career-option">
+    <div class="checkbox"></div>
+    <div class="career-name">&#9749; Barista / Coffee Shop</div>
+    <div class="career-pay">$2,050/mo</div>
+  </div>
+  <div class="career-option">
+    <div class="checkbox"></div>
+    <div class="career-name">&#128717; Retail Worker</div>
+    <div class="career-pay">$2,200/mo</div>
+  </div>
+  <div class="career-option">
+    <div class="checkbox"></div>
+    <div class="career-name">&#128221; Office Assistant</div>
+    <div class="career-pay">$2,400/mo</div>
+  </div>
+  <div class="career-option">
+    <div class="checkbox"></div>
+    <div class="career-name">&#128666; Delivery Driver</div>
+    <div class="career-pay">$2,550/mo</div>
+  </div>
+
+  <div class="career-writein">
+    Or pick from Career Cards: &nbsp; My job: <span class="wl-light">&nbsp;</span> &nbsp; My income: $<span class="wl-sm">&nbsp;</span>/mo
+  </div>
+</div>
+
+<div class="income-banner">
+  My Monthly Income: <span class="amount">$ <span class="wl" style="border-color: #d63031; width: 90px;">&nbsp;</span></span>
+</div>
+
+<!-- ========================= LIFE SITUATION ============================ -->
+<div class="situation-box">
+  <h2>&#127922; Step 2: Life Situation Card</h2>
+  <p>Draw a Life Situation Card from the deck. Write it here!</p>
+  <div class="situation-line">My situation: <span class="wl-long">&nbsp;</span></div>
+  <div class="situation-line">How it changes my budget: <span class="wl-long">&nbsp;</span></div>
+</div>
+
+<!-- ======================== BUDGET CATEGORIES =========================== -->
+
+<!-- HOUSING -->
+<div class="category">
+  <h2 style="color: #e17055; border-color: #e17055;"><span class="cat-icon">&#127968;</span> Housing</h2>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Roommate</div>
+      <div class="option-desc">Share an apartment with a friend. You split the rent!</div>
+    </div>
+    <div class="option-price">$400</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Small Apartment</div>
+      <div class="option-desc">One bedroom, one bathroom &mdash; all yours.</div>
+    </div>
+    <div class="option-price">$650</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Nice Apartment</div>
+      <div class="option-desc">Two bedrooms, updated kitchen, great neighborhood.</div>
+    </div>
+    <div class="option-price">$900</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Small House</div>
+      <div class="option-desc">Your own house with a yard! But it costs the most.</div>
+    </div>
+    <div class="option-price">$1,200</div>
+  </div>
+</div>
+
+<!-- UTILITIES -->
+<div class="category">
+  <h2 style="color: #fdcb6e; border-color: #fdcb6e;"><span class="cat-icon">&#128161;</span> Utilities (Electric, Water, Internet)</h2>
+  <p class="cat-note">Bigger home = bigger bills. Pick the one that matches your housing choice.</p>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Roommate / Small Apartment</div>
+      <div class="option-desc">Smaller space, lower bills.</div>
+    </div>
+    <div class="option-price">$75</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Nice Apartment</div>
+      <div class="option-desc">Medium-sized space, medium bills.</div>
+    </div>
+    <div class="option-price">$120</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">House</div>
+      <div class="option-desc">More rooms to heat and cool &mdash; more money!</div>
+    </div>
+    <div class="option-price">$175</div>
+  </div>
+</div>
+
+<!-- FOOD -->
+<div class="category">
+  <h2 style="color: #00b894; border-color: #00b894;"><span class="cat-icon">&#127834;</span> Food &amp; Groceries</h2>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Cook Everything at Home</div>
+      <div class="option-desc">Meal prep, groceries, homemade lunches. The cheapest way to eat!</div>
+    </div>
+    <div class="option-price">$200</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Mostly Cook + Eat Out Sometimes</div>
+      <div class="option-desc">Home meals during the week, restaurants on weekends.</div>
+    </div>
+    <div class="option-price">$350</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Eat Out a Lot</div>
+      <div class="option-desc">Takeout, fast food, dining out most days. Tasty but expensive!</div>
+    </div>
+    <div class="option-price">$550</div>
+  </div>
+</div>
+
+<!-- TRANSPORTATION -->
+<div class="category">
+  <h2 style="color: #0984e3; border-color: #0984e3;"><span class="cat-icon">&#128663;</span> Transportation</h2>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Walk / Bike / Carpool</div>
+      <div class="option-desc">Free! You live close to work or ride with a friend.</div>
+    </div>
+    <div class="option-price">$0</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Bus Pass</div>
+      <div class="option-desc">Public transportation. Reliable and affordable.</div>
+    </div>
+    <div class="option-price">$50</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Used Car (+ insurance + gas)</div>
+      <div class="option-desc">Your own car! But you pay for gas, insurance, and repairs.</div>
+    </div>
+    <div class="option-price">$300</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">New Car</div>
+      <div class="option-desc">Brand new with a monthly payment. Expensive!</div>
+    </div>
+    <div class="option-price">$500</div>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- PHONE -->
+<div class="category">
+  <h2 style="color: #e84393; border-color: #e84393;"><span class="cat-icon">&#128241;</span> Phone</h2>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Basic Plan</div>
+      <div class="option-desc">Calls and texts. Limited data. Gets the job done.</div>
+    </div>
+    <div class="option-price">$25</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Standard Plan</div>
+      <div class="option-desc">Good data, plenty for streaming and social media.</div>
+    </div>
+    <div class="option-price">$55</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Unlimited + New Phone</div>
+      <div class="option-desc">Everything unlimited plus monthly payments on the newest phone.</div>
+    </div>
+    <div class="option-price">$90</div>
+  </div>
+</div>
+
+<!-- ENTERTAINMENT -->
+<div class="category">
+  <h2 style="color: #6c5ce7; border-color: #6c5ce7;"><span class="cat-icon">&#127916;</span> Entertainment &amp; Streaming</h2>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Free Only</div>
+      <div class="option-desc">YouTube, free games, library books, parks. Plenty of free fun!</div>
+    </div>
+    <div class="option-price">$0</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Pick 1&ndash;2 Services</div>
+      <div class="option-desc">Maybe Netflix and Spotify, or a game subscription.</div>
+    </div>
+    <div class="option-price">$25</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Full Package</div>
+      <div class="option-desc">Multiple streaming services, gaming, music &mdash; all of it.</div>
+    </div>
+    <div class="option-price">$80</div>
+  </div>
+</div>
+
+<!-- CLOTHING -->
+<div class="category">
+  <h2 style="color: #00cec9; border-color: #00cec9;"><span class="cat-icon">&#128085;</span> Clothing</h2>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Thrift / Basics</div>
+      <div class="option-desc">Thrift stores, sales, and simple clothes. Looks good, costs less!</div>
+    </div>
+    <div class="option-price">$25</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Mid-Range</div>
+      <div class="option-desc">Regular stores, a mix of sale and full-price items.</div>
+    </div>
+    <div class="option-price">$60</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Name Brand</div>
+      <div class="option-desc">Nike, Adidas, popular brands. Trendy but pricey!</div>
+    </div>
+    <div class="option-price">$125</div>
+  </div>
+</div>
+
+<!-- ====================== SMART MONEY CHOICES ========================== -->
+<div class="page-break"></div>
+
+<div class="smart-header">
+  <h2>&#129504; Smart Money Choices</h2>
+  <p>These are things adults think about to protect themselves and grow their money.<br>They're optional but <strong>SMART</strong>.</p>
+</div>
+
+<!-- INSURANCE -->
+<div class="smart-section">
+  <h3>&#128737;&#65039; Insurance &mdash; "Protection Money"</h3>
+  <div class="concept">Insurance = pay a little each month so if something <strong>BAD</strong> happens, you don't pay a <strong>LOT</strong>. Think of it like a safety net!</div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Skip Insurance</div>
+      <div class="option-desc">No monthly cost &mdash; but surprise expenses hit you FULL price!</div>
+    </div>
+    <div class="option-price" style="color: #636e72;">$0</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Basic Renter's Insurance</div>
+      <div class="option-desc">Protects your stuff if there's a fire or theft.</div>
+    </div>
+    <div class="option-price">$15</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Better Insurance (Renter's + Car Upgrade)</div>
+      <div class="option-desc">Lower costs when bad stuff happens. More protection!</div>
+    </div>
+    <div class="option-price">$40</div>
+  </div>
+</div>
+
+<!-- SAVINGS -->
+<div class="smart-section">
+  <h3>&#128176; Savings</h3>
+  <div class="concept">Savings = money you set aside for the future. Emergencies, big purchases, or just peace of mind.</div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Save a Little</div>
+      <div class="option-desc">$600 saved by the end of the year.</div>
+    </div>
+    <div class="option-price">$50/mo</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Save a Good Amount</div>
+      <div class="option-desc">$1,200 saved by the end of the year!</div>
+    </div>
+    <div class="option-price">$100/mo</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Super Saver</div>
+      <div class="option-desc">$2,400 saved by the end of the year!</div>
+    </div>
+    <div class="option-price">$200/mo</div>
+  </div>
+</div>
+
+<!-- GIVING -->
+<div class="smart-section">
+  <h3>&#128156; Giving / Helping Others</h3>
+  <div class="concept">Many people choose to give some money to help others &mdash; church, charity, community. It's a personal choice!</div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">None Right Now</div>
+      <div class="option-desc">Focus on getting your own budget stable first.</div>
+    </div>
+    <div class="option-price" style="color: #636e72;">$0</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Give a Little</div>
+      <div class="option-desc">A small amount each month to a cause you care about.</div>
+    </div>
+    <div class="option-price">$25/mo</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Generous Giver</div>
+      <div class="option-desc">Make a real difference in your community every month.</div>
+    </div>
+    <div class="option-price">$75/mo</div>
+  </div>
+</div>
+
+<!-- INVESTING -->
+<div class="smart-section">
+  <h3>&#127793; Investing</h3>
+  <div class="concept">Investing = putting money somewhere it can <strong>GROW</strong> over time. Like planting a seed &mdash; it starts small but gets bigger!</div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Don't Invest Yet</div>
+      <div class="option-desc">Maybe later when you have more money.</div>
+    </div>
+    <div class="option-price" style="color: #636e72;">$0</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Start Small</div>
+      <div class="option-desc"><span class="option-note">In 10 years this could grow to $5,000!</span></div>
+    </div>
+    <div class="option-price">$25/mo</div>
+  </div>
+  <div class="option">
+    <div class="checkbox"></div>
+    <div class="option-details">
+      <div class="option-name">Invest More</div>
+      <div class="option-desc"><span class="option-note">In 10 years this could grow to $10,000!</span></div>
+    </div>
+    <div class="option-price">$50/mo</div>
+  </div>
+</div>
+
+<!-- ========================= BUDGET TRACKER ============================ -->
+<div class="page-break"></div>
+
+<div class="tracker">
+  <h2>&#128202; Budget Tracker</h2>
+  <p style="text-align: center; font-size: 0.88em; color: #636e72; margin-bottom: 12px;">Write the price you chose for each category. Then add them all up!</p>
+
+  <div class="tracker-row"><span>&#127968; Housing</span> <span>$ <span class="wl">&nbsp;</span></span></div>
+  <div class="tracker-row"><span>&#128161; Utilities</span> <span>$ <span class="wl">&nbsp;</span></span></div>
+  <div class="tracker-row"><span>&#127834; Food &amp; Groceries</span> <span>$ <span class="wl">&nbsp;</span></span></div>
+  <div class="tracker-row"><span>&#128663; Transportation</span> <span>$ <span class="wl">&nbsp;</span></span></div>
+  <div class="tracker-row"><span>&#128241; Phone</span> <span>$ <span class="wl">&nbsp;</span></span></div>
+  <div class="tracker-row"><span>&#127916; Entertainment &amp; Streaming</span> <span>$ <span class="wl">&nbsp;</span></span></div>
+  <div class="tracker-row"><span>&#128085; Clothing</span> <span>$ <span class="wl">&nbsp;</span></span></div>
+  <div class="tracker-row"><span>&#128737;&#65039; Insurance</span> <span>$ <span class="wl">&nbsp;</span></span></div>
+  <div class="tracker-row"><span>&#128176; Savings</span> <span>$ <span class="wl">&nbsp;</span></span></div>
+  <div class="tracker-row"><span>&#128156; Giving</span> <span>$ <span class="wl">&nbsp;</span></span></div>
+  <div class="tracker-row"><span>&#127793; Investing</span> <span>$ <span class="wl">&nbsp;</span></span></div>
+
+  <div class="tracker-total">
+    <span>Total Spending</span>
+    <span>$ <span class="wl">&nbsp;</span></span>
+  </div>
+  <div class="tracker-total" style="border-top: none; padding-top: 4px;">
+    <span>My Income</span>
+    <span>$ <span class="wl">&nbsp;</span></span>
+  </div>
+  <div class="tracker-total" style="border-top: 3px double #0984e3; margin-top: 4px; font-size: 1.25em;">
+    <span>Income &minus; Spending =</span>
+    <span>$ <span class="wl">&nbsp;</span></span>
+  </div>
+
+  <div style="text-align: center; margin-top: 12px; font-size: 1em;">
+    <strong>Check one:</strong> &nbsp;
+    <span class="checkbox" style="display: inline-block; width: 18px; height: 18px; vertical-align: middle;"></span> Under budget (great!)
+    &nbsp;&nbsp;
+    <span class="checkbox" style="display: inline-block; width: 18px; height: 18px; vertical-align: middle;"></span> Over budget (uh oh!)
+  </div>
+
+  <div class="cutback-area">
+    <p><strong>Are you over budget? What would you cut?</strong></p>
+    <p>1. <span class="wl-long">&nbsp;</span></p>
+    <p>2. <span class="wl-long">&nbsp;</span></p>
+    <p>3. <span class="wl-long">&nbsp;</span></p>
+  </div>
+</div>
+
+<!-- ========================== SAVINGS GOAL ============================== -->
+<div class="savings-goal">
+  <h2>&#127919; My Savings Goal</h2>
+  <p style="text-align: center; font-size: 0.9em; color: #636e72; margin-bottom: 10px;">What's something you'd love to save up for?</p>
+  <div class="goal-line">Item: <span class="wl-long">&nbsp;</span></div>
+  <div class="goal-line">Cost: $ <span class="wl-med">&nbsp;</span></div>
+  <div class="goal-line" style="margin-top: 12px;">If I save $ <span class="wl" style="width: 60px;">&nbsp;</span> per month, it will take me <span class="wl" style="width: 50px;">&nbsp;</span> months to buy it.</div>
+  <div class="goal-line" style="font-size: 0.85em; color: #636e72; margin-top: 6px;">(Divide the cost by your monthly savings amount!)</div>
+</div>
+
+<!-- ========================== SIDE HUSTLE =============================== -->
+<div class="hustle">
+  <h2>&#128640; Side Hustle Pitch</h2>
+  <p class="intro">A side hustle is a way to earn EXTRA money outside your main job.<br>What's your big idea?</p>
+
+  <div class="hustle-q"><strong>What's your idea?</strong><br><span class="wl-long">&nbsp;</span></div>
+  <div class="hustle-q"><strong>Who would pay you?</strong><br><span class="wl-long">&nbsp;</span></div>
+  <div class="hustle-q"><strong>What would you charge?</strong> &nbsp; $ <span class="wl-med">&nbsp;</span></div>
+  <div class="hustle-q"><strong>Would it cost you anything to get started?</strong> &nbsp; $ <span class="wl-med">&nbsp;</span></div>
+  <div class="hustle-q"><strong>How much extra could you earn per month?</strong> &nbsp; $ <span class="wl-med">&nbsp;</span></div>
+  <div class="hustle-q"><strong>Why would this work?</strong><br><span class="wl-long">&nbsp;</span></div>
+
+  <div class="hustle-calc">
+    <p><strong>New Income Math:</strong></p>
+    <p>$ <span class="wl" style="width: 80px;">&nbsp;</span> <em>(original income)</em> &nbsp;+&nbsp; $ <span class="wl" style="width: 80px;">&nbsp;</span> <em>(side hustle)</em> &nbsp;=&nbsp; $ <span class="wl" style="width: 80px;">&nbsp;</span> <em>(new total!)</em></p>
+    <p style="margin-top: 8px;"><strong>What would you change in your budget with the extra money?</strong></p>
+    <p><span class="wl-long">&nbsp;</span></p>
+    <p><span class="wl-long">&nbsp;</span></p>
+  </div>
+</div>
+
+<p style="text-align: center; color: #b2bec3; font-size: 0.8em; margin-top: 24px;">Build Your Life &mdash; Elementary Edition &bull; Financial Literacy Worksheet</p>
+
+</body>
+</html>

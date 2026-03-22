@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Credit Score Scenario Cards</title>
+<style>
+  :root {
+    --navy: #1a2744;
+    --blue: #2563eb;
+    --light-blue: #dbeafe;
+    --green: #16a34a;
+    --dark-green: #15803d;
+    --light-green: #dcfce7;
+    --red: #dc2626;
+    --dark-red: #b91c1c;
+    --light-red: #fee2e2;
+    --amber: #d97706;
+    --light-amber: #fef3c7;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-400: #9ca3af;
+    --gray-600: #4b5563;
+    --gray-800: #1f2937;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--gray-800);
+    line-height: 1.4;
+    background: var(--gray-50);
+  }
+
+  .page {
+    max-width: 850px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 36px 44px;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .page { padding: 10px 0; max-width: 100%; }
+    .no-print { display: none !important; }
+    .card-grid { gap: 0 !important; }
+    .card { break-inside: avoid; page-break-inside: avoid; }
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .header .unit-tag {
+    display: inline-block;
+    background: var(--navy);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 26px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .header .subtitle {
+    font-size: 14px;
+    color: var(--gray-600);
+    font-style: italic;
+  }
+
+  /* Instructions */
+  .instructions {
+    background: var(--light-blue);
+    border: 2px solid var(--blue);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    font-size: 13px;
+  }
+  .instructions h3 {
+    color: var(--blue);
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+  .instructions ol { padding-left: 20px; }
+  .instructions li { margin-bottom: 3px; }
+
+  /* Card grid */
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* Individual card */
+  .card {
+    border: 3px solid var(--gray-200);
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-body {
+    padding: 18px 16px 14px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--navy);
+    color: #fff;
+    font-weight: 800;
+    font-size: 13px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+  }
+
+  .card-scenario {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .card-prompt {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gray-400);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 8px 0;
+    margin-top: 10px;
+    border-top: 2px dashed var(--gray-200);
+  }
+
+  /* Answer strip (fold under or cover) */
+  .card-answer {
+    padding: 10px 16px;
+    font-size: 12px;
+    line-height: 1.4;
+    border-top: 3px dashed var(--gray-400);
+    position: relative;
+  }
+  .card-answer::before {
+    content: '--- FOLD HERE or COVER ---';
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    padding: 0 8px;
+    font-size: 9px;
+    color: var(--gray-400);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .answer-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 2px 10px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+  }
+  .answer-up .answer-badge { background: var(--light-green); color: var(--dark-green); }
+  .answer-down .answer-badge { background: var(--light-red); color: var(--dark-red); }
+  .answer-bigdown .answer-badge { background: var(--red); color: #fff; }
+  .answer-massivedown .answer-badge { background: var(--dark-red); color: #fff; }
+  .answer-none .answer-badge { background: var(--gray-100); color: var(--gray-600); }
+  .answer-mixed .answer-badge { background: var(--light-amber); color: var(--amber); }
+
+  .answer-text { font-size: 12px; color: var(--gray-600); }
+
+  /* Color-coded top border (hidden from players before reveal) */
+  .card.card-up { border-color: var(--green); }
+  .card.card-up .card-number { background: var(--green); }
+  .card.card-down { border-color: var(--red); }
+  .card.card-down .card-number { background: var(--red); }
+  .card.card-none { border-color: var(--gray-400); }
+  .card.card-none .card-number { background: var(--gray-400); }
+  .card.card-mixed { border-color: var(--amber); }
+  .card.card-mixed .card-number { background: var(--amber); }
+
+  /* If you want to hide the color-coding for fair play, uncomment below: */
+  /*
+  .card { border-color: var(--navy) !important; }
+  .card .card-number { background: var(--navy) !important; }
+  */
+
+  @media (max-width: 600px) {
+    .page { padding: 16px; }
+    .card-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="unit-tag">Unit 6 &middot; Lesson 11 &middot; Game Cards</div>
+    <h1>Credit Score Scenario Game</h1>
+    <div class="subtitle">20 real-life scenarios &mdash; Does your credit score go UP, DOWN, or NO CHANGE?</div>
+  </div>
+
+  <!-- Instructions -->
+  <div class="instructions no-print">
+    <h3>How to Play</h3>
+    <ol>
+      <li>Print this page and cut out the cards (or fold the answer section under each card).</li>
+      <li>Place cards face-down in a draw pile.</li>
+      <li>Draw a card. Read the scenario aloud.</li>
+      <li>Everyone guesses: <strong>UP</strong>, <strong>DOWN</strong>, or <strong>NO CHANGE</strong>.</li>
+      <li>Reveal the answer. 1 point for correct direction. Bonus point for explaining WHY.</li>
+      <li>Most points after all cards wins!</li>
+    </ol>
+  </div>
+
+  <!-- Card Grid -->
+  <div class="card-grid">
+
+    <!-- Card 1 -->
+    <div class="card card-up">
+      <div class="card-body">
+        <div class="card-number">1</div>
+        <div class="card-scenario">"You pay your credit card bill on time this month."</div>
+        <div class="card-prompt">UP / DOWN / NO CHANGE?</div>
+      </div>
+      <div class="card-answer answer-up">
+        <div class="answer-badge">UP</div>
+        <div class="answer-text">Payment history is 35% of your score &mdash; the single biggest factor. Every on-time payment builds your score.</div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card card-down">
+      <div class="card-body">
+        <div class="card-number">2</div>
+        <div class="card-scenario">"You max out your credit card &mdash; $5,000 of $5,000 limit used."</div>
+        <div class="card-prompt">UP / DOWN / NO CHANGE?</div>
+      </div>
+      <div class="card-answer answer-down">
+        <div class="answer-badge">DOWN</div>
+        <div class="answer-text">That's 100% credit utilization. You should stay below 30% (ideally under 10%). High utilization signals financial stress.</div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card card-down">
+      <div class="card-body">
+        <div class="card-number">3</div>
+        <div class="card-scenario">"You miss a car payment."</div>
+        <div class="card-prompt">UP / DOWN / NO CHANGE?</div>
+      </div>
+      <div class="card-answer answer-bigdown">
+        <div class="answer-badge">BIG DOWN</div>
+        <div class="answer-text">A single missed payment can drop your score 100 points. Payment history (35%) is the most important factor. The late payment stays on your report for 7 years.</div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card card-up">
+      <div class="card-body">
+        <div class="card-number">4</div>
+        <div class="card-scenario">"You've had the same credit card for 10 years and it's in good standing."</div>
+        <div class="card-prompt">UP / DOWN / NO CHANGE?</div>
+      </div>
+      <div class="card-answer answer-up">
+        <div class="answer-badge">UP</div>
+        <div class="answer-text">Length of credit history is 15% of your score. A 10-year account is excellent. This is why you should never close old accounts.</div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card card-down">
+      <div class="card-body">
+        <div class="card-number">5</div>
+        <div class="card-scenario">"You apply for 4 new credit cards in one month."</div>
+        <div class="card-prompt">UP / DOWN / NO CHANGE?</div>
+      </div>
+      <div class="card-answer answer-down">
+        <div class="answer-badge">DOWN</div>
+        <div class="answer-text">Each application is a "hard inquiry" (10% of your score). Four at once looks desperate and signals risk to lenders.</div>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="card card-mixed">
+      <div class="card-body">
+        <div class="card-number">6</div>
+        <div class="card-scenario">"You pay off your student loan completely."</div>
+        <div class="card-prompt">UP / DOWN / NO CHANGE?</div>
+      </div>
+      <div class="card-answer answer-mixed">
+        <div class="answer-badge">SLIGHT UP (but complicated)</div>
+        <div class="answer-text">Paying off debt is great! But closing the account may reduce your credit mix (10%). Net effect is usually slightly positive, but your score might dip temporarily.</div>
+      </div>
+    </div>
+
+    <!-- Card 7 -->
+    <div class="card card-up">
+      <div class="card-body">
+        <div class="card-number">7</div>
+        <div class="card-scenario">"You use 10% of your credit limit and pay it off in full every month."</div>
+        <div class="card-prompt">UP / DOWN / NO CHANGE?</div>
+      </div>
+      <div class="card-answer answer-up">
+        <div class="answer-badge">UP</div>
+        <div class="answer-text">This is IDEAL credit behavior. Low utilization (30%) + on-time payments (35%) = you're boosting 65% of your score at once.</div>
+      </div>
+    </div>
+
+    <!-- Card 8 -->
+    <div class="card card-up">
+      <div class="card-body">
+        <div class="card-number">8</div>
+        <div class="card-scenario">"You have a credit card, a car loan, and a student loan &mdash; all in good standing."</div>
+        <div class="card-prompt">UP / DOWN / NO CHANGE?</div>
+      </div>
+      <div class="card-answer answer-up">
+        <div class="answer-badge">UP</div>
+        <div class="answer-text">Great credit mix (10% of score). Having different types of credit &mdash; revolving (credit card) and installment (loans) &mdash; all paid on time, shows strong financial management.</div>
+      </div>
+    </div>
+
+    <!-- Card 9 -->
+    <div class="card card-down">
+      <div class="card-body">
+        <div class="card-number">9</div>
+        <div class="card-scenario">"You co-sign a loan for a friend and they stop paying."</div>
+        <div class="card-prompt">UP / DOWN / NO CHANGE?</div>
+      </div>
+      <div class="card-answer answer-bigdown">
+        <div class="answer-badge">BIG DOWN</div>
+        <div class="answer-text">When you co-sign, the loan is on YOUR credit report too. Their missed payments become YOUR missed payments. Co-signing is extremely risky.</div>
+      </div>
+    </div>
+
+    <!-- Card 10 -->
+    <div class="card card-none">
+      <div class="card-body">
+        <div class="card-number">10</div>
+        <div class="card-scenario">"You check your own credit score online."</div>
+        <div class="card-prompt">UP / DOWN / NO CHANGE?</div>
+      </div>
+      <div class="card-answer answer-none">
+        <div class="answer-badge">NO CHANGE</div>
+        <div class="answer-text">Checking your OWN score is a "soft inquiry" &mdash; it does NOT affect your score. You should check regularly! Only "hard inquiries" (when a lender checks) can affect it.</div>
+      </div>
+    </div>
+
+    <!-- Card 11 -->
+    <div class="card card-down">
+      <div class="card-body">
+        <div class="card-number">11</div>
+        <div class="card-scenario">"You close your oldest credit card, which you've had for 15 years."</div>
+        <div class="card-prompt">UP / DOWN / NO CHANGE?</div>
+      </div>
+      <div class="card-answer answer-down">
+        <div class="answer-badge">DOWN</div>
+        <div class="answer-text">Closing your oldest card shortens your average credit history (15% of score) and reduces your total available credit, which can increase your utilization ratio.</div>
+      </div>
+    </div>
+
+    <!-- Card 12 -->
+    <div class="card card-down">
+      <div class="card-body">
+        <div class="card-number">12</div>
+        <div class="card-scenario">"A medical bill goes to collections because you forgot to pay it."</div>
+        <div class="card-prompt">UP / DOWN / NO CHANGE?</div>
+      </div>
+      <div class="card-answer answer-bigdown">
+        <div class="answer-badge">BIG DOWN</div>
+        <div class="answer-text">Collections are one of the worst things for your credit. It signals serious delinquency and can stay on your report for 7 years, even if you eventually pay it.</div>
+      </div>
+    </div>
+
+    <!-- Card 13 -->
+    <div class="card card-up">
+      <div class="card-body">
+        <div class="card-number">13</div>
+        <div class="card-scenario">"You set up automatic payments on all your bills so you never miss a due date."</div>
+        <div class="card-prompt">UP / DOWN / NO CHANGE?</div>
+      </div>
+      <div class="card-answer answer-up">
+        <div class="answer-badge">UP (over time)</div>
+        <div class="answer-text">Autopay protects the most important factor: payment history (35%). It won't spike your score overnight, but it prevents the devastating drops from missed payments.</div>
+      </div>
+    </div>
+
+    <!-- Card 14 -->
+    <div class="card card-down">
+      <div class="card-body">
+        <div class="card-number">14</div>
+        <div class="card-scenario">"You declare bankruptcy."</div>
+        <div class="card-prompt">UP / DOWN / NO CHANGE?</div>
+      </div>
+      <div class="card-answer answer-massivedown">
+        <div class="answer-badge">MASSIVE DOWN</div>
+        <div class="answer-text">Bankruptcy is the nuclear option. Your score can drop 200+ points. It stays on your credit report for 7&ndash;10 years and makes it extremely difficult to borrow money.</div>
+      </div>
+    </div>
+
+    <!-- Card 15 -->
+    <div class="card card-up">
+      <div class="card-body">
+        <div class="card-number">15</div>
+        <div class="card-scenario">"You're an authorized user on your parent's credit card, and they always pay on time."</div>
+        <div class="card-prompt">UP / DOWN / NO CHANGE?</div>
+      </div>
+      <div class="card-answer answer-up">
+        <div class="answer-badge">UP</div>
+        <div class="answer-text">Their positive payment history gets added to YOUR credit report. This is the #1 way teenagers can start building credit before 18. (Only works if the card issuer reports authorized users.)</div>
+      </div>
+    </div>
+
+    <!-- Card 16 -->
+    <div class="card card-up">
+      <div class="card-body">
+        <div class="card-number">16</div>
+        <div class="card-scenario">"You find an error on your credit report &mdash; a bill marked as unpaid that you actually paid. You dispute it and get it removed."</div>
+        <div class="card-prompt">UP / DOWN / NO CHANGE?</div>
+      </div>
+      <div class="card-answer answer-up">
+        <div class="answer-badge">UP</div>
+        <div class="answer-text">Removing incorrect negative information restores your score. This is why you should check your credit report regularly &mdash; errors are more common than you think!</div>
+      </div>
+    </div>
+
+    <!-- Card 17 -->
+    <div class="card card-up">
+      <div class="card-body">
+        <div class="card-number">17</div>
+        <div class="card-scenario">"You take out a small personal loan and pay it back on time over 12 months."</div>
+        <div class="card-prompt">UP / DOWN / NO CHANGE?</div>
+      </div>
+      <div class="card-answer answer-up">
+        <div class="answer-badge">UP</div>
+        <div class="answer-text">Successfully repaying a loan builds payment history (35%) and adds to your credit mix (10%). Two factors improved at once.</div>
+      </div>
+    </div>
+
+    <!-- Card 18 -->
+    <div class="card card-up">
+      <div class="card-body">
+        <div class="card-number">18</div>
+        <div class="card-scenario">"You use your credit card for groceries, gas, and subscriptions &mdash; but you pay the full balance every single month."</div>
+        <div class="card-prompt">UP / DOWN / NO CHANGE?</div>
+      </div>
+      <div class="card-answer answer-up">
+        <div class="answer-badge">UP</div>
+        <div class="answer-text">Excellent behavior! Regular usage + full monthly payments = strong payment history and low utilization. Many financial experts consider this the best way to use a credit card.</div>
+      </div>
+    </div>
+
+    <!-- Card 19 -->
+    <div class="card card-none">
+      <div class="card-body">
+        <div class="card-number">19</div>
+        <div class="card-scenario">"You have no credit cards and no loans. You pay cash for everything."</div>
+        <div class="card-prompt">UP / DOWN / NO CHANGE?</div>
+      </div>
+      <div class="card-answer answer-none">
+        <div class="answer-badge">NO CHANGE (but that's the problem)</div>
+        <div class="answer-text">No credit activity = no credit history = a very low or nonexistent score. You're "credit invisible." When you eventually need to borrow, you'll get bad rates because lenders can't evaluate you.</div>
+      </div>
+    </div>
+
+    <!-- Card 20 -->
+    <div class="card card-down">
+      <div class="card-body">
+        <div class="card-number">20</div>
+        <div class="card-scenario">"You use 80% of your credit limit every month, even though you make minimum payments on time."</div>
+        <div class="card-prompt">UP / DOWN / NO CHANGE?</div>
+      </div>
+      <div class="card-answer answer-down">
+        <div class="answer-badge">DOWN</div>
+        <div class="answer-text">On-time payments help, but 80% utilization is way too high (30% of your score). You need to stay under 30%. The high utilization outweighs the on-time payments.</div>
+      </div>
+    </div>
+
+  </div><!-- end card-grid -->
+
+</div>
+</body>
+</html>

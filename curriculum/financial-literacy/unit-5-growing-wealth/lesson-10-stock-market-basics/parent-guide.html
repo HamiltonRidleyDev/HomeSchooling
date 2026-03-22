@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parent Guide — Stock Market Basics: What You're Actually Buying</title>
+<style>
+  :root {
+    --navy: #1a2744;
+    --blue: #2563eb;
+    --light-blue: #dbeafe;
+    --green: #16a34a;
+    --light-green: #dcfce7;
+    --amber: #d97706;
+    --light-amber: #fef3c7;
+    --red: #dc2626;
+    --light-red: #fee2e2;
+    --purple: #7c3aed;
+    --light-purple: #ede9fe;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-600: #4b5563;
+    --gray-800: #1f2937;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--gray-800);
+    line-height: 1.6;
+    background: var(--gray-50);
+  }
+
+  .page {
+    max-width: 850px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px 48px;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .page { padding: 20px 0; max-width: 100%; }
+    .flow-step { break-inside: avoid; }
+    .age-grid { break-inside: avoid; }
+    .callout { break-inside: avoid; }
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid var(--navy);
+    padding-bottom: 20px;
+    margin-bottom: 32px;
+  }
+  .header .unit-tag {
+    display: inline-block;
+    background: var(--navy);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 28px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .header .subtitle {
+    font-size: 16px;
+    color: var(--gray-600);
+  }
+
+  /* Meta bar */
+  .meta-bar {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    background: var(--gray-100);
+    border-radius: 10px;
+    padding: 14px 20px;
+    margin-bottom: 28px;
+    font-size: 14px;
+  }
+  .meta-bar .item { display: flex; align-items: center; gap: 6px; }
+  .meta-bar .label { font-weight: 600; color: var(--gray-600); }
+
+  /* Section headings */
+  h2 {
+    font-size: 20px;
+    color: var(--navy);
+    margin: 28px 0 12px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--light-blue);
+  }
+  h3 { font-size: 16px; color: var(--blue); margin: 16px 0 8px; }
+
+  /* Flow steps */
+  .flow-step {
+    background: var(--gray-50);
+    border-left: 4px solid var(--blue);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+  .flow-step .step-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .flow-step .step-num {
+    background: var(--blue);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .flow-step .step-title {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--navy);
+  }
+  .flow-step .step-time {
+    font-size: 13px;
+    color: var(--gray-600);
+    margin-left: auto;
+    white-space: nowrap;
+  }
+  .flow-step p, .flow-step li {
+    font-size: 14px;
+    color: var(--gray-800);
+  }
+  .flow-step ul { margin-left: 20px; margin-top: 6px; }
+  .flow-step li { margin-bottom: 4px; }
+
+  /* Say-this callout */
+  .say-this {
+    background: var(--light-blue);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-style: italic;
+    font-size: 14px;
+    border-left: 3px solid var(--blue);
+  }
+  .say-this::before {
+    content: "Say this:";
+    font-weight: 700;
+    font-style: normal;
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--blue);
+    margin-bottom: 4px;
+  }
+
+  /* Callout boxes */
+  .callout {
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .callout-green { background: var(--light-green); border-left: 4px solid var(--green); }
+  .callout-amber { background: var(--light-amber); border-left: 4px solid var(--amber); }
+  .callout-purple { background: var(--light-purple); border-left: 4px solid var(--purple); }
+  .callout-red { background: var(--light-red); border-left: 4px solid var(--red); }
+  .callout .callout-title {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .callout ul { margin-left: 18px; margin-top: 6px; }
+  .callout li { margin-bottom: 4px; }
+
+  /* Age grid */
+  .age-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    margin: 16px 0;
+  }
+  .age-card {
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 13px;
+  }
+  .age-card .age-label {
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .age-primary { background: #fef3c7; border: 2px solid #f59e0b; }
+  .age-primary .age-label { color: #92400e; }
+  .age-elementary { background: #dbeafe; border: 2px solid #3b82f6; }
+  .age-elementary .age-label { color: #1e40af; }
+  .age-middle { background: #ede9fe; border: 2px solid #7c3aed; }
+  .age-middle .age-label { color: #5b21b6; }
+
+  @media (max-width: 700px) {
+    .page { padding: 24px 20px; }
+    .age-grid { grid-template-columns: 1fr; }
+    .meta-bar { flex-direction: column; gap: 8px; }
+  }
+
+  /* Materials list */
+  .materials-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .materials-list li {
+    padding: 6px 0;
+    border-bottom: 1px solid var(--gray-200);
+    font-size: 14px;
+  }
+  .materials-list li:last-child { border-bottom: none; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="unit-tag">Unit 5 — Growing Wealth</div>
+    <h1>Stock Market Basics</h1>
+    <div class="subtitle">What You're Actually Buying</div>
+  </div>
+
+  <!-- Meta bar -->
+  <div class="meta-bar">
+    <div class="item"><span class="label">Lesson:</span> 10</div>
+    <div class="item"><span class="label">Duration:</span> 35-45 min</div>
+    <div class="item"><span class="label">Ages:</span> 6-15</div>
+    <div class="item"><span class="label">Type:</span> Discussion + Research Activity</div>
+  </div>
+
+  <!-- Big Idea -->
+  <div class="callout callout-green">
+    <div class="callout-title">Big Idea</div>
+    When you buy a stock, you buy a tiny piece of a real company. If the company grows, your piece becomes worth more. You don't need to pick winners &mdash; an index fund lets you own a piece of everything.
+  </div>
+
+  <!-- Materials -->
+  <h2>Materials Needed</h2>
+  <ul class="materials-list">
+    <li><strong>Reference Sheet:</strong> reference-stock-market.html (print or display on screen)</li>
+    <li><strong>Research Worksheet:</strong> company-research-worksheet.html (one per child)</li>
+    <li><strong>Vocabulary Cards:</strong> stock-vocabulary-cards.html (print and cut &mdash; optional for review)</li>
+    <li><strong>Phone, tablet, or computer</strong> for looking up stock prices and company info</li>
+    <li><strong>Build Your Life Investment Tracker</strong> from Lesson 1 (if available)</li>
+    <li><strong>Crayons/markers</strong> for youngest learner's drawing activity</li>
+  </ul>
+
+  <!-- Lesson Flow -->
+  <h2>Lesson Flow</h2>
+
+  <!-- Step 1 -->
+  <div class="flow-step">
+    <div class="step-header">
+      <div class="step-num">1</div>
+      <div class="step-title">Hook &mdash; You Already Know These Companies</div>
+      <div class="step-time">5 min</div>
+    </div>
+    <div class="say-this">
+      "You use Apple products. You watch Disney movies. You wear Nike shoes. You play Roblox. What if I told you that you could OWN a piece of those companies? Not just use their stuff &mdash; actually be a part-owner?"
+    </div>
+    <p>Explain what a stock is in the simplest possible terms:</p>
+    <ul>
+      <li>A stock is a tiny piece of ownership in a company.</li>
+      <li>When you buy a stock, you become a part-owner of that company.</li>
+      <li>If the company does well and grows, your piece becomes worth more money.</li>
+      <li>You can sell your piece anytime for whatever it's worth that day.</li>
+    </ul>
+    <div class="say-this">
+      "Imagine a pizza with 1,000 slices. You buy 1 slice for $10. The pizza shop gets really popular and everyone wants a slice. Now people will pay $15 for a slice. Your $10 slice is worth $15! You didn't do anything extra &mdash; the company just grew."
+    </div>
+    <p style="margin-top: 8px;"><strong>Quick engagement:</strong> Go around the table and have each kid name a company they use or love. Write them on a whiteboard or paper. These are all companies you COULD own a piece of.</p>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="flow-step">
+    <div class="step-header">
+      <div class="step-num">2</div>
+      <div class="step-title">How the Stock Market Works</div>
+      <div class="step-time">10 min</div>
+    </div>
+    <p>Pull up the <strong>reference sheet</strong> (reference-stock-market.html). Walk through the "For Everyone" sections together. Hit these key concepts:</p>
+
+    <h3>What is a Stock Exchange?</h3>
+    <ul>
+      <li>It's like eBay, but for buying and selling pieces of companies.</li>
+      <li>The two biggest in the US are the NYSE and NASDAQ.</li>
+      <li>Thousands of companies are listed &mdash; you can buy a piece of any of them.</li>
+    </ul>
+
+    <h3>Why Do Prices Go Up and Down?</h3>
+    <ul>
+      <li><strong>Supply and demand:</strong> If lots of people want to buy a stock, the price goes up. If lots of people want to sell, the price goes down.</li>
+      <li><strong>Good news</strong> (new product, strong sales) = price usually goes up.</li>
+      <li><strong>Bad news</strong> (scandal, losing money) = price usually goes down.</li>
+      <li><strong>Key insight:</strong> Short-term, prices bounce around daily. Long-term, good companies tend to grow.</li>
+    </ul>
+
+    <h3>What Makes a Company Valuable?</h3>
+    <ul>
+      <li>It makes products or services people want and need.</li>
+      <li>It makes a profit (earns more money than it spends).</li>
+      <li>It keeps growing &mdash; more customers, more revenue, year after year.</li>
+      <li>It has something competitors can't easily copy (a "moat").</li>
+    </ul>
+
+    <div class="callout callout-amber">
+      <div class="callout-title">Live Demo (Optional)</div>
+      Google "[company name] stock price" for one of the companies the kids named. Show them the real price, the chart, how it's moved over time. This makes it tangible. Try Apple (AAPL), Disney (DIS), or Nike (NKE).
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="flow-step">
+    <div class="step-header">
+      <div class="step-num">3</div>
+      <div class="step-title">Index Funds vs. Individual Stocks</div>
+      <div class="step-time">5 min</div>
+    </div>
+    <p><strong>For ages 9+</strong> (younger kids can listen but don't need to master this).</p>
+    <div class="say-this">
+      "Instead of picking ONE company and hoping it does well, what if you could buy a tiny piece of the 500 biggest companies in America &mdash; all at once? That's what an index fund does."
+    </div>
+    <ul>
+      <li>The <strong>S&amp;P 500</strong> index fund owns pieces of Apple, Microsoft, Amazon, Google, Nike, Disney, and 494 others.</li>
+      <li>If some companies go down, others go up &mdash; you're <strong>diversified</strong>.</li>
+      <li>Over the last 100 years, the S&amp;P 500 has averaged about <strong>10% growth per year</strong>.</li>
+      <li><strong>Warren Buffett</strong> &mdash; one of the richest investors ever &mdash; says most people should just buy index funds. He even bet a million dollars that an index fund would beat professional stock pickers. He won.</li>
+    </ul>
+    <div class="say-this">
+      "It's like buying a basket with 500 different fruits instead of putting all your money on one apple. If that one apple goes bad, you've lost everything. But if one fruit in a basket of 500 goes bad? No big deal &mdash; you still have 499 others."
+    </div>
+    <p style="margin-top: 8px;">Reference the comparison table in the reference sheet for older kids.</p>
+  </div>
+
+  <!-- Step 4 -->
+  <div class="flow-step">
+    <div class="step-header">
+      <div class="step-num">4</div>
+      <div class="step-title">Company Research Activity</div>
+      <div class="step-time">15-20 min</div>
+    </div>
+    <p>Hand out the <strong>Company Research Worksheet</strong>. Each kid picks one company they're interested in and fills it out.</p>
+    <ul>
+      <li>Let them pick companies <strong>THEY</strong> care about. Roblox, Nike, Apple, Disney, Nintendo, Tesla, YouTube (Alphabet/Google) &mdash; whatever excites them.</li>
+      <li>They can use a phone, tablet, or computer to look things up.</li>
+      <li>Parent can help with searches, especially for younger kids.</li>
+    </ul>
+
+    <div class="callout callout-green">
+      <div class="callout-title">How to Look Up Stock Prices</div>
+      <ul>
+        <li>Google: <strong>"[company name] stock price"</strong> &mdash; shows current price, chart, and basic info.</li>
+        <li>Yahoo Finance: <strong>finance.yahoo.com</strong> &mdash; search any company for detailed info.</li>
+        <li>Ticker symbols to know: AAPL (Apple), DIS (Disney), NKE (Nike), RBLX (Roblox), TSLA (Tesla), GOOG (Google), AMZN (Amazon), MSFT (Microsoft), NFLX (Netflix), NTDOY (Nintendo).</li>
+      </ul>
+    </div>
+
+    <p><strong>Ages 11+:</strong> After completing the worksheet, each kid gives a <strong>1-minute pitch</strong> to the family &mdash; what the company does, why it's a good (or bad) investment, and whether they'd buy.</p>
+  </div>
+
+  <!-- Step 5 -->
+  <div class="flow-step">
+    <div class="step-header">
+      <div class="step-num">5</div>
+      <div class="step-title">Connect to Investment Tracker</div>
+      <div class="step-time">5 min</div>
+    </div>
+    <p>Pull out the <strong>Build Your Life Investment Tracker</strong> from Lesson 1.</p>
+    <ul>
+      <li>Review: How are the investment picks from the Build Your Life simulation doing?</li>
+      <li>Did anyone pick stocks? Index funds? How have those choices played out?</li>
+      <li>Ask: "Now that you know more about how the stock market works, would anyone want to change their investment picks?"</li>
+      <li>Let kids update their trackers if they want to reallocate.</li>
+    </ul>
+    <div class="say-this">
+      "Remember &mdash; this is how real investing works. You learn, you research, and sometimes you change your mind. That's smart, not wishy-washy."
+    </div>
+  </div>
+
+  <!-- Age Differentiation -->
+  <h2>Age Differentiation</h2>
+  <div class="age-grid">
+    <div class="age-card age-primary">
+      <div class="age-label">Ages 5-6 (Primary)</div>
+      <ul style="margin-left: 16px; font-size: 13px;">
+        <li>Focus on: "What companies do you use every day?"</li>
+        <li>Use the primary version of the worksheet (drawing + simple questions)</li>
+        <li>Main takeaway: You can own a piece of a company you love</li>
+        <li>Let them draw their favorite company and its products</li>
+        <li>Skip index fund discussion</li>
+        <li>Keep it to 20-25 minutes total</li>
+      </ul>
+    </div>
+    <div class="age-card age-elementary">
+      <div class="age-label">Ages 7-10 (Elementary)</div>
+      <ul style="margin-left: 16px; font-size: 13px;">
+        <li>Full participation in discussion</li>
+        <li>Basic Info section of research worksheet</li>
+        <li>Introduce index funds at a high level</li>
+        <li>Ages 9-10: Add the "Ages 9+" worksheet sections</li>
+        <li>Help them look up real stock prices</li>
+        <li>Main takeaway: Stocks = owning companies, index funds = owning lots of companies</li>
+      </ul>
+    </div>
+    <div class="age-card age-middle">
+      <div class="age-label">Ages 11-15 (Middle/High)</div>
+      <ul style="margin-left: 16px; font-size: 13px;">
+        <li>Complete research worksheet including Ages 13+ sections</li>
+        <li>Calculate 5-year returns</li>
+        <li>Write an investment thesis</li>
+        <li>Give a 1-minute company pitch</li>
+        <li>Discuss index funds vs. individual stocks in depth</li>
+        <li>Review vocabulary cards for key terms</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Tips -->
+  <h2>Tips for Success</h2>
+  <div class="callout callout-purple">
+    <div class="callout-title">Keeping It Engaging</div>
+    <ul>
+      <li><strong>Let them choose.</strong> The #1 rule: let kids pick companies THEY care about. A 10-year-old researching Roblox will be 10x more engaged than one assigned to research Procter &amp; Gamble.</li>
+      <li><strong>Make it real.</strong> Look up actual stock prices together. Show them real charts. "Look &mdash; if you'd bought one share of Apple five years ago for $X, it'd be worth $Y today."</li>
+      <li><strong>No wrong answers.</strong> If a kid says they wouldn't invest in a company, that's just as valid as a buy recommendation. The goal is thinking critically, not picking winners.</li>
+      <li><strong>Connect to their world.</strong> "You spent 3 hours on Roblox yesterday. What if instead of just playing, you also owned a piece of the company that makes it?"</li>
+      <li><strong>Keep the 6-year-old busy.</strong> While older kids research, the youngest can be drawing their favorite company, coloring a picture of a store, or looking at product logos and matching them to company names.</li>
+    </ul>
+  </div>
+
+  <div class="callout callout-amber">
+    <div class="callout-title">Important Caveats to Mention</div>
+    <ul>
+      <li>Stocks can go DOWN. You can lose money. This is not a guaranteed way to get rich.</li>
+      <li>Never invest money you can't afford to lose.</li>
+      <li>Past performance doesn't guarantee future results (just because a stock went up doesn't mean it will keep going up).</li>
+      <li>This is education, not financial advice. When they're old enough to invest real money, they should learn even more.</li>
+    </ul>
+  </div>
+
+  <!-- Key Vocabulary -->
+  <h2>Key Vocabulary to Reinforce</h2>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 14px; margin-top: 8px;">
+    <div><strong>Stock/Share:</strong> A piece of ownership in a company</div>
+    <div><strong>Stock Exchange:</strong> Marketplace for buying/selling stocks</div>
+    <div><strong>Ticker Symbol:</strong> Short code for a stock (AAPL, DIS)</div>
+    <div><strong>Index Fund:</strong> A basket of hundreds of stocks</div>
+    <div><strong>S&amp;P 500:</strong> Index of the 500 biggest US companies</div>
+    <div><strong>Diversification:</strong> Spreading money across many investments</div>
+    <div><strong>Dividend:</strong> Cash payments some companies give shareholders</div>
+    <div><strong>Portfolio:</strong> Your collection of investments</div>
+  </div>
+
+  <!-- Connection to Curriculum -->
+  <h2>Connection to Curriculum</h2>
+  <div class="callout callout-green">
+    <div class="callout-title">Links to Other Lessons</div>
+    <ul>
+      <li><strong>Lesson 1 (Build Your Life):</strong> Investment Tracker &mdash; kids can update their picks based on today's learning.</li>
+      <li><strong>Lesson 7 (Side Hustle Lab):</strong> Companies started as someone's side hustle &mdash; connect entrepreneurship to stock ownership.</li>
+      <li><strong>Lesson 9 (Compound Interest):</strong> Stocks + compound growth = long-term wealth. The 10%/year average of the S&amp;P 500 compounds just like savings interest, but faster.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

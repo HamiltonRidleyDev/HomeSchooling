@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Guide — Taxes: Where Your Money Goes (and Why)</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 32px 24px;
+            color: #1a1a2e;
+            background: #f8f9fa;
+            line-height: 1.65;
+        }
+
+        /* Header */
+        .lesson-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            padding: 36px 32px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        .lesson-header::after {
+            content: '';
+            position: absolute;
+            top: -40px; right: -40px;
+            width: 160px; height: 160px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+        }
+        .unit-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .lesson-header h1 { font-size: 1.85rem; margin-bottom: 6px; }
+        .lesson-header .subtitle { opacity: 0.85; font-size: 1.05rem; }
+
+        /* Meta strip */
+        .meta-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+        .meta-item {
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 12px 18px;
+            flex: 1;
+            min-width: 160px;
+        }
+        .meta-item .label { font-size: 0.75rem; text-transform: uppercase; color: #6c757d; letter-spacing: 0.5px; }
+        .meta-item .value { font-weight: 600; font-size: 1rem; margin-top: 2px; }
+
+        /* Sections */
+        .section {
+            background: #fff;
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 24px;
+            border: 1px solid #e9ecef;
+        }
+        .section h2 {
+            font-size: 1.3rem;
+            color: #0f3460;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .section h3 {
+            font-size: 1.1rem;
+            color: #1a1a2e;
+            margin: 18px 0 10px 0;
+        }
+
+        /* Part label */
+        .part-label {
+            display: inline-block;
+            background: #0f3460;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+        .part-label.part-b { background: #e94560; }
+
+        /* Steps */
+        .step {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 16px;
+            align-items: flex-start;
+        }
+        .step-num {
+            flex-shrink: 0;
+            width: 32px; height: 32px;
+            background: #0f3460;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        .step-num.part-b-num { background: #e94560; }
+        .step-content { flex: 1; }
+
+        /* Script quotes */
+        .script {
+            background: #f0f4ff;
+            border-left: 4px solid #0f3460;
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin: 8px 0;
+            font-style: italic;
+            color: #2c3e6b;
+        }
+        .script.alt {
+            background: #fff5f5;
+            border-left-color: #e94560;
+            color: #6b2c3e;
+        }
+
+        /* Callout boxes */
+        .callout {
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin: 16px 0;
+        }
+        .callout-age {
+            background: #e8f5e9;
+            border: 1px solid #a5d6a7;
+        }
+        .callout-age .tag {
+            display: inline-block;
+            background: #43a047;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+        }
+        .callout-tip {
+            background: #fff8e1;
+            border: 1px solid #ffe082;
+        }
+        .callout-tip .tag {
+            display: inline-block;
+            background: #f9a825;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+        }
+        .callout-politics {
+            background: #f3e5f5;
+            border: 1px solid #ce93d8;
+        }
+        .callout-politics .tag {
+            display: inline-block;
+            background: #8e24aa;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+        }
+        .callout-connect {
+            background: #e3f2fd;
+            border: 1px solid #90caf9;
+        }
+        .callout-connect .tag {
+            display: inline-block;
+            background: #1565c0;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+        }
+
+        /* Materials list */
+        .materials-list {
+            list-style: none;
+            padding: 0;
+        }
+        .materials-list li {
+            padding: 8px 0;
+            padding-left: 28px;
+            position: relative;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .materials-list li:last-child { border-bottom: none; }
+        .materials-list li::before {
+            content: '\2610';
+            position: absolute;
+            left: 0;
+            font-size: 1.1rem;
+            color: #0f3460;
+        }
+
+        ul:not(.materials-list) { padding-left: 20px; }
+        ul:not(.materials-list) li { margin-bottom: 6px; }
+
+        /* Timeline */
+        .timeline {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 12px 0;
+        }
+        .time-block {
+            flex: 1;
+            min-width: 140px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+        }
+        .time-block .mins { font-size: 1.4rem; font-weight: 700; color: #0f3460; }
+        .time-block .desc { font-size: 0.82rem; color: #6c757d; }
+
+        @media print {
+            body { background: #fff; padding: 16px; font-size: 11pt; }
+            .lesson-header { background: #1a1a2e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .section { break-inside: avoid; border: 1px solid #ccc; }
+            .meta-strip { gap: 8px; }
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 16px; }
+            .lesson-header { padding: 24px 20px; }
+            .lesson-header h1 { font-size: 1.4rem; }
+            .section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="lesson-header">
+    <div class="unit-tag">Unit 4: Earning &amp; Taxes &bull; Lesson 8</div>
+    <h1>Taxes &mdash; Where Your Money Goes (and Why)</h1>
+    <div class="subtitle">Facilitator Guide &bull; 30&ndash;40 Minutes</div>
+</div>
+
+<div class="meta-strip">
+    <div class="meta-item">
+        <div class="label">Ages</div>
+        <div class="value">6&ndash;15 (two parts)</div>
+    </div>
+    <div class="meta-item">
+        <div class="label">Duration</div>
+        <div class="value">30&ndash;40 minutes</div>
+    </div>
+    <div class="meta-item">
+        <div class="label">Structure</div>
+        <div class="value">Part A (all) + Part B (13+)</div>
+    </div>
+    <div class="meta-item">
+        <div class="label">Materials</div>
+        <div class="value">4 handouts + pencils</div>
+    </div>
+</div>
+
+<!-- LESSON OVERVIEW -->
+<div class="section">
+    <h2>Lesson Overview</h2>
+    <p>This lesson answers the question every kid eventually asks: <em>"Why does the government take money from people?"</em> Instead of a lecture, we flip it. In Part A, every kid becomes the government and must decide how to spend $100 in taxes. In Part B, the older kids see exactly where the money goes when they look at a real pay stub.</p>
+
+    <div class="timeline">
+        <div class="time-block">
+            <div class="mins">15&ndash;20 min</div>
+            <div class="desc">Part A: "You're the Government"<br><strong>All ages (6&ndash;15)</strong></div>
+        </div>
+        <div class="time-block">
+            <div class="mins">15&ndash;20 min</div>
+            <div class="desc">Part B: "Reading Your Paycheck"<br><strong>Ages 13+ only</strong></div>
+        </div>
+    </div>
+</div>
+
+<!-- MATERIALS -->
+<div class="section">
+    <h2>Materials Needed</h2>
+    <ul class="materials-list">
+        <li><strong>Reference: Where Taxes Go</strong> &mdash; visual breakdown poster (print in color if possible)</li>
+        <li><strong>Tax Budget Exercise</strong> &mdash; one per kid (the $100 allocation worksheet)</li>
+        <li><strong>Mock Pay Stub</strong> &mdash; one per older kid (ages 13+)</li>
+        <li><strong>Pay Stub Worksheet</strong> &mdash; one per older kid (ages 13+)</li>
+        <li>Pencils and erasers</li>
+        <li>Optional for young kids (ages 6&ndash;8): 10 tokens, coins, or stickers per child for the simplified version</li>
+        <li>Optional: Calculator for Part B math sections</li>
+    </ul>
+</div>
+
+<!-- BEFORE YOU BEGIN -->
+<div class="section">
+    <h2>Before You Begin</h2>
+
+    <div class="callout callout-politics">
+        <div class="tag">Navigating Political Questions</div>
+        <p><strong>This lesson is about how taxes work, not about political opinions.</strong> Kids (especially the older ones) may express strong views they've absorbed. Here's how to stay neutral:</p>
+        <ul>
+            <li><strong>Redirect to mechanics:</strong> "That's an interesting opinion! In this lesson, we're focused on understanding HOW taxes work, so when you're older you can form your own views."</li>
+            <li><strong>Acknowledge all sides:</strong> "Some people think taxes should be higher so the government can do more. Others think they should be lower so people keep more of their money. Both sides have reasons."</li>
+            <li><strong>Use the exercise:</strong> "That's exactly what the budget exercise is about &mdash; there's no right answer, just trade-offs."</li>
+            <li><strong>Avoid labeling:</strong> Don't use terms like "liberal," "conservative," or name specific politicians. Keep it about the system.</li>
+        </ul>
+    </div>
+
+    <div class="callout callout-age">
+        <div class="tag">Age Notes</div>
+        <ul>
+            <li><strong>Ages 6&ndash;8:</strong> Use the simplified version of the Tax Budget Exercise (6 categories, 10 tokens). Focus on the concept: "Everyone chips in to pay for things we all share." Don't worry about percentages.</li>
+            <li><strong>Ages 9&ndash;12:</strong> Use the full Tax Budget Exercise. They can handle the real categories and adding to $100. Help with math if needed.</li>
+            <li><strong>Ages 13&ndash;15:</strong> Full Tax Budget Exercise PLUS Part B (pay stub). These kids are close to getting real jobs &mdash; this is directly relevant to their near future.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- PART A -->
+<div class="section">
+    <span class="part-label">Part A</span>
+    <h2>"You're the Government" &mdash; All Ages, 15&ndash;20 Minutes</h2>
+
+    <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+            <h3>Hook &mdash; The Big Question (2 minutes)</h3>
+            <div class="script">
+                "Every time someone earns money, the government takes a piece. Why? Where does it go? And here's the fun part &mdash; what would YOU do with it?"
+            </div>
+            <p>Let them react. They'll probably say things like "That's not fair!" or "Why do they take it?" That's perfect &mdash; lean into the curiosity.</p>
+            <div class="script">
+                "What if I told you that taxes pay for roads, for schools, for the military, for helping people who are sick &mdash; basically for almost everything the government does? The question isn't really WHETHER to collect taxes. It's HOW MUCH and WHERE it goes. And today, YOU get to decide."
+            </div>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+            <h3>The Visual Breakdown (5 minutes)</h3>
+            <p>Hold up or display the <strong>Reference: Where Taxes Go</strong> sheet. Walk through each category, starting from the biggest.</p>
+            <div class="script">
+                "Look at this. The BIGGEST chunk &mdash; 25 cents out of every dollar &mdash; goes to healthcare. Medicare and Medicaid. That's paying for grandma's doctor visits, or helping people who can't afford to go to the hospital."
+            </div>
+            <p>Move through the categories. For each one, pause and ask:</p>
+            <div class="script">
+                "Did you know taxes pay for THAT?"
+            </div>
+            <p>Hit the ones that surprise kids most:</p>
+            <ul>
+                <li><strong>NASA and science</strong> &mdash; "Your tax dollars fund space exploration!"</li>
+                <li><strong>National parks</strong> &mdash; "Every time we visit a national park, taxes helped keep it open."</li>
+                <li><strong>Interest on debt</strong> &mdash; "The government borrows money too, just like people. And 10 cents of every dollar goes just to paying interest. Not even paying it OFF &mdash; just the interest."</li>
+            </ul>
+
+            <div class="callout callout-age">
+                <div class="tag">Ages 6&ndash;8</div>
+                <p>Simplify: "Taxes are when everyone chips in money to pay for things we all share &mdash; like roads, schools, firefighters, and parks. It's like everyone putting money in a big jar so we can buy things for the whole neighborhood."</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+            <h3>The Budget Exercise (8&ndash;10 minutes)</h3>
+            <p>Hand out the <strong>Tax Budget Exercise</strong> worksheet.</p>
+            <div class="script">
+                "OK, here's the deal. You just got elected President &mdash; or King or Queen, whatever you want. The American people paid $100 in taxes. You MUST spend all $100. You can't keep any. You can't throw any away. You have to decide: how much goes to each category?"
+            </div>
+            <p><strong>Key rules to emphasize:</strong></p>
+            <ul>
+                <li>The total MUST equal $100. No more, no less.</li>
+                <li>You can put $0 in a category, but you have to accept what that means (no military? no schools?).</li>
+                <li>There's no right answer. This is about trade-offs.</li>
+            </ul>
+
+            <div class="callout callout-tip">
+                <div class="tag">Facilitator Tip</div>
+                <p>Walk around as they work. If a kid puts $50 in military and $0 in education, don't correct them &mdash; just ask: "Interesting! So no money for schools. What happens to schools then?" Let them think through consequences.</p>
+            </div>
+
+            <div class="callout callout-age">
+                <div class="tag">Ages 6&ndash;8: Simplified Version</div>
+                <p>Use the bottom section of the worksheet. Give each young child 10 tokens (coins, stickers, or small objects). They place tokens in 6 picture categories: schools, doctors, soldiers, roads, parks, and helping people. Same concept, simpler execution.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+            <h3>Share and Compare (5 minutes)</h3>
+            <p>Go around the table. Each kid shares their allocation.</p>
+            <div class="script">
+                "OK, let's hear it. Where did you put your money?"
+            </div>
+            <p>After everyone shares, drive the comparison:</p>
+            <ul>
+                <li>"Look how different your budgets are! That's exactly what happens in real life &mdash; people disagree about where tax money should go."</li>
+                <li>"Did anyone put $0 somewhere? What would happen if we really did that?"</li>
+                <li>"What was the hardest trade-off? What did you WANT to fund more but couldn't?"</li>
+            </ul>
+            <div class="script">
+                "This is literally what Congress argues about every single year. You just did what they do &mdash; except they argue about it for months. And it's trillions of dollars, not a hundred."
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PART B -->
+<div class="section">
+    <span class="part-label part-b">Part B</span>
+    <h2>"Reading Your Paycheck" &mdash; Ages 13+, 15&ndash;20 Minutes</h2>
+
+    <div class="callout callout-age">
+        <div class="tag">Ages 6&ndash;12</div>
+        <p>Younger kids are done after Part A. Give them free time, a related coloring activity, or have them refine their budget allocations while you work with the older kids.</p>
+    </div>
+
+    <div class="step">
+        <div class="step-num part-b-num">1</div>
+        <div class="step-content">
+            <h3>Introduce the Pay Stub (3 minutes)</h3>
+            <p>Hand out the <strong>Mock Pay Stub</strong>.</p>
+            <div class="script alt">
+                "Remember in Build Your Life when you saw gross pay versus net pay? You saw that $4,000 turned into $3,080 &mdash; and some of you were pretty shocked. Now we're going to look at a REAL pay stub and see EXACTLY where that money went. Every. Single. Dollar."
+            </div>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-num part-b-num">2</div>
+        <div class="step-content">
+            <h3>Walk Through Each Line (5 minutes)</h3>
+            <p>Go line by line through the pay stub. Explain each deduction:</p>
+            <ul>
+                <li><strong>Federal Income Tax ($186):</strong> "This goes to the federal government &mdash; all those categories we just talked about in Part A. Healthcare, military, Social Security, roads &mdash; all of it."</li>
+                <li><strong>State Income Tax ($0):</strong> "Jordan lives in Florida, which has NO state income tax. Only some states charge this. If Jordan lived in California, this line would NOT be zero."</li>
+                <li><strong>Social Security &mdash; 6.2% ($124):</strong> "This is FICA. It stands for Federal Insurance Contributions Act. This money goes into a fund that pays retired people a monthly check. The idea is: you pay in now, and when you're 67, you get paid back."</li>
+                <li><strong>Medicare &mdash; 1.45% ($29):</strong> "Also part of FICA. This pays for healthcare for people over 65."</li>
+                <li><strong>Health Insurance ($74):</strong> "This isn't a tax &mdash; it's Jordan's share of health insurance through work. The company pays part, Jordan pays part."</li>
+                <li><strong>401(k) &mdash; 3% ($60):</strong> "This is ALSO not a tax. This is Jordan choosing to save for retirement. And here's the cool part &mdash; many companies MATCH what you put in. So if Jordan puts in $60, the company might put in another $60. That's free money."</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-num part-b-num">3</div>
+        <div class="step-content">
+            <h3>The Surprise (2 minutes)</h3>
+            <div class="script alt">
+                "So Jordan earns $2,000 every two weeks. That sounds great, right? But look at the net pay: $1,527. That's $473 gone. Almost a quarter of the paycheck. And over a full year? Jordan earns $52,000 but takes home roughly $39,700. More than $12,000 goes to deductions."
+            </div>
+            <p>Let them react. This is usually a genuine surprise moment.</p>
+            <div class="script alt">
+                "But here's the thing &mdash; not all of it is 'lost.' The 401(k) is going to YOUR retirement. The health insurance is protecting YOU. It's really only the taxes that go to the government. And even those pay for things you use every day."
+            </div>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-num part-b-num">4</div>
+        <div class="step-content">
+            <h3>The Worksheet (8&ndash;10 minutes)</h3>
+            <p>Hand out the <strong>Pay Stub Worksheet</strong>. Let them work through it. This is where the math happens.</p>
+            <div class="callout callout-tip">
+                <div class="tag">Facilitator Tip</div>
+                <p>Let them use calculators for the percentage and annual calculations. The goal is understanding, not mental math. Walk through the verification problems together if they struggle.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-num part-b-num">5</div>
+        <div class="step-content">
+            <h3>W-2 Preview &mdash; Age 15 Only (2 minutes)</h3>
+            <div class="script alt">
+                "One more thing for you. When you get a job &mdash; any job, even a part-time one &mdash; every January your employer will send you something called a W-2. It shows exactly how much you earned that year and how much was taken out for taxes. You use that W-2 to file your tax return &mdash; which is basically telling the government: 'Here's what I earned, here's what I already paid, do I owe more or do you owe ME a refund?' We'll cover filing in more detail later, but just know &mdash; the W-2 is coming."
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- WRAP UP -->
+<div class="section">
+    <h2>Wrap-Up &amp; Connection to Build Your Life</h2>
+
+    <div class="callout callout-connect">
+        <div class="tag">Build Your Life Connection</div>
+        <p>In the Build Your Life simulation, kids saw that a $4,000/month salary turned into $3,080 take-home pay. At the time, that gap was just a number. <strong>Now they understand exactly what fills that gap</strong> &mdash; federal tax, state tax, Social Security, Medicare, health insurance, and retirement savings. The next time they see gross vs. net in Build Your Life or any future exercise, it won't be a mystery.</p>
+    </div>
+
+    <p><strong>Close with this:</strong></p>
+    <div class="script">
+        "Taxes are one of those things that everyone has opinions about, but not everyone understands. Now you do. You know where the money goes. You know what a pay stub looks like. And you've made the same impossible trade-offs that Congress makes every year. Whether you end up thinking taxes should be higher, lower, or about the same &mdash; at least you'll know what you're talking about."
+    </div>
+</div>
+
+<!-- ANSWER KEY -->
+<div class="section">
+    <h2>Quick Reference: Pay Stub Worksheet Answers</h2>
+    <p><em>For facilitator use during Part B.</em></p>
+    <ul>
+        <li>Hourly rate: <strong>$25.00</strong></li>
+        <li>Hours worked: <strong>80</strong></li>
+        <li>Gross pay: <strong>$2,000.00</strong></li>
+        <li>Net pay: <strong>$1,527.00</strong></li>
+        <li>Total deducted: <strong>$473.00</strong></li>
+        <li>Deduction percentage: <strong>23.65%</strong></li>
+        <li>Social Security check: $2,000 x 0.062 = <strong>$124.00</strong></li>
+        <li>Medicare check: $2,000 x 0.0145 = <strong>$29.00</strong></li>
+        <li>Annual gross: $25 x 40 x 52 = <strong>$52,000</strong></li>
+        <li>Annual take-home (approx): $1,527 x 26 = <strong>$39,702</strong></li>
+        <li>Annual deductions: $52,000 - $39,702 = <strong>$12,298</strong></li>
+        <li>State tax is $0 because <strong>Florida has no state income tax</strong></li>
+        <li>401(k) is different because <strong>it goes to the employee's own retirement savings, not to the government</strong></li>
+    </ul>
+</div>
+
+</body>
+</html>

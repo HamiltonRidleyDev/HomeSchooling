@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parent Guide — Banking 101: Your Money's Home</title>
+<style>
+  :root {
+    --navy: #1a2744;
+    --blue: #2563eb;
+    --light-blue: #dbeafe;
+    --green: #16a34a;
+    --light-green: #dcfce7;
+    --amber: #d97706;
+    --light-amber: #fef3c7;
+    --red: #dc2626;
+    --light-red: #fee2e2;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-600: #4b5563;
+    --gray-800: #1f2937;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--gray-800);
+    line-height: 1.6;
+    background: var(--gray-50);
+  }
+
+  .page {
+    max-width: 850px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px 48px;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .page { padding: 20px 0; max-width: 100%; }
+    .flow-step { break-inside: avoid; }
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid var(--navy);
+    padding-bottom: 20px;
+    margin-bottom: 32px;
+  }
+  .header .unit-tag {
+    display: inline-block;
+    background: var(--navy);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 28px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .header .subtitle {
+    font-size: 16px;
+    color: var(--gray-600);
+  }
+
+  /* Meta bar */
+  .meta-bar {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    background: var(--gray-100);
+    border-radius: 10px;
+    padding: 14px 20px;
+    margin-bottom: 28px;
+    font-size: 14px;
+  }
+  .meta-bar .item { display: flex; align-items: center; gap: 6px; }
+  .meta-bar .label { font-weight: 600; color: var(--gray-600); }
+
+  /* Section headings */
+  h2 {
+    font-size: 20px;
+    color: var(--navy);
+    margin: 28px 0 12px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--light-blue);
+  }
+  h3 { font-size: 16px; color: var(--blue); margin: 16px 0 8px; }
+
+  p, li { font-size: 15px; }
+  p { margin-bottom: 10px; }
+  ul, ol { padding-left: 24px; margin-bottom: 12px; }
+  li { margin-bottom: 4px; }
+
+  /* Lesson flow steps */
+  .flow-step {
+    border-left: 4px solid var(--blue);
+    background: #fff;
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .flow-step .step-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .flow-step .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--blue);
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  .flow-step .step-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .flow-step .step-time {
+    font-size: 13px;
+    font-weight: 600;
+    background: var(--light-blue);
+    color: var(--blue);
+    padding: 2px 10px;
+    border-radius: 12px;
+  }
+
+  /* Call-out boxes */
+  .callout {
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 14px;
+  }
+  .callout-title {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .callout.say {
+    background: var(--light-blue);
+    border-left: 4px solid var(--blue);
+  }
+  .callout.say .callout-title { color: var(--blue); }
+  .callout.tip {
+    background: var(--light-green);
+    border-left: 4px solid var(--green);
+  }
+  .callout.tip .callout-title { color: var(--green); }
+  .callout.warn {
+    background: var(--light-amber);
+    border-left: 4px solid var(--amber);
+  }
+  .callout.warn .callout-title { color: var(--amber); }
+  .callout.connect {
+    background: var(--light-red);
+    border-left: 4px solid var(--red);
+  }
+  .callout.connect .callout-title { color: var(--red); }
+
+  /* Age badges */
+  .age-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .age-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  .age-card .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+  .age-card.primary .badge { background: #fce7f3; color: #be185d; }
+  .age-card.elem .badge { background: #e0e7ff; color: #4338ca; }
+  .age-card.middle .badge { background: #d1fae5; color: #065f46; }
+  .age-card.high .badge { background: #fef3c7; color: #92400e; }
+
+  /* Materials list */
+  .materials-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .materials-list .mat-item {
+    background: var(--gray-100);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  .materials-list .mat-item .file { font-weight: 600; color: var(--blue); }
+
+  /* Checklist */
+  .checklist { list-style: none; padding-left: 0; }
+  .checklist li {
+    padding: 4px 0 4px 28px;
+    position: relative;
+  }
+  .checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--gray-200);
+    border-radius: 3px;
+  }
+
+  .field-trip {
+    background: linear-gradient(135deg, var(--light-green), #ecfdf5);
+    border: 2px dashed var(--green);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-top: 20px;
+  }
+  .field-trip h3 { color: var(--green); margin-top: 0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="unit-tag">Unit 2: Banking &mdash; Lesson 3</div>
+    <h1>Banking 101: Your Money's Home</h1>
+    <div class="subtitle">Parent / Facilitator Guide</div>
+  </div>
+
+  <div class="meta-bar">
+    <div class="item"><span class="label">Duration:</span> 30&ndash;40 minutes</div>
+    <div class="item"><span class="label">Ages:</span> 6&ndash;15 (6 kids)</div>
+    <div class="item"><span class="label">Format:</span> Guided discussion + hands-on analysis</div>
+    <div class="item"><span class="label">Prep time:</span> 5 minutes (print materials)</div>
+  </div>
+
+  <!-- LEARNING OBJECTIVES -->
+  <h2>Learning Objectives</h2>
+  <ul>
+    <li>Understand what a bank does and why people use one</li>
+    <li>Know the difference between checking, savings, and high-yield savings accounts</li>
+    <li>Read and analyze a real bank statement</li>
+    <li>Distinguish between debit cards and credit cards</li>
+    <li>Spot fees, suspicious charges, and overdrafts</li>
+  </ul>
+
+  <!-- MATERIALS -->
+  <h2>Materials Needed</h2>
+  <div class="materials-list">
+    <div class="mat-item"><span class="file">reference-how-banking-works.html</span> &mdash; print one per kid (they each read their age tier)</div>
+    <div class="mat-item"><span class="file">mock-bank-statement.html</span> &mdash; print one per kid or pair</div>
+    <div class="mat-item"><span class="file">worksheet-bank-detective.html</span> &mdash; print one per kid</div>
+    <div class="mat-item">Pencils, calculator (optional), highlighters for marking up the statement</div>
+  </div>
+
+  <div class="callout connect">
+    <div class="callout-title">Connection to Build Your Life</div>
+    In the budgeting unit, the kids built a budget for their fictional life. Ask them: <em>"You planned where every dollar would go &mdash; but where does that money actually sit? Where does your paycheck land? Where do your bill payments come from?"</em> That is what today's lesson answers. The budget is the plan; the bank account is where the plan lives.
+  </div>
+
+  <!-- LESSON FLOW -->
+  <h2>Lesson Flow</h2>
+
+  <!-- Step 1 -->
+  <div class="flow-step">
+    <div class="step-header">
+      <div><span class="step-number">1</span><span class="step-title">Hook &mdash; Where Does Money Live?</span></div>
+      <span class="step-time">3 min</span>
+    </div>
+    <div class="callout say">
+      <div class="callout-title">Say This</div>
+      "Where does money live? Not in your wallet &mdash; that's just visiting. Your money <strong>lives</strong> at the bank. Think of it like this: your wallet is a hotel room. The bank is your money's actual house."
+    </div>
+    <p>Ask the kids: <em>Why wouldn't you just keep all your money in a shoebox under your bed?</em></p>
+    <p>Guide them toward three reasons:</p>
+    <ol>
+      <li><strong>Safety</strong> &mdash; it could get stolen, lost in a fire, or eaten by the dog</li>
+      <li><strong>Growth</strong> &mdash; the bank actually pays you to keep money there (interest)</li>
+      <li><strong>Access</strong> &mdash; you can spend it with a card, pay bills online, send money to people</li>
+    </ol>
+    <p>Briefly explain what the bank does with your money: <em>"They don't just put it in a vault with your name on it. They lend it to other people &mdash; to buy houses, start businesses &mdash; and those people pay the bank interest. The bank shares a little of that interest with you as a thank-you for letting them use your money."</em></p>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="flow-step">
+    <div class="step-header">
+      <div><span class="step-number">2</span><span class="step-title">Account Types Lesson</span></div>
+      <span class="step-time">10 min</span>
+    </div>
+    <p>Hand out the <strong>reference-how-banking-works</strong> sheet. Each kid reads their age-appropriate tier. Walk through the three main account types together:</p>
+
+    <h3>Checking Account</h3>
+    <ul>
+      <li>Your everyday spending account</li>
+      <li>Money goes in (paycheck, deposits) and out (bills, purchases)</li>
+      <li>Comes with a debit card</li>
+      <li>Earns almost zero interest (typically 0.01%)</li>
+      <li>Think of it as your money's "front door" &mdash; always in motion</li>
+    </ul>
+
+    <h3>Savings Account</h3>
+    <ul>
+      <li>Your money's storage room &mdash; for money you don't need right now</li>
+      <li>Earns more interest than checking (around 0.5%&ndash;1% at most traditional banks)</li>
+      <li>May have limits on how often you can withdraw</li>
+      <li>No debit card &mdash; you transfer money to checking when you need it</li>
+    </ul>
+
+    <h3>High-Yield Savings Account</h3>
+    <ul>
+      <li>Same as savings, but at online banks that pay much more interest (4%&ndash;5% currently)</li>
+      <li>The trade-off: no physical branch to walk into</li>
+      <li>This is where an emergency fund should live</li>
+    </ul>
+
+    <div class="callout tip">
+      <div class="callout-title">Key Concept: FDIC Insurance</div>
+      Your money in the bank is guaranteed by the federal government up to $250,000 per depositor, per bank. If the bank goes out of business, the government gives you your money back. This is why a bank account is safer than a shoebox.
+    </div>
+
+    <div class="age-grid">
+      <div class="age-card primary">
+        <div class="badge">Age 6 &mdash; Simplified</div>
+        Focus only on: the bank keeps your money safe, and it gives you a little extra money for keeping it there. Use the piggy bank analogy from the reference sheet. Skip high-yield savings and FDIC details.
+      </div>
+      <div class="age-card elem">
+        <div class="badge">Ages 9&ndash;10</div>
+        They should understand checking vs savings and why you'd use each. Introduce the concept of overdraft: "If you try to spend more than you have, the bank charges you a fee."
+      </div>
+      <div class="age-card middle">
+        <div class="badge">Ages 11&ndash;13</div>
+        Full account types discussion. They should understand how banks make money (borrow low, lend high). Introduce FDIC, direct deposit, and high-yield savings.
+      </div>
+      <div class="age-card high">
+        <div class="badge">Age 15</div>
+        Full discussion plus APY, bank comparison, credit unions vs banks, and online banking. Ask: "If you were opening a bank account today, what would you look for?"
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="flow-step">
+    <div class="step-header">
+      <div><span class="step-number">3</span><span class="step-title">Mock Bank Statement Exercise</span></div>
+      <span class="step-time">15 min</span>
+    </div>
+    <p>Hand out the <strong>mock-bank-statement</strong> and the <strong>worksheet-bank-detective</strong>.</p>
+    <p>This is the core of the lesson. The kids will analyze a realistic bank statement for "Alex Johnson" and answer questions at their age level.</p>
+
+    <h3>How to Run It</h3>
+    <ol>
+      <li>Give everyone 2 minutes to just look at the statement. Ask: "What do you notice?"</li>
+      <li>Walk through the first few transactions together so everyone understands the format: date, description, amount, running balance.</li>
+      <li>Let them work on the worksheet. Younger kids can work in pairs with an older sibling.</li>
+      <li>After 10 minutes, discuss answers together.</li>
+    </ol>
+
+    <div class="callout warn">
+      <div class="callout-title">Teaching Moments to Highlight</div>
+      <ul>
+        <li><strong>The overdraft fee ($35)</strong> &mdash; Alex spent more than was in the account, even briefly, and the bank charged $35 for it. "That coffee just cost $35 extra."</li>
+        <li><strong>The $1.00 mystery charge</strong> &mdash; This is a verification hold from an online merchant. It's common and usually refunded, but it's a lesson in <em>always checking your statement</em>. If you don't recognize a charge, call the bank.</li>
+        <li><strong>Coffee habit</strong> &mdash; Three coffee purchases in one month. Small amounts that add up. What's the yearly cost?</li>
+        <li><strong>Savings transfer</strong> &mdash; The one responsible thing Alex does consistently: moving $200 to savings every month.</li>
+      </ul>
+    </div>
+
+    <div class="age-grid">
+      <div class="age-card primary">
+        <div class="badge">Age 6 &mdash; Simplified</div>
+        Partner with an older sibling. They find and circle: the biggest number going in (paycheck), the biggest number going out (rent), and the coffee purchases. Count the coffee cups. They answer only the "For Everyone" questions with help.
+      </div>
+      <div class="age-card elem">
+        <div class="badge">Ages 9&ndash;10</div>
+        Complete "For Everyone" and "Ages 9+" sections. They should be able to find the overdraft and calculate the coffee total. Help with the interest calculation if needed.
+      </div>
+      <div class="age-card middle">
+        <div class="badge">Ages 11&ndash;13</div>
+        Complete all sections through "Ages 13+." They should calculate income, expenses, net, and spending percentages. Introduce the 50/30/20 rule if they haven't seen it.
+      </div>
+      <div class="age-card high">
+        <div class="badge">Age 15</div>
+        Complete the full worksheet including designing a better budget. They should be able to work completely independently. Challenge: present their improved budget to the group.
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 4 -->
+  <div class="flow-step">
+    <div class="step-header">
+      <div><span class="step-number">4</span><span class="step-title">Debit vs Credit Deep Dive</span></div>
+      <span class="step-time">5 min</span>
+    </div>
+    <div class="callout say">
+      <div class="callout-title">Say This</div>
+      "A debit card and a credit card look almost identical. They're the same size, same shape, both have numbers on the front. But they work <strong>completely</strong> differently."
+    </div>
+    <p>Draw this on a whiteboard or just explain clearly:</p>
+    <ul>
+      <li><strong>Debit card</strong> = spends YOUR money, right now, from your checking account. When you swipe, the money leaves your account immediately. If you have $50, you can spend $50. That's it.</li>
+      <li><strong>Credit card</strong> = spends the BANK'S money. You're borrowing. At the end of the month, you get a bill. If you don't pay it all back, they charge you interest &mdash; and credit card interest is <strong>very</strong> high (20%+).</li>
+    </ul>
+    <p>Ask the kids: <em>"Which one is safer to use if you're bad at tracking your spending? Why?"</em></p>
+    <p>(Answer: debit, because you can only spend what you have. But credit cards have better fraud protection &mdash; save that nuance for the 15-year-old.)</p>
+
+    <div class="callout tip">
+      <div class="callout-title">For the 15-year-old</div>
+      Mention that responsible credit card use builds your credit score, which affects your ability to rent an apartment, get a car loan, or buy a house later. "It's a tool &mdash; powerful if used right, dangerous if used wrong." This is a preview of a future lesson on credit.
+    </div>
+  </div>
+
+  <!-- Step 5 -->
+  <div class="flow-step">
+    <div class="step-header">
+      <div><span class="step-number">5</span><span class="step-title">Discussion + Wrap-Up</span></div>
+      <span class="step-time">5 min</span>
+    </div>
+    <p>Bring it together with a few discussion questions:</p>
+    <ul>
+      <li>"What surprised you about Alex's bank statement?"</li>
+      <li>"If you had a bank account, would you pick checking or savings first? Why?"</li>
+      <li>"What's one thing you'd do differently than Alex?"</li>
+    </ul>
+
+    <div class="callout connect">
+      <div class="callout-title">Connect Back to Build Your Life</div>
+      "Remember your budget from the budgeting unit? Every dollar you planned &mdash; your rent, groceries, savings &mdash; all of that flows through a bank account. The budget is the <em>plan</em>. The bank account is where the plan actually <em>happens</em>. Next time you look at your Build Your Life budget, think about which transactions would show up on your bank statement."
+    </div>
+  </div>
+
+  <!-- FIELD TRIP -->
+  <div class="field-trip">
+    <h3>Optional Real-World Field Trip: Visit a Bank</h3>
+    <p>Consider taking the kids to a local bank or credit union. Many banks will do a short tour for homeschool groups and explain how accounts work.</p>
+    <ul class="checklist">
+      <li>Call ahead and ask if they do educational visits for kids</li>
+      <li>Ask if any of the kids (especially the 15-year-old) can open a real savings account with a small deposit ($25&ndash;$50)</li>
+      <li>Have each kid prepare one question to ask the banker</li>
+      <li>Look for a bank or credit union with no monthly fees on youth accounts</li>
+      <li>After the visit, have each kid write one thing they learned that surprised them</li>
+    </ul>
+    <p style="margin-top:10px; font-size:14px;"><strong>Prep tip:</strong> Credit unions are often more welcoming for these kinds of visits and typically have youth savings accounts with no fees and no minimum balance.</p>
+  </div>
+
+  <!-- ANSWER KEY -->
+  <h2>Quick Answer Key (Statement Exercise)</h2>
+  <p style="font-size:14px; color:var(--gray-600); margin-bottom:12px;">Full answers for facilitator reference. Do not distribute to students.</p>
+
+  <h3>For Everyone</h3>
+  <ul>
+    <li><strong>Starting balance:</strong> $2,450.00</li>
+    <li><strong>Total deposits/income:</strong> $2,100.00 + $2,100.00 = $4,200.00</li>
+    <li><strong>Biggest expense:</strong> Rent &mdash; $1,100.00</li>
+    <li><strong>Coffee purchases:</strong> 3 times, totaling $5.75 + $6.25 + $5.50 = $17.50</li>
+  </ul>
+
+  <h3>For Ages 9+</h3>
+  <ul>
+    <li><strong>Overdraft fee:</strong> $35.00 &mdash; it happened because Alex's balance dipped below $0 after a transaction</li>
+    <li><strong>Coffee per year:</strong> $17.50/month &times; 12 = $210.00/year</li>
+    <li><strong>Interest on $200 at 4.5%:</strong> $200 &times; 0.045 = $9.00 per year</li>
+    <li><strong>Suspicious $1.00 charge:</strong> Alex should review it, and if unrecognized, call the bank to dispute it. This is likely a verification hold from an online purchase, which should be refunded.</li>
+  </ul>
+
+  <h3>For Ages 13+</h3>
+  <ul>
+    <li><strong>Total income:</strong> $4,200.00</li>
+    <li><strong>Total expenses:</strong> $1,100 + $87.50 + $62.30 + $94.15 + $45.00 + $38.75 + $15.49 + $5.75 + $6.25 + $5.50 + $60.00 + $200.00 + $35.00 + $1.00 = $1,756.69</li>
+    <li><strong>Net:</strong> $4,200.00 &minus; $1,756.69 = $2,443.31</li>
+    <li><strong>Housing % of income:</strong> $1,100 / $4,200 = 26.2%</li>
+    <li><strong>Food % of income:</strong> ($87.50 + $62.30 + $94.15) / $4,200 = 5.8%</li>
+    <li><strong>Savings % of income:</strong> $200 / $4,200 = 4.8%</li>
+    <li><strong>Wants %:</strong> ($15.49 + $17.50 + $45.00 + $38.75 + $60.00) / $4,200 = 4.2% (Netflix, coffee, gas if categorized as transport, ATM)</li>
+    <li><strong>50/30/20 check:</strong> Needs are around 32%, wants around 4.2%, savings is only 4.8%. Alex has a lot of unallocated money ($2,443.31 net) and should be saving significantly more.</li>
+    <li><strong>To save $500/month:</strong> Alex already has the income. They just need to set up a $500 transfer instead of $200. The spending is well below income &mdash; the issue is that unallocated money likely gets spent on things not showing in this single month.</li>
+  </ul>
+
+</div>
+</body>
+</html>

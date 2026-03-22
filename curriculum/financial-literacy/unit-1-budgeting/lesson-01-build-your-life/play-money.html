@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Play Money — Budget Bucks</title>
+<style>
+  @media print {
+    body { margin: 0.25in; }
+    .instructions { display: none; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 850px; margin: 0 auto; padding: 12px; color: #2d3436; }
+  .instructions { background: #f5f6fa; border-left: 4px solid #6c5ce7; padding: 8px 12px; font-size: 0.82em; margin-bottom: 12px; }
+  .bill-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+  .bill { border: 3px solid; border-radius: 8px; padding: 10px; height: 120px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+  .bill::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 0.04;
+    background: repeating-linear-gradient(45deg, transparent, transparent 10px, currentColor 10px, currentColor 11px);
+    pointer-events: none;
+  }
+  .bill-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .bill-amount { font-size: 1.8em; font-weight: 900; letter-spacing: -1px; }
+  .bill-corner { font-size: 0.75em; font-weight: bold; text-align: right; }
+  .bill-center { text-align: center; font-size: 0.7em; font-weight: bold; letter-spacing: 3px; text-transform: uppercase; }
+  .bill-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+  .bill-label { font-size: 0.65em; letter-spacing: 1px; text-transform: uppercase; }
+  .bill-serial { font-family: 'Courier New', monospace; font-size: 0.55em; color: inherit; opacity: 0.5; }
+
+  /* $10 - Green */
+  .bill-10 { border-color: #00b894; color: #00b894; background: #f0fff8; }
+  /* $20 - Blue */
+  .bill-20 { border-color: #0984e3; color: #0984e3; background: #f0f8ff; }
+  /* $50 - Purple */
+  .bill-50 { border-color: #6c5ce7; color: #6c5ce7; background: #f5f3ff; }
+  /* $100 - Red/Orange */
+  .bill-100 { border-color: #e17055; color: #e17055; background: #fff5f2; }
+  /* $500 - Gold */
+  .bill-500 { border-color: #b8860b; color: #b8860b; background: #fffdf0; }
+
+  .page-break { page-break-before: always; }
+  .cut-line { border-top: 2px dashed #ccc; margin: 4px 0; }
+</style>
+</head>
+<body>
+
+<div class="instructions">
+  <strong>Budget Bucks!</strong> Print on cardstock if possible. Cut along the edges. Give each kid their "paycheck" at the start of the exercise. As they make budget choices, they hand money back. Makes budgeting physical and real!
+  <br><strong>Tip:</strong> Print 2-3 pages depending on how much money you need. The 15-year-old with $4,000 needs more bills than the 6-year-old with $500.
+</div>
+
+<!-- PAGE 1: $10 and $20 bills -->
+<div class="bill-row">
+  <div class="bill bill-10">
+    <div class="bill-top"><div class="bill-amount">$10</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#11088; Ten Dollars &#11088;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-010-0001</div></div>
+  </div>
+  <div class="bill bill-10">
+    <div class="bill-top"><div class="bill-amount">$10</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#11088; Ten Dollars &#11088;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-010-0002</div></div>
+  </div>
+</div>
+<div class="bill-row">
+  <div class="bill bill-10">
+    <div class="bill-top"><div class="bill-amount">$10</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#11088; Ten Dollars &#11088;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-010-0003</div></div>
+  </div>
+  <div class="bill bill-10">
+    <div class="bill-top"><div class="bill-amount">$10</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#11088; Ten Dollars &#11088;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-010-0004</div></div>
+  </div>
+</div>
+<div class="cut-line"></div>
+<div class="bill-row">
+  <div class="bill bill-20">
+    <div class="bill-top"><div class="bill-amount">$20</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#11088; Twenty Dollars &#11088;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-020-0001</div></div>
+  </div>
+  <div class="bill bill-20">
+    <div class="bill-top"><div class="bill-amount">$20</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#11088; Twenty Dollars &#11088;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-020-0002</div></div>
+  </div>
+</div>
+<div class="bill-row">
+  <div class="bill bill-20">
+    <div class="bill-top"><div class="bill-amount">$20</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#11088; Twenty Dollars &#11088;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-020-0003</div></div>
+  </div>
+  <div class="bill bill-20">
+    <div class="bill-top"><div class="bill-amount">$20</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#11088; Twenty Dollars &#11088;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-020-0004</div></div>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- PAGE 2: $50 and $100 bills -->
+<div class="bill-row">
+  <div class="bill bill-50">
+    <div class="bill-top"><div class="bill-amount">$50</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#11088; Fifty Dollars &#11088;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-050-0001</div></div>
+  </div>
+  <div class="bill bill-50">
+    <div class="bill-top"><div class="bill-amount">$50</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#11088; Fifty Dollars &#11088;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-050-0002</div></div>
+  </div>
+</div>
+<div class="bill-row">
+  <div class="bill bill-50">
+    <div class="bill-top"><div class="bill-amount">$50</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#11088; Fifty Dollars &#11088;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-050-0003</div></div>
+  </div>
+  <div class="bill bill-50">
+    <div class="bill-top"><div class="bill-amount">$50</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#11088; Fifty Dollars &#11088;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-050-0004</div></div>
+  </div>
+</div>
+<div class="cut-line"></div>
+<div class="bill-row">
+  <div class="bill bill-100">
+    <div class="bill-top"><div class="bill-amount">$100</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#11088; One Hundred Dollars &#11088;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-100-0001</div></div>
+  </div>
+  <div class="bill bill-100">
+    <div class="bill-top"><div class="bill-amount">$100</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#11088; One Hundred Dollars &#11088;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-100-0002</div></div>
+  </div>
+</div>
+<div class="bill-row">
+  <div class="bill bill-100">
+    <div class="bill-top"><div class="bill-amount">$100</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#11088; One Hundred Dollars &#11088;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-100-0003</div></div>
+  </div>
+  <div class="bill bill-100">
+    <div class="bill-top"><div class="bill-amount">$100</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#11088; One Hundred Dollars &#11088;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-100-0004</div></div>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- PAGE 3: $500 bills and more $100s -->
+<div class="bill-row">
+  <div class="bill bill-500">
+    <div class="bill-top"><div class="bill-amount">$500</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#127775; Five Hundred Dollars &#127775;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-500-0001</div></div>
+  </div>
+  <div class="bill bill-500">
+    <div class="bill-top"><div class="bill-amount">$500</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#127775; Five Hundred Dollars &#127775;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-500-0002</div></div>
+  </div>
+</div>
+<div class="bill-row">
+  <div class="bill bill-500">
+    <div class="bill-top"><div class="bill-amount">$500</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#127775; Five Hundred Dollars &#127775;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-500-0003</div></div>
+  </div>
+  <div class="bill bill-500">
+    <div class="bill-top"><div class="bill-amount">$500</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#127775; Five Hundred Dollars &#127775;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-500-0004</div></div>
+  </div>
+</div>
+<div class="cut-line"></div>
+<div class="bill-row">
+  <div class="bill bill-500">
+    <div class="bill-top"><div class="bill-amount">$500</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#127775; Five Hundred Dollars &#127775;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-500-0005</div></div>
+  </div>
+  <div class="bill bill-500">
+    <div class="bill-top"><div class="bill-amount">$500</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#127775; Five Hundred Dollars &#127775;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-500-0006</div></div>
+  </div>
+</div>
+<div class="bill-row">
+  <div class="bill bill-100">
+    <div class="bill-top"><div class="bill-amount">$100</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#11088; One Hundred Dollars &#11088;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-100-0005</div></div>
+  </div>
+  <div class="bill bill-100">
+    <div class="bill-top"><div class="bill-amount">$100</div><div class="bill-corner">BUDGET<br>BUCKS</div></div>
+    <div class="bill-center">&#11088; One Hundred Dollars &#11088;</div>
+    <div class="bill-bottom"><div class="bill-label">Build Your Life</div><div class="bill-serial">BYL-100-0006</div></div>
+  </div>
+</div>
+
+</body>
+</html>

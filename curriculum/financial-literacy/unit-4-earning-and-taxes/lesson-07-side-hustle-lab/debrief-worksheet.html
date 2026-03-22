@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Side Hustle Lab — Debrief Worksheet</title>
+<style>
+  @media print {
+    body { margin: 0.4in; font-size: 10pt; }
+    .no-print { display: none; }
+    .page-break { page-break-before: always; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.55; color: #2d3436; max-width: 850px; margin: 0 auto; padding: 20px; }
+  h1 { font-size: 1.8em; color: #2d3436; border-bottom: 4px solid #6c5ce7; padding-bottom: 8px; margin-bottom: 4px; }
+  h2 { font-size: 1.2em; color: #6c5ce7; margin: 20px 0 8px; }
+  h3 { font-size: 1em; color: #00b894; margin: 14px 0 6px; }
+  p, li { font-size: 0.92em; margin-bottom: 6px; }
+  .subtitle { color: #636e72; font-size: 0.9em; margin-bottom: 14px; }
+  .tier-label { display: inline-block; padding: 3px 12px; border-radius: 12px; font-size: 0.78em; font-weight: bold; color: white; background: #6c5ce7; margin-bottom: 10px; }
+
+  .write-line { border-bottom: 1.5px solid #b2bec3; min-height: 28px; margin: 4px 0 12px; padding: 4px 0; }
+  .write-line-tall { border-bottom: 1.5px solid #b2bec3; min-height: 48px; margin: 4px 0 14px; padding: 4px 0; }
+  .write-box { border: 1.5px solid #b2bec3; border-radius: 6px; min-height: 70px; margin: 4px 0 14px; padding: 8px; }
+  .draw-box { border: 2px dashed #b2bec3; border-radius: 10px; min-height: 150px; margin: 6px 0 14px; padding: 10px; display: flex; align-items: center; justify-content: center; color: #b2bec3; font-style: italic; font-size: 0.85em; }
+  .inline-blank { display: inline-block; border-bottom: 1.5px solid #b2bec3; min-width: 100px; padding: 0 4px; }
+  .inline-blank.wide { min-width: 180px; }
+  .inline-blank.narrow { min-width: 60px; }
+
+  .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
+  .result-box { background: #f5f6fa; border-radius: 8px; padding: 10px 14px; }
+  .result-label { font-size: 0.82em; color: #636e72; margin-bottom: 2px; }
+  .result-value { font-size: 1.1em; font-weight: bold; color: #2d3436; border-bottom: 1.5px solid #b2bec3; min-height: 26px; }
+  .result-box.highlight { background: #6c5ce7; }
+  .result-box.highlight .result-label { color: rgba(255,255,255,0.8); }
+  .result-box.highlight .result-value { color: white; border-bottom-color: rgba(255,255,255,0.5); }
+
+  .reflection-prompt { font-weight: 600; font-size: 0.92em; color: #2d3436; margin-bottom: 2px; }
+  .field-hint { font-size: 0.8em; color: #636e72; font-style: italic; margin-bottom: 4px; }
+
+  .choice-row { display: flex; gap: 16px; margin: 8px 0 14px; }
+  .choice-option { border: 2px solid #dfe6e9; border-radius: 8px; padding: 8px 20px; font-weight: bold; font-size: 0.95em; text-align: center; cursor: default; }
+  .choice-option.yes { border-color: #00b894; color: #00b894; }
+  .choice-option.no { border-color: #d63031; color: #d63031; }
+  .choice-option.maybe { border-color: #fdcb6e; color: #e17055; }
+
+  .pitch-box { background: #f0f0ff; border: 2px solid #6c5ce7; border-radius: 10px; padding: 16px 20px; margin: 12px 0; }
+  .pitch-box h2 { margin-top: 0; }
+
+  .numbers-box { background: #e8f5e9; border-left: 4px solid #00b894; padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0; }
+  .numbers-box h2 { margin-top: 0; }
+
+  .tip { background: #fff3cd; border-left: 4px solid #fdcb6e; padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 10px 0; font-size: 0.85em; }
+
+  table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 0.88em; }
+  th, td { border: 1px solid #dfe6e9; padding: 6px 10px; text-align: left; }
+  th { background: #6c5ce7; color: white; font-size: 0.85em; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!--  PRIMARY VERSION (Age 6)                                      -->
+<!-- ============================================================ -->
+
+<div class="tier-label">Primary (Age 6)</div>
+<h1>My Side Hustle!</h1>
+<p class="subtitle">The Side Hustle Lab &mdash; Unit 4, Lesson 7</p>
+
+<div class="reflection-prompt">My Name:</div>
+<div class="write-line"></div>
+
+<div class="reflection-prompt">My Business Name:</div>
+<div class="write-line"></div>
+
+<h2>What Did I Do?</h2>
+<div class="field-hint">Write or draw what your business was.</div>
+<div class="draw-box">Draw your business here!</div>
+<div class="write-line-tall"></div>
+
+<h2>Did I Earn Money?</h2>
+<p style="font-size: 1.1em;">I earned: $ <span class="inline-blank"></span></p>
+
+<h2>What Was Fun?</h2>
+<div class="write-line-tall"></div>
+
+<h2>What Was Hard?</h2>
+<div class="write-line-tall"></div>
+
+<h2>Draw a Picture of You Doing Your Business!</h2>
+<div class="draw-box" style="min-height: 200px;">Draw here!</div>
+
+<h2>Would I Do It Again?</h2>
+<div class="choice-row">
+  <div class="choice-option yes">YES!</div>
+  <div class="choice-option maybe">MAYBE</div>
+  <div class="choice-option no">NO</div>
+</div>
+<p>Why? <span class="inline-blank wide"></span></p>
+
+<!-- ============================================================ -->
+<!--  ELEMENTARY VERSION (Ages 9-10)                                -->
+<!-- ============================================================ -->
+
+<div class="page-break"></div>
+
+<div class="tier-label">Elementary (Ages 9&ndash;10)</div>
+<h1>My Side Hustle Results</h1>
+<p class="subtitle">The Side Hustle Lab &mdash; Unit 4, Lesson 7</p>
+
+<div class="reflection-prompt">Name:</div>
+<div class="write-line"></div>
+
+<div class="reflection-prompt">Business Name:</div>
+<div class="write-line"></div>
+
+<h2>My Results</h2>
+<div class="results-grid">
+  <div class="result-box">
+    <div class="result-label">What I Did</div>
+    <div class="result-value">&nbsp;</div>
+  </div>
+  <div class="result-box">
+    <div class="result-label">Total Revenue (money in)</div>
+    <div class="result-value">$</div>
+  </div>
+  <div class="result-box">
+    <div class="result-label">Total Expenses (money out)</div>
+    <div class="result-value">$</div>
+  </div>
+  <div class="result-box highlight">
+    <div class="result-label">Total PROFIT</div>
+    <div class="result-value">$</div>
+  </div>
+  <div class="result-box">
+    <div class="result-label">Hours Worked</div>
+    <div class="result-value">&nbsp;</div>
+  </div>
+  <div class="result-box">
+    <div class="result-label">My Goal Was</div>
+    <div class="result-value">$</div>
+  </div>
+</div>
+
+<h2>What I Learned</h2>
+
+<div class="reflection-prompt">The hardest part was:</div>
+<div class="write-line-tall"></div>
+
+<div class="reflection-prompt">The best part was:</div>
+<div class="write-line-tall"></div>
+
+<div class="reflection-prompt">I was surprised that:</div>
+<div class="write-line-tall"></div>
+
+<div class="reflection-prompt">If I had to do it again, I would change:</div>
+<div class="write-line-tall"></div>
+
+<h2>Would I Keep Going?</h2>
+<div class="choice-row">
+  <div class="choice-option yes">YES</div>
+  <div class="choice-option maybe">MAYBE</div>
+  <div class="choice-option no">NO</div>
+</div>
+
+<div class="reflection-prompt">If yes, how would I grow this business?</div>
+<div class="write-line-tall"></div>
+
+<div class="reflection-prompt">If no, what business would I try next?</div>
+<div class="write-line-tall"></div>
+
+<div class="reflection-prompt">One thing this taught me about earning money that I didn't know before:</div>
+<div class="write-line-tall"></div>
+
+<div class="pitch-box">
+  <h2>My 30-Second Pitch</h2>
+  <p class="field-hint">Write what you'll say when you present to the family. Practice it out loud!</p>
+  <div class="write-box" style="min-height: 80px;"></div>
+</div>
+
+<!-- ============================================================ -->
+<!--  MIDDLE SCHOOL VERSION (Ages 11-13)                            -->
+<!-- ============================================================ -->
+
+<div class="page-break"></div>
+
+<div class="tier-label">Middle School (Ages 11&ndash;13)</div>
+<h1>My Side Hustle Results</h1>
+<p class="subtitle">The Side Hustle Lab &mdash; Unit 4, Lesson 7</p>
+
+<div class="reflection-prompt">Name:</div>
+<div class="write-line"></div>
+
+<div class="reflection-prompt">Business Name:</div>
+<div class="write-line"></div>
+
+<h2>The Numbers</h2>
+<div class="results-grid">
+  <div class="result-box">
+    <div class="result-label">What I Did / Sold / Offered</div>
+    <div class="result-value">&nbsp;</div>
+  </div>
+  <div class="result-box">
+    <div class="result-label">Total Revenue</div>
+    <div class="result-value">$</div>
+  </div>
+  <div class="result-box">
+    <div class="result-label">Total Expenses</div>
+    <div class="result-value">$</div>
+  </div>
+  <div class="result-box highlight">
+    <div class="result-label">Total PROFIT</div>
+    <div class="result-value">$</div>
+  </div>
+  <div class="result-box">
+    <div class="result-label">Hours Worked</div>
+    <div class="result-value">&nbsp;</div>
+  </div>
+  <div class="result-box">
+    <div class="result-label">My Effective Hourly Rate</div>
+    <div class="result-value">$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /hr</div>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>Hourly Rate Math:</strong> Total Profit &divide; Total Hours = Hourly Rate. Example: $36 profit &divide; 8 hours = $4.50/hr
+</div>
+
+<h2>What I Learned</h2>
+
+<div class="reflection-prompt">The hardest part was:</div>
+<div class="write-line-tall"></div>
+
+<div class="reflection-prompt">The best part was:</div>
+<div class="write-line-tall"></div>
+
+<div class="reflection-prompt">I was surprised that:</div>
+<div class="write-line-tall"></div>
+
+<div class="reflection-prompt">If I had to do it again, I would change:</div>
+<div class="write-line-tall"></div>
+
+<div class="numbers-box">
+  <h2>The Numbers Tell a Story</h2>
+  <p>My goal was $ <span class="inline-blank narrow"></span>. I actually earned $ <span class="inline-blank narrow"></span>.</p>
+  <p>That's <span class="inline-blank narrow"></span> % of my goal.</p>
+  <p class="field-hint">(Actual &divide; Goal &times; 100 = percentage. Example: $15 &divide; $20 &times; 100 = 75%)</p>
+  <br>
+  <p>If I kept doing this every month: $ <span class="inline-blank narrow"></span> /month = $ <span class="inline-blank narrow"></span> /year</p>
+  <p class="field-hint">(2-week profit &times; 2 = monthly estimate. Monthly &times; 12 = yearly.)</p>
+</div>
+
+<h2>Would I Keep Going?</h2>
+<div class="choice-row">
+  <div class="choice-option yes">YES</div>
+  <div class="choice-option maybe">MAYBE</div>
+  <div class="choice-option no">NO</div>
+</div>
+
+<div class="reflection-prompt">If yes, how would I grow this business?</div>
+<div class="write-line-tall"></div>
+
+<div class="reflection-prompt">If no, what business would I try next?</div>
+<div class="write-line-tall"></div>
+
+<div class="reflection-prompt">What's one thing this taught me about earning money that I didn't know before?</div>
+<div class="write-line-tall"></div>
+
+<div class="pitch-box">
+  <h2>My 30-Second Pitch</h2>
+  <p class="field-hint">Summarize your business and results in a short pitch. Present this to the family. Aim for confidence, not perfection.</p>
+  <div class="write-box"></div>
+</div>
+
+<!-- ============================================================ -->
+<!--  HIGH SCHOOL VERSION (Age 15)                                  -->
+<!-- ============================================================ -->
+
+<div class="page-break"></div>
+
+<div class="tier-label">High School (Age 15)</div>
+<h1>Side Hustle Debrief</h1>
+<p class="subtitle">The Side Hustle Lab &mdash; Unit 4, Lesson 7</p>
+
+<div class="reflection-prompt">Name:</div>
+<div class="write-line"></div>
+
+<div class="reflection-prompt">Business Name:</div>
+<div class="write-line"></div>
+
+<h2>Results Summary</h2>
+<div class="results-grid">
+  <div class="result-box">
+    <div class="result-label">Business Description</div>
+    <div class="result-value">&nbsp;</div>
+  </div>
+  <div class="result-box">
+    <div class="result-label">Total Revenue</div>
+    <div class="result-value">$</div>
+  </div>
+  <div class="result-box">
+    <div class="result-label">Total Expenses</div>
+    <div class="result-value">$</div>
+  </div>
+  <div class="result-box highlight">
+    <div class="result-label">Total PROFIT</div>
+    <div class="result-value">$</div>
+  </div>
+  <div class="result-box">
+    <div class="result-label">Hours Worked</div>
+    <div class="result-value">&nbsp;</div>
+  </div>
+  <div class="result-box">
+    <div class="result-label">Effective Hourly Rate</div>
+    <div class="result-value">$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /hr</div>
+  </div>
+</div>
+
+<h2>What I Learned</h2>
+
+<div class="reflection-prompt">The hardest part was:</div>
+<div class="write-line-tall"></div>
+
+<div class="reflection-prompt">The best part was:</div>
+<div class="write-line-tall"></div>
+
+<div class="reflection-prompt">I was surprised that:</div>
+<div class="write-line-tall"></div>
+
+<div class="reflection-prompt">If I had to do it again, I would change:</div>
+<div class="write-line-tall"></div>
+
+<div class="numbers-box">
+  <h2>The Numbers Tell a Story</h2>
+
+  <h3>Goal vs. Reality</h3>
+  <p>My goal was $ <span class="inline-blank narrow"></span>. I actually earned $ <span class="inline-blank narrow"></span>. That's <span class="inline-blank narrow"></span> % of my goal.</p>
+  <p class="field-hint">(Actual Profit &divide; Goal &times; 100 = percentage)</p>
+
+  <h3>Scaling Projection</h3>
+  <p>If I kept doing this every month: $ <span class="inline-blank narrow"></span> /month = $ <span class="inline-blank narrow"></span> /year</p>
+  <p class="field-hint">(2-week profit &times; 2 = monthly. Monthly &times; 12 = annual.)</p>
+
+  <h3>Compare to Career Cards (from Build Your Life)</h3>
+  <table>
+    <tr><th>Source</th><th>Hourly Rate</th></tr>
+    <tr><td>My side hustle</td><td>$ <span class="inline-blank narrow"></span> /hr</td></tr>
+    <tr><td>Federal minimum wage</td><td>$7.25 /hr</td></tr>
+    <tr><td>My Build Your Life career: <span class="inline-blank"></span></td><td>$ <span class="inline-blank narrow"></span> /hr</td></tr>
+  </table>
+  <p style="margin-top: 8px;">What does this comparison tell you?</p>
+  <div class="write-line-tall"></div>
+
+  <h3>Scaling Analysis</h3>
+  <p>To double my profit, I would need to:</p>
+  <div class="write-line-tall"></div>
+  <p>The biggest bottleneck to growing this business is:</p>
+  <div class="write-line-tall"></div>
+  <p>Could this become a real ongoing business? What would it take?</p>
+  <div class="write-line-tall"></div>
+</div>
+
+<h2>Would I Keep Going?</h2>
+<div class="choice-row">
+  <div class="choice-option yes">YES</div>
+  <div class="choice-option maybe">MAYBE</div>
+  <div class="choice-option no">NO</div>
+</div>
+
+<div class="reflection-prompt">If yes, how would I grow this business?</div>
+<div class="write-line-tall"></div>
+
+<div class="reflection-prompt">If no, what business would I try next?</div>
+<div class="write-line-tall"></div>
+
+<div class="reflection-prompt">What's one thing this taught me about earning money that I didn't know before?</div>
+<div class="write-line-tall"></div>
+
+<div class="pitch-box">
+  <h2>My 30-Second Pitch</h2>
+  <p class="field-hint">Write out your pitch. Cover: what you did, who you served, what you earned, what you learned, and whether you'd keep going. Deliver it with confidence.</p>
+  <div class="write-box" style="min-height: 90px;"></div>
+</div>
+
+</body>
+</html>

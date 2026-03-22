@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Cards — Pick Your Job</title>
+<style>
+  @media print {
+    body { margin: 0.3in; font-size: 9pt; }
+    .card { page-break-inside: avoid; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 900px; margin: 0 auto; padding: 16px; line-height: 1.4; color: #2d3436; }
+  h1 { text-align: center; font-size: 1.5em; margin-bottom: 2px; }
+  .subtitle { text-align: center; font-size: 0.85em; color: #636e72; margin-bottom: 6px; }
+  .instructions { background: #f5f6fa; border-left: 4px solid #6c5ce7; padding: 8px 12px; font-size: 0.82em; margin-bottom: 14px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .card { border: 2px solid #dfe6e9; border-radius: 10px; padding: 10px; display: flex; flex-direction: column; min-height: 140px; }
+  .card-icon { font-size: 2em; text-align: center; margin-bottom: 4px; }
+  .card-title { font-weight: bold; font-size: 0.95em; text-align: center; margin-bottom: 4px; }
+  .card-salary { text-align: center; margin-bottom: 4px; }
+  .gross { font-size: 0.8em; color: #636e72; }
+  .net { font-size: 1.05em; font-weight: bold; color: #00b894; }
+  .card-desc { font-size: 0.72em; color: #636e72; text-align: center; flex: 1; }
+  .card-edu { font-size: 0.68em; color: #a29bfe; text-align: center; font-style: italic; margin-top: 4px; }
+  .tier-label { grid-column: 1 / -1; padding: 6px 12px; border-radius: 6px; font-weight: bold; font-size: 0.95em; color: white; margin-top: 8px; }
+  .section-note { font-size: 0.78em; color: #636e72; margin: 4px 0 10px; padding: 0 4px; }
+  .page-break { page-break-before: always; }
+
+  /* Color coding by income tier */
+  .tier-entry { border-color: #55efc4; }
+  .tier-mid { border-color: #74b9ff; }
+  .tier-high { border-color: #a29bfe; }
+  .tier-top { border-color: #fdcb6e; }
+</style>
+</head>
+<body>
+
+<h1>Career Cards</h1>
+<p class="subtitle">Pick your job. Your job determines your income. Your income shapes your life.</p>
+<div class="instructions">
+  <strong>How to use:</strong> Pick a career that interests you — OR draw one randomly (cut cards out, flip face-down, draw). Your career determines your monthly take-home pay. This is what you'll use for your budget.
+  <br><strong>Younger kids (K-4th):</strong> Just look at the picture and the green number — that's your monthly money.
+  <br><strong>Older kids (5th+):</strong> Notice the difference between what you earn (gross) and what you take home (net) after taxes.
+</div>
+
+<!-- ENTRY LEVEL / SERVICE -->
+<div class="tier-label" style="background: #55efc4; color: #2d3436;">Entry Level &amp; Service — Starting out, learning the ropes</div>
+<p class="section-note">These jobs usually don't require a college degree. Great starting points — many successful people started here.</p>
+<div class="grid">
+
+<div class="card tier-entry">
+  <div class="card-icon">&#9749;</div>
+  <div class="card-title">Barista / Coffee Shop</div>
+  <div class="card-salary"><span class="gross">$28,000/yr gross</span><br><span class="net">$2,050/mo take-home</span></div>
+  <div class="card-desc">Make drinks, serve customers, early mornings.</div>
+  <div class="card-edu">No degree needed</div>
+</div>
+
+<div class="card tier-entry">
+  <div class="card-icon">&#128722;</div>
+  <div class="card-title">Retail Worker</div>
+  <div class="card-salary"><span class="gross">$30,000/yr gross</span><br><span class="net">$2,200/mo take-home</span></div>
+  <div class="card-desc">Work in a store, help customers, stock shelves.</div>
+  <div class="card-edu">No degree needed</div>
+</div>
+
+<div class="card tier-entry">
+  <div class="card-icon">&#127860;</div>
+  <div class="card-title">Restaurant Server</div>
+  <div class="card-salary"><span class="gross">$32,000/yr gross (with tips)</span><br><span class="net">$2,350/mo take-home</span></div>
+  <div class="card-desc">Serve food, interact with people. Tips can be great!</div>
+  <div class="card-edu">No degree needed</div>
+</div>
+
+<div class="card tier-entry">
+  <div class="card-icon">&#128187;</div>
+  <div class="card-title">Office Assistant</div>
+  <div class="card-salary"><span class="gross">$33,000/yr gross</span><br><span class="net">$2,400/mo take-home</span></div>
+  <div class="card-desc">Answer phones, organize files, help the office run.</div>
+  <div class="card-edu">High school diploma</div>
+</div>
+
+<div class="card tier-entry">
+  <div class="card-icon">&#128666;</div>
+  <div class="card-title">Delivery Driver</div>
+  <div class="card-salary"><span class="gross">$35,000/yr gross</span><br><span class="net">$2,550/mo take-home</span></div>
+  <div class="card-desc">Drive routes, deliver packages. Good if you like independence.</div>
+  <div class="card-edu">Driver's license</div>
+</div>
+
+<div class="card tier-entry">
+  <div class="card-icon">&#128119;</div>
+  <div class="card-title">Childcare Worker</div>
+  <div class="card-salary"><span class="gross">$29,000/yr gross</span><br><span class="net">$2,100/mo take-home</span></div>
+  <div class="card-desc">Take care of kids at a daycare or preschool.</div>
+  <div class="card-edu">High school + training</div>
+</div>
+
+</div>
+
+<!-- SKILLED / TRADES -->
+<div class="tier-label" style="background: #74b9ff;">Skilled Trades &amp; Technical — Work with your hands + your brain</div>
+<p class="section-note">Trade jobs often pay very well without a 4-year degree. They require training, apprenticeships, or 2-year programs.</p>
+<div class="grid">
+
+<div class="card tier-mid">
+  <div class="card-icon">&#128295;</div>
+  <div class="card-title">Electrician</div>
+  <div class="card-salary"><span class="gross">$60,000/yr gross</span><br><span class="net">$3,850/mo take-home</span></div>
+  <div class="card-desc">Wire buildings, fix electrical systems. Always in demand.</div>
+  <div class="card-edu">Apprenticeship (4 yrs)</div>
+</div>
+
+<div class="card tier-mid">
+  <div class="card-icon">&#128681;</div>
+  <div class="card-title">Plumber</div>
+  <div class="card-salary"><span class="gross">$58,000/yr gross</span><br><span class="net">$3,750/mo take-home</span></div>
+  <div class="card-desc">Install and fix pipes, water systems. People always need plumbers.</div>
+  <div class="card-edu">Apprenticeship (4-5 yrs)</div>
+</div>
+
+<div class="card tier-mid">
+  <div class="card-icon">&#128664;</div>
+  <div class="card-title">Auto Mechanic</div>
+  <div class="card-salary"><span class="gross">$48,000/yr gross</span><br><span class="net">$3,250/mo take-home</span></div>
+  <div class="card-desc">Fix cars and trucks. Can eventually own your own shop.</div>
+  <div class="card-edu">Trade school / certification</div>
+</div>
+
+<div class="card tier-mid">
+  <div class="card-icon">&#127981;</div>
+  <div class="card-title">Welder</div>
+  <div class="card-salary"><span class="gross">$50,000/yr gross</span><br><span class="net">$3,400/mo take-home</span></div>
+  <div class="card-desc">Join metal parts together. Used in construction, manufacturing, and more.</div>
+  <div class="card-edu">Trade school / certification</div>
+</div>
+
+<div class="card tier-mid">
+  <div class="card-icon">&#129489;&#8205;&#128187;</div>
+  <div class="card-title">IT Support / Help Desk</div>
+  <div class="card-salary"><span class="gross">$50,000/yr gross</span><br><span class="net">$3,400/mo take-home</span></div>
+  <div class="card-desc">Fix computers and tech problems. Great entry into tech.</div>
+  <div class="card-edu">Certifications / 2-yr degree</div>
+</div>
+
+<div class="card tier-mid">
+  <div class="card-icon">&#128247;</div>
+  <div class="card-title">Cosmetologist / Barber</div>
+  <div class="card-salary"><span class="gross">$38,000/yr gross</span><br><span class="net">$2,700/mo take-home</span></div>
+  <div class="card-desc">Cut and style hair. Can build your own clientele or open a shop.</div>
+  <div class="card-edu">Cosmetology license</div>
+</div>
+
+</div>
+
+<div class="page-break"></div>
+
+<!-- PROFESSIONAL -->
+<div class="tier-label" style="background: #a29bfe;">Professional — Usually requires a college degree</div>
+<p class="section-note">These jobs typically require a 4-year degree. Higher income, but consider student loan costs ($200-$400/mo for years).</p>
+<div class="grid">
+
+<div class="card tier-high">
+  <div class="card-icon">&#128218;</div>
+  <div class="card-title">Teacher</div>
+  <div class="card-salary"><span class="gross">$55,000/yr gross</span><br><span class="net">$3,600/mo take-home</span></div>
+  <div class="card-desc">Educate kids. Summers off. Meaningful but modest pay.</div>
+  <div class="card-edu">Bachelor's degree + license</div>
+</div>
+
+<div class="card tier-high">
+  <div class="card-icon">&#127979;</div>
+  <div class="card-title">Accountant</div>
+  <div class="card-salary"><span class="gross">$65,000/yr gross</span><br><span class="net">$4,100/mo take-home</span></div>
+  <div class="card-desc">Manage money and taxes for people and businesses.</div>
+  <div class="card-edu">Bachelor's degree (CPA preferred)</div>
+</div>
+
+<div class="card tier-high">
+  <div class="card-icon">&#128200;</div>
+  <div class="card-title">Marketing Manager</div>
+  <div class="card-salary"><span class="gross">$72,000/yr gross</span><br><span class="net">$4,500/mo take-home</span></div>
+  <div class="card-desc">Help companies sell products through ads and campaigns.</div>
+  <div class="card-edu">Bachelor's degree</div>
+</div>
+
+<div class="card tier-high">
+  <div class="card-icon">&#128105;&#8205;&#128187;</div>
+  <div class="card-title">Software Developer</div>
+  <div class="card-salary"><span class="gross">$95,000/yr gross</span><br><span class="net">$5,700/mo take-home</span></div>
+  <div class="card-desc">Build apps, websites, and software. High demand.</div>
+  <div class="card-edu">Degree or self-taught + portfolio</div>
+</div>
+
+<div class="card tier-high">
+  <div class="card-icon">&#128657;</div>
+  <div class="card-title">Registered Nurse</div>
+  <div class="card-salary"><span class="gross">$80,000/yr gross</span><br><span class="net">$4,950/mo take-home</span></div>
+  <div class="card-desc">Care for patients in hospitals and clinics. Shift work.</div>
+  <div class="card-edu">Nursing degree (BSN)</div>
+</div>
+
+<div class="card tier-high">
+  <div class="card-icon">&#128640;</div>
+  <div class="card-title">Engineer (Mechanical/Civil)</div>
+  <div class="card-salary"><span class="gross">$82,000/yr gross</span><br><span class="net">$5,100/mo take-home</span></div>
+  <div class="card-desc">Design and build things — bridges, machines, systems.</div>
+  <div class="card-edu">Bachelor's degree in engineering</div>
+</div>
+
+<div class="card tier-high">
+  <div class="card-icon">&#9878;&#65039;</div>
+  <div class="card-title">Graphic Designer</div>
+  <div class="card-salary"><span class="gross">$52,000/yr gross</span><br><span class="net">$3,500/mo take-home</span></div>
+  <div class="card-desc">Create visual designs — logos, websites, ads. Creative work.</div>
+  <div class="card-edu">Degree or strong portfolio</div>
+</div>
+
+<div class="card tier-high">
+  <div class="card-icon">&#128250;</div>
+  <div class="card-title">Content Creator / Social Media</div>
+  <div class="card-salary"><span class="gross">$45,000/yr gross</span><br><span class="net">$3,100/mo take-home</span></div>
+  <div class="card-desc">Create videos, posts, and content. Income varies wildly.</div>
+  <div class="card-edu">No degree, but skill + audience needed</div>
+</div>
+
+<div class="card tier-high">
+  <div class="card-icon">&#128176;</div>
+  <div class="card-title">Financial Advisor</div>
+  <div class="card-salary"><span class="gross">$75,000/yr gross</span><br><span class="net">$4,700/mo take-home</span></div>
+  <div class="card-desc">Help people plan their money, investments, and retirement.</div>
+  <div class="card-edu">Bachelor's + certifications</div>
+</div>
+
+</div>
+
+<!-- TOP TIER -->
+<div class="tier-label" style="background: #fdcb6e; color: #2d3436;">High-Earning &amp; Advanced — Years of education or high responsibility</div>
+<p class="section-note">Big paychecks, but often big student loans and years of school. Some require 8-12 years of education.</p>
+<div class="grid">
+
+<div class="card tier-top">
+  <div class="card-icon">&#129658;</div>
+  <div class="card-title">Doctor (Physician)</div>
+  <div class="card-salary"><span class="gross">$220,000/yr gross</span><br><span class="net">$11,500/mo take-home</span></div>
+  <div class="card-desc">Diagnose and treat patients. Long hours. Huge student loans (~$200K+).</div>
+  <div class="card-edu">College + Med school + residency (11+ yrs)</div>
+</div>
+
+<div class="card tier-top">
+  <div class="card-icon">&#9878;&#65039;</div>
+  <div class="card-title">Lawyer</div>
+  <div class="card-salary"><span class="gross">$130,000/yr gross</span><br><span class="net">$7,500/mo take-home</span></div>
+  <div class="card-desc">Represent people in court, write contracts. Varies hugely by type.</div>
+  <div class="card-edu">College + Law school (7 yrs)</div>
+</div>
+
+<div class="card tier-top">
+  <div class="card-icon">&#128105;&#8205;&#9992;&#65039;</div>
+  <div class="card-title">Airline Pilot</div>
+  <div class="card-salary"><span class="gross">$160,000/yr gross</span><br><span class="net">$9,000/mo take-home</span></div>
+  <div class="card-desc">Fly planes. Travel the world. Takes years of training and hours.</div>
+  <div class="card-edu">Flight school + 1,500+ hours</div>
+</div>
+
+<div class="card tier-top">
+  <div class="card-icon">&#127970;</div>
+  <div class="card-title">Business Owner (Established)</div>
+  <div class="card-salary"><span class="gross">$80,000-$300,000+/yr</span><br><span class="net">$5,000-$16,000/mo</span></div>
+  <div class="card-desc">Run your own company. Income varies wildly. High risk, high reward.</div>
+  <div class="card-edu">No degree required — but everything else is</div>
+</div>
+
+<div class="card tier-top">
+  <div class="card-icon">&#129302;</div>
+  <div class="card-title">Senior Software Engineer</div>
+  <div class="card-salary"><span class="gross">$150,000/yr gross</span><br><span class="net">$8,500/mo take-home</span></div>
+  <div class="card-desc">Lead tech teams, build complex systems. Top of tech ladder.</div>
+  <div class="card-edu">Degree + years of experience</div>
+</div>
+
+<div class="card tier-top">
+  <div class="card-icon">&#127973;</div>
+  <div class="card-title">Pharmacist</div>
+  <div class="card-salary"><span class="gross">$130,000/yr gross</span><br><span class="net">$7,500/mo take-home</span></div>
+  <div class="card-desc">Dispense medications, advise patients. Stable career.</div>
+  <div class="card-edu">College + Pharmacy school (6-8 yrs)</div>
+</div>
+
+</div>
+
+<div style="text-align: center; margin-top: 16px; padding-top: 8px; border-top: 2px solid #dfe6e9; font-size: 0.75em; color: #b2bec3;">
+  Salaries are approximate U.S. averages. Take-home pay estimated at ~23-30% total tax rate depending on bracket. Actual pay varies by location, experience, and employer.
+  <br>Cut cards apart to draw randomly, or let kids choose the career that interests them most.
+</div>
+
+</body>
+</html>

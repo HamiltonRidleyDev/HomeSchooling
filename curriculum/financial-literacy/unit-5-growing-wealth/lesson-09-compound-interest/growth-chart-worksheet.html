@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Growth Chart Worksheet — The Power of Compound Interest | Lesson 9</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 850px; margin: 0 auto; padding: 24px;
+    color: #1a1a2e; line-height: 1.6; background: #fff;
+  }
+
+  /* Header */
+  .worksheet-header {
+    background: linear-gradient(135deg, #0d1b2a 0%, #1b3a4b 50%, #006d77 100%);
+    color: #fff; border-radius: 12px; padding: 32px; margin-bottom: 28px;
+    text-align: center;
+  }
+  .worksheet-header .unit-tag {
+    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.7;
+  }
+  .worksheet-header h1 { font-size: 1.8rem; margin: 4px 0; }
+  .worksheet-header .subtitle { font-size: 1rem; opacity: 0.8; font-style: italic; }
+
+  .name-line {
+    margin: 16px 0 28px;
+    font-size: 1rem;
+  }
+  .name-line .blank {
+    display: inline-block; border-bottom: 2px solid #333;
+    width: 200px; margin-left: 8px;
+  }
+
+  h2 {
+    font-size: 1.35rem; color: #0d1b2a; margin: 36px 0 8px;
+    padding-bottom: 6px; border-bottom: 3px solid #006d77;
+  }
+  h3 { font-size: 1.1rem; color: #1b3a4b; margin: 18px 0 8px; }
+  p, li { margin-bottom: 8px; }
+
+  /* Tables */
+  table {
+    width: 100%; border-collapse: collapse; margin: 16px 0;
+    font-size: 0.92rem;
+  }
+  th, td {
+    padding: 9px 12px; border: 1px solid #d0d7de; text-align: center;
+  }
+  th {
+    background: #0d1b2a; color: #fff; font-weight: 600;
+  }
+  tr:nth-child(even) { background: #f6f8fa; }
+
+  .growth-val {
+    color: #006d77; font-weight: 800; font-size: 1.1rem;
+  }
+  .free-val {
+    color: #2e7d32; font-weight: 700;
+  }
+  .debt-val {
+    color: #c62828; font-weight: 700;
+  }
+
+  /* Callout boxes */
+  .callout {
+    border-radius: 10px; padding: 20px 24px; margin: 20px 0;
+  }
+  .callout-big {
+    background: linear-gradient(135deg, #e0f7e6, #c8f0d4);
+    border: 3px solid #2e7d32; text-align: center;
+  }
+  .callout-big .big-text {
+    font-size: 1.5rem; font-weight: 900; color: #1b5e20;
+  }
+  .callout-big p { color: #2e7d32; margin-top: 6px; }
+  .callout-warn {
+    background: #fce4ec; border-left: 5px solid #c62828;
+  }
+  .callout-warn .label { color: #c62828; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .callout-info {
+    background: #e3f2fd; border-left: 5px solid #1565c0;
+  }
+  .callout-info .label { color: #1565c0; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .callout-gold {
+    background: linear-gradient(135deg, #fff7e6, #fff3cd);
+    border-left: 5px solid #f0a500;
+  }
+  .callout-gold .label { color: #b37800; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+
+  /* Fill-in blanks */
+  .fill-blank {
+    display: inline-block; border-bottom: 2px solid #006d77;
+    min-width: 80px; height: 22px; margin: 0 4px;
+  }
+  .fill-blank-wide {
+    display: inline-block; border-bottom: 2px solid #006d77;
+    min-width: 160px; height: 22px; margin: 0 4px;
+  }
+  .fill-blank-red {
+    display: inline-block; border-bottom: 2px solid #c62828;
+    min-width: 80px; height: 22px; margin: 0 4px;
+  }
+
+  /* Lookup reference */
+  .lookup-table {
+    background: #f0f4f8; border: 2px solid #006d77;
+    border-radius: 10px; padding: 18px 22px; margin: 20px 0;
+  }
+  .lookup-table h3 {
+    color: #006d77; margin: 0 0 10px; font-size: 1rem;
+  }
+  .lookup-grid {
+    display: grid; grid-template-columns: auto 1fr; gap: 4px 16px;
+    font-size: 0.88rem; font-family: 'Consolas', 'Courier New', monospace;
+  }
+  .lookup-amt { font-weight: 700; color: #0d1b2a; }
+  .lookup-vals { color: #006d77; }
+
+  /* Rule of 72 practice */
+  .practice-item {
+    display: flex; align-items: center; gap: 8px;
+    margin: 10px 0; font-size: 1rem;
+  }
+  .practice-item .formula { font-weight: 600; }
+  .practice-answer {
+    border-bottom: 2px solid #006d77;
+    min-width: 60px; height: 22px; display: inline-block;
+  }
+
+  /* Debt section */
+  .debt-box {
+    background: #fff5f5; border: 2px solid #c62828;
+    border-radius: 10px; padding: 22px; margin: 20px 0;
+  }
+  .debt-box h3 { color: #c62828; }
+
+  .debt-comparison {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0;
+  }
+  .debt-card {
+    padding: 16px; border-radius: 8px; text-align: center;
+  }
+  .debt-card.bad {
+    background: #ffebee; border: 2px solid #ef5350;
+  }
+  .debt-card.bad .card-label { color: #c62828; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; }
+  .debt-card.better {
+    background: #e8f5e9; border: 2px solid #66bb6a;
+  }
+  .debt-card.better .card-label { color: #2e7d32; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; }
+  .debt-card .big-num { font-size: 1.8rem; font-weight: 900; margin: 8px 0; }
+  .debt-card.bad .big-num { color: #c62828; }
+  .debt-card.better .big-num { color: #2e7d32; }
+
+  /* Reflection */
+  .reflection-area {
+    border: 2px solid #e0e6ed; border-radius: 8px;
+    padding: 12px 16px; margin: 10px 0; min-height: 60px;
+    background: #fafbfc;
+  }
+  .reflection-area.tall { min-height: 80px; }
+
+  /* Section tag */
+  .section-tag {
+    display: inline-block; background: #006d77; color: #fff;
+    font-size: 0.75rem; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-bottom: 8px; text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .section-tag.red { background: #c62828; }
+  .section-tag.purple { background: #7b1fa2; }
+
+  footer {
+    margin-top: 40px; padding-top: 16px; border-top: 1px solid #e0e6ed;
+    font-size: 0.82rem; color: #888; text-align: center;
+  }
+
+  @media print {
+    body { padding: 0; font-size: 11pt; }
+    .worksheet-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    h2 { page-break-after: avoid; }
+    table, .callout, .debt-box, .lookup-table { break-inside: avoid; }
+    .reflection-area { min-height: 70px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="worksheet-header">
+  <div class="unit-tag">Unit 5: Growing Wealth &mdash; Lesson 9</div>
+  <h1>Growth Chart Worksheet</h1>
+  <div class="subtitle">The Power of Compound Interest</div>
+</div>
+
+<div class="name-line">
+  <strong>Name:</strong> <span class="blank"></span> &nbsp;&nbsp;&nbsp;
+  <strong>Age:</strong> <span class="blank" style="width:60px;"></span> &nbsp;&nbsp;&nbsp;
+  <strong>Date:</strong> <span class="blank" style="width:120px;"></span>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION 1 -->
+<!-- ============================================ -->
+<span class="section-tag">Section 1</span>
+<h2>What Does $100/Month Become?</h2>
+<p>If you invest <strong>$100 every month</strong> at a <strong>10% average annual return</strong>, here's what happens depending on when you start:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start Age</th>
+      <th>Years Investing<br>(to age 65)</th>
+      <th>You Put In</th>
+      <th>It Grows To</th>
+      <th>FREE Money<br>(growth)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>15</strong></td>
+      <td>50 years</td>
+      <td>$60,000</td>
+      <td class="growth-val">$2,598,000</td>
+      <td class="free-val">$2,538,000</td>
+    </tr>
+    <tr>
+      <td><strong>20</strong></td>
+      <td>45 years</td>
+      <td>$54,000</td>
+      <td class="growth-val">$1,581,000</td>
+      <td class="free-val">$1,527,000</td>
+    </tr>
+    <tr>
+      <td><strong>25</strong></td>
+      <td>40 years</td>
+      <td>$48,000</td>
+      <td class="growth-val">$956,000</td>
+      <td class="free-val">$908,000</td>
+    </tr>
+    <tr>
+      <td><strong>30</strong></td>
+      <td>35 years</td>
+      <td>$42,000</td>
+      <td class="growth-val">$573,000</td>
+      <td class="free-val">$531,000</td>
+    </tr>
+    <tr>
+      <td><strong>35</strong></td>
+      <td>30 years</td>
+      <td>$36,000</td>
+      <td class="growth-val">$339,000</td>
+      <td class="free-val">$303,000</td>
+    </tr>
+    <tr>
+      <td><strong>40</strong></td>
+      <td>25 years</td>
+      <td>$30,000</td>
+      <td class="growth-val">$196,000</td>
+      <td class="free-val">$166,000</td>
+    </tr>
+    <tr>
+      <td><strong>45</strong></td>
+      <td>20 years</td>
+      <td>$24,000</td>
+      <td class="growth-val">$110,000</td>
+      <td class="free-val">$86,000</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout callout-big">
+  <div class="big-text">Starting at 15 instead of 25 = $1,642,000 MORE</div>
+  <p>Those 10 extra years of patience are worth <strong>over one million dollars</strong>. You only put in $12,000 more, but compound interest does the rest.</p>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION 2 -->
+<!-- ============================================ -->
+<span class="section-tag">Section 2</span>
+<h2>Calculate YOUR Growth</h2>
+<p>Look at your <strong>Build Your Life</strong> budget. How much did you choose to invest each month?</p>
+
+<p style="font-size:1.15rem; margin: 16px 0;"><strong>My monthly investment amount: $</strong><span class="fill-blank" style="min-width:100px;"></span></p>
+
+<p>Use the <strong>Lookup Reference Table</strong> below to fill in your personal growth chart:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>After...</th>
+      <th>You Put In</th>
+      <th>Approximate Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>5 years</strong></td>
+      <td>$ <span class="fill-blank"></span></td>
+      <td>$ <span class="fill-blank"></span></td>
+    </tr>
+    <tr>
+      <td><strong>10 years</strong></td>
+      <td>$ <span class="fill-blank"></span></td>
+      <td>$ <span class="fill-blank"></span></td>
+    </tr>
+    <tr>
+      <td><strong>20 years</strong></td>
+      <td>$ <span class="fill-blank"></span></td>
+      <td>$ <span class="fill-blank"></span></td>
+    </tr>
+    <tr>
+      <td><strong>30 years</strong></td>
+      <td>$ <span class="fill-blank"></span></td>
+      <td>$ <span class="fill-blank"></span></td>
+    </tr>
+    <tr>
+      <td><strong>40 years</strong></td>
+      <td>$ <span class="fill-blank"></span></td>
+      <td style="background:#e0f7e6;">$ <span class="fill-blank" style="border-color:#2e7d32;"></span></td>
+    </tr>
+  </tbody>
+</table>
+
+<p style="text-align:center; font-size: 0.95rem; color: #2e7d32; font-weight: 600;">Circle your 40-year number. That's what patience looks like.</p>
+
+<div class="lookup-table">
+  <h3>Lookup Reference Table (10% average annual return)</h3>
+  <div class="lookup-grid">
+    <span class="lookup-amt">$25/mo</span>
+    <span class="lookup-vals">5yr: $1,950 &nbsp;|&nbsp; 10yr: $5,125 &nbsp;|&nbsp; 20yr: $19,000 &nbsp;|&nbsp; 30yr: $56,500 &nbsp;|&nbsp; 40yr: $158,000</span>
+
+    <span class="lookup-amt">$50/mo</span>
+    <span class="lookup-vals">5yr: $3,900 &nbsp;|&nbsp; 10yr: $10,250 &nbsp;|&nbsp; 20yr: $38,000 &nbsp;|&nbsp; 30yr: $113,000 &nbsp;|&nbsp; 40yr: $316,000</span>
+
+    <span class="lookup-amt">$100/mo</span>
+    <span class="lookup-vals">5yr: $7,800 &nbsp;|&nbsp; 10yr: $20,500 &nbsp;|&nbsp; 20yr: $76,000 &nbsp;|&nbsp; 30yr: $226,000 &nbsp;|&nbsp; 40yr: $632,000</span>
+
+    <span class="lookup-amt">$200/mo</span>
+    <span class="lookup-vals">5yr: $15,600 &nbsp;|&nbsp; 10yr: $41,000 &nbsp;|&nbsp; 20yr: $152,000 &nbsp;|&nbsp; 30yr: $452,000 &nbsp;|&nbsp; 40yr: $1,264,000</span>
+
+    <span class="lookup-amt">$300/mo</span>
+    <span class="lookup-vals">5yr: $23,400 &nbsp;|&nbsp; 10yr: $61,500 &nbsp;|&nbsp; 20yr: $228,000 &nbsp;|&nbsp; 30yr: $678,000 &nbsp;|&nbsp; 40yr: $1,896,000</span>
+
+    <span class="lookup-amt">$500/mo</span>
+    <span class="lookup-vals">5yr: $39,000 &nbsp;|&nbsp; 10yr: $102,500 &nbsp;|&nbsp; 20yr: $380,000 &nbsp;|&nbsp; 30yr: $1,130,000 &nbsp;|&nbsp; 40yr: $3,160,000</span>
+  </div>
+</div>
+
+<div class="callout callout-info">
+  <div class="label">What About Your Amount?</div>
+  <p>If your amount is between two rows, estimate in between. For example, $75/month is roughly halfway between $50 and $100. If your amount is $150/month, it's halfway between $100 and $200.</p>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION 3 -->
+<!-- ============================================ -->
+<span class="section-tag">Section 3</span>
+<h2>The Rule of 72 <span style="font-size:0.85rem; color:#888; font-weight:400;">(Ages 9+)</span></h2>
+
+<div class="callout callout-gold">
+  <div class="label">The Shortcut</div>
+  <p><strong>Divide 72 by the interest rate = the number of years for your money to double.</strong></p>
+  <p style="margin-top:6px;">This works for any interest rate. It's the single most useful piece of mental math in all of finance.</p>
+</div>
+
+<h3>Practice Problems</h3>
+
+<div class="practice-item">
+  <span class="formula">At 10% return:</span> 72 &divide; 10 = <span class="practice-answer"></span> years to double
+</div>
+
+<div class="practice-item">
+  <span class="formula">At 6% return:</span> 72 &divide; 6 = <span class="practice-answer"></span> years to double
+</div>
+
+<div class="practice-item">
+  <span class="formula">At 12% return:</span> 72 &divide; 12 = <span class="practice-answer"></span> years to double
+</div>
+
+<div class="practice-item">
+  <span class="formula">At 2% (savings account):</span> 72 &divide; 2 = <span class="practice-answer"></span> years to double
+</div>
+
+<div class="practice-item" style="margin-top: 16px;">
+  <span class="formula" style="color:#c62828;">At 24% (credit card debt):</span> 72 &divide; 24 = <span class="practice-answer" style="border-color:#c62828;"></span> years for your <strong style="color:#c62828;">DEBT</strong> to double!
+</div>
+
+<div class="callout callout-gold" style="margin-top: 20px;">
+  <div class="label">Think About It</div>
+  <p><strong>Which would you rather have?</strong></p>
+  <p>Money doubling every <strong>7 years</strong> (investing at 10%)... or debt doubling every <strong>3 years</strong> (credit card at 24%)?</p>
+  <p style="margin-top:4px;">The math is the same. The direction is opposite. That's why which SIDE you're on matters everything.</p>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION 4 -->
+<!-- ============================================ -->
+<span class="section-tag red">Section 4</span>
+<h2>The Dark Side: Compound Interest on Debt <span style="font-size:0.85rem; color:#888; font-weight:400;">(Ages 11+)</span></h2>
+
+<div class="callout callout-warn">
+  <div class="label">Remember</div>
+  <p>Compound interest is a <strong>tool</strong>. It can work <strong>FOR</strong> you (investments) or <strong>AGAINST</strong> you (debt). Same math. Same force. Opposite results.</p>
+</div>
+
+<h3>Real Example: $5,000 Credit Card Balance at 24% APR</h3>
+
+<div class="debt-box">
+  <div class="debt-comparison">
+    <div class="debt-card bad">
+      <div class="card-label">Minimum Payments ($100/mo)</div>
+      <div class="big-num">$9,800</div>
+      <p style="font-size:0.88rem;">Total paid over <strong>9+ years</strong></p>
+      <p style="font-size:0.88rem; color:#c62828;"><strong>$4,800 in interest</strong><br>You almost paid DOUBLE</p>
+    </div>
+    <div class="debt-card better">
+      <div class="card-label">Aggressive Payments ($250/mo)</div>
+      <div class="big-num">$6,200</div>
+      <p style="font-size:0.88rem;">Total paid over <strong>~2 years</strong></p>
+      <p style="font-size:0.88rem; color:#2e7d32;"><strong>$1,200 in interest</strong><br>You saved $3,600!</p>
+    </div>
+  </div>
+
+  <p style="text-align:center; margin-top: 12px; font-weight: 600;">Same $5,000 purchase. The only difference? How fast you paid it off.</p>
+</div>
+
+<h3>Fill In</h3>
+<p>The person who paid the minimum spent <span class="fill-blank-red"></span> extra on interest.</p>
+<p>The person who paid aggressively saved <span class="fill-blank" style="border-color:#2e7d32;"></span> compared to the minimum payer.</p>
+<p>The minimum payer was still paying for a purchase made <span class="fill-blank-red"></span> years ago.</p>
+
+<!-- ============================================ -->
+<!-- SECTION 5 -->
+<!-- ============================================ -->
+<span class="section-tag purple">Section 5</span>
+<h2>Reflection</h2>
+
+<h3>What surprised you most about compound interest?</h3>
+<div class="reflection-area"></div>
+
+<h3>How old are you now? If you started investing $<span class="fill-blank" style="min-width:50px;"></span> per month today, what would you have at age 65?</h3>
+<p style="margin: 4px 0 4px;">My age: <span class="fill-blank" style="min-width:40px;"></span> &nbsp; Years until 65: <span class="fill-blank" style="min-width:40px;"></span> &nbsp; Projected value: $<span class="fill-blank" style="min-width:100px;"></span></p>
+<div class="reflection-area" style="min-height:40px;"></div>
+
+<h3>What's one thing you'd tell a friend about compound interest?</h3>
+<div class="reflection-area"></div>
+
+<h3>Albert Einstein allegedly called compound interest "the 8th wonder of the world." Do you agree? Why?</h3>
+<div class="reflection-area tall"></div>
+
+<div class="callout callout-big" style="margin-top: 28px;">
+  <div class="big-text" style="font-size:1.2rem;">"Those who understand compound interest earn it.<br>Those who don't, pay it."</div>
+  <p style="margin-top:8px;">Starting today, you understand it. You're on the earning side.</p>
+</div>
+
+<footer>
+  The Lost Boys Adventure &mdash; Financial Literacy Curriculum<br>
+  Unit 5: Growing Wealth &bull; Lesson 9: The Power of Compound Interest &bull; Growth Chart Worksheet
+</footer>
+
+</body>
+</html>

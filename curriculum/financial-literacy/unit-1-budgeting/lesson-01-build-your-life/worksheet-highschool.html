@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Your Life - High School Edition (9th+ Grade)</title>
+<style>
+  @media print {
+    body { margin: 0.4in; font-size: 10pt; }
+    .page-break { page-break-before: always; }
+    .category { page-break-inside: avoid; }
+    .section { page-break-inside: avoid; }
+    .no-break { page-break-inside: avoid; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.45; color: #2d3436; max-width: 850px; margin: 0 auto; padding: 20px; }
+  h1 { font-size: 1.7em; text-align: center; color: #2d3436; margin-bottom: 2px; }
+  .subtitle { text-align: center; font-size: 0.95em; color: #636e72; margin-bottom: 4px; }
+  .header-row { display: flex; justify-content: space-between; margin: 8px 0 14px; font-size: 0.9em; }
+  .header-row span { border-bottom: 1.5px solid #2d3436; display: inline-block; width: 180px; }
+
+  .income-box { background: #2d3436; color: white; border-radius: 10px; padding: 16px; margin: 12px 0; }
+  .income-box h2 { color: #74b9ff; margin-bottom: 6px; font-size: 1.15em; }
+  .income-box p { font-size: 0.82em; color: #b2bec3; margin-bottom: 8px; }
+  .income-label { display: flex; justify-content: space-between; padding: 4px 0; font-size: 0.9em; }
+  .income-label.highlight { color: #55efc4; font-weight: bold; }
+
+  .tax-table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 0.85em; }
+  .tax-table th { text-align: left; color: #74b9ff; border-bottom: 1px solid #636e72; padding: 4px 6px; font-weight: 600; }
+  .tax-table td { padding: 4px 6px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .tax-table .rate { color: #fab1a0; }
+  .tax-table .amt { color: #ffeaa7; min-width: 90px; }
+  .tax-table .total-row td { border-top: 1.5px solid #636e72; font-weight: bold; color: #fab1a0; padding-top: 6px; }
+  .tax-table .net-row td { border-top: 2px solid #74b9ff; font-weight: bold; color: #55efc4; font-size: 1.1em; padding-top: 8px; }
+
+  .note-box { background: #ffeaa7; border-left: 4px solid #fdcb6e; padding: 8px 12px; font-size: 0.8em; margin: 8px 0; color: #2d3436; }
+  .directions { background: #f5f6fa; border-left: 4px solid #6c5ce7; padding: 10px 14px; font-size: 0.85em; margin: 12px 0; }
+  .directions strong { color: #6c5ce7; }
+
+  .category { border: 1.5px solid #dfe6e9; border-radius: 8px; padding: 12px; margin: 14px 0; }
+  .category h2 { font-size: 1.05em; margin-bottom: 4px; padding-bottom: 4px; border-bottom: 2px solid; }
+  .cat-note { font-size: 0.78em; color: #636e72; margin-bottom: 6px; font-style: italic; }
+
+  .wl { border-bottom: 1.5px solid #b2bec3; display: inline-block; width: 70px; }
+  .wl-med { border-bottom: 1.5px solid #b2bec3; display: inline-block; width: 120px; }
+  .wl-wide { border-bottom: 1.5px solid #b2bec3; display: inline-block; width: 100%; }
+  .wl-full { border-bottom: 1.5px solid #b2bec3; display: block; width: 100%; min-height: 1.2em; margin: 2px 0; }
+  .wl-multi { border-bottom: 1.5px solid #b2bec3; display: block; width: 100%; min-height: 2.6em; margin: 2px 0; }
+
+  .line-item { display: flex; justify-content: space-between; align-items: center; padding: 3px 0; font-size: 0.88em; }
+  .line-item label { flex: 1; }
+  .line-item .amt-field { border-bottom: 1.5px solid #b2bec3; width: 80px; text-align: right; display: inline-block; }
+
+  .data-table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 0.85em; }
+  .data-table th { text-align: left; background: #f5f6fa; padding: 5px 8px; border: 1px solid #dfe6e9; font-weight: 600; font-size: 0.9em; }
+  .data-table td { padding: 5px 8px; border: 1px solid #dfe6e9; min-height: 1.4em; }
+  .data-table td.writable { border-bottom: 1.5px solid #b2bec3; }
+
+  .option { display: flex; align-items: center; border: 1px solid #f0f0f0; border-radius: 5px; padding: 5px 8px; margin: 3px 0; font-size: 0.85em; }
+  .cb { width: 16px; height: 16px; border: 1.5px solid #b2bec3; border-radius: 3px; margin-right: 8px; flex-shrink: 0; }
+  .od { flex: 1; }
+  .on { font-weight: bold; }
+  .os { font-size: 0.82em; color: #636e72; }
+  .op { font-weight: bold; color: #d63031; white-space: nowrap; margin-left: 6px; }
+
+  .tracker { background: #f5f6fa; border: 2px solid #2d3436; border-radius: 10px; padding: 16px; margin: 18px 0; }
+  .tracker h2 { color: #2d3436; text-align: center; margin-bottom: 8px; font-size: 1.1em; }
+  .tr { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px dotted #dfe6e9; font-size: 0.88em; }
+  .tt { display: flex; justify-content: space-between; padding: 6px 0 0; border-top: 2.5px solid #2d3436; font-size: 1.05em; font-weight: bold; margin-top: 4px; }
+  .tt.positive { color: #00b894; }
+  .tt.negative { color: #d63031; }
+
+  .section { border: 1.5px solid #dfe6e9; border-radius: 8px; padding: 14px; margin: 16px 0; }
+  .section h2 { margin-bottom: 6px; font-size: 1.05em; }
+  .q { margin: 8px 0; font-size: 0.88em; }
+
+  .edu-box { background: #dfe6e9; border-radius: 6px; padding: 10px 12px; font-size: 0.82em; margin: 8px 0; color: #2d3436; }
+  .edu-box strong { display: block; margin-bottom: 3px; }
+
+  .math-box { background: #fff3e0; border: 1.5px solid #e17055; border-radius: 6px; padding: 10px 14px; margin: 10px 0; font-size: 0.85em; }
+  .math-box .calc { font-family: 'Courier New', monospace; font-size: 0.95em; margin: 3px 0; }
+
+  .reflection { background: #2d3436; color: white; border-radius: 10px; padding: 16px; margin: 18px 0; }
+  .reflection h2 { color: #74b9ff; margin-bottom: 10px; }
+  .reflection .q { color: #dfe6e9; }
+  .reflection .wl-full, .reflection .wl-multi { border-color: #636e72; }
+
+  .total-line { font-weight: bold; border-top: 1.5px solid #2d3436; padding-top: 4px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<h1>Build Your Life!</h1>
+<p class="subtitle">High School Edition &mdash; 9th+ Grade</p>
+<div class="header-row">
+  <div>Name: <span>&nbsp;</span></div>
+  <div>Date: <span>&nbsp;</span></div>
+</div>
+
+<div class="directions">
+  <strong>How this works:</strong> This is an open-ended budgeting exercise. You will build a real monthly budget from scratch using the <strong>Career Cards</strong>, <strong>Price Catalog</strong>, <strong>Life Situation Cards</strong>, and <strong>Surprise Cards</strong>. There are no pre-set bundles. You research costs, make trade-offs, and justify your decisions. Expect this to take 45&ndash;60 minutes if done thoughtfully.
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION 1: GROSS VS. NET INCOME             -->
+<!-- ============================================ -->
+<div class="income-box">
+  <h2>1. Gross vs. Net Income</h2>
+  <p>"In real life, you don't keep everything you earn."</p>
+  <p>Pick a career from the Career Cards. Then calculate your take-home pay.</p>
+
+  <div class="income-label" style="margin-top: 10px;">
+    <span>Career chosen:</span>
+    <span style="border-bottom: 1px solid #636e72; width: 280px; display: inline-block;">&nbsp;</span>
+  </div>
+  <div class="income-label highlight" style="margin-top: 6px;">
+    <span>Gross annual salary:</span>
+    <span>$<span style="border-bottom: 1px solid #55efc4; width: 100px; display: inline-block;">&nbsp;</span></span>
+  </div>
+  <div class="income-label" style="margin-bottom: 6px;">
+    <span>Gross monthly income (annual &divide; 12):</span>
+    <span>$<span style="border-bottom: 1px solid #636e72; width: 100px; display: inline-block;">&nbsp;</span></span>
+  </div>
+
+  <table class="tax-table">
+    <tr><th>Deduction</th><th>Rate</th><th class="amt">Monthly Amount</th></tr>
+    <tr><td>Federal income tax</td><td class="rate">~12&ndash;22%</td><td class="amt">$<span style="border-bottom:1px solid #636e72; width:60px; display:inline-block;">&nbsp;</span></td></tr>
+    <tr><td>State income tax</td><td class="rate">~3&ndash;5%</td><td class="amt">$<span style="border-bottom:1px solid #636e72; width:60px; display:inline-block;">&nbsp;</span></td></tr>
+    <tr><td>Social Security + Medicare (FICA)</td><td class="rate">7.65%</td><td class="amt">$<span style="border-bottom:1px solid #636e72; width:60px; display:inline-block;">&nbsp;</span></td></tr>
+    <tr><td>Health insurance (your share)</td><td class="rate">varies</td><td class="amt">$<span style="border-bottom:1px solid #636e72; width:60px; display:inline-block;">&nbsp;</span></td></tr>
+    <tr class="total-row"><td>Total deductions</td><td></td><td class="amt">$<span style="border-bottom:1px solid #636e72; width:60px; display:inline-block;">&nbsp;</span></td></tr>
+    <tr class="net-row"><td>Net monthly take-home</td><td></td><td class="amt">$<span style="border-bottom:1px solid #55efc4; width:60px; display:inline-block;">&nbsp;</span></td></tr>
+  </table>
+
+  <div class="note-box" style="background: rgba(255,255,255,0.1); border-left-color: #74b9ff; color: #dfe6e9;">
+    The Career Cards show an approximate take-home figure. For this exercise, use that number. In real life, you would calculate based on your specific tax bracket and state.
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION 2: LIFE SITUATION                    -->
+<!-- ============================================ -->
+<div class="section">
+  <h2>2. Life Situation</h2>
+  <p style="font-size:0.85em; color:#636e72; margin-bottom:8px;">Draw a Life Situation Card. Write it here. For extra realism, draw <strong>two cards</strong>.</p>
+
+  <div class="q">Situation Card #1: <span class="wl-wide">&nbsp;</span></div>
+  <div class="q">Impact on budget: <span class="wl-wide">&nbsp;</span></div>
+  <div class="q" style="margin-top:8px;">Situation Card #2 (optional challenge): <span class="wl-wide">&nbsp;</span></div>
+  <div class="q">Impact on budget: <span class="wl-wide">&nbsp;</span></div>
+  <div class="q" style="margin-top:8px; font-weight:bold;">Adjusted monthly income: $<span class="wl">&nbsp;</span></div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ============================================ -->
+<!-- SECTION 3: BUDGET — BUILD YOUR LIFE          -->
+<!-- ============================================ -->
+<h2 style="text-align:center; margin:10px 0 4px; font-size:1.2em; color:#2d3436;">3. Budget &mdash; Build Your Life</h2>
+<p style="text-align:center; font-size:0.85em; color:#636e72; margin-bottom:12px;">Use the Price Catalog as your reference. Research what things cost. Build a real budget.</p>
+
+<!-- HOUSING -->
+<div class="category">
+  <h2 style="color: #e17055; border-color: #e17055;">Housing</h2>
+  <p class="cat-note">Refer to the Price Catalog. Pick a city type (small town, mid-size city, big city) and a housing type. The 30% rule says housing should not exceed 30% of your take-home pay.</p>
+  <div class="line-item"><label>City type:</label> <span class="wl-med">&nbsp;</span></div>
+  <div class="line-item"><label>Housing type:</label> <span class="wl-med">&nbsp;</span></div>
+  <div class="line-item"><label>Monthly rent:</label> <span class="amt-field">$</span></div>
+  <div class="line-item" style="margin-top:4px;"><label>30% rule check: rent &divide; take-home = </label> <span class="wl" style="width:40px;">&nbsp;</span>% &nbsp; (Is this &le;30%? <span class="wl" style="width:50px;">&nbsp;</span>)</div>
+</div>
+
+<!-- UTILITIES -->
+<div class="category">
+  <h2 style="color: #fdcb6e; border-color: #fdcb6e;">Utilities</h2>
+  <p class="cat-note">Depends on your housing size and location. Refer to catalog for ranges.</p>
+  <div class="line-item"><label>Electric</label> <span class="amt-field">$</span></div>
+  <div class="line-item"><label>Water</label> <span class="amt-field">$</span></div>
+  <div class="line-item"><label>Gas / Heating</label> <span class="amt-field">$</span></div>
+  <div class="line-item"><label>Internet (speed: <span class="wl" style="width:60px;">&nbsp;</span>)</label> <span class="amt-field">$</span></div>
+  <div class="line-item"><label>Trash</label> <span class="amt-field">$</span></div>
+  <div class="line-item total-line"><label>TOTAL Utilities</label> <span class="amt-field">$</span></div>
+</div>
+
+<!-- FOOD -->
+<div class="category">
+  <h2 style="color: #00b894; border-color: #00b894;">Food &mdash; Build Your Weekly Menu</h2>
+  <p class="cat-note">Plan what you'd actually eat for a week. Use grocery prices from the catalog to estimate costs realistically.</p>
+  <table class="data-table">
+    <tr><th style="width:60px;">Day</th><th>Breakfast</th><th>Lunch</th><th>Dinner</th></tr>
+    <tr><td>Mon</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>Tue</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>Wed</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>Thu</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>Fri</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>Sat</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>Sun</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+  </table>
+  <div class="line-item"><label>Estimated weekly grocery cost</label> <span class="amt-field">$</span></div>
+  <div class="line-item"><label>Monthly groceries (weekly &times; 4)</label> <span class="amt-field">$</span></div>
+  <div class="line-item"><label>Eating out: <span class="wl" style="width:30px;">&nbsp;</span> times/mo &times; $<span class="wl" style="width:40px;">&nbsp;</span>/meal =</label> <span class="amt-field">$</span></div>
+  <div class="line-item"><label>Coffee/drinks: <span class="wl" style="width:30px;">&nbsp;</span> times/mo &times; $<span class="wl" style="width:40px;">&nbsp;</span> =</label> <span class="amt-field">$</span></div>
+  <div class="line-item total-line"><label>TOTAL Monthly Food</label> <span class="amt-field">$</span></div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- TRANSPORTATION -->
+<div class="category">
+  <h2 style="color: #0984e3; border-color: #0984e3;">Transportation</h2>
+  <p class="cat-note">Choose your method. If you drive, itemize every cost. If public transit or rideshare, estimate weekly usage.</p>
+  <div class="line-item"><label>Method (car / transit / bike / rideshare / walk):</label> <span class="wl-med">&nbsp;</span></div>
+  <div class="line-item"><label>Car payment (if applicable)</label> <span class="amt-field">$</span></div>
+  <div class="line-item"><label>Car insurance (see insurance section below)</label> <span class="amt-field">$</span></div>
+  <div class="line-item"><label>Gas: <span class="wl" style="width:30px;">&nbsp;</span> gal/mo &times; $<span class="wl" style="width:30px;">&nbsp;</span>/gal =</label> <span class="amt-field">$</span></div>
+  <div class="line-item"><label>Maintenance fund</label> <span class="amt-field">$</span></div>
+  <div class="line-item"><label>Parking (if applicable)</label> <span class="amt-field">$</span></div>
+  <div class="line-item"><label>OR: Public transit / rideshare</label> <span class="amt-field">$</span></div>
+  <div class="line-item total-line"><label>TOTAL Transportation</label> <span class="amt-field">$</span></div>
+</div>
+
+<!-- PHONE -->
+<div class="category">
+  <h2 style="color: #a29bfe; border-color: #a29bfe;">Phone</h2>
+  <p class="cat-note">Pick a carrier and plan from the catalog. Include phone financing if you're paying off a device.</p>
+  <div class="line-item"><label>Carrier &amp; plan:</label> <span class="wl-med" style="width:200px;">&nbsp;</span></div>
+  <div class="line-item"><label>Monthly plan cost</label> <span class="amt-field">$</span></div>
+  <div class="line-item"><label>Phone financing (if any)</label> <span class="amt-field">$</span></div>
+  <div class="line-item total-line"><label>TOTAL Phone</label> <span class="amt-field">$</span></div>
+</div>
+
+<!-- ENTERTAINMENT -->
+<div class="category">
+  <h2 style="color: #6c5ce7; border-color: #6c5ce7;">Entertainment &mdash; Itemize Everything</h2>
+  <p class="cat-note">Pick your specific subscriptions and activities. Every dollar gets tracked. No vague "entertainment budget."</p>
+  <table class="data-table">
+    <tr><th style="width:70%;">Service / Activity</th><th>Monthly Cost</th></tr>
+    <tr><td>&nbsp;</td><td>$</td></tr>
+    <tr><td>&nbsp;</td><td>$</td></tr>
+    <tr><td>&nbsp;</td><td>$</td></tr>
+    <tr><td>&nbsp;</td><td>$</td></tr>
+    <tr><td>&nbsp;</td><td>$</td></tr>
+    <tr><td>&nbsp;</td><td>$</td></tr>
+    <tr><td>&nbsp;</td><td>$</td></tr>
+    <tr><td>&nbsp;</td><td>$</td></tr>
+    <tr><td>&nbsp;</td><td>$</td></tr>
+    <tr><td>&nbsp;</td><td>$</td></tr>
+  </table>
+  <div class="line-item total-line"><label>TOTAL Entertainment</label> <span class="amt-field">$</span></div>
+</div>
+
+<!-- CLOTHING -->
+<div class="category">
+  <h2 style="color: #e84393; border-color: #e84393;">Clothing</h2>
+  <p class="cat-note">Estimate your monthly clothing spend. Reference the catalog for typical costs of different items.</p>
+  <div class="line-item"><label>Monthly clothing budget (your estimate)</label> <span class="amt-field">$</span></div>
+</div>
+
+<!-- HEALTH & PERSONAL CARE -->
+<div class="category">
+  <h2 style="color: #00cec9; border-color: #00cec9;">Health &amp; Personal Care</h2>
+  <div class="line-item"><label>Gym membership</label> <span class="amt-field">$</span></div>
+  <div class="line-item"><label>Haircuts (monthly average)</label> <span class="amt-field">$</span></div>
+  <div class="line-item"><label>Toiletries (soap, toothpaste, etc.)</label> <span class="amt-field">$</span></div>
+  <div class="line-item"><label>Copays / medical visits</label> <span class="amt-field">$</span></div>
+  <div class="line-item total-line"><label>TOTAL Health &amp; Personal</label> <span class="amt-field">$</span></div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ============================================ -->
+<!-- SECTION 4: ADVANCED FINANCIAL DECISIONS      -->
+<!-- ============================================ -->
+<h2 style="text-align:center; margin:10px 0 4px; font-size:1.2em; color:#2d3436;">4. Advanced Financial Decisions</h2>
+
+<!-- INSURANCE -->
+<div class="section">
+  <h2 style="color:#d63031;">Insurance &mdash; Risk Management</h2>
+  <div class="edu-box">
+    <strong>What is insurance?</strong>
+    Insurance transfers risk. You pay a predictable monthly cost to avoid unpredictable catastrophic costs. The lower your deductible (what you pay out-of-pocket before insurance kicks in), the higher your monthly premium. Every tier is a trade-off between monthly cost and financial exposure.
+  </div>
+
+  <h3 style="font-size:0.95em; margin:10px 0 4px; color:#e17055;">Renter's / Home Insurance</h3>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">None &mdash; $0/mo</div><div class="os">Fire, theft, or damage = you pay everything out of pocket.</div></div><div class="op">$0</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Basic</div><div class="os">$1,000 deductible. Covers up to $20K in belongings.</div></div><div class="op">$20</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Standard</div><div class="os">$500 deductible. Covers up to $30K in belongings.</div></div><div class="op">$30</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Premium</div><div class="os">$250 deductible. Covers $50K+ belongings + liability protection.</div></div><div class="op">$50</div></div>
+
+  <h3 style="font-size:0.95em; margin:12px 0 4px; color:#0984e3;">Car Insurance (if applicable)</h3>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Liability Only</div><div class="os">Covers the other person's car, not yours. You pay $2,000+ if your car is damaged.</div></div><div class="op">$90</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Standard Full Coverage</div><div class="os">$1,000 deductible. Covers both vehicles.</div></div><div class="op">$155</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Premium Full Coverage</div><div class="os">$250 deductible, roadside assistance, rental car coverage.</div></div><div class="op">$230</div></div>
+
+  <h3 style="font-size:0.95em; margin:12px 0 4px; color:#00b894;">Health Insurance Upgrade</h3>
+  <p class="cat-note">Beyond the basic employer-provided plan (which has a high deductible).</p>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Employer Basic (high deductible)</div><div class="os">$3,000 deductible. Already included in paycheck deductions.</div></div><div class="op">$0 extra</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Upgrade to Standard</div><div class="os">$1,000 deductible.</div></div><div class="op">$50</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Upgrade to Premium</div><div class="os">$250 deductible. Low copays.</div></div><div class="op">$125</div></div>
+
+  <h3 style="font-size:0.95em; margin:12px 0 4px; color:#636e72;">Life Insurance</h3>
+  <div class="edu-box">
+    <strong>What is life insurance?</strong>
+    Pays your family if you die. Especially important if others depend on your income (spouse, children, aging parents).
+  </div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">None</div></div><div class="op">$0</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Basic Term ($100K coverage)</div></div><div class="op">$15</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Standard ($250K coverage)</div></div><div class="op">$35</div></div>
+  <div class="option"><div class="cb"></div><div class="od"><div class="on">Strong Coverage ($500K)</div></div><div class="op">$60</div></div>
+
+  <div class="line-item total-line" style="margin-top:10px;"><label>TOTAL Insurance (all types combined)</label> <span class="amt-field">$</span></div>
+</div>
+
+<!-- SAVINGS & EMERGENCY FUND -->
+<div class="section">
+  <h2 style="color:#00b894;">Savings &amp; Emergency Fund</h2>
+  <div class="line-item"><label>Monthly savings</label> <span class="amt-field">$</span></div>
+  <div class="line-item"><label>Emergency fund contribution</label> <span class="amt-field">$</span></div>
+  <div class="q" style="margin-top:8px;">Financial experts recommend 3&ndash;6 months of expenses saved for emergencies.</div>
+  <div class="q">Your total monthly expenses are approximately: $<span class="wl">&nbsp;</span></div>
+  <div class="q">A full emergency fund (6 months) would be: $<span class="wl">&nbsp;</span></div>
+  <div class="q">At your current contribution rate, how many months to build that fund? <span class="wl">&nbsp;</span> months</div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- INVESTING -->
+<div class="section">
+  <h2 style="color:#6c5ce7;">Investing &mdash; Building Wealth</h2>
+  <div class="edu-box">
+    <strong>Key terms:</strong>
+    An <strong>index fund</strong> tracks the overall stock market. Historically, the S&amp;P 500 has returned ~10%/year on average. A <strong>401(k)</strong> is a retirement account where your employer may <em>match</em> your contributions &mdash; that is free money. An <strong>IRA</strong> is a retirement account you open yourself. Starting early matters enormously because of <strong>compound interest</strong>.
+  </div>
+  <div class="line-item"><label>401(k) contribution</label> <span class="amt-field">$</span><span style="font-size:0.8em; color:#636e72;">/mo</span></div>
+  <div class="note-box">If your employer matches 3% of your salary, that is free money. Always take the match.</div>
+  <div class="line-item"><label>IRA or personal investment account</label> <span class="amt-field">$</span><span style="font-size:0.8em; color:#636e72;">/mo</span></div>
+
+  <div class="math-box" style="margin-top:10px;">
+    <strong>Compound Growth Calculation</strong><br>
+    <div class="calc">If you invest $<span class="wl" style="width:50px;">&nbsp;</span>/mo for 40 years at 10% average return:</div>
+    <div class="calc">Approximate future value: $<span class="wl" style="width:100px;">&nbsp;</span></div>
+    <div style="font-size:0.85em; color:#636e72; margin-top:4px;">Formula hint: Monthly &times; 12 &times; [(1.10<sup>years</sup> &minus; 1) &div; 0.10] &mdash; or use the catalog's growth table.</div>
+    <div style="font-size:0.85em; color:#636e72;">Example: $200/mo &times; 12 = $2,400/yr. Over 40 years at 10%: ~$1,062,000.</div>
+  </div>
+
+  <div class="line-item total-line" style="margin-top:8px;"><label>TOTAL Investing</label> <span class="amt-field">$</span></div>
+</div>
+
+<!-- GIVING -->
+<div class="section">
+  <h2 style="color:#fdcb6e;">Giving</h2>
+  <div class="line-item"><label>Charity / church / community contribution</label> <span class="amt-field">$</span><span style="font-size:0.8em; color:#636e72;">/mo</span></div>
+  <div class="q" style="margin-top:6px;">What cause or organization would you support, and why?</div>
+  <div class="wl-multi">&nbsp;</div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION 5: THE CREDIT CARD DECISION          -->
+<!-- ============================================ -->
+<div class="section">
+  <h2 style="color:#d63031;">5. The Credit Card Decision</h2>
+  <p style="font-size:0.88em; margin-bottom:8px;">A credit card company offers you a $5,000 limit at <strong>24% APR</strong> (annual percentage rate).</p>
+
+  <div class="math-box">
+    <strong>The interest formula:</strong>
+    <div style="font-family: 'Courier New', monospace; background: #2d3436; color: #55efc4; padding: 6px 12px; border-radius: 4px; display: inline-block; margin: 6px 0;">Monthly Interest = Balance &times; (APR &divide; 12)</div>
+    <div class="calc" style="margin-top:6px;">Example: $2,000 balance at 24% APR &rarr; $2,000 &times; (0.24 &divide; 12) = <strong>$40/month in interest alone</strong></div>
+    <div class="calc" style="margin-top:8px; font-weight:bold;">Scenario: You put $2,000 on the card.</div>
+    <div class="calc" style="margin-left:16px;">Minimum payment ($50/mo): ~5 years to pay off. Total paid: $2,960 (<strong>$960 in interest</strong>).</div>
+    <div class="calc" style="margin-left:16px;">Aggressive payment ($200/mo): Paid off in 11 months. Total interest: ~$220.</div>
+    <div style="font-size:0.85em; color:#d63031; margin-top:4px; font-weight:bold;">Same purchase. Same card. The difference is $740 &mdash; just based on how fast you pay.</div>
+  </div>
+
+  <div class="math-box" style="border-color: #0984e3; background: #f0f8ff; margin-top: 10px;">
+    <strong>Debit Card vs. Credit Card &mdash; Know the Difference</strong>
+    <div style="margin-top: 6px; font-size: 0.88em;">
+      <strong>Debit card:</strong> Spends money directly from your checking account. If you have $500 in the bank, you can spend $500. No debt, no interest. What you see is what you have.
+      <br><br>
+      <strong>Credit card:</strong> Borrows money from the card company. You can spend more than you have &mdash; that's the danger. If you pay the FULL balance every month, you pay zero interest and build your credit score. If you carry a balance, interest eats you alive.
+      <br><br>
+      <strong>The smart move:</strong> Use a credit card like a debit card &mdash; only spend what you already have in the bank, and pay it off in full every month. You build credit without paying interest.
+    </div>
+  </div>
+
+  <div class="q" style="margin-top:10px;">Will you get a credit card? &nbsp; <span style="font-size:1em; font-weight:bold;">YES</span> &nbsp;/&nbsp; <span style="font-size:1em; font-weight:bold;">NO</span></div>
+  <div class="q">If YES &mdash; what is your plan for using it responsibly?</div>
+  <div class="wl-multi">&nbsp;</div>
+  <div class="q">If NO &mdash; why not?</div>
+  <div class="wl-multi">&nbsp;</div>
+  <div class="q" style="font-weight:bold;">Write one rule you would set for yourself about credit cards:</div>
+  <div class="wl-multi">&nbsp;</div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ============================================ -->
+<!-- SECTION 6: COMPLETE BUDGET TRACKER           -->
+<!-- ============================================ -->
+<div class="tracker">
+  <h2>6. Complete Budget Tracker</h2>
+  <p style="font-size:0.82em; text-align:center; color:#636e72; margin-bottom:10px;">Transfer all your numbers here. This is your full monthly budget.</p>
+
+  <div class="tr"><span>Housing (rent)</span><span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Utilities</span><span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Food (total)</span><span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Transportation (total)</span><span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Phone</span><span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Entertainment</span><span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Clothing</span><span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Health &amp; Personal Care</span><span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Renter's / Home Insurance</span><span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Car Insurance</span><span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Health Insurance (upgrade)</span><span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Life Insurance</span><span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Savings</span><span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Emergency Fund</span><span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Investing (401k + IRA)</span><span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Giving</span><span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Credit Card Payment (if any)</span><span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Life Situation Card costs</span><span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tr"><span>Other: <span class="wl-med">&nbsp;</span></span><span>$<span class="wl">&nbsp;</span></span></div>
+
+  <div class="tt"><span>TOTAL EXPENSES</span><span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tt" style="border-top-color:#00b894;"><span>MONTHLY INCOME</span><span>$<span class="wl">&nbsp;</span></span></div>
+  <div class="tt"><span>REMAINING (income &minus; expenses)</span><span>$<span class="wl">&nbsp;</span></span></div>
+</div>
+
+<div class="q" style="font-weight:bold; margin:8px 0;">Over budget? What gets cut? Be specific:</div>
+<div class="wl-multi">&nbsp;</div>
+<div class="wl-multi">&nbsp;</div>
+
+<!-- BUDGET ANALYSIS -->
+<div class="section" style="border-color:#6c5ce7;">
+  <h2 style="color:#6c5ce7;">Budget Analysis</h2>
+  <p style="font-size:0.82em; color:#636e72; margin-bottom:8px;">Categorize your spending and compare to the 50/30/20 rule.</p>
+  <table class="data-table">
+    <tr><th>Category</th><th style="width:100px;">Amount</th><th style="width:80px;">% of Income</th></tr>
+    <tr><td><strong>Needs</strong> (housing, food, transport, insurance, utilities, health)</td><td>$</td><td>%</td></tr>
+    <tr><td><strong>Wants</strong> (entertainment, dining out, clothing, premium upgrades)</td><td>$</td><td>%</td></tr>
+    <tr><td><strong>Savings &amp; Investing</strong> (savings, emergency, 401k, IRA)</td><td>$</td><td>%</td></tr>
+    <tr><td><strong>Giving</strong></td><td>$</td><td>%</td></tr>
+  </table>
+  <div class="note-box">
+    <strong>The 50/30/20 Rule:</strong> 50% needs, 30% wants, 20% savings/investing. How do you compare?
+  </div>
+  <div class="wl-multi">&nbsp;</div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ============================================ -->
+<!-- SECTION 7: SURPRISE CARDS                    -->
+<!-- ============================================ -->
+<div class="section">
+  <h2 style="color:#e17055;">7. Surprise Cards</h2>
+  <p style="font-size:0.85em; color:#636e72; margin-bottom:10px;">Draw 1 Expense card and 1 Windfall card. Your insurance choices now matter.</p>
+
+  <h3 style="font-size:0.95em; color:#d63031; margin-bottom:6px;">Expense Card</h3>
+  <div class="q">What happened: <span class="wl-wide">&nbsp;</span></div>
+  <div class="q">My insurance coverage for this: <span class="wl-wide">&nbsp;</span></div>
+  <div class="q">My out-of-pocket cost based on my coverage: $<span class="wl">&nbsp;</span></div>
+  <div class="q">How I will handle this financially:</div>
+  <div class="wl-multi">&nbsp;</div>
+
+  <h3 style="font-size:0.95em; color:#00b894; margin:12px 0 6px;">Windfall Card</h3>
+  <div class="q">What happened: <span class="wl-wide">&nbsp;</span></div>
+  <div class="q">What I will do with the money:</div>
+  <div class="wl-multi">&nbsp;</div>
+  <div class="q">Why:</div>
+  <div class="wl-multi">&nbsp;</div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION 8: ENTREPRENEUR'S BUSINESS PITCH     -->
+<!-- ============================================ -->
+<div class="section">
+  <h2 style="color:#6c5ce7;">8. Entrepreneur's Business Pitch</h2>
+  <p style="font-size:0.85em; color:#636e72; margin-bottom:10px;">Design a real side business. This is not hypothetical &mdash; think about something you could actually start with the skills and resources you have now.</p>
+
+  <div class="q">Business name: <span class="wl-wide">&nbsp;</span></div>
+  <div class="q">What you sell, do, or offer: <span class="wl-wide">&nbsp;</span></div>
+  <div class="q">The problem you solve: <span class="wl-wide">&nbsp;</span></div>
+  <div class="q">Target customer (be specific &mdash; not "everyone"): <span class="wl-wide">&nbsp;</span></div>
+  <div class="q">Pricing: $<span class="wl" style="width:50px;">&nbsp;</span> per <span class="wl-med">&nbsp;</span></div>
+
+  <div class="q" style="margin-top:8px; font-weight:bold;">Startup Costs &mdash; list what you need to begin:</div>
+  <table class="data-table">
+    <tr><th style="width:70%;">Item Needed</th><th>Cost</th></tr>
+    <tr><td>&nbsp;</td><td>$</td></tr>
+    <tr><td>&nbsp;</td><td>$</td></tr>
+    <tr><td>&nbsp;</td><td>$</td></tr>
+    <tr><td>&nbsp;</td><td>$</td></tr>
+    <tr><td>&nbsp;</td><td>$</td></tr>
+  </table>
+  <div class="line-item total-line"><label>Total startup cost</label> <span class="amt-field">$</span></div>
+
+  <div class="line-item" style="margin-top:8px;"><label>Monthly operating costs</label> <span class="amt-field">$</span></div>
+  <div class="line-item"><label>Monthly revenue (realistic estimate)</label> <span class="amt-field">$</span></div>
+  <div class="line-item total-line"><label>Monthly PROFIT (revenue &minus; operating costs)</label> <span class="amt-field">$</span></div>
+  <div class="line-item"><label>Months to recoup startup costs (startup &divide; monthly profit)</label> <span class="amt-field"></span></div>
+
+  <div class="q" style="margin-top:10px;">How would you scale this business (make it bigger)?</div>
+  <div class="wl-multi">&nbsp;</div>
+
+  <div class="q">Your 30-second elevator pitch (write it out):</div>
+  <div class="wl-multi">&nbsp;</div>
+  <div class="wl-multi">&nbsp;</div>
+
+  <div style="background:#f5f6fa; border-radius:6px; padding:10px; margin-top:10px;">
+    <strong style="font-size:0.9em;">Updated Budget with Side Hustle:</strong>
+    <div class="line-item" style="margin-top:4px;"><label>Original monthly income</label> <span class="amt-field">$</span></div>
+    <div class="line-item"><label>Side hustle monthly profit</label> <span class="amt-field">$</span></div>
+    <div class="line-item total-line"><label>New total monthly income</label> <span class="amt-field">$</span></div>
+    <div class="q">What changes in your budget now that you have extra income?</div>
+    <div class="wl-multi">&nbsp;</div>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ============================================ -->
+<!-- SECTION 9: FINAL REFLECTION                  -->
+<!-- ============================================ -->
+<div class="reflection">
+  <h2>9. Final Reflection</h2>
+
+  <div class="q">What is one thing about real-world costs that surprised you?</div>
+  <div class="wl-multi">&nbsp;</div>
+  <div class="wl-multi">&nbsp;</div>
+
+  <div class="q">What financial decision in this exercise are you most proud of?</div>
+  <div class="wl-multi">&nbsp;</div>
+  <div class="wl-multi">&nbsp;</div>
+
+  <div class="q">If you could give one piece of financial advice to your younger siblings, what would it be?</div>
+  <div class="wl-multi">&nbsp;</div>
+  <div class="wl-multi">&nbsp;</div>
+
+  <div class="q">What is one financial topic you want to learn more about? (investing, taxes, real estate, business, etc.)</div>
+  <div class="wl-multi">&nbsp;</div>
+  <div class="wl-multi">&nbsp;</div>
+</div>
+
+<div style="text-align:center; margin-top:20px; font-size:0.8em; color:#b2bec3;">
+  Build Your Life &mdash; High School Edition &bull; Financial Literacy Curriculum
+</div>
+
+</body>
+</html>

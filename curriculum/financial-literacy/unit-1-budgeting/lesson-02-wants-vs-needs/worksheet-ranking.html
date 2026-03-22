@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranking Worksheet — Wants vs. Needs</title>
+<style>
+  @media print {
+    body { margin: 0.4in; font-size: 10pt; }
+    .page-break { page-break-before: always; }
+    .no-print { display: none; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.5; color: #2d3436; max-width: 850px; margin: 0 auto; padding: 20px; }
+  h1 { font-size: 1.6em; color: #2d3436; border-bottom: 4px solid #6c5ce7; padding-bottom: 6px; margin-bottom: 4px; }
+  h2 { font-size: 1.2em; color: #6c5ce7; margin: 18px 0 8px; }
+  .version-tag { display: inline-block; padding: 3px 12px; border-radius: 12px; font-size: 0.78em; font-weight: bold; color: white; margin-bottom: 10px; }
+  .tag-primary { background: #00b894; }
+  .tag-standard { background: #6c5ce7; }
+
+  .name-line {
+    margin: 10px 0 16px;
+    font-size: 0.95em;
+  }
+  .name-line span {
+    display: inline-block;
+    border-bottom: 2px solid #2d3436;
+    min-width: 200px;
+    margin-left: 6px;
+  }
+
+  .rank-item {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+    align-items: flex-start;
+  }
+  .rank-num {
+    background: #6c5ce7;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+    font-size: 0.95em;
+  }
+  .rank-content {
+    flex: 1;
+    border: 1.5px solid #dfe6e9;
+    border-radius: 8px;
+    padding: 8px 12px;
+  }
+  .rank-content .item-line {
+    border-bottom: 1.5px solid #dfe6e9;
+    min-height: 24px;
+    margin-bottom: 4px;
+    font-weight: bold;
+  }
+  .rank-content .reason-label {
+    font-size: 0.78em;
+    color: #636e72;
+  }
+  .rank-content .reason-line {
+    border-bottom: 1.5px solid #f0f0f0;
+    min-height: 22px;
+    margin-bottom: 2px;
+  }
+
+  .reflection-box {
+    border: 2px solid #dfe6e9;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+  .reflection-box .prompt {
+    font-size: 0.92em;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #2d3436;
+  }
+  .write-line {
+    border-bottom: 1.5px solid #dfe6e9;
+    min-height: 26px;
+    margin: 6px 0;
+  }
+  .write-line.tall {
+    min-height: 40px;
+  }
+
+  .final-box {
+    border: 3px solid #e17055;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    background: #fff5f2;
+  }
+  .final-box h2 { color: #e17055; margin-top: 0; }
+  .cut-line {
+    font-size: 0.78em;
+    color: #d63031;
+    font-weight: 600;
+  }
+
+  /* Primary version specific */
+  .primary .rank-content {
+    min-height: 60px;
+  }
+  .primary .draw-box {
+    border: 2px dashed #dfe6e9;
+    border-radius: 8px;
+    min-height: 60px;
+    margin: 4px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b2bec3;
+    font-size: 0.8em;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== PRIMARY VERSION (Ages 6-7) ===== -->
+<div class="primary">
+<h1>My Wants &mdash; What Matters to Me?</h1>
+<div class="version-tag tag-primary">Primary Version (Ages 6&ndash;7)</div>
+
+<div class="name-line">Name: <span>&nbsp;</span> &nbsp;&nbsp; Date: <span style="min-width:120px;">&nbsp;</span></div>
+
+<h2>My Top 3 Wants</h2>
+<p style="font-size:0.85em; color:#636e72; margin-bottom:8px;">Look at the WANT pile. Pick your 3 favorites. Write or draw each one!</p>
+
+<div class="rank-item">
+  <div class="rank-num">1</div>
+  <div class="rank-content">
+    <div class="item-line">&nbsp;</div>
+    <div class="reason-label">Why I want this:</div>
+    <div class="reason-line">&nbsp;</div>
+    <div class="draw-box">You can draw it here!</div>
+  </div>
+</div>
+
+<div class="rank-item">
+  <div class="rank-num">2</div>
+  <div class="rank-content">
+    <div class="item-line">&nbsp;</div>
+    <div class="reason-label">Why I want this:</div>
+    <div class="reason-line">&nbsp;</div>
+    <div class="draw-box">You can draw it here!</div>
+  </div>
+</div>
+
+<div class="rank-item">
+  <div class="rank-num">3</div>
+  <div class="rank-content">
+    <div class="item-line">&nbsp;</div>
+    <div class="reason-label">Why I want this:</div>
+    <div class="reason-line">&nbsp;</div>
+    <div class="draw-box">You can draw it here!</div>
+  </div>
+</div>
+
+<div class="reflection-box">
+  <div class="prompt">Something I thought was a Need but might be a Want:</div>
+  <div class="write-line">&nbsp;</div>
+</div>
+
+<div class="reflection-box">
+  <div class="prompt">Something I thought was a Want but might be a Need:</div>
+  <div class="write-line">&nbsp;</div>
+</div>
+
+<div class="final-box">
+  <h2>Uh oh &mdash; you can only keep ONE!</h2>
+  <p style="font-size:0.88em;">If you could only keep ONE of your 3 wants, which one?</p>
+  <div class="write-line tall">&nbsp;</div>
+  <div class="reason-label">Why this one?</div>
+  <div class="write-line">&nbsp;</div>
+</div>
+
+</div>
+
+<!-- ===== STANDARD VERSION (Ages 8-15) ===== -->
+<div class="page-break"></div>
+
+<h1>Wants vs. Needs &mdash; Ranking Worksheet</h1>
+<div class="version-tag tag-standard">Standard Version (Ages 8&ndash;15)</div>
+
+<div class="name-line">Name: <span>&nbsp;</span> &nbsp;&nbsp; Age: <span style="min-width:40px;">&nbsp;</span> &nbsp;&nbsp; Date: <span style="min-width:120px;">&nbsp;</span></div>
+
+<h2>My Top 5 Wants (Ranked #1 = Most Important)</h2>
+<p style="font-size:0.85em; color:#636e72; margin-bottom:8px;">Look at the WANT pile. Pick your top 5 and explain why each matters to you. Be specific &mdash; "because I like it" isn't enough!</p>
+
+<div class="rank-item">
+  <div class="rank-num">1</div>
+  <div class="rank-content">
+    <div class="item-line">&nbsp;</div>
+    <div class="reason-label">Why this matters to me:</div>
+    <div class="reason-line">&nbsp;</div>
+    <div class="reason-line">&nbsp;</div>
+  </div>
+</div>
+
+<div class="rank-item">
+  <div class="rank-num">2</div>
+  <div class="rank-content">
+    <div class="item-line">&nbsp;</div>
+    <div class="reason-label">Why this matters to me:</div>
+    <div class="reason-line">&nbsp;</div>
+    <div class="reason-line">&nbsp;</div>
+  </div>
+</div>
+
+<div class="rank-item">
+  <div class="rank-num">3</div>
+  <div class="rank-content">
+    <div class="item-line">&nbsp;</div>
+    <div class="reason-label">Why this matters to me:</div>
+    <div class="reason-line">&nbsp;</div>
+    <div class="reason-line">&nbsp;</div>
+  </div>
+</div>
+
+<div class="rank-item">
+  <div class="rank-num">4</div>
+  <div class="rank-content">
+    <div class="item-line">&nbsp;</div>
+    <div class="reason-label">Why this matters to me:</div>
+    <div class="reason-line">&nbsp;</div>
+    <div class="reason-line">&nbsp;</div>
+  </div>
+</div>
+
+<div class="rank-item">
+  <div class="rank-num">5</div>
+  <div class="rank-content">
+    <div class="item-line">&nbsp;</div>
+    <div class="reason-label">Why this matters to me:</div>
+    <div class="reason-line">&nbsp;</div>
+    <div class="reason-line">&nbsp;</div>
+  </div>
+</div>
+
+<h2>Reflection Questions</h2>
+
+<div class="reflection-box">
+  <div class="prompt">One thing I thought was a Need that might actually be a Want:</div>
+  <div class="write-line">&nbsp;</div>
+  <div class="reason-label">Why I changed my mind:</div>
+  <div class="write-line">&nbsp;</div>
+</div>
+
+<div class="reflection-box">
+  <div class="prompt">One thing I thought was a Want that might actually be a Need:</div>
+  <div class="write-line">&nbsp;</div>
+  <div class="reason-label">Why I changed my mind:</div>
+  <div class="write-line">&nbsp;</div>
+</div>
+
+<div class="reflection-box">
+  <div class="prompt">The hardest card to sort was: <span style="border-bottom: 1.5px solid #2d3436; min-width: 160px; display: inline-block;">&nbsp;</span></div>
+  <div class="reason-label">Because:</div>
+  <div class="write-line">&nbsp;</div>
+  <div class="write-line">&nbsp;</div>
+</div>
+
+<div class="final-box">
+  <h2>Money Is Tight &mdash; The Hard Choice</h2>
+  <p style="font-size:0.88em; margin-bottom:8px;">You can only afford your Needs + <strong>3 Wants</strong>. Look at your top 5 above. Cross out 2 of them. Write the 3 you're keeping below and explain your final reasoning.</p>
+
+  <div class="rank-item">
+    <div class="rank-num" style="background:#e17055;">1</div>
+    <div class="rank-content">
+      <div class="item-line">&nbsp;</div>
+      <div class="reason-label">Why I kept this over the others:</div>
+      <div class="reason-line">&nbsp;</div>
+    </div>
+  </div>
+
+  <div class="rank-item">
+    <div class="rank-num" style="background:#e17055;">2</div>
+    <div class="rank-content">
+      <div class="item-line">&nbsp;</div>
+      <div class="reason-label">Why I kept this over the others:</div>
+      <div class="reason-line">&nbsp;</div>
+    </div>
+  </div>
+
+  <div class="rank-item">
+    <div class="rank-num" style="background:#e17055;">3</div>
+    <div class="rank-content">
+      <div class="item-line">&nbsp;</div>
+      <div class="reason-label">Why I kept this over the others:</div>
+      <div class="reason-line">&nbsp;</div>
+    </div>
+  </div>
+
+  <p class="cut-line" style="margin-top:10px;">The 2 wants I had to cut: __________________ and __________________</p>
+  <div class="reason-label">How did it feel to give those up?</div>
+  <div class="write-line">&nbsp;</div>
+</div>
+
+<!-- MIDDLE/HIGH SCHOOL DEEP DIVE -->
+<div class="reflection-box" style="border-color: #a29bfe; margin-top: 20px;">
+  <div class="prompt" style="color: #6c5ce7;">Ages 11+ Deep Dive: Think about this...</div>
+  <div style="font-size:0.85em; margin:6px 0;">If your monthly take-home pay were $2,400 and your needs cost $1,500, you'd have $900 left. How would you split that between your top 3 wants and savings?</div>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px;">
+    <div>
+      <div class="reason-label">Want #1: $<span style="border-bottom:1px solid #dfe6e9; min-width:40px; display:inline-block;">&nbsp;</span>/mo</div>
+      <div class="reason-label">Want #2: $<span style="border-bottom:1px solid #dfe6e9; min-width:40px; display:inline-block;">&nbsp;</span>/mo</div>
+    </div>
+    <div>
+      <div class="reason-label">Want #3: $<span style="border-bottom:1px solid #dfe6e9; min-width:40px; display:inline-block;">&nbsp;</span>/mo</div>
+      <div class="reason-label">Savings: $<span style="border-bottom:1px solid #dfe6e9; min-width:40px; display:inline-block;">&nbsp;</span>/mo</div>
+    </div>
+  </div>
+  <div class="reason-label" style="margin-top:8px;">Total (should equal $900): $<span style="border-bottom:1px solid #dfe6e9; min-width:60px; display:inline-block;">&nbsp;</span></div>
+  <div style="font-size:0.82em; color:#636e72; margin-top:8px;">Did you have to pick cheaper versions of your wants to make it work? That's real budgeting.</div>
+</div>
+
+</body>
+</html>

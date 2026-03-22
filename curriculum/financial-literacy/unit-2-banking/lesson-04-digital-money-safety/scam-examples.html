@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Money Safety - Scam Examples Gallery</title>
+<style>
+  @media print {
+    body { margin: 0.3in; font-size: 9pt; }
+    .no-print { display: none; }
+    .scam-card { break-inside: avoid; page-break-inside: avoid; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.5; color: #2d3436; max-width: 850px; margin: 0 auto; padding: 20px; }
+
+  h1 { font-size: 1.8em; color: #2d3436; border-bottom: 4px solid #d63031; padding-bottom: 8px; margin-bottom: 6px; }
+  .subtitle { font-size: 0.95em; color: #636e72; margin-bottom: 20px; }
+
+  .scam-card { border: 3px solid #d63031; border-radius: 12px; margin: 20px 0; overflow: hidden; background: #fff; }
+  .scam-header { background: #d63031; color: white; padding: 10px 16px; display: flex; align-items: center; gap: 10px; }
+  .scam-number { background: white; color: #d63031; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9em; flex-shrink: 0; }
+  .scam-type { font-weight: bold; font-size: 1.05em; }
+  .scam-body { padding: 16px; }
+
+  .fake-message { background: #f8f8f8; border: 2px dashed #e17055; border-radius: 8px; padding: 14px; margin: 10px 0; font-size: 0.9em; position: relative; }
+  .fake-message::before { content: "EXAMPLE - NOT REAL"; position: absolute; top: -10px; right: 10px; background: #e17055; color: white; font-size: 0.65em; font-weight: bold; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.5px; }
+
+  .fake-email { background: #fff; border: 1px solid #ddd; border-radius: 6px; overflow: hidden; margin: 10px 0; }
+  .fake-email-header { background: #f0f0f0; padding: 8px 12px; font-size: 0.8em; border-bottom: 1px solid #ddd; }
+  .fake-email-header .from { color: #d63031; }
+  .fake-email-body { padding: 12px; font-size: 0.88em; }
+  .fake-email-body .fake-link { color: #0984e3; text-decoration: underline; background: #fff3cd; padding: 1px 4px; border-radius: 3px; }
+
+  .fake-text { background: #e8f5e9; border-radius: 16px; padding: 10px 14px; max-width: 80%; margin: 10px 0; font-size: 0.88em; position: relative; border: 2px dashed #e17055; }
+  .fake-text::before { content: "EXAMPLE"; position: absolute; top: -8px; right: 8px; background: #e17055; color: white; font-size: 0.6em; font-weight: bold; padding: 1px 6px; border-radius: 3px; }
+
+  .red-flags { background: #ffe0e0; border-radius: 8px; padding: 12px 16px; margin: 10px 0; }
+  .red-flags h4 { color: #d63031; margin-bottom: 6px; font-size: 0.9em; }
+  .red-flags ol { padding-left: 20px; font-size: 0.85em; }
+  .red-flags li { margin-bottom: 4px; }
+
+  .safe-action { background: #e0f5e0; border-left: 4px solid #00b894; border-radius: 0 8px 8px 0; padding: 10px 14px; margin: 10px 0; }
+  .safe-action h4 { color: #00b894; margin-bottom: 4px; font-size: 0.9em; }
+  .safe-action p { font-size: 0.85em; }
+
+  .side-by-side { display: flex; gap: 12px; margin: 10px 0; }
+  .side-by-side > div { flex: 1; border-radius: 8px; padding: 12px; font-size: 0.85em; }
+  .fake-site { border: 2px solid #d63031; background: #fff5f5; }
+  .real-site { border: 2px solid #00b894; background: #f0fff0; }
+  .url-bar { background: #f0f0f0; border-radius: 4px; padding: 4px 8px; margin-bottom: 8px; font-family: monospace; font-size: 0.85em; }
+  .url-bar .bad { color: #d63031; font-weight: bold; }
+  .url-bar .good { color: #00b894; font-weight: bold; }
+  .url-bar .lock { color: #00b894; }
+
+  .keep-note { background: #f5f6fa; border: 2px solid #6c5ce7; border-radius: 8px; padding: 14px; margin: 24px 0; text-align: center; }
+  .keep-note strong { color: #6c5ce7; }
+</style>
+</head>
+<body>
+
+<h1>Scam Examples Gallery</h1>
+<p class="subtitle">Learn to spot these common scams. Every example below is fake &mdash; created to teach you what real scams look like. Keep this as a reference.</p>
+
+<!-- ===================== SCAM 1 ===================== -->
+<div class="scam-card">
+  <div class="scam-header">
+    <div class="scam-number">1</div>
+    <div class="scam-type">Phishing Email</div>
+  </div>
+  <div class="scam-body">
+    <p><strong>What it looks like:</strong> An email that appears to be from your bank, warning you about a problem with your account.</p>
+
+    <div class="fake-email">
+      <div class="fake-email-header">
+        <strong>From:</strong> <span class="from">security-alert@bnk0famerica-verify.com</span><br>
+        <strong>Subject:</strong> URGENT: Your Account Has Been Suspended<br>
+        <strong>To:</strong> Dear Valued Customer
+      </div>
+      <div class="fake-email-body">
+        <p>We have detected suspicious activity on your account. Your account has been temporarily suspended for your protection.</p>
+        <p>You must verify your identity within 24 hours or your account will be permanently closed.</p>
+        <p><strong>Click here to verify your account:</strong> <span class="fake-link">http://bnk0famerica-verify.com/login</span></p>
+        <p style="font-size:0.8em; color:#999;">Bank of America Security Team</p>
+      </div>
+    </div>
+
+    <div class="red-flags">
+      <h4>RED FLAGS:</h4>
+      <ol>
+        <li><strong>Suspicious sender address</strong> &mdash; "bnk0famerica-verify.com" is NOT a real Bank of America address (note the zero instead of "o")</li>
+        <li><strong>Generic greeting</strong> &mdash; "Dear Valued Customer" instead of your actual name</li>
+        <li><strong>Urgency and threats</strong> &mdash; "24 hours or permanently closed" pressures you to act fast</li>
+        <li><strong>Suspicious link</strong> &mdash; The URL doesn't go to bankofamerica.com</li>
+      </ol>
+    </div>
+
+    <div class="safe-action">
+      <h4>What to do instead:</h4>
+      <p>Never click links in emails about your bank. Open a new browser window and go directly to your bank's website by typing the address yourself (bankofamerica.com), or call the number on the back of your bank card.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SCAM 2 ===================== -->
+<div class="scam-card">
+  <div class="scam-header">
+    <div class="scam-number">2</div>
+    <div class="scam-type">Fake Text Message (Smishing)</div>
+  </div>
+  <div class="scam-body">
+    <p><strong>What it looks like:</strong> A text that seems to be from a delivery company about a package.</p>
+
+    <div class="fake-text">
+      <strong>+1 (347) 555-0199</strong><br>
+      USPS: Your package cannot be delivered. Delivery address is incomplete. Update your address to schedule redelivery: usps-redelivery-update.com/track?id=83927
+    </div>
+
+    <div class="red-flags">
+      <h4>RED FLAGS:</h4>
+      <ol>
+        <li><strong>Random phone number</strong> &mdash; USPS doesn't text from random numbers</li>
+        <li><strong>Suspicious link</strong> &mdash; "usps-redelivery-update.com" is not the real USPS website (usps.com)</li>
+        <li><strong>Vague details</strong> &mdash; No tracking number, no specific package information</li>
+        <li><strong>Unsolicited</strong> &mdash; You may not even be expecting a package</li>
+      </ol>
+    </div>
+
+    <div class="safe-action">
+      <h4>What to do instead:</h4>
+      <p>Don't click the link. If you're expecting a package, go directly to usps.com and enter your tracking number there. Delete the text.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SCAM 3 ===================== -->
+<div class="scam-card">
+  <div class="scam-header">
+    <div class="scam-number">3</div>
+    <div class="scam-type">Social Media Scam</div>
+  </div>
+  <div class="scam-body">
+    <p><strong>What it looks like:</strong> A pop-up or ad on social media offering free prizes.</p>
+
+    <div class="fake-message">
+      <p style="font-size: 1.1em; text-align: center; font-weight: bold;">Congratulations!!! You've been randomly selected!</p>
+      <p style="text-align: center;">You've won a FREE iPhone 16 Pro Max (worth $1,199)!</p>
+      <p style="text-align: center;">Just pay $4.99 shipping to claim your prize!</p>
+      <p style="text-align: center; font-size: 0.85em;">Enter your credit card information below to cover shipping costs.</p>
+      <p style="text-align: center; color: #d63031; font-size: 0.8em;">Offer expires in 3:47... 3:46... 3:45...</p>
+    </div>
+
+    <div class="red-flags">
+      <h4>RED FLAGS:</h4>
+      <ol>
+        <li><strong>Too good to be true</strong> &mdash; Nobody gives away $1,199 phones to random people</li>
+        <li><strong>Asks for credit card</strong> &mdash; "Free" things that require payment information are not free</li>
+        <li><strong>Countdown timer</strong> &mdash; Fake urgency to prevent you from thinking it over</li>
+        <li><strong>Excessive exclamation marks</strong> &mdash; Professional companies don't write like this</li>
+      </ol>
+    </div>
+
+    <div class="safe-action">
+      <h4>What to do instead:</h4>
+      <p>Close it immediately. You can't win a contest you never entered. Never enter credit card information on pop-ups or ads. Report the ad if possible.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SCAM 4 ===================== -->
+<div class="scam-card">
+  <div class="scam-header">
+    <div class="scam-number">4</div>
+    <div class="scam-type">Phone Call Scam (IRS Impersonation)</div>
+  </div>
+  <div class="scam-body">
+    <p><strong>What it looks like:</strong> A voicemail or live call from someone claiming to be the IRS or police.</p>
+
+    <div class="fake-message">
+      <p><em>[Robotic voice]</em> "This is Officer James Wilson with the Internal Revenue Service. Our records show you owe $3,500 in unpaid back taxes. A warrant has been issued for your arrest. To resolve this matter and avoid arrest, you must make an immediate payment using prepaid gift cards. Press 1 to speak with an agent now. This is your final notice."</p>
+    </div>
+
+    <div class="red-flags">
+      <h4>RED FLAGS:</h4>
+      <ol>
+        <li><strong>Threatening arrest</strong> &mdash; The IRS does not threaten arrest over the phone</li>
+        <li><strong>Demanding gift cards</strong> &mdash; No government agency accepts gift cards as payment. Ever.</li>
+        <li><strong>Robotic voice</strong> &mdash; Real IRS agents are real people, and they contact you by mail first</li>
+        <li><strong>"Final notice" pressure</strong> &mdash; Designed to make you panic and act immediately</li>
+        <li><strong>No specific details</strong> &mdash; Doesn't use your name or give a real case number</li>
+      </ol>
+    </div>
+
+    <div class="safe-action">
+      <h4>What to do instead:</h4>
+      <p>Hang up. The real IRS always contacts you by mail first and never demands immediate payment by gift cards, wire transfers, or cryptocurrency. If concerned, call the IRS directly at their official number: 1-800-829-1040.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SCAM 5 ===================== -->
+<div class="scam-card">
+  <div class="scam-header">
+    <div class="scam-number">5</div>
+    <div class="scam-type">Fake Website (Look-Alike Login Page)</div>
+  </div>
+  <div class="scam-body">
+    <p><strong>What it looks like:</strong> A login page that looks exactly like a real website, but the URL is slightly different.</p>
+
+    <div class="side-by-side">
+      <div class="fake-site">
+        <div style="text-align: center; font-weight: bold; color: #d63031; margin-bottom: 6px;">FAKE</div>
+        <div class="url-bar"><span class="bad">amaz0n-verify.com</span>/signin</div>
+        <p><strong>Sign In</strong></p>
+        <p>Email: <span style="background:#eee; padding:2px 40px 2px 4px; border:1px solid #ccc; border-radius:3px;">&nbsp;</span></p>
+        <p>Password: <span style="background:#eee; padding:2px 40px 2px 4px; border:1px solid #ccc; border-radius:3px;">&nbsp;</span></p>
+        <p style="font-size:0.75em; color:#888;">Looks identical to the real page!</p>
+      </div>
+      <div class="real-site">
+        <div style="text-align: center; font-weight: bold; color: #00b894; margin-bottom: 6px;">REAL</div>
+        <div class="url-bar"><span class="lock">&#128274;</span> <span class="good">amazon.com</span>/signin</div>
+        <p><strong>Sign In</strong></p>
+        <p>Email: <span style="background:#eee; padding:2px 40px 2px 4px; border:1px solid #ccc; border-radius:3px;">&nbsp;</span></p>
+        <p>Password: <span style="background:#eee; padding:2px 40px 2px 4px; border:1px solid #ccc; border-radius:3px;">&nbsp;</span></p>
+        <p style="font-size:0.75em; color:#888;">Check the URL carefully!</p>
+      </div>
+    </div>
+
+    <div class="red-flags">
+      <h4>RED FLAGS:</h4>
+      <ol>
+        <li><strong>URL is wrong</strong> &mdash; "amaz0n-verify.com" uses a zero instead of the letter "o" and adds extra words</li>
+        <li><strong>No padlock icon</strong> &mdash; Real sites show a lock symbol in the address bar</li>
+        <li><strong>How you got there</strong> &mdash; You probably arrived via a link in a suspicious email instead of typing the address yourself</li>
+      </ol>
+    </div>
+
+    <div class="safe-action">
+      <h4>What to do instead:</h4>
+      <p>Always check the URL before entering any login information. Type website addresses yourself instead of clicking links. Look for the padlock icon. When in doubt, open a new tab and navigate to the site directly.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SCAM 6 ===================== -->
+<div class="scam-card">
+  <div class="scam-header">
+    <div class="scam-number">6</div>
+    <div class="scam-type">Romance / Friend Scam</div>
+  </div>
+  <div class="scam-body">
+    <p><strong>What it looks like:</strong> A message from someone you know (or think you know) asking for money urgently.</p>
+
+    <div class="fake-message">
+      <p><strong>From: Uncle Dave</strong> (Facebook Messenger)</p>
+      <p>"Hey! I'm so embarrassed to ask but I'm stuck in Mexico &mdash; I was robbed and lost my wallet and passport. The embassy says I need $500 to get emergency travel documents. Can you wire me money through Western Union? I'll pay you back as soon as I'm home. Please don't tell anyone, I'm so embarrassed. Here's the info to send to..."</p>
+    </div>
+
+    <div class="red-flags">
+      <h4>RED FLAGS:</h4>
+      <ol>
+        <li><strong>Urgent money request</strong> &mdash; Asks for money wired quickly, which is hard to trace or reverse</li>
+        <li><strong>"Don't tell anyone"</strong> &mdash; Scammers isolate you so no one can warn you</li>
+        <li><strong>Account may be hacked</strong> &mdash; The real person's account was likely taken over by a scammer</li>
+        <li><strong>Emotional pressure</strong> &mdash; Uses your relationship and sympathy against you</li>
+      </ol>
+    </div>
+
+    <div class="safe-action">
+      <h4>What to do instead:</h4>
+      <p>Contact "Uncle Dave" through a different method &mdash; call his phone number, text him, or ask another family member. Never send money based solely on a social media message. If the account was hacked, the real person needs to know.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SCAM 7 ===================== -->
+<div class="scam-card">
+  <div class="scam-header">
+    <div class="scam-number">7</div>
+    <div class="scam-type">Too-Good-To-Be-True Job Scam</div>
+  </div>
+  <div class="scam-body">
+    <p><strong>What it looks like:</strong> An ad or email promising huge money for easy work.</p>
+
+    <div class="fake-message">
+      <p style="font-size: 1.05em; font-weight: bold; text-align: center;">WORK FROM HOME - EARN $5,000/WEEK!</p>
+      <p style="text-align: center;">No experience needed! No interview required!<br>
+      Just 2 hours a day from your phone!<br>
+      We need 50 people in your area RIGHT NOW.<br>
+      Send your full name, address, date of birth, and bank account number to get started.</p>
+    </div>
+
+    <div class="red-flags">
+      <h4>RED FLAGS:</h4>
+      <ol>
+        <li><strong>Unrealistic pay</strong> &mdash; $5,000/week for 2 hours a day is $1,250/hour. No legitimate job pays this for unskilled work.</li>
+        <li><strong>No experience or interview</strong> &mdash; Real employers want to know who they're hiring</li>
+        <li><strong>Asks for bank information upfront</strong> &mdash; A real employer only needs banking info after you've been hired, for direct deposit</li>
+        <li><strong>Artificial scarcity</strong> &mdash; "50 people RIGHT NOW" pressures you to apply before thinking</li>
+      </ol>
+    </div>
+
+    <div class="safe-action">
+      <h4>What to do instead:</h4>
+      <p>If it sounds too good to be true, it is. Legitimate jobs have real company names, real interviews, and realistic pay. Never share bank account details, your Social Security number, or other personal information in response to an unsolicited job offer.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SCAM 8 ===================== -->
+<div class="scam-card">
+  <div class="scam-header">
+    <div class="scam-number">8</div>
+    <div class="scam-type">QR Code Scam</div>
+  </div>
+  <div class="scam-body">
+    <p><strong>What it looks like:</strong> A fake QR code sticker placed over a real one in a public place &mdash; like a parking meter, restaurant table, or event poster.</p>
+
+    <div class="fake-message">
+      <p style="text-align: center;">[A parking meter with a QR code sticker]</p>
+      <p style="text-align: center; font-weight: bold;">SCAN TO PAY FOR PARKING</p>
+      <p style="text-align: center; font-size: 0.85em;">But the sticker was placed by a scammer over the real QR code. When you scan it, you're taken to a fake payment site that steals your credit card information.</p>
+    </div>
+
+    <div class="red-flags">
+      <h4>RED FLAGS:</h4>
+      <ol>
+        <li><strong>Sticker over sticker</strong> &mdash; Look for signs that a QR code has been stuck on top of another one (edges peeling, different paper)</li>
+        <li><strong>Check the URL after scanning</strong> &mdash; Before entering any information, look at what website the QR code actually sends you to</li>
+        <li><strong>Public locations</strong> &mdash; QR codes in places where anyone could tamper with them are higher risk</li>
+      </ol>
+    </div>
+
+    <div class="safe-action">
+      <h4>What to do instead:</h4>
+      <p>After scanning any QR code, check the URL it takes you to before entering information. If it looks suspicious, close it. For parking meters, use the official app or pay at the machine directly. When in doubt, type the website address manually instead of scanning.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SCAM 9 ===================== -->
+<div class="scam-card">
+  <div class="scam-header">
+    <div class="scam-number">9</div>
+    <div class="scam-type">Virus / Tech Support Scam</div>
+  </div>
+  <div class="scam-body">
+    <p><strong>What it looks like:</strong> A scary pop-up that appears while browsing the web.</p>
+
+    <div class="fake-message">
+      <p style="text-align: center; color: #d63031; font-weight: bold; font-size: 1.1em;">WARNING! YOUR COMPUTER IS INFECTED!</p>
+      <p style="text-align: center;">Windows has detected (5) critical viruses on your system.<br>
+      Your personal data, banking information, and passwords are at risk.</p>
+      <p style="text-align: center; font-weight: bold;">Call Microsoft Support IMMEDIATELY:<br>
+      1-888-555-0147</p>
+      <p style="text-align: center; font-size: 0.8em; color: #d63031;">DO NOT CLOSE THIS WINDOW OR RESTART YOUR COMPUTER</p>
+    </div>
+
+    <div class="red-flags">
+      <h4>RED FLAGS:</h4>
+      <ol>
+        <li><strong>Pop-up "virus" warnings</strong> &mdash; Real antivirus software doesn't show pop-ups in your browser</li>
+        <li><strong>Phone number to call</strong> &mdash; Microsoft will never ask you to call them through a browser pop-up</li>
+        <li><strong>Panic language</strong> &mdash; "IMMEDIATELY" and "DO NOT close" are designed to scare you into obeying</li>
+        <li><strong>Fake specifics</strong> &mdash; "(5) critical viruses" sounds precise but is completely made up</li>
+      </ol>
+    </div>
+
+    <div class="safe-action">
+      <h4>What to do instead:</h4>
+      <p>Close the browser tab (or force-close the browser if needed: Ctrl+Alt+Delete on Windows, or Command+Q on Mac). Do NOT call the number. If you're worried about real viruses, run your actual antivirus software &mdash; the one you installed, not something a website told you about.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SCAM 10 ===================== -->
+<div class="scam-card">
+  <div class="scam-header">
+    <div class="scam-number">10</div>
+    <div class="scam-type">"Hi Mom" Text Scam</div>
+  </div>
+  <div class="scam-body">
+    <p><strong>What it looks like:</strong> A text message pretending to be from your child or family member with a "new phone number."</p>
+
+    <div class="fake-text">
+      <strong>+1 (512) 555-0834</strong><br>
+      Hi Mom! It's Sarah. I got a new phone and this is my new number. My old phone broke so I can't use that number anymore. I'm in a bit of a jam &mdash; can you send me $200 through Venmo or Zelle? I'll explain everything later. Love you!
+    </div>
+
+    <div class="red-flags">
+      <h4>RED FLAGS:</h4>
+      <ol>
+        <li><strong>New unknown number</strong> &mdash; Conveniently explains why it's not from the contact you know</li>
+        <li><strong>Money request</strong> &mdash; Quick pivot to asking for money via apps that are hard to reverse</li>
+        <li><strong>Vague emergency</strong> &mdash; "I'll explain later" avoids giving details you could verify</li>
+        <li><strong>Could apply to anyone</strong> &mdash; Scammers send thousands of these hoping some recipients have a "Sarah"</li>
+      </ol>
+    </div>
+
+    <div class="safe-action">
+      <h4>What to do instead:</h4>
+      <p>Call your actual child at their known phone number. If their phone is really broken, call them at a friend's number, their school, or contact them through another family member. Never send money based on a text from an unknown number, no matter who they claim to be.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SUMMARY ===================== -->
+<div class="keep-note">
+  <strong>Keep This Sheet!</strong><br>
+  The #1 rule of digital safety: If a message creates <strong>URGENCY</strong> or <strong>FEAR</strong>, that itself is the biggest red flag.<br>
+  <strong>STOP. THINK. VERIFY</strong> through an official channel you find yourself.
+</div>
+
+</body>
+</html>

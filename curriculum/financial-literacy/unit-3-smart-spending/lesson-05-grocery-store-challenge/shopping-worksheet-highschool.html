@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grocery Store Challenge - High School Worksheet</title>
+<style>
+  @media print {
+    body { margin: 0.25in; font-size: 8.5pt; }
+    .no-print { display: none; }
+    .page-break { page-break-before: always; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.3; color: #2d3436; max-width: 850px; margin: 0 auto; padding: 12px; }
+  h1 { font-size: 1.4em; text-align: center; color: #2d3436; margin-bottom: 1px; }
+  .subtitle { text-align: center; font-size: 0.85em; color: #636e72; margin-bottom: 3px; }
+  .header-row { display: flex; justify-content: space-between; margin: 3px 0 6px; font-size: 0.85em; }
+  .write { border-bottom: 1.5px solid #b2bec3; display: inline-block; width: 130px; }
+  .write-price { border-bottom: 1.5px solid #b2bec3; display: inline-block; width: 55px; }
+
+  .mission { background: #2d3436; color: white; border-radius: 8px; padding: 7px 12px; margin: 5px 0; display: flex; justify-content: space-between; align-items: center; }
+  .mission h2 { font-size: 0.95em; margin-bottom: 1px; }
+  .mission p { font-size: 0.8em; opacity: 0.9; }
+  .budget-badge { background: #00b894; color: white; padding: 5px 14px; border-radius: 14px; font-size: 1.2em; font-weight: bold; }
+
+  .meal-plans { display: flex; gap: 6px; margin: 5px 0; }
+  .meal-box { flex: 1; border: 1.5px solid #dfe6e9; border-radius: 6px; padding: 6px 8px; }
+  .meal-box h3 { font-size: 0.82em; color: #6c5ce7; margin-bottom: 2px; }
+  .plan-write { border-bottom: 1.5px solid #b2bec3; display: block; width: 100%; min-height: 16px; margin: 2px 0; }
+  .nutrition-note { font-size: 0.72em; color: #636e72; margin-top: 2px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 0.78em; }
+  th { background: #2d3436; color: white; padding: 3px 4px; text-align: left; font-size: 0.78em; }
+  td { border: 1px solid #dfe6e9; padding: 2px 4px; height: 19px; }
+  tr:nth-child(even) { background: #f8f8fa; }
+  .row-num { width: 18px; text-align: center; color: #b2bec3; font-size: 0.78em; }
+
+  .analysis-row { display: flex; gap: 6px; margin: 5px 0; }
+  .analysis-box { flex: 1; border: 1.5px solid #dfe6e9; border-radius: 6px; padding: 6px 8px; font-size: 0.8em; }
+  .analysis-box h3 { font-size: 0.84em; margin-bottom: 3px; }
+  .analysis-box.unit h3 { color: #e17055; }
+  .analysis-box.cost h3 { color: #00b894; }
+  .analysis-box.compare h3 { color: #6c5ce7; }
+
+  .unit-row { display: flex; gap: 4px; margin: 2px 0; font-size: 0.9em; }
+  .unit-item { flex: 1; border: 1px solid #dfe6e9; border-radius: 4px; padding: 3px 5px; }
+  .unit-item .label { font-size: 0.85em; color: #636e72; }
+
+  .totals { background: #f5f6fa; border: 2px solid #2d3436; border-radius: 8px; padding: 8px 12px; margin: 5px 0; }
+  .totals-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 12px; font-size: 0.88em; }
+  .totals-grid .big { font-weight: bold; font-size: 0.95em; }
+  .cost-per-meal { margin-top: 5px; padding-top: 5px; border-top: 1.5px solid #dfe6e9; font-size: 0.85em; }
+  .cost-per-meal .row { display: flex; justify-content: space-between; margin: 2px 0; }
+
+  .think-deeper { border: 1.5px solid #6c5ce7; border-radius: 6px; padding: 6px 8px; margin: 5px 0; font-size: 0.82em; }
+  .think-deeper h3 { font-size: 0.85em; color: #6c5ce7; margin-bottom: 3px; }
+  .think-line { border-bottom: 1.5px solid #b2bec3; display: block; width: 100%; min-height: 16px; margin: 3px 0; }
+</style>
+</head>
+<body>
+
+<h1>The Grocery Store Challenge</h1>
+<p class="subtitle">High School &mdash; Full Day of Meals for 6 People</p>
+<div class="header-row">
+  <span>Name: <span class="write"></span></span>
+  <span>Date: <span class="write" style="width:80px;"></span></span>
+</div>
+
+<div class="mission">
+  <div>
+    <h2>Your Mission</h2>
+    <p>Plan and buy ingredients for <strong>breakfast, lunch, and dinner</strong> for 6 people. Nutritional balance required.</p>
+  </div>
+  <div class="budget-badge">$50</div>
+</div>
+
+<div class="meal-plans">
+  <div class="meal-box">
+    <h3>Breakfast</h3>
+    <div class="plan-write"></div>
+    <p class="nutrition-note">Include protein + carb</p>
+  </div>
+  <div class="meal-box">
+    <h3>Lunch</h3>
+    <div class="plan-write"></div>
+    <p class="nutrition-note">Include protein + veg or fruit</p>
+  </div>
+  <div class="meal-box">
+    <h3>Dinner</h3>
+    <div class="plan-write"></div>
+    <p class="nutrition-note">Protein + starch + vegetable</p>
+  </div>
+</div>
+
+<table>
+  <tr>
+    <th class="row-num">#</th>
+    <th style="width:22%;">Item</th>
+    <th style="width:14%;">Brand</th>
+    <th style="width:10%;">Unit Price</th>
+    <th style="width:7%;">Qty</th>
+    <th style="width:10%;">Total</th>
+    <th style="width:7%;">Meal</th>
+  </tr>
+  <tr><td class="row-num">1</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">2</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">4</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">5</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">6</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">7</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">8</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">9</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">10</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">11</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">12</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">13</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">14</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">15</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">16</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">17</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">18</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">19</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">20</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+
+<div class="analysis-row">
+  <div class="analysis-box unit">
+    <h3>Unit Price Analysis (3+ items)</h3>
+    <div class="unit-row">
+      <div class="unit-item">
+        <div class="label">Item 1:</div>
+        <div>Product: ________________</div>
+        <div>Size A: ______ @ $____/oz</div>
+        <div>Size B: ______ @ $____/oz</div>
+        <div>Better deal: __________</div>
+      </div>
+    </div>
+    <div class="unit-row">
+      <div class="unit-item">
+        <div class="label">Item 2:</div>
+        <div>Product: ________________</div>
+        <div>Size A: ______ @ $____/oz</div>
+        <div>Size B: ______ @ $____/oz</div>
+        <div>Better deal: __________</div>
+      </div>
+    </div>
+    <div class="unit-row">
+      <div class="unit-item">
+        <div class="label">Item 3:</div>
+        <div>Product: ________________</div>
+        <div>Size A: ______ @ $____/oz</div>
+        <div>Size B: ______ @ $____/oz</div>
+        <div>Better deal: __________</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="totals">
+  <div class="totals-grid">
+    <div class="big">My Total: $ ________</div>
+    <div class="big">Budget: $50.00</div>
+    <div>Under budget by: $ ________</div>
+    <div>Over budget by: $ ________</div>
+  </div>
+  <div class="cost-per-meal">
+    <strong>Cost Per Serving by Meal:</strong>
+    <div class="row"><span>Breakfast: $ ________ total / 6 servings = <strong>$ ________ each</strong></span></div>
+    <div class="row"><span>Lunch: $ ________ total / 6 servings = <strong>$ ________ each</strong></span></div>
+    <div class="row"><span>Dinner: $ ________ total / 6 servings = <strong>$ ________ each</strong></span></div>
+  </div>
+</div>
+
+<div class="think-deeper">
+  <h3>Think Deeper</h3>
+  <p><strong>Restaurant comparison:</strong> If your family ate at a restaurant for each meal today, estimate the total cost: $ ________</p>
+  <p>How much did you save by cooking? $ ________</p>
+  <p style="margin-top: 4px;"><strong>Budget crunch:</strong> What would you change if your budget was $35 instead of $50?</p>
+  <div class="think-line"></div>
+  <div class="think-line"></div>
+</div>
+
+</body>
+</html>

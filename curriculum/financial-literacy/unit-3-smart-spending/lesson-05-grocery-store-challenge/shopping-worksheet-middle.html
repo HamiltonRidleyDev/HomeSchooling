@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grocery Store Challenge - Middle School Worksheet</title>
+<style>
+  @media print {
+    body { margin: 0.3in; font-size: 9pt; }
+    .no-print { display: none; }
+    .page-break { page-break-before: always; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.35; color: #2d3436; max-width: 850px; margin: 0 auto; padding: 14px; }
+  h1 { font-size: 1.5em; text-align: center; color: #6c5ce7; margin-bottom: 2px; }
+  .subtitle { text-align: center; font-size: 0.9em; color: #636e72; margin-bottom: 4px; }
+  .header-row { display: flex; justify-content: space-between; align-items: center; margin: 4px 0 8px; font-size: 0.9em; }
+  .write { border-bottom: 1.5px solid #b2bec3; display: inline-block; width: 140px; }
+  .write-sm { border-bottom: 1.5px solid #b2bec3; display: inline-block; width: 100px; }
+  .write-price { border-bottom: 1.5px solid #b2bec3; display: inline-block; width: 60px; }
+
+  .mission { background: #f0e6ff; border: 2px solid #6c5ce7; border-radius: 8px; padding: 8px 12px; margin: 6px 0; display: flex; justify-content: space-between; align-items: center; }
+  .mission-text h2 { font-size: 1em; color: #6c5ce7; margin-bottom: 2px; }
+  .mission-text p { font-size: 0.85em; }
+  .budget-badge { background: #6c5ce7; color: white; padding: 5px 14px; border-radius: 14px; font-size: 1.2em; font-weight: bold; }
+
+  .meal-plans { display: flex; gap: 10px; margin: 6px 0; }
+  .meal-box { flex: 1; border: 2px solid #dfe6e9; border-radius: 8px; padding: 8px 10px; }
+  .meal-box h3 { font-size: 0.9em; color: #00b894; margin-bottom: 3px; }
+  .plan-write { border-bottom: 1.5px solid #b2bec3; display: block; width: 100%; min-height: 18px; margin: 2px 0; }
+  .req-row { display: flex; gap: 6px; font-size: 0.78em; margin-top: 4px; color: #636e72; }
+  .req-tag { border: 1.5px solid #dfe6e9; border-radius: 6px; padding: 1px 6px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 0.82em; }
+  th { background: #6c5ce7; color: white; padding: 4px 5px; text-align: left; font-size: 0.82em; border: 1px solid #5b4bd6; }
+  td { border: 1px solid #dfe6e9; padding: 3px 5px; height: 22px; }
+  tr:nth-child(even) { background: #f8f8fa; }
+  .row-num { width: 20px; text-align: center; color: #b2bec3; font-size: 0.8em; }
+
+  .challenges { display: flex; gap: 8px; margin: 6px 0; }
+  .challenge-box { flex: 1; border: 2px solid #dfe6e9; border-radius: 8px; padding: 8px 10px; font-size: 0.84em; }
+  .challenge-box h3 { font-size: 0.88em; margin-bottom: 4px; }
+  .challenge-box.unit { border-color: #e17055; }
+  .challenge-box.unit h3 { color: #e17055; }
+  .challenge-box.brand { border-color: #00b894; }
+  .challenge-box.brand h3 { color: #00b894; }
+  .challenge-row { margin: 3px 0; }
+  .challenge-label { color: #636e72; font-size: 0.9em; }
+
+  .total-section { background: #f0e6ff; border: 2px solid #6c5ce7; border-radius: 8px; padding: 8px 12px; margin: 6px 0; }
+  .total-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; font-size: 0.92em; }
+  .total-grid .big { font-size: 1.05em; font-weight: bold; }
+  .cost-per { margin-top: 6px; padding-top: 6px; border-top: 2px solid #6c5ce7; font-size: 0.88em; }
+</style>
+</head>
+<body>
+
+<h1>The Grocery Store Challenge</h1>
+<p class="subtitle">Middle School &mdash; Plan Two Dinners for 6 People</p>
+<div class="header-row">
+  <span>Name: <span class="write"></span></span>
+  <span>Date: <span class="write" style="width: 90px;"></span></span>
+</div>
+
+<div class="mission">
+  <div class="mission-text">
+    <h2>Your Mission</h2>
+    <p>Buy ingredients for <strong>two different dinners</strong> for 6 people. Different proteins, real variety.</p>
+  </div>
+  <div class="budget-badge">$35</div>
+</div>
+
+<div class="meal-plans">
+  <div class="meal-box">
+    <h3>Dinner 1</h3>
+    <div class="plan-write"></div>
+    <div class="req-row">
+      <span class="req-tag">Protein: ________</span>
+      <span class="req-tag">Starch: ________</span>
+      <span class="req-tag">Veg: ________</span>
+    </div>
+  </div>
+  <div class="meal-box">
+    <h3>Dinner 2</h3>
+    <div class="plan-write"></div>
+    <div class="req-row">
+      <span class="req-tag">Protein: ________</span>
+      <span class="req-tag">Starch: ________</span>
+      <span class="req-tag">Veg: ________</span>
+    </div>
+  </div>
+</div>
+
+<table>
+  <tr>
+    <th class="row-num">#</th>
+    <th style="width:24%;">Item</th>
+    <th style="width:16%;">Brand</th>
+    <th style="width:12%;">Unit Price</th>
+    <th style="width:8%;">Qty</th>
+    <th style="width:12%;">Total</th>
+    <th style="width:10%;">Dinner</th>
+  </tr>
+  <tr><td class="row-num">1</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">2</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">4</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">5</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">6</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">7</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">8</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">9</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">10</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">11</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">12</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">13</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">14</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td class="row-num">15</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+
+<div class="challenges">
+  <div class="challenge-box unit">
+    <h3>Unit Price Challenge</h3>
+    <p style="font-size: 0.82em; color: #636e72; margin-bottom: 4px;">Compare two sizes of the same product. Which is the better deal?</p>
+    <div class="challenge-row">
+      <span class="challenge-label">Product:</span> <span class="write-sm"></span>
+    </div>
+    <div class="challenge-row">
+      <span class="challenge-label">Size A:</span> <span class="write-sm" style="width:60px;"></span>
+      &nbsp;Price: $<span class="write-price" style="width:45px;"></span>
+      &nbsp;Per oz: $<span class="write-price" style="width:45px;"></span>
+    </div>
+    <div class="challenge-row">
+      <span class="challenge-label">Size B:</span> <span class="write-sm" style="width:60px;"></span>
+      &nbsp;Price: $<span class="write-price" style="width:45px;"></span>
+      &nbsp;Per oz: $<span class="write-price" style="width:45px;"></span>
+    </div>
+    <div class="challenge-row" style="font-weight: bold; margin-top: 4px;">
+      Better deal: <span class="write-sm" style="width: 80px;"></span>
+    </div>
+  </div>
+
+  <div class="challenge-box brand">
+    <h3>Store Brand Savings (find 3!)</h3>
+    <table style="margin: 4px 0; font-size: 0.82em;">
+      <tr><th>Item</th><th>Name Brand</th><th>Store Brand</th><th>Saved</th></tr>
+      <tr><td style="height:20px;"></td><td></td><td></td><td></td></tr>
+      <tr><td style="height:20px;"></td><td></td><td></td><td></td></tr>
+      <tr><td style="height:20px;"></td><td></td><td></td><td></td></tr>
+    </table>
+    <p style="font-weight: bold; font-size: 0.85em;">Total Saved: $ ________</p>
+  </div>
+</div>
+
+<div class="total-section">
+  <div class="total-grid">
+    <div class="big">My Total: $ ________</div>
+    <div class="big">Budget: $35.00</div>
+    <div>Under budget by: $ ________</div>
+    <div>Over budget by: $ ________</div>
+  </div>
+  <div class="cost-per">
+    <strong>Cost Per Serving:</strong>
+    Total $ ________ / (6 people x 2 meals) = <strong>$ ________ per serving</strong>
+  </div>
+</div>
+
+</body>
+</html>

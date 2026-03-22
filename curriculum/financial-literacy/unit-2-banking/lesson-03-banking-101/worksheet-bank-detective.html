@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Worksheet — Bank Detective</title>
+<style>
+  :root {
+    --navy: #1e3a5f;
+    --blue: #2563eb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-600: #4b5563;
+    --gray-800: #1f2937;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--gray-800);
+    line-height: 1.55;
+    background: #f9fafb;
+  }
+
+  .page {
+    max-width: 820px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 36px 44px;
+  }
+
+  @media print {
+    body { background: #fff; font-size: 13px; }
+    .page { padding: 20px 0; max-width: 100%; }
+    .section { break-inside: avoid; }
+    .answer-line { border-bottom-style: solid !important; }
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid var(--navy);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-size: 26px;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  .header .subtitle {
+    font-size: 14px;
+    color: var(--gray-600);
+  }
+  .header .icon {
+    font-size: 36px;
+    margin-bottom: 6px;
+  }
+
+  /* Name / date line */
+  .student-info {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+  .student-info .field {
+    flex: 1;
+    border-bottom: 1.5px solid var(--gray-200);
+    padding-bottom: 4px;
+  }
+  .student-info .field-label {
+    font-weight: 600;
+    color: var(--gray-600);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Sections */
+  .section {
+    margin-bottom: 28px;
+    border-radius: 12px;
+    padding: 20px 24px;
+    page-break-inside: avoid;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .section-badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 14px;
+    color: #fff;
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  /* Color schemes per section */
+  .section.everyone {
+    background: #eff6ff;
+    border: 2px solid #bfdbfe;
+  }
+  .section.everyone .section-badge { background: #2563eb; }
+  .section.everyone .section-title { color: #1e40af; }
+
+  .section.ages9 {
+    background: #f0fdf4;
+    border: 2px solid #bbf7d0;
+  }
+  .section.ages9 .section-badge { background: #16a34a; }
+  .section.ages9 .section-title { color: #15803d; }
+
+  .section.ages13 {
+    background: #fefce8;
+    border: 2px solid #fde68a;
+  }
+  .section.ages13 .section-badge { background: #d97706; }
+  .section.ages13 .section-title { color: #b45309; }
+
+  .section.age15 {
+    background: #fdf2f8;
+    border: 2px solid #fbcfe8;
+  }
+  .section.age15 .section-badge { background: #db2777; }
+  .section.age15 .section-title { color: #be185d; }
+
+  /* Questions */
+  .question {
+    margin-bottom: 20px;
+  }
+  .q-number {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .q-text {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  /* Answer lines */
+  .answer-line {
+    border-bottom: 1.5px dashed var(--gray-200);
+    height: 28px;
+    margin-bottom: 4px;
+  }
+  .answer-lines-2 .answer-line:last-child { margin-bottom: 0; }
+  .answer-lines-3 .answer-line:last-child { margin-bottom: 0; }
+
+  /* Work space */
+  .work-box {
+    border: 1.5px dashed var(--gray-200);
+    border-radius: 8px;
+    min-height: 80px;
+    padding: 8px;
+    margin-top: 4px;
+    position: relative;
+  }
+  .work-box .label {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #d1d5db;
+    font-weight: 600;
+  }
+
+  /* Table for calculation */
+  .calc-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 14px;
+  }
+  .calc-table th {
+    text-align: left;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--gray-600);
+    padding: 6px 10px;
+    border-bottom: 2px solid var(--gray-200);
+  }
+  .calc-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #f3f4f6;
+  }
+  .calc-table .fill-in {
+    border-bottom: 1.5px dashed var(--gray-200);
+    min-width: 80px;
+    display: inline-block;
+  }
+
+  /* Big challenge box */
+  .challenge-box {
+    border: 2px solid #be185d;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 8px;
+    min-height: 180px;
+    position: relative;
+  }
+  .challenge-box .label {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #f9a8d4;
+    font-weight: 600;
+  }
+
+  /* Instructions callout */
+  .instructions {
+    background: var(--gray-100);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--gray-600);
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  /* Hint box */
+  .hint {
+    background: #fff;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: var(--gray-600);
+    margin-top: 6px;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="icon">&#x1F50D;</div>
+    <h1>Bank Detective</h1>
+    <div class="subtitle">Investigate Alex Johnson's bank statement and answer the questions below.</div>
+  </div>
+
+  <div class="student-info">
+    <div class="field">
+      <div class="field-label">Name</div>
+    </div>
+    <div class="field" style="max-width: 140px;">
+      <div class="field-label">Age</div>
+    </div>
+    <div class="field" style="max-width: 160px;">
+      <div class="field-label">Date</div>
+    </div>
+  </div>
+
+  <div class="instructions">
+    Use the mock bank statement for "Alex Johnson" to answer these questions. Show your work!<br>
+    <strong>Start with your section and work through any sections above it.</strong>
+  </div>
+
+  <!-- ============================== -->
+  <!-- FOR EVERYONE -->
+  <!-- ============================== -->
+  <div class="section everyone">
+    <div class="section-header">
+      <span class="section-badge">All Ages</span>
+      <span class="section-title">For Everyone</span>
+    </div>
+
+    <div class="question">
+      <div class="q-number">Question 1</div>
+      <div class="q-text">What is Alex's starting balance (the amount of money in the account at the beginning of the month)?</div>
+      <div class="answer-line"></div>
+    </div>
+
+    <div class="question">
+      <div class="q-number">Question 2</div>
+      <div class="q-text">How much money did Alex earn this month? (Add up all the deposits &mdash; money coming IN.)</div>
+      <div class="work-box"><div class="label">Show your work</div></div>
+      <div style="height: 8px;"></div>
+      <div class="answer-line"></div>
+    </div>
+
+    <div class="question">
+      <div class="q-number">Question 3</div>
+      <div class="q-text">What is Alex's single biggest expense? (The largest amount of money going OUT in one transaction.)</div>
+      <div class="answer-line"></div>
+      <div class="answer-line"></div>
+    </div>
+
+    <div class="question">
+      <div class="q-number">Question 4</div>
+      <div class="q-text">How many times did Alex buy coffee this month? How much did Alex spend on coffee in total?</div>
+      <div class="work-box"><div class="label">Show your work</div></div>
+      <div style="height: 8px;"></div>
+      <div class="q-text">Number of coffee purchases: _______________&nbsp;&nbsp;&nbsp;&nbsp;Total spent on coffee: $_______________</div>
+    </div>
+  </div>
+
+  <!-- ============================== -->
+  <!-- FOR AGES 9+ -->
+  <!-- ============================== -->
+  <div class="section ages9">
+    <div class="section-header">
+      <span class="section-badge">Ages 9+</span>
+      <span class="section-title">Digging Deeper</span>
+    </div>
+
+    <div class="question">
+      <div class="q-number">Question 5</div>
+      <div class="q-text">Find the overdraft fee on Alex's statement. How much was it?</div>
+      <div class="answer-line"></div>
+      <div class="q-text" style="margin-top: 8px;">Why did the bank charge this fee? What does "overdraft" mean?</div>
+      <div class="answer-line"></div>
+      <div class="answer-line"></div>
+    </div>
+
+    <div class="question">
+      <div class="q-number">Question 6</div>
+      <div class="q-text">Alex's coffee habit: If Alex spends $_________ on coffee per month, how much is that per year?</div>
+      <div class="work-box" style="min-height: 50px;"><div class="label">Show your work</div></div>
+      <div style="height: 8px;"></div>
+      <div class="q-text">Coffee cost per year: $_______________</div>
+      <div class="hint">Hint: Multiply the monthly total by 12.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-number">Question 7</div>
+      <div class="q-text">Alex transferred $200.00 to a savings account. If the savings account pays <strong>4.5% interest per year</strong>, how much interest will Alex earn on that $200 in one year?</div>
+      <div class="work-box" style="min-height: 50px;"><div class="label">Show your work</div></div>
+      <div style="height: 8px;"></div>
+      <div class="q-text">Interest earned in one year: $_______________</div>
+      <div class="hint">Hint: Multiply $200 by 0.045 (that's 4.5% as a decimal).</div>
+    </div>
+
+    <div class="question">
+      <div class="q-number">Question 8</div>
+      <div class="q-text">There's a suspicious charge for $1.00 from "VERIFICATION HOLD &mdash; ONLINE MERCHANT." What do you think this is? What should Alex do about it?</div>
+      <div class="answer-line"></div>
+      <div class="answer-line"></div>
+      <div class="answer-line"></div>
+    </div>
+  </div>
+
+  <!-- ============================== -->
+  <!-- FOR AGES 13+ -->
+  <!-- ============================== -->
+  <div class="section ages13">
+    <div class="section-header">
+      <span class="section-badge">Ages 13+</span>
+      <span class="section-title">Full Financial Analysis</span>
+    </div>
+
+    <div class="question">
+      <div class="q-number">Question 9</div>
+      <div class="q-text">Calculate Alex's financial summary for the month:</div>
+      <table class="calc-table">
+        <tr>
+          <td><strong>Total Income (all deposits)</strong></td>
+          <td>$<span class="fill-in">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><strong>Total Expenses (all withdrawals)</strong></td>
+          <td>$<span class="fill-in">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><strong>Net (Income &minus; Expenses)</strong></td>
+          <td>$<span class="fill-in">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+      </table>
+      <div class="work-box" style="min-height: 60px;"><div class="label">Show your work</div></div>
+    </div>
+
+    <div class="question">
+      <div class="q-number">Question 10</div>
+      <div class="q-text">What percentage of Alex's income went to each category? (Divide category total by total income, then multiply by 100.)</div>
+      <table class="calc-table">
+        <tr>
+          <th>Category</th>
+          <th>Amount</th>
+          <th>% of Income</th>
+        </tr>
+        <tr>
+          <td>Housing (rent)</td>
+          <td>$<span class="fill-in">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+          <td><span class="fill-in">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>%</td>
+        </tr>
+        <tr>
+          <td>Food (groceries)</td>
+          <td>$<span class="fill-in">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+          <td><span class="fill-in">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>%</td>
+        </tr>
+        <tr>
+          <td>Savings (transfer)</td>
+          <td>$<span class="fill-in">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+          <td><span class="fill-in">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>%</td>
+        </tr>
+        <tr>
+          <td>"Wants" (coffee, Netflix, etc.)</td>
+          <td>$<span class="fill-in">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+          <td><span class="fill-in">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>%</td>
+        </tr>
+      </table>
+      <div class="work-box" style="min-height: 60px;"><div class="label">Show your work</div></div>
+    </div>
+
+    <div class="question">
+      <div class="q-number">Question 11</div>
+      <div class="q-text">If Alex wanted to save <strong>$500 per month</strong> instead of $200, what would Alex need to cut or change? Be specific.</div>
+      <div class="answer-line"></div>
+      <div class="answer-line"></div>
+      <div class="answer-line"></div>
+      <div class="answer-line"></div>
+    </div>
+
+    <div class="question">
+      <div class="q-number">Question 12</div>
+      <div class="q-text">The <strong>50/30/20 Rule</strong> says you should spend 50% on needs, 30% on wants, and 20% on savings. Does Alex follow this rule? Show the math.</div>
+      <table class="calc-table">
+        <tr>
+          <th>Category</th>
+          <th>50/30/20 Target</th>
+          <th>Alex's Actual %</th>
+          <th>On Track?</th>
+        </tr>
+        <tr>
+          <td>Needs (housing, food, gas, etc.)</td>
+          <td>50%</td>
+          <td><span class="fill-in">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>%</td>
+          <td><span class="fill-in">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td>Wants (coffee, Netflix, ATM cash, etc.)</td>
+          <td>30%</td>
+          <td><span class="fill-in">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>%</td>
+          <td><span class="fill-in">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td>Savings</td>
+          <td>20%</td>
+          <td><span class="fill-in">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>%</td>
+          <td><span class="fill-in">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+      </table>
+      <div class="work-box" style="min-height: 60px;"><div class="label">Show your work</div></div>
+      <div style="height:8px;"></div>
+      <div class="q-text">What's your verdict? Is Alex managing money well? Why or why not?</div>
+      <div class="answer-line"></div>
+      <div class="answer-line"></div>
+      <div class="answer-line"></div>
+    </div>
+  </div>
+
+  <!-- ============================== -->
+  <!-- FOR AGE 15 -->
+  <!-- ============================== -->
+  <div class="section age15">
+    <div class="section-header">
+      <span class="section-badge">Age 15</span>
+      <span class="section-title">Budget Redesign Challenge</span>
+    </div>
+
+    <div class="question">
+      <div class="q-number">Question 13</div>
+      <div class="q-text">Based on everything you see in Alex's bank statement, design a <strong>better monthly budget</strong> for Alex. Use the 50/30/20 rule as a guide. Alex earns $4,200/month.</div>
+
+      <div class="challenge-box">
+        <div class="label">Alex's New Budget</div>
+        <table class="calc-table" style="margin-top: 16px;">
+          <tr>
+            <th style="width:50%;">Category</th>
+            <th>Monthly Amount</th>
+            <th>% of Income</th>
+          </tr>
+          <tr><td>Rent / Housing</td><td>$</td><td>%</td></tr>
+          <tr><td>Groceries</td><td>$</td><td>%</td></tr>
+          <tr><td>Gas / Transportation</td><td>$</td><td>%</td></tr>
+          <tr><td>Subscriptions</td><td>$</td><td>%</td></tr>
+          <tr><td>Dining / Coffee</td><td>$</td><td>%</td></tr>
+          <tr><td>Personal / Fun Money</td><td>$</td><td>%</td></tr>
+          <tr><td>Savings</td><td>$</td><td>%</td></tr>
+          <tr><td>Other: ________________</td><td>$</td><td>%</td></tr>
+          <tr style="font-weight: 700; border-top: 2px solid #e5e7eb;">
+            <td>TOTAL</td><td>$</td><td>100%</td>
+          </tr>
+        </table>
+      </div>
+
+      <div style="height: 12px;"></div>
+      <div class="q-text">Explain: What did you change compared to Alex's current spending, and why?</div>
+      <div class="answer-line"></div>
+      <div class="answer-line"></div>
+      <div class="answer-line"></div>
+      <div class="answer-line"></div>
+      <div class="answer-line"></div>
+
+      <div style="height: 12px;"></div>
+      <div class="q-text"><strong>Bonus:</strong> How much would Alex have in savings after one full year with your budget? If the savings account pays 4.5% APY, how much interest would that earn?</div>
+      <div class="work-box" style="min-height: 60px;"><div class="label">Show your work</div></div>
+      <div style="height: 8px;"></div>
+      <div class="answer-line"></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

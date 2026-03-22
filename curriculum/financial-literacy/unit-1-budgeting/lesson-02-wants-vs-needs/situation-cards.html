@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Situation Cards — Wants vs. Needs</title>
+<style>
+  @media print {
+    body { margin: 0.3in; }
+    .card { page-break-inside: avoid; }
+    .instructions, h1, .subtitle { display: none; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 900px; margin: 0 auto; padding: 16px; line-height: 1.4; color: #2d3436; }
+  h1 { text-align: center; font-size: 1.5em; margin-bottom: 2px; }
+  .subtitle { text-align: center; font-size: 0.85em; color: #636e72; margin-bottom: 6px; }
+  .instructions { background: #f5f6fa; border-left: 4px solid #a29bfe; padding: 8px 12px; font-size: 0.82em; margin-bottom: 14px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .card {
+    border: 3px solid #a29bfe;
+    border-radius: 12px;
+    padding: 16px;
+    min-height: 170px;
+    display: flex;
+    flex-direction: column;
+    background: #f8f7ff;
+  }
+  .card-icon { font-size: 2.2em; text-align: center; margin-bottom: 6px; }
+  .card-title { font-weight: bold; font-size: 1.05em; text-align: center; margin-bottom: 8px; color: #6c5ce7; }
+  .card-situation { font-size: 0.9em; text-align: center; margin-bottom: 10px; flex: 1; }
+  .card-prompt {
+    background: white;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.82em;
+    text-align: center;
+    color: #6c5ce7;
+    font-weight: 600;
+    border: 1.5px dashed #a29bfe;
+  }
+  .card-hints {
+    font-size: 0.72em;
+    color: #636e72;
+    margin-top: 6px;
+    text-align: center;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<h1>Situation Cards</h1>
+<p class="subtitle">These change the context. Read one aloud, then ask: does anything move?</p>
+<div class="instructions">
+  <strong>How to use:</strong> After the group has sorted the item cards into NEEDS, GRAY AREA, and WANTS, read 3&ndash;4 of these situation cards aloud. After each one, the group looks at all three piles and decides if any cards should move to a different pile. Physically pick up cards and move them!
+</div>
+
+<div class="grid">
+
+<div class="card">
+  <div class="card-icon">&#127806;</div>
+  <div class="card-title">Country Living</div>
+  <div class="card-situation">You live on a farm 20 miles from the nearest town. There's no bus, no Uber, no subway. The closest grocery store is a 30-minute drive.</div>
+  <div class="card-prompt">Look at your piles. Does anything need to move?</div>
+  <div class="card-hints">Think about: car, internet, bicycle, public transit...</div>
+</div>
+
+<div class="card">
+  <div class="card-icon">&#127751;</div>
+  <div class="card-title">Big City Life</div>
+  <div class="card-situation">You live in New York City with great public transit. A subway pass gets you everywhere. Parking costs $400/month and traffic is terrible.</div>
+  <div class="card-prompt">Look at your piles. Does anything need to move?</div>
+  <div class="card-hints">Think about: car, public transit pass, car insurance...</div>
+</div>
+
+<div class="card">
+  <div class="card-icon">&#128118;</div>
+  <div class="card-title">New Parent</div>
+  <div class="card-situation">You have a 2-year-old child who depends on you for everything. You need to work to pay bills, but someone has to watch the baby.</div>
+  <div class="card-prompt">Look at your piles. Does anything need to move?</div>
+  <div class="card-hints">Think about: childcare, life insurance, bigger home, car...</div>
+</div>
+
+<div class="card">
+  <div class="card-icon">&#128187;</div>
+  <div class="card-title">Remote Worker</div>
+  <div class="card-situation">You work from home full-time. Your entire job depends on being online. No internet = no paycheck. But you never commute.</div>
+  <div class="card-prompt">Look at your piles. Does anything need to move?</div>
+  <div class="card-hints">Think about: internet, laptop, work clothes, car, gym...</div>
+</div>
+
+<div class="card">
+  <div class="card-icon">&#129657;</div>
+  <div class="card-title">Medical Condition</div>
+  <div class="card-situation">You have a medical condition that requires daily medication, monthly doctor visits, and a special diet. Without treatment, you can't function.</div>
+  <div class="card-prompt">Look at your piles. Does anything need to move?</div>
+  <div class="card-hints">Think about: health insurance, vitamins, prescription medicine, healthy groceries...</div>
+</div>
+
+<div class="card">
+  <div class="card-icon">&#128181;</div>
+  <div class="card-title">Job Loss</div>
+  <div class="card-situation">You just lost your job. You have some savings but need to make them last. You're applying for new jobs every day but it could take months.</div>
+  <div class="card-prompt">Look at your piles. Does anything need to move?</div>
+  <div class="card-hints">Think about: streaming, eating out, gym, internet (job searching), emergency savings...</div>
+</div>
+
+<div class="card">
+  <div class="card-icon">&#127941;</div>
+  <div class="card-title">Olympic Athlete</div>
+  <div class="card-situation">You're training for the Olympics. You practice 6 hours a day. Your body is your career. You need specific food, equipment, and recovery.</div>
+  <div class="card-prompt">Look at your piles. Does anything need to move?</div>
+  <div class="card-hints">Think about: gym membership, vitamins, healthy food, sports fees, spa/massage...</div>
+</div>
+
+<div class="card">
+  <div class="card-icon">&#9728;&#65039;</div>
+  <div class="card-title">Desert Heat</div>
+  <div class="card-situation">You live somewhere it's 100&deg;F+ in the summer for months. Last year, dozens of people were hospitalized from heat. There's no shade and no breeze.</div>
+  <div class="card-prompt">Look at your piles. Does anything need to move?</div>
+  <div class="card-hints">Think about: air conditioning, water, electricity bill...</div>
+</div>
+
+<div class="card">
+  <div class="card-icon">&#127891;</div>
+  <div class="card-title">College Student</div>
+  <div class="card-situation">You're in college full-time. Every class requires online assignments, research papers, and video lectures. The library closes at 9 PM.</div>
+  <div class="card-prompt">Look at your piles. Does anything need to move?</div>
+  <div class="card-hints">Think about: laptop, internet, books, college education...</div>
+</div>
+
+<div class="card">
+  <div class="card-icon">&#127917;</div>
+  <div class="card-title">Professional Gamer</div>
+  <div class="card-situation">You earn your living as a professional video game streamer. Your gaming setup IS your office. Your fans pay to watch you play.</div>
+  <div class="card-prompt">Look at your piles. Does anything need to move?</div>
+  <div class="card-hints">Think about: gaming console, internet, streaming service, computer...</div>
+</div>
+
+</div>
+
+</body>
+</html>

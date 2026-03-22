@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Investment Tracker</title>
+<style>
+  @media print {
+    body { margin: 0.4in; font-size: 10pt; }
+    .page-break { page-break-before: always; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.5; color: #2d3436; max-width: 850px; margin: 0 auto; padding: 20px; }
+  h1 { font-size: 1.7em; text-align: center; color: #2d3436; margin-bottom: 2px; }
+  .subtitle { text-align: center; font-size: 0.9em; color: #636e72; margin-bottom: 6px; }
+  .header-row { display: flex; justify-content: space-between; margin: 8px 0 14px; font-size: 0.9em; }
+  .header-row span { border-bottom: 1.5px solid #2d3436; display: inline-block; width: 160px; }
+  .intro { background: #f5f6fa; border-left: 4px solid #6c5ce7; padding: 10px 14px; font-size: 0.85em; margin-bottom: 16px; }
+  h2 { font-size: 1.15em; margin: 18px 0 8px; padding-bottom: 4px; border-bottom: 2px solid; }
+  h3 { font-size: 1em; margin: 14px 0 6px; }
+  p, li { font-size: 0.88em; margin-bottom: 5px; }
+  ul { padding-left: 20px; }
+
+  .ref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+  .ref-card { border: 1.5px solid #dfe6e9; border-radius: 8px; padding: 10px; }
+  .ref-card .name { font-weight: bold; font-size: 0.95em; }
+  .ref-card .ticker { color: #6c5ce7; font-weight: bold; font-size: 0.85em; }
+  .ref-card .desc { font-size: 0.78em; color: #636e72; margin-top: 2px; }
+  .ref-card .type { font-size: 0.7em; background: #dfe6e9; padding: 1px 8px; border-radius: 10px; display: inline-block; margin-top: 4px; }
+  .ref-card .type.fund { background: #55efc420; color: #00b894; border: 1px solid #00b894; }
+  .ref-card .type.stock { background: #74b9ff20; color: #0984e3; border: 1px solid #0984e3; }
+
+  table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 0.85em; }
+  th { background: #6c5ce7; color: white; padding: 6px 8px; text-align: left; font-size: 0.82em; }
+  td { padding: 6px 8px; border: 1px solid #dfe6e9; }
+  tr:nth-child(even) { background: #fafafa; }
+  .wl { border-bottom: 1.5px solid #b2bec3; display: inline-block; width: 70px; }
+  .wll { border-bottom: 1.5px solid #b2bec3; display: inline-block; width: 100%; }
+  .write-cell { min-height: 20px; }
+
+  .pick-section { border: 2px solid #00b894; border-radius: 10px; padding: 14px; margin: 14px 0; }
+  .pick-section h3 { color: #00b894; margin-top: 0; }
+
+  .quarter-section { border: 2px solid #0984e3; border-radius: 10px; padding: 14px; margin: 14px 0; }
+  .quarter-section h3 { color: #0984e3; margin-top: 0; }
+  .quarter-label { background: #0984e3; color: white; display: inline-block; padding: 2px 12px; border-radius: 12px; font-size: 0.85em; font-weight: bold; margin-bottom: 8px; }
+
+  .tip { background: #fff3cd; border-left: 3px solid #fdcb6e; padding: 8px 12px; font-size: 0.82em; margin: 8px 0; border-radius: 0 4px 4px 0; }
+  .math-box { background: #f0f0ff; border: 1.5px solid #a29bfe; border-radius: 8px; padding: 10px 14px; margin: 10px 0; font-size: 0.85em; }
+  .formula { font-family: 'Courier New', monospace; background: #2d3436; color: #55efc4; padding: 6px 12px; border-radius: 4px; display: inline-block; margin: 4px 0; font-size: 0.9em; }
+
+  .reflection { background: #f5f6fa; border-radius: 10px; padding: 14px; margin: 16px 0; }
+  .reflection h3 { color: #6c5ce7; }
+  .q { margin: 8px 0; font-size: 0.88em; }
+</style>
+</head>
+<body>
+
+<h1>&#128200; My Investment Tracker</h1>
+<p class="subtitle">Pick real investments. Track real prices. Watch your money grow (or learn why it didn't).</p>
+<div class="header-row">
+  <div>Name: <span>&nbsp;</span></div>
+  <div>Start Date: <span>&nbsp;</span></div>
+</div>
+
+<div class="intro">
+  <strong>How this works:</strong> You'll pick 2-3 real stocks or funds to "invest" in with your budget's monthly investment amount. Each quarter, you'll look up the real price, calculate how your portfolio is doing, and reflect on what happened. This is how real investors track their money.
+  <br><br>
+  <strong>Where to look up prices:</strong> Google "stock price [ticker symbol]" or use finance.yahoo.com. Your parent can help you find current prices.
+</div>
+
+<!-- REFERENCE: Popular Beginner Picks -->
+<h2 style="color: #6c5ce7; border-color: #6c5ce7;">Popular Investments for Beginners</h2>
+<p style="font-size: 0.85em; color: #636e72;">You can pick from these OR research your own. These are common starting points for new investors.</p>
+
+<div class="ref-grid">
+  <div class="ref-card">
+    <div class="name">S&amp;P 500 Index Fund</div>
+    <div class="ticker">VOO or SPY</div>
+    <div class="desc">Owns tiny pieces of 500 of the biggest U.S. companies. The most popular investment in the world.</div>
+    <div class="type fund">Index Fund</div>
+  </div>
+  <div class="ref-card">
+    <div class="name">Total Stock Market Fund</div>
+    <div class="ticker">VTI</div>
+    <div class="desc">Owns a piece of almost EVERY public company in the U.S. (~4,000 companies). Maximum diversification.</div>
+    <div class="type fund">Index Fund</div>
+  </div>
+  <div class="ref-card">
+    <div class="name">Apple Inc.</div>
+    <div class="ticker">AAPL</div>
+    <div class="desc">Makes iPhones, iPads, Macs, Apple Watch. One of the most valuable companies in the world.</div>
+    <div class="type stock">Individual Stock</div>
+  </div>
+  <div class="ref-card">
+    <div class="name">Microsoft Corp.</div>
+    <div class="ticker">MSFT</div>
+    <div class="desc">Windows, Xbox, Office, Azure cloud. Huge in business tech and AI.</div>
+    <div class="type stock">Individual Stock</div>
+  </div>
+  <div class="ref-card">
+    <div class="name">Tesla Inc.</div>
+    <div class="ticker">TSLA</div>
+    <div class="desc">Electric cars, solar, batteries. Exciting but volatile — price swings a LOT.</div>
+    <div class="type stock">Individual Stock</div>
+  </div>
+  <div class="ref-card">
+    <div class="name">Nike Inc.</div>
+    <div class="ticker">NKE</div>
+    <div class="desc">Shoes, apparel, sports gear. A brand you know — now imagine owning a piece of it.</div>
+    <div class="type stock">Individual Stock</div>
+  </div>
+  <div class="ref-card">
+    <div class="name">Disney Co.</div>
+    <div class="ticker">DIS</div>
+    <div class="desc">Theme parks, movies, Disney+, Marvel, Star Wars. Entertainment giant.</div>
+    <div class="type stock">Individual Stock</div>
+  </div>
+  <div class="ref-card">
+    <div class="name">Target Bond / Savings</div>
+    <div class="ticker">BND or HYSA</div>
+    <div class="desc">Lower risk, lower reward. Bonds or high-yield savings. Steady but slow growth.</div>
+    <div class="type fund">Bond Fund / Savings</div>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>Index fund vs. individual stock:</strong> An index fund spreads your risk across hundreds of companies — if one company drops, others hold you up. An individual stock is riskier — if that ONE company drops, so does your money. Most financial experts recommend index funds for beginners. But picking a stock you believe in teaches you to research and follow a company.
+</div>
+
+<!-- MY INVESTMENT PICKS -->
+<div class="pick-section">
+  <h3>&#127919; My Investment Picks</h3>
+  <p style="font-size: 0.85em; color: #636e72; margin-bottom: 10px;">Pick 2-3 investments. Write down why you chose each one. Look up today's price.</p>
+
+  <table>
+    <tr>
+      <th style="width: 5%;">#</th>
+      <th style="width: 22%;">Investment Name</th>
+      <th style="width: 10%;">Ticker</th>
+      <th style="width: 13%;">Today's Price (per share)</th>
+      <th style="width: 15%;">$ I'll Invest Per Month</th>
+      <th style="width: 35%;">Why I Picked This</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td class="write-cell"></td>
+      <td class="write-cell"></td>
+      <td>$</td>
+      <td>$</td>
+      <td class="write-cell"></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td class="write-cell"></td>
+      <td class="write-cell"></td>
+      <td>$</td>
+      <td>$</td>
+      <td class="write-cell"></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td class="write-cell"></td>
+      <td class="write-cell"></td>
+      <td>$</td>
+      <td>$</td>
+      <td class="write-cell"></td>
+    </tr>
+  </table>
+
+  <p style="margin-top: 8px; font-size: 0.88em;"><strong>Total monthly investment:</strong> $ <span class="wl">&nbsp;</span></p>
+</div>
+
+<div class="math-box">
+  <strong>How to calculate shares bought:</strong>
+  <br><span class="formula">Shares = Money Invested &divide; Price Per Share</span>
+  <br><br>
+  <strong>Example:</strong> You invest $50/month in VOO (S&amp;P 500). VOO costs $500/share.
+  <br>$50 &divide; $500 = 0.10 shares per month. (Yes, you can own fractions of shares!)
+  <br>After 3 months: 0.10 &times; 3 = 0.30 shares. If VOO goes to $530, your 0.30 shares are worth $159 (you put in $150 — that's a $9 gain!).
+</div>
+
+<!-- QUARTERLY TRACKING -->
+<h2 style="color: #0984e3; border-color: #0984e3;">&#128197; Quarterly Price Tracking</h2>
+<p style="font-size: 0.85em; color: #636e72;">Every 3 months, look up your investments' current prices. Calculate your gains or losses. This is what real investors do.</p>
+
+<!-- Q1 -->
+<div class="quarter-section">
+  <div class="quarter-label">Quarter 1 — Date: _______________</div>
+  <table>
+    <tr>
+      <th>Investment</th>
+      <th>Start Price</th>
+      <th>Current Price</th>
+      <th>Change ($)</th>
+      <th>Change (%)</th>
+      <th>Shares Owned (3 months)</th>
+      <th>Value Now</th>
+    </tr>
+    <tr><td>1.</td><td>$</td><td>$</td><td>$</td><td>%</td><td></td><td>$</td></tr>
+    <tr><td>2.</td><td>$</td><td>$</td><td>$</td><td>%</td><td></td><td>$</td></tr>
+    <tr><td>3.</td><td>$</td><td>$</td><td>$</td><td>%</td><td></td><td>$</td></tr>
+    <tr style="font-weight: bold; background: #f0f0ff;"><td colspan="5">Total Portfolio Value</td><td></td><td>$</td></tr>
+    <tr style="background: #f0fff4;"><td colspan="5">Total Amount I Invested (3 months)</td><td></td><td>$</td></tr>
+    <tr style="background: #fff5f5;"><td colspan="5"><strong>Gain / Loss</strong> (Portfolio Value - Amount Invested)</td><td></td><td>$</td></tr>
+  </table>
+
+  <div class="math-box" style="margin-top: 8px;">
+    <strong>Calculate % change:</strong> <span class="formula">(Current Price - Start Price) &divide; Start Price &times; 100 = % Change</span>
+    <br>Example: Start $500, Now $530 &rarr; ($530 - $500) &divide; $500 &times; 100 = <strong>6% gain</strong>
+  </div>
+
+  <div class="q"><strong>What happened this quarter?</strong> (Did the market go up? Down? Why?)</div>
+  <p><span class="wll">&nbsp;</span></p>
+  <div class="q"><strong>Would you change any of your picks? Why or why not?</strong></div>
+  <p><span class="wll">&nbsp;</span></p>
+</div>
+
+<!-- Q2 -->
+<div class="quarter-section">
+  <div class="quarter-label">Quarter 2 — Date: _______________</div>
+  <table>
+    <tr>
+      <th>Investment</th>
+      <th>Start Price</th>
+      <th>Current Price</th>
+      <th>Change ($)</th>
+      <th>Change (%)</th>
+      <th>Shares Owned (6 months)</th>
+      <th>Value Now</th>
+    </tr>
+    <tr><td>1.</td><td>$</td><td>$</td><td>$</td><td>%</td><td></td><td>$</td></tr>
+    <tr><td>2.</td><td>$</td><td>$</td><td>$</td><td>%</td><td></td><td>$</td></tr>
+    <tr><td>3.</td><td>$</td><td>$</td><td>$</td><td>%</td><td></td><td>$</td></tr>
+    <tr style="font-weight: bold; background: #f0f0ff;"><td colspan="5">Total Portfolio Value</td><td></td><td>$</td></tr>
+    <tr style="background: #f0fff4;"><td colspan="5">Total Amount I Invested (6 months)</td><td></td><td>$</td></tr>
+    <tr style="background: #fff5f5;"><td colspan="5"><strong>Gain / Loss</strong></td><td></td><td>$</td></tr>
+  </table>
+  <div class="q"><strong>What happened? Any big news about your companies/funds?</strong></div>
+  <p><span class="wll">&nbsp;</span></p>
+  <div class="q"><strong>Are you beating a regular savings account? (Savings earns ~4.5%/year = ~1.1%/quarter)</strong></div>
+  <p><span class="wll">&nbsp;</span></p>
+</div>
+
+<div class="page-break"></div>
+
+<!-- Q3 -->
+<div class="quarter-section">
+  <div class="quarter-label">Quarter 3 — Date: _______________</div>
+  <table>
+    <tr>
+      <th>Investment</th>
+      <th>Start Price</th>
+      <th>Current Price</th>
+      <th>Change ($)</th>
+      <th>Change (%)</th>
+      <th>Shares Owned (9 months)</th>
+      <th>Value Now</th>
+    </tr>
+    <tr><td>1.</td><td>$</td><td>$</td><td>$</td><td>%</td><td></td><td>$</td></tr>
+    <tr><td>2.</td><td>$</td><td>$</td><td>$</td><td>%</td><td></td><td>$</td></tr>
+    <tr><td>3.</td><td>$</td><td>$</td><td>$</td><td>%</td><td></td><td>$</td></tr>
+    <tr style="font-weight: bold; background: #f0f0ff;"><td colspan="5">Total Portfolio Value</td><td></td><td>$</td></tr>
+    <tr style="background: #f0fff4;"><td colspan="5">Total Amount I Invested (9 months)</td><td></td><td>$</td></tr>
+    <tr style="background: #fff5f5;"><td colspan="5"><strong>Gain / Loss</strong></td><td></td><td>$</td></tr>
+  </table>
+  <div class="q"><strong>Looking at your 3 quarters of data — do you see a trend?</strong></div>
+  <p><span class="wll">&nbsp;</span></p>
+  <div class="q"><strong>If one of your stocks dropped 20%, what would you do — sell, hold, or buy more? Why?</strong></div>
+  <p><span class="wll">&nbsp;</span></p>
+</div>
+
+<!-- Q4 -->
+<div class="quarter-section">
+  <div class="quarter-label">Quarter 4 — Date: _______________ (1 Year!)</div>
+  <table>
+    <tr>
+      <th>Investment</th>
+      <th>Start Price</th>
+      <th>Current Price</th>
+      <th>Change ($)</th>
+      <th>Change (%)</th>
+      <th>Shares Owned (12 months)</th>
+      <th>Value Now</th>
+    </tr>
+    <tr><td>1.</td><td>$</td><td>$</td><td>$</td><td>%</td><td></td><td>$</td></tr>
+    <tr><td>2.</td><td>$</td><td>$</td><td>$</td><td>%</td><td></td><td>$</td></tr>
+    <tr><td>3.</td><td>$</td><td>$</td><td>$</td><td>%</td><td></td><td>$</td></tr>
+    <tr style="font-weight: bold; background: #f0f0ff;"><td colspan="5">Total Portfolio Value</td><td></td><td>$</td></tr>
+    <tr style="background: #f0fff4;"><td colspan="5">Total Amount I Invested (12 months)</td><td></td><td>$</td></tr>
+    <tr style="background: #fff5f5;"><td colspan="5"><strong>Total Gain / Loss for the Year</strong></td><td></td><td>$</td></tr>
+  </table>
+</div>
+
+<!-- YEAR-END REFLECTION -->
+<div class="reflection">
+  <h3>&#127942; Year-End Investment Review</h3>
+  <div class="q"><strong>Total invested over the year:</strong> $ <span class="wl">&nbsp;</span></div>
+  <div class="q"><strong>Portfolio value now:</strong> $ <span class="wl">&nbsp;</span></div>
+  <div class="q"><strong>Total return:</strong> $ <span class="wl">&nbsp;</span> (<span class="wl">&nbsp;</span>%)</div>
+  <div class="q" style="margin-top: 12px;"><strong>Which investment did the best? Why do you think?</strong></div>
+  <p><span class="wll">&nbsp;</span></p>
+  <div class="q"><strong>Which did the worst? What happened?</strong></div>
+  <p><span class="wll">&nbsp;</span></p>
+  <div class="q"><strong>Did the index fund or individual stocks do better for you?</strong></div>
+  <p><span class="wll">&nbsp;</span></p>
+  <div class="q"><strong>If you could start over, what would you invest in differently?</strong></div>
+  <p><span class="wll">&nbsp;</span></p>
+  <div class="q"><strong>At this rate, project forward: if your portfolio keeps growing like this, what would it be worth in 10 years? 20 years?</strong></div>
+  <p><span class="wll">&nbsp;</span></p>
+  <div class="q"><strong>What's one thing you learned about investing this year?</strong></div>
+  <p><span class="wll">&nbsp;</span></p>
+</div>
+
+<div class="tip">
+  <strong>Remember:</strong> One year is a very short time in investing. Some years the market drops 20%. Other years it gains 30%. The key is consistency — keep investing every month regardless of what the market does. Over 10-20+ years, the ups and downs smooth out and you build real wealth. Warren Buffett started investing at age 11 and says his biggest regret is not starting sooner.
+</div>
+
+</body>
+</html>

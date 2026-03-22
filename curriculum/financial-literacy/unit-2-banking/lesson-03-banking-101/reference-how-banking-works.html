@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reference — How Banking Works</title>
+<style>
+  :root {
+    --navy: #1a2744;
+    --blue: #2563eb;
+    --pink: #db2777;
+    --indigo: #4338ca;
+    --emerald: #065f46;
+    --amber: #92400e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #1f2937;
+    line-height: 1.55;
+    background: #f9fafb;
+  }
+
+  .page {
+    max-width: 850px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 36px 44px;
+  }
+
+  @media print {
+    body { background: #fff; font-size: 13px; }
+    .page { padding: 16px 0; max-width: 100%; }
+    .tier { break-inside: avoid; }
+    .tier-section { break-inside: avoid; }
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 3px solid var(--navy);
+  }
+  .header h1 { font-size: 26px; color: var(--navy); }
+  .header p { font-size: 14px; color: #6b7280; margin-top: 4px; }
+
+  .instructions {
+    background: #f3f4f6;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    margin-bottom: 24px;
+    text-align: center;
+    color: #4b5563;
+  }
+  .instructions strong { color: var(--navy); }
+
+  /* Tiers */
+  .tier {
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-bottom: 24px;
+    page-break-inside: avoid;
+  }
+  .tier-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .tier-badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    color: #fff;
+  }
+  .tier-title {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  /* Primary tier */
+  .tier.primary { background: #fdf2f8; border: 2px solid #fbcfe8; }
+  .tier.primary .tier-badge { background: var(--pink); }
+  .tier.primary .tier-title { color: var(--pink); }
+
+  /* Elementary tier */
+  .tier.elem { background: #eef2ff; border: 2px solid #c7d2fe; }
+  .tier.elem .tier-badge { background: var(--indigo); }
+  .tier.elem .tier-title { color: var(--indigo); }
+
+  /* Middle tier */
+  .tier.middle { background: #ecfdf5; border: 2px solid #a7f3d0; }
+  .tier.middle .tier-badge { background: #059669; }
+  .tier.middle .tier-title { color: var(--emerald); }
+
+  /* High tier */
+  .tier.high { background: #fffbeb; border: 2px solid #fde68a; }
+  .tier.high .tier-badge { background: #d97706; }
+  .tier.high .tier-title { color: var(--amber); }
+
+  /* Content within tiers */
+  .tier h3 {
+    font-size: 16px;
+    margin: 18px 0 8px;
+  }
+  .tier.primary h3 { color: #be185d; }
+  .tier.elem h3 { color: #3730a3; }
+  .tier.middle h3 { color: #047857; }
+  .tier.high h3 { color: #b45309; }
+
+  .tier p { font-size: 15px; margin-bottom: 10px; }
+  .tier ul { padding-left: 22px; margin-bottom: 12px; }
+  .tier li { font-size: 14px; margin-bottom: 5px; }
+
+  /* Concept boxes */
+  .concept-box {
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin: 12px 0;
+  }
+  .tier.primary .concept-box { background: #fff; border: 1px solid #fbcfe8; }
+  .tier.elem .concept-box { background: #fff; border: 1px solid #c7d2fe; }
+  .tier.middle .concept-box { background: #fff; border: 1px solid #a7f3d0; }
+  .tier.high .concept-box { background: #fff; border: 1px solid #fde68a; }
+
+  .concept-box .label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  /* Visual illustrations */
+  .visual-row {
+    display: flex;
+    gap: 16px;
+    margin: 14px 0;
+    flex-wrap: wrap;
+  }
+  .visual-card {
+    flex: 1;
+    min-width: 180px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+  }
+  .visual-icon {
+    font-size: 36px;
+    margin-bottom: 6px;
+  }
+  .visual-card h4 { font-size: 14px; margin-bottom: 4px; }
+  .visual-card p { font-size: 13px; color: #6b7280; margin: 0; }
+
+  /* Comparison table */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  .compare-table th {
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #e5e7eb;
+  }
+  .compare-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #f3f4f6;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+
+  .big-idea {
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    padding: 16px;
+    margin: 12px 0;
+    border-radius: 10px;
+    background: #fff;
+  }
+  .tier.primary .big-idea { color: #be185d; border: 2px dashed #f9a8d4; }
+  .tier.elem .big-idea { color: #3730a3; border: 2px dashed #a5b4fc; }
+  .tier.middle .big-idea { color: #047857; border: 2px dashed #6ee7b7; }
+  .tier.high .big-idea { color: #b45309; border: 2px dashed #fcd34d; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <h1>How Banking Works</h1>
+    <p>Reference Sheet &mdash; Banking 101: Your Money's Home</p>
+  </div>
+
+  <div class="instructions">
+    <strong>Find your section below.</strong> Start with your age tier, and read everything above it too if you want to learn more.
+  </div>
+
+  <!-- ============================================ -->
+  <!-- PRIMARY TIER -->
+  <!-- ============================================ -->
+  <div class="tier primary">
+    <div class="tier-header">
+      <span class="tier-badge">Primary</span>
+      <span class="tier-title">Age 6: The Bank is Like a Piggy Bank That Pays You</span>
+    </div>
+
+    <div class="big-idea">A bank is a super-safe place to keep your money &mdash; and it gives you extra money for keeping it there!</div>
+
+    <div class="visual-row">
+      <div class="visual-card" style="border: 2px solid #fbcfe8;">
+        <div class="visual-icon">&#x1F3E6;</div>
+        <h4>The Bank</h4>
+        <p>A big, strong building where your money is kept safe. No one can steal it.</p>
+      </div>
+      <div class="visual-card" style="border: 2px solid #fbcfe8;">
+        <div class="visual-icon">&#x1F4B0;</div>
+        <h4>Your Money</h4>
+        <p>You put your money in. It stays there until you need it.</p>
+      </div>
+      <div class="visual-card" style="border: 2px solid #fbcfe8;">
+        <div class="visual-icon">&#x2B50;</div>
+        <h4>Bonus Money!</h4>
+        <p>The bank gives you a little extra money as a thank-you. This is called <strong>interest</strong>.</p>
+      </div>
+    </div>
+
+    <h3>What is a Debit Card?</h3>
+    <div class="concept-box">
+      <p>A debit card is like a magic key to your bank account. When you use it at a store, it takes money out of your account and gives it to the store. It only works if you have money in your account!</p>
+      <p><strong>Remember:</strong> A debit card spends YOUR money. If you have $10 and spend $10, you have $0 left.</p>
+    </div>
+
+    <h3>Three Things to Remember</h3>
+    <ol style="padding-left: 22px;">
+      <li style="font-size:15px; margin-bottom:6px;">The bank keeps your money <strong>safe</strong></li>
+      <li style="font-size:15px; margin-bottom:6px;">The bank gives you <strong>extra money</strong> (interest) for keeping it there</li>
+      <li style="font-size:15px; margin-bottom:6px;">A debit card uses <strong>your money</strong> from the bank</li>
+    </ol>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- ELEMENTARY TIER -->
+  <!-- ============================================ -->
+  <div class="tier elem">
+    <div class="tier-header">
+      <span class="tier-badge">Elementary</span>
+      <span class="tier-title">Ages 9&ndash;10: Accounts, Interest, and Overdrafts</span>
+    </div>
+
+    <p><em>Read the Primary section above first, then continue here.</em></p>
+
+    <h3>Two Kinds of Bank Accounts</h3>
+    <div class="visual-row">
+      <div class="visual-card" style="border: 2px solid #c7d2fe;">
+        <div class="visual-icon">&#x1F4B3;</div>
+        <h4>Checking Account</h4>
+        <p>Your everyday account. Money goes in and out all the time. Comes with a debit card. Used to pay for things.</p>
+      </div>
+      <div class="visual-card" style="border: 2px solid #c7d2fe;">
+        <div class="visual-icon">&#x1F3E6;</div>
+        <h4>Savings Account</h4>
+        <p>Your "don't touch" account. Money sits here and earns interest. Save up for big goals here.</p>
+      </div>
+    </div>
+
+    <h3>What is Interest?</h3>
+    <div class="concept-box">
+      <div class="label" style="color: var(--indigo);">Think of it this way</div>
+      <p>The bank pays you <strong>rent</strong> for using your money. You let the bank borrow your money, and they pay you a small amount in return. The more money you keep there, and the longer you leave it, the more interest you earn.</p>
+      <p><strong>Example:</strong> If you have $100 in savings and the bank pays 4% interest, after one year you'd have $104. You earned $4 just for leaving your money there!</p>
+    </div>
+
+    <h3>Debit Card vs Cash</h3>
+    <ul>
+      <li><strong>Cash:</strong> Physical bills and coins. Once you spend it, it's gone. You can see exactly how much you have.</li>
+      <li><strong>Debit card:</strong> Spends money from your checking account electronically. Faster and more convenient, but harder to track how much you're spending.</li>
+      <li>They both use YOUR money &mdash; just in different forms.</li>
+    </ul>
+
+    <h3>What is an Overdraft?</h3>
+    <div class="concept-box" style="background: #fef2f2; border-color: #fca5a5;">
+      <div class="label" style="color: #dc2626;">Warning: This Costs You Money!</div>
+      <p>An overdraft happens when you try to spend more money than you have in your account. The bank might let the payment go through, but they charge you a fee &mdash; usually around <strong>$35</strong>!</p>
+      <p><strong>Example:</strong> You have $8 in your account. You buy something for $10. The bank pays the store $10 but charges you a $35 overdraft fee. Now you owe the bank $37. That $10 item actually cost you $45!</p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- MIDDLE SCHOOL TIER -->
+  <!-- ============================================ -->
+  <div class="tier middle">
+    <div class="tier-header">
+      <span class="tier-badge">Middle School</span>
+      <span class="tier-title">Ages 11&ndash;13: How Banks Really Work</span>
+    </div>
+
+    <p><em>Read the Primary and Elementary sections above first, then continue here.</em></p>
+
+    <h3>How Banks Make Money</h3>
+    <div class="concept-box">
+      <div class="label" style="color: var(--emerald);">The Business of Banking</div>
+      <p>Banks are businesses. Here's how they make money:</p>
+      <ol style="padding-left: 20px;">
+        <li style="margin-bottom:6px;"><strong>You deposit $1,000</strong> into your savings account. The bank pays you 4% interest ($40/year).</li>
+        <li style="margin-bottom:6px;"><strong>The bank lends your $1,000</strong> to someone else &mdash; say, for a car loan &mdash; and charges them 8% interest ($80/year).</li>
+        <li style="margin-bottom:6px;"><strong>The bank keeps the difference:</strong> $80 &minus; $40 = $40 profit.</li>
+      </ol>
+      <p>This is called the <strong>interest rate spread</strong>. Multiply this by millions of customers and you can see why banks are profitable businesses.</p>
+    </div>
+
+    <h3>FDIC Insurance</h3>
+    <div class="concept-box">
+      <div class="label" style="color: var(--emerald);">Your Money is Guaranteed</div>
+      <p>The <strong>Federal Deposit Insurance Corporation (FDIC)</strong> is a government agency that protects your money. If your bank goes out of business, the FDIC guarantees your deposits up to <strong>$250,000 per depositor, per bank</strong>.</p>
+      <p>This means a bank account is one of the safest places to keep money. Your cash under a mattress has zero protection.</p>
+    </div>
+
+    <h3>High-Yield Savings Accounts</h3>
+    <table class="compare-table">
+      <tr>
+        <th>Feature</th>
+        <th>Regular Savings</th>
+        <th>High-Yield Savings</th>
+      </tr>
+      <tr>
+        <td>Typical Interest Rate</td>
+        <td>0.5% &ndash; 1%</td>
+        <td>4% &ndash; 5%</td>
+      </tr>
+      <tr>
+        <td>Where to Find</td>
+        <td>Traditional banks (Chase, Wells Fargo, etc.)</td>
+        <td>Online banks (Ally, Marcus, etc.)</td>
+      </tr>
+      <tr>
+        <td>Physical Branch</td>
+        <td>Yes</td>
+        <td>Usually no</td>
+      </tr>
+      <tr>
+        <td>FDIC Insured</td>
+        <td>Yes</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>Best For</td>
+        <td>Small amounts, quick access</td>
+        <td>Emergency fund, bigger savings goals</td>
+      </tr>
+    </table>
+
+    <h3>Direct Deposit</h3>
+    <p>Instead of getting a paper check from your job and bringing it to the bank, your employer sends your paycheck electronically straight into your checking account. It's faster, safer, and automatic. Most employers use direct deposit.</p>
+
+    <h3>Debit Cards vs Credit Cards</h3>
+    <table class="compare-table">
+      <tr>
+        <th>Feature</th>
+        <th>Debit Card</th>
+        <th>Credit Card</th>
+      </tr>
+      <tr>
+        <td>Whose money?</td>
+        <td>YOUR money (from checking)</td>
+        <td>The BANK'S money (a loan)</td>
+      </tr>
+      <tr>
+        <td>When do you pay?</td>
+        <td>Immediately</td>
+        <td>End of the month (bill)</td>
+      </tr>
+      <tr>
+        <td>Interest charged?</td>
+        <td>No</td>
+        <td>Yes, if you don't pay the full bill (often 20%+)</td>
+      </tr>
+      <tr>
+        <td>Can you overspend?</td>
+        <td>Only up to your balance (overdraft possible)</td>
+        <td>Yes &mdash; up to your credit limit</td>
+      </tr>
+      <tr>
+        <td>Builds credit score?</td>
+        <td>No</td>
+        <td>Yes (good or bad)</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- HIGH SCHOOL TIER -->
+  <!-- ============================================ -->
+  <div class="tier high">
+    <div class="tier-header">
+      <span class="tier-badge">High School</span>
+      <span class="tier-title">Age 15: Banking Like an Adult</span>
+    </div>
+
+    <p><em>Read all sections above first, then continue here.</em></p>
+
+    <h3>APY &mdash; Annual Percentage Yield</h3>
+    <div class="concept-box">
+      <div class="label" style="color: var(--amber);">The Real Way to Compare Banks</div>
+      <p><strong>APY</strong> is the total amount of interest you earn in one year, including compound interest (interest on your interest). It's the number you should compare when choosing where to put your savings.</p>
+      <p><strong>Example:</strong> Bank A offers 4.25% APY. Bank B offers 4.50% APY. On $5,000:</p>
+      <ul>
+        <li>Bank A: $5,000 &times; 0.0425 = $212.50/year</li>
+        <li>Bank B: $5,000 &times; 0.0450 = $225.00/year</li>
+        <li>Difference: $12.50/year &mdash; not huge, but it adds up over time and with larger balances.</li>
+      </ul>
+    </div>
+
+    <h3>Credit Unions vs Banks</h3>
+    <table class="compare-table">
+      <tr>
+        <th>Feature</th>
+        <th>Bank</th>
+        <th>Credit Union</th>
+      </tr>
+      <tr>
+        <td>Ownership</td>
+        <td>Owned by shareholders (for profit)</td>
+        <td>Owned by members (nonprofit)</td>
+      </tr>
+      <tr>
+        <td>Rates</td>
+        <td>Often lower savings rates, higher loan rates</td>
+        <td>Often higher savings rates, lower loan rates</td>
+      </tr>
+      <tr>
+        <td>Fees</td>
+        <td>Can be higher</td>
+        <td>Typically lower</td>
+      </tr>
+      <tr>
+        <td>Technology</td>
+        <td>Usually better apps and online banking</td>
+        <td>Improving, but sometimes behind</td>
+      </tr>
+      <tr>
+        <td>Insurance</td>
+        <td>FDIC insured</td>
+        <td>NCUA insured (same $250K protection)</td>
+      </tr>
+      <tr>
+        <td>Membership</td>
+        <td>Open to anyone</td>
+        <td>Must qualify (employer, location, etc.)</td>
+      </tr>
+    </table>
+
+    <h3>Online Banks vs Traditional Banks</h3>
+    <p>Online banks (like Ally, Marcus, Discover) have no physical branches. Because they don't pay for buildings and tellers, they can offer:</p>
+    <ul>
+      <li>Higher interest rates on savings (often 4&ndash;5x more than traditional banks)</li>
+      <li>Lower or no monthly fees</li>
+      <li>Free ATM access through networks</li>
+    </ul>
+    <p><strong>The trade-off:</strong> No branch to walk into. Everything is done through an app or website. For most people under 30, this is fine. For someone who wants to deposit cash frequently, a traditional bank may be better.</p>
+
+    <h3>How to Read a Bank Statement</h3>
+    <div class="concept-box">
+      <div class="label" style="color: var(--amber);">What to Look For Every Month</div>
+      <ol style="padding-left: 20px;">
+        <li style="margin-bottom:6px;"><strong>Starting balance</strong> &mdash; Should match last month's ending balance</li>
+        <li style="margin-bottom:6px;"><strong>Deposits</strong> &mdash; Did your paycheck(s) arrive? All of them?</li>
+        <li style="margin-bottom:6px;"><strong>Withdrawals</strong> &mdash; Do you recognize every single charge? If not, investigate.</li>
+        <li style="margin-bottom:6px;"><strong>Fees</strong> &mdash; Any overdraft fees, monthly maintenance fees, or ATM fees?</li>
+        <li style="margin-bottom:6px;"><strong>Ending balance</strong> &mdash; Does the math add up? Starting + deposits &minus; withdrawals = ending.</li>
+        <li style="margin-bottom:6px;"><strong>Suspicious charges</strong> &mdash; Small charges ($1&ndash;$5) from companies you don't recognize could be fraud. Report them.</li>
+      </ol>
+    </div>
+
+    <h3>What is a Credit Score and Why Banks Care</h3>
+    <div class="concept-box">
+      <div class="label" style="color: var(--amber);">Your Financial Reputation</div>
+      <p>A <strong>credit score</strong> is a number (300&ndash;850) that represents how trustworthy you are with borrowed money. Banks, landlords, and even some employers check it.</p>
+      <p><strong>What affects it:</strong></p>
+      <ul>
+        <li><strong>Payment history (35%)</strong> &mdash; Do you pay bills on time?</li>
+        <li><strong>Credit utilization (30%)</strong> &mdash; How much of your available credit are you using?</li>
+        <li><strong>Length of credit history (15%)</strong> &mdash; How long have you had credit accounts?</li>
+        <li><strong>Credit mix (10%)</strong> &mdash; Do you have different types of credit?</li>
+        <li><strong>New credit (10%)</strong> &mdash; Have you applied for lots of credit recently?</li>
+      </ul>
+      <p><strong>Why it matters now:</strong> You don't have a credit score yet, but you will soon. When you turn 18, opening a credit card and paying it off every month is one of the best ways to start building credit. We'll cover this more in a future lesson.</p>
+    </div>
+
+    <div class="big-idea">The goal: checking account for daily spending, high-yield savings for your emergency fund, and eventually a credit card (paid in full every month) to build credit.</div>
+  </div>
+
+</div>
+</body>
+</html>

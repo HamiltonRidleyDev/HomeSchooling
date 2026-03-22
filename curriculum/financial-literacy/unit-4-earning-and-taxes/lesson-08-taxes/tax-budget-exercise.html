@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Budget Exercise — You're the Government!</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 32px 24px;
+            color: #1a1a2e;
+            background: #f8f9fa;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .ws-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+            color: #fff;
+            padding: 32px 28px;
+            border-radius: 16px;
+            margin-bottom: 28px;
+            text-align: center;
+        }
+        .ws-header h1 { font-size: 1.75rem; margin-bottom: 4px; }
+        .ws-header .sub { opacity: 0.85; font-size: 1rem; }
+
+        /* Name line */
+        .name-line {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        .name-line .field {
+            flex: 1;
+            min-width: 180px;
+            border-bottom: 2px solid #1a1a2e;
+            padding: 6px 4px;
+            font-size: 0.95rem;
+        }
+        .name-line .field span { color: #6c757d; font-size: 0.85rem; }
+
+        /* Intro box */
+        .intro-box {
+            background: #e3f2fd;
+            border: 2px solid #90caf9;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 28px;
+            text-align: center;
+        }
+        .intro-box .scenario {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0f3460;
+            margin-bottom: 8px;
+        }
+        .intro-box .rules {
+            font-size: 0.9rem;
+            color: #37474f;
+        }
+
+        /* Budget table */
+        .budget-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 28px;
+            font-size: 0.88rem;
+        }
+        .budget-table thead th {
+            background: #0f3460;
+            color: #fff;
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .budget-table thead th:first-child { border-radius: 10px 0 0 0; }
+        .budget-table thead th:last-child { border-radius: 0 10px 0 0; text-align: center; }
+        .budget-table thead th:nth-child(3) { text-align: center; }
+        .budget-table tbody td {
+            padding: 11px 10px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
+        }
+        .budget-table tbody tr:nth-child(even) { background: #f8f9fa; }
+        .budget-table tbody tr:hover { background: #e8f0fe; }
+        .budget-table .cat-icon { font-size: 1.3rem; margin-right: 6px; vertical-align: middle; }
+        .budget-table .cat-name { font-weight: 700; color: #1a1a2e; }
+        .budget-table .cat-desc { font-size: 0.8rem; color: #6c757d; }
+        .budget-table .pct-cell { text-align: center; font-weight: 700; color: #0f3460; font-size: 1rem; }
+        .budget-table .input-cell {
+            text-align: center;
+            width: 130px;
+        }
+        .budget-table .input-cell .dollar-input {
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+        }
+        .budget-table .input-cell .dollar-input span {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .budget-table .input-cell .write-line {
+            display: inline-block;
+            width: 60px;
+            border-bottom: 2px solid #1a1a2e;
+            min-height: 24px;
+        }
+        .budget-table tfoot td {
+            padding: 14px 10px;
+            font-weight: 800;
+            font-size: 1rem;
+            background: #e8f0fe;
+            border-top: 3px solid #0f3460;
+        }
+        .budget-table tfoot .total-label { color: #0f3460; }
+
+        /* Reflection questions */
+        .reflection {
+            background: #fff;
+            border-radius: 14px;
+            border: 1px solid #e9ecef;
+            padding: 24px 28px;
+            margin-bottom: 28px;
+        }
+        .reflection h2 {
+            font-size: 1.15rem;
+            color: #0f3460;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .reflection .question {
+            margin-bottom: 20px;
+        }
+        .reflection .question p {
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+        .reflection .answer-lines {
+            border-bottom: 1.5px solid #ccc;
+            min-height: 28px;
+            margin-bottom: 6px;
+        }
+
+        /* PRIMARY (Young Kids) Section */
+        .primary-section {
+            background: #fff;
+            border: 3px dashed #f9a825;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 20px;
+            page-break-before: always;
+        }
+        .primary-section h2 {
+            text-align: center;
+            color: #e65100;
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+        }
+        .primary-section .age-tag {
+            text-align: center;
+            color: #f57c00;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+        .primary-section .instructions {
+            text-align: center;
+            font-size: 1rem;
+            margin-bottom: 24px;
+            color: #37474f;
+        }
+        .token-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .token-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 14px;
+            padding: 20px 12px;
+            text-align: center;
+            background: #fafafa;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .token-card .card-icon { font-size: 2.8rem; margin-bottom: 6px; }
+        .token-card .card-name { font-weight: 700; font-size: 1rem; color: #1a1a2e; margin-bottom: 10px; }
+        .token-card .token-box {
+            width: 70px;
+            height: 50px;
+            border: 3px dashed #90a4ae;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #546e7a;
+        }
+        .token-total {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0f3460;
+            padding: 12px;
+            background: #e3f2fd;
+            border-radius: 10px;
+        }
+
+        .bottom-note {
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.78rem;
+            margin-top: 8px;
+            padding: 8px;
+        }
+
+        @media print {
+            body { background: #fff; padding: 12px; font-size: 10.5pt; }
+            .ws-header {
+                background: #0f3460 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .budget-table thead th {
+                background: #0f3460 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                color: #fff !important;
+            }
+            .budget-table tfoot td, .budget-table tbody tr:nth-child(even) {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .primary-section { page-break-before: always; }
+            .reflection, .primary-section { break-inside: avoid; }
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 16px; }
+            .ws-header { padding: 24px 18px; }
+            .ws-header h1 { font-size: 1.3rem; }
+            .budget-table { font-size: 0.78rem; }
+            .token-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="ws-header">
+    <h1>&#x1F3DB;&#xFE0F; You're the Government!</h1>
+    <div class="sub">Tax Budget Allocation Exercise</div>
+</div>
+
+<div class="name-line">
+    <div class="field"><span>Name:</span></div>
+    <div class="field"><span>Date:</span></div>
+</div>
+
+<div class="intro-box">
+    <div class="scenario">You just collected $100 in taxes from the American people.<br>You MUST spend it all. How would you divide it?</div>
+    <div class="rules">Rules: Every dollar must be spent. Your total must equal exactly $100. You CAN put $0 in a category &mdash; but think about what that means. There is no right answer &mdash; only trade-offs.</div>
+</div>
+
+<!-- BUDGET TABLE -->
+<table class="budget-table">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>What It Pays For</th>
+            <th>Current Real $</th>
+            <th>YOUR Allocation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><span class="cat-icon">&#x1F3E5;</span><span class="cat-name">Healthcare</span></td>
+            <td><span class="cat-desc">Hospitals, Medicare, insurance for elderly &amp; low-income</span></td>
+            <td class="pct-cell">$25</td>
+            <td class="input-cell"><div class="dollar-input"><span>$</span><span class="write-line"></span></div></td>
+        </tr>
+        <tr>
+            <td><span class="cat-icon">&#x1F474;</span><span class="cat-name">Social Security</span></td>
+            <td><span class="cat-desc">Monthly checks for retired people</span></td>
+            <td class="pct-cell">$21</td>
+            <td class="input-cell"><div class="dollar-input"><span>$</span><span class="write-line"></span></div></td>
+        </tr>
+        <tr>
+            <td><span class="cat-icon">&#x1F6E1;&#xFE0F;</span><span class="cat-name">Military</span></td>
+            <td><span class="cat-desc">Army, Navy, Air Force, national defense</span></td>
+            <td class="pct-cell">$13</td>
+            <td class="input-cell"><div class="dollar-input"><span>$</span><span class="write-line"></span></div></td>
+        </tr>
+        <tr>
+            <td><span class="cat-icon">&#x1F4B3;</span><span class="cat-name">Debt Payments</span></td>
+            <td><span class="cat-desc">Interest on money the government borrowed</span></td>
+            <td class="pct-cell">$10</td>
+            <td class="input-cell"><div class="dollar-input"><span>$</span><span class="write-line"></span></div></td>
+        </tr>
+        <tr>
+            <td><span class="cat-icon">&#x1F91D;</span><span class="cat-name">Safety Net</span></td>
+            <td><span class="cat-desc">Food stamps, housing help, disability support</span></td>
+            <td class="pct-cell">$8</td>
+            <td class="input-cell"><div class="dollar-input"><span>$</span><span class="write-line"></span></div></td>
+        </tr>
+        <tr>
+            <td><span class="cat-icon">&#x1F396;&#xFE0F;</span><span class="cat-name">Veterans</span></td>
+            <td><span class="cat-desc">Healthcare and benefits for military veterans</span></td>
+            <td class="pct-cell">$4</td>
+            <td class="input-cell"><div class="dollar-input"><span>$</span><span class="write-line"></span></div></td>
+        </tr>
+        <tr>
+            <td><span class="cat-icon">&#x1F393;</span><span class="cat-name">Education</span></td>
+            <td><span class="cat-desc">Schools, college grants, research</span></td>
+            <td class="pct-cell">$4</td>
+            <td class="input-cell"><div class="dollar-input"><span>$</span><span class="write-line"></span></div></td>
+        </tr>
+        <tr>
+            <td><span class="cat-icon">&#x1F6E3;&#xFE0F;</span><span class="cat-name">Transportation</span></td>
+            <td><span class="cat-desc">Roads, bridges, airports, trains</span></td>
+            <td class="pct-cell">$2</td>
+            <td class="input-cell"><div class="dollar-input"><span>$</span><span class="write-line"></span></div></td>
+        </tr>
+        <tr>
+            <td><span class="cat-icon">&#x1F680;</span><span class="cat-name">Science</span></td>
+            <td><span class="cat-desc">NASA, medical research, technology</span></td>
+            <td class="pct-cell">$2</td>
+            <td class="input-cell"><div class="dollar-input"><span>$</span><span class="write-line"></span></div></td>
+        </tr>
+        <tr>
+            <td><span class="cat-icon">&#x2696;&#xFE0F;</span><span class="cat-name">Law &amp; Courts</span></td>
+            <td><span class="cat-desc">FBI, federal courts, federal prisons</span></td>
+            <td class="pct-cell">$2</td>
+            <td class="input-cell"><div class="dollar-input"><span>$</span><span class="write-line"></span></div></td>
+        </tr>
+        <tr>
+            <td><span class="cat-icon">&#x1F332;</span><span class="cat-name">Environment</span></td>
+            <td><span class="cat-desc">National parks, EPA, clean air &amp; water</span></td>
+            <td class="pct-cell">$1</td>
+            <td class="input-cell"><div class="dollar-input"><span>$</span><span class="write-line"></span></div></td>
+        </tr>
+        <tr>
+            <td><span class="cat-icon">&#x1F30D;</span><span class="cat-name">Other</span></td>
+            <td><span class="cat-desc">Foreign aid, embassies, government operations, everything else</span></td>
+            <td class="pct-cell">$8</td>
+            <td class="input-cell"><div class="dollar-input"><span>$</span><span class="write-line"></span></div></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2" class="total-label">TOTAL</td>
+            <td class="pct-cell" style="font-size:1.1rem;">$100</td>
+            <td class="input-cell"><div class="dollar-input"><span style="font-size:1.1rem;">$</span><span class="write-line" style="border-bottom-width:3px;"></span></div></td>
+        </tr>
+    </tfoot>
+</table>
+
+<!-- REFLECTION -->
+<div class="reflection">
+    <h2>&#x1F914; Reflection Questions</h2>
+
+    <div class="question">
+        <p>1. What category did you increase the most compared to the real budget? Why?</p>
+        <div class="answer-lines"></div>
+        <div class="answer-lines"></div>
+        <div class="answer-lines"></div>
+    </div>
+
+    <div class="question">
+        <p>2. What category did you decrease the most? Why?</p>
+        <div class="answer-lines"></div>
+        <div class="answer-lines"></div>
+        <div class="answer-lines"></div>
+    </div>
+
+    <div class="question">
+        <p>3. What was the hardest trade-off you had to make?</p>
+        <div class="answer-lines"></div>
+        <div class="answer-lines"></div>
+        <div class="answer-lines"></div>
+    </div>
+
+    <div class="question">
+        <p>4. Did anything surprise you about how the real budget is spent?</p>
+        <div class="answer-lines"></div>
+        <div class="answer-lines"></div>
+        <div class="answer-lines"></div>
+    </div>
+</div>
+
+<!-- PRIMARY / YOUNG KIDS VERSION -->
+<div class="primary-section">
+    <h2>&#x1F31F; Young Learners Version</h2>
+    <div class="age-tag">Ages 6&ndash;8 &bull; Use tokens, coins, or stickers</div>
+
+    <div class="instructions">
+        You have <strong>10 tokens</strong>. Place them in the boxes below to show what you think is most important.<br>
+        You must use ALL 10 tokens!
+    </div>
+
+    <div class="token-grid">
+        <div class="token-card">
+            <div class="card-icon">&#x1F3EB;</div>
+            <div class="card-name">Schools</div>
+            <div class="token-box">__</div>
+        </div>
+        <div class="token-card">
+            <div class="card-icon">&#x1F468;&#x200D;&#x2695;&#xFE0F;</div>
+            <div class="card-name">Doctors</div>
+            <div class="token-box">__</div>
+        </div>
+        <div class="token-card">
+            <div class="card-icon">&#x1FA96;</div>
+            <div class="card-name">Soldiers</div>
+            <div class="token-box">__</div>
+        </div>
+        <div class="token-card">
+            <div class="card-icon">&#x1F6E3;&#xFE0F;</div>
+            <div class="card-name">Roads</div>
+            <div class="token-box">__</div>
+        </div>
+        <div class="token-card">
+            <div class="card-icon">&#x1F3DE;&#xFE0F;</div>
+            <div class="card-name">Parks</div>
+            <div class="token-box">__</div>
+        </div>
+        <div class="token-card">
+            <div class="card-icon">&#x1F91D;</div>
+            <div class="card-name">Helping People</div>
+            <div class="token-box">__</div>
+        </div>
+    </div>
+
+    <div class="token-total">
+        Total Tokens Used: _____ / 10
+    </div>
+</div>
+
+<div class="bottom-note">
+    Unit 4: Earning &amp; Taxes &bull; Lesson 8 &bull; Tax Budget Exercise
+</div>
+
+</body>
+</html>

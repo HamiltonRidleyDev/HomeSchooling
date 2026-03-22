@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Financial Report Card — Credit Scores Reference</title>
+<style>
+  :root {
+    --navy: #1a2744;
+    --blue: #2563eb;
+    --light-blue: #dbeafe;
+    --green: #16a34a;
+    --dark-green: #15803d;
+    --light-green: #dcfce7;
+    --bright-green: #22c55e;
+    --amber: #d97706;
+    --light-amber: #fef3c7;
+    --red: #dc2626;
+    --dark-red: #b91c1c;
+    --light-red: #fee2e2;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-600: #4b5563;
+    --gray-800: #1f2937;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--gray-800);
+    line-height: 1.5;
+    background: var(--gray-50);
+  }
+
+  .page {
+    max-width: 850px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 36px 44px;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .page { padding: 16px 0; max-width: 100%; }
+    .score-scale { break-inside: avoid; }
+    .factor-card { break-inside: avoid; }
+    .who-cares { break-inside: avoid; }
+    .debt-table { break-inside: avoid; }
+    .build-section { break-inside: avoid; }
+    section { break-inside: avoid; }
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .header .unit-tag {
+    display: inline-block;
+    background: var(--navy);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 30px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .header .subtitle {
+    font-size: 15px;
+    color: var(--gray-600);
+    font-style: italic;
+  }
+
+  h2 {
+    font-size: 20px;
+    color: var(--navy);
+    margin: 28px 0 14px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--light-blue);
+  }
+  h3 { font-size: 16px; color: var(--blue); margin: 14px 0 8px; }
+
+  p, li { font-size: 14px; }
+  p { margin-bottom: 10px; }
+  ul, ol { padding-left: 22px; margin-bottom: 12px; }
+  li { margin-bottom: 4px; }
+
+  /* ===== CREDIT SCORE SCALE / THERMOMETER ===== */
+  .score-scale {
+    margin: 20px 0 28px;
+  }
+  .scale-bar {
+    display: flex;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 52px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .scale-segment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.2;
+    position: relative;
+  }
+  .scale-segment .range { font-size: 11px; font-weight: 400; opacity: 0.9; }
+  .seg-poor { background: #dc2626; flex: 280; }
+  .seg-fair { background: #ea580c; flex: 90; }
+  .seg-good { background: #eab308; flex: 70; color: var(--gray-800); }
+  .seg-vgood { background: #65a30d; flex: 60; }
+  .seg-excellent { background: #16a34a; flex: 50; }
+
+  .scale-labels {
+    display: flex;
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--gray-600);
+  }
+  .scale-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .scale-detail-item {
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.4;
+  }
+  .scale-detail-item .score-range {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .sd-poor { background: #fee2e2; border: 2px solid #dc2626; }
+  .sd-poor .score-range { color: #dc2626; }
+  .sd-fair { background: #fff7ed; border: 2px solid #ea580c; }
+  .sd-fair .score-range { color: #ea580c; }
+  .sd-good { background: #fefce8; border: 2px solid #ca8a04; }
+  .sd-good .score-range { color: #ca8a04; }
+  .sd-vgood { background: #f0fdf4; border: 2px solid #65a30d; }
+  .sd-vgood .score-range { color: #65a30d; }
+  .sd-excellent { background: #dcfce7; border: 2px solid #16a34a; }
+  .sd-excellent .score-range { color: #16a34a; }
+
+  .avg-callout {
+    text-align: center;
+    background: var(--light-blue);
+    border: 2px solid var(--blue);
+    border-radius: 10px;
+    padding: 10px 16px;
+    margin: 16px auto;
+    max-width: 420px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .avg-callout span { font-size: 22px; font-weight: 800; color: var(--blue); }
+
+  /* ===== 5 FACTORS ===== */
+  .factors-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 14px 0;
+  }
+  .factor-card {
+    border-radius: 10px;
+    padding: 16px 20px;
+    border-left: 5px solid;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .factor-card .factor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+  .factor-card .factor-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .factor-card .factor-pct {
+    font-size: 22px;
+    font-weight: 800;
+    border-radius: 8px;
+    padding: 2px 12px;
+  }
+  .factor-card .factor-desc {
+    font-size: 14px;
+    color: var(--gray-600);
+    margin-bottom: 4px;
+  }
+  .factor-card .factor-quote {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--gray-800);
+    background: rgba(255,255,255,0.7);
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 6px;
+  }
+
+  .f1 { border-left-color: #dc2626; background: linear-gradient(135deg, #fee2e2, #fff); }
+  .f1 .factor-pct { background: #fee2e2; color: #dc2626; }
+  .f2 { border-left-color: #ea580c; background: linear-gradient(135deg, #fff7ed, #fff); }
+  .f2 .factor-pct { background: #fff7ed; color: #ea580c; }
+  .f3 { border-left-color: #2563eb; background: linear-gradient(135deg, #dbeafe, #fff); }
+  .f3 .factor-pct { background: #dbeafe; color: #2563eb; }
+  .f4 { border-left-color: #7c3aed; background: linear-gradient(135deg, #ede9fe, #fff); }
+  .f4 .factor-pct { background: #ede9fe; color: #7c3aed; }
+  .f5 { border-left-color: #0891b2; background: linear-gradient(135deg, #cffafe, #fff); }
+  .f5 .factor-pct { background: #cffafe; color: #0891b2; }
+
+  /* Pie chart visual */
+  .pie-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin: 14px 0 20px;
+    padding: 16px;
+    background: var(--gray-50);
+    border-radius: 12px;
+    border: 1px solid var(--gray-200);
+  }
+  .pie-svg { width: 160px; height: 160px; }
+  .pie-legend { font-size: 13px; line-height: 2; }
+  .pie-legend .dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+
+  /* ===== WHO CARES ===== */
+  .who-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 14px 0;
+  }
+  .who-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+  .who-item .who-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+    width: 32px;
+    text-align: center;
+  }
+  .who-item strong { color: var(--navy); display: block; font-size: 14px; margin-bottom: 2px; }
+
+  /* ===== BUILD CREDIT ===== */
+  .build-timeline {
+    position: relative;
+    padding-left: 32px;
+    margin: 16px 0;
+  }
+  .build-timeline::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--blue), var(--green));
+    border-radius: 2px;
+  }
+  .build-step {
+    position: relative;
+    margin-bottom: 18px;
+    padding: 14px 18px;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+  }
+  .build-step::before {
+    content: '';
+    position: absolute;
+    left: -26px;
+    top: 18px;
+    width: 14px;
+    height: 14px;
+    background: var(--blue);
+    border: 3px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--blue);
+  }
+  .build-step .step-age {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 2px 10px;
+    border-radius: 10px;
+    background: var(--light-blue);
+    color: var(--blue);
+    margin-bottom: 6px;
+  }
+  .build-step h4 { font-size: 15px; color: var(--navy); margin-bottom: 4px; }
+  .build-step p { font-size: 13px; margin-bottom: 0; }
+
+  .golden-rules {
+    background: linear-gradient(135deg, #fef9c3, #fef3c7);
+    border: 2px solid var(--amber);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 18px 0;
+  }
+  .golden-rules h3 {
+    color: var(--amber);
+    margin: 0 0 10px;
+    font-size: 16px;
+  }
+  .golden-rules ul { margin-bottom: 0; }
+  .golden-rules li { font-size: 14px; margin-bottom: 6px; }
+  .golden-rules li strong { color: var(--navy); }
+
+  /* ===== GOOD DEBT VS BAD DEBT TABLE ===== */
+  .debt-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 14px;
+  }
+  .debt-table th {
+    padding: 12px 16px;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: left;
+    color: #fff;
+  }
+  .debt-table th.good-header { background: var(--green); border-radius: 8px 0 0 0; }
+  .debt-table th.bad-header { background: var(--red); border-radius: 0 8px 0 0; }
+  .debt-table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--gray-200);
+    vertical-align: top;
+  }
+  .debt-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+  .debt-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+  .debt-table td.good-cell { background: #f0fdf4; }
+  .debt-table td.bad-cell { background: #fef2f2; }
+
+  .debt-test {
+    text-align: center;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 12px;
+    padding: 20px 28px;
+    margin: 18px 0;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .debt-test strong { color: #93c5fd; font-size: 17px; }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .page { padding: 20px 16px; }
+    .scale-detail { grid-template-columns: 1fr 1fr; }
+    .who-grid { grid-template-columns: 1fr; }
+    .pie-visual { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="unit-tag">Unit 6 &middot; Lesson 11 &middot; Reference Sheet</div>
+    <h1>Your Financial Report Card</h1>
+    <div class="subtitle">Everything you need to know about credit scores &mdash; the number that controls your financial life</div>
+  </div>
+
+  <!-- ===== THE SCALE ===== -->
+  <h2>The Credit Score Scale (300 &ndash; 850)</h2>
+
+  <div class="score-scale">
+    <div class="scale-bar">
+      <div class="scale-segment seg-poor">Poor<span class="range">300&ndash;579</span></div>
+      <div class="scale-segment seg-fair">Fair<span class="range">580&ndash;669</span></div>
+      <div class="scale-segment seg-good">Good<span class="range">670&ndash;739</span></div>
+      <div class="scale-segment seg-vgood">Very Good<span class="range">740&ndash;799</span></div>
+      <div class="scale-segment seg-excellent">Excellent<span class="range">800&ndash;850</span></div>
+    </div>
+
+    <div class="scale-detail">
+      <div class="scale-detail-item sd-poor">
+        <div class="score-range">300&ndash;579</div>
+        <strong>Poor</strong>
+        Highest interest rates. Many denials. May need security deposits.
+      </div>
+      <div class="scale-detail-item sd-fair">
+        <div class="score-range">580&ndash;669</div>
+        <strong>Fair</strong>
+        Higher rates. Some applications denied. Limited options.
+      </div>
+      <div class="scale-detail-item sd-good">
+        <div class="score-range">670&ndash;739</div>
+        <strong>Good</strong>
+        Decent rates. Most applications approved. Room to improve.
+      </div>
+      <div class="scale-detail-item sd-vgood">
+        <div class="score-range">740&ndash;799</div>
+        <strong>Very Good</strong>
+        Low rates. Approved almost everywhere. Strong financial standing.
+      </div>
+      <div class="scale-detail-item sd-excellent">
+        <div class="score-range">800&ndash;850</div>
+        <strong>Excellent</strong>
+        Best rates available. Approved everywhere. Premium offers.
+      </div>
+    </div>
+
+    <div class="avg-callout">
+      The average American credit score is about <span>714</span> (Good range)
+    </div>
+  </div>
+
+  <!-- ===== THE 5 FACTORS ===== -->
+  <h2>The 5 Factors That Determine Your Score</h2>
+
+  <!-- Pie chart visual -->
+  <div class="pie-visual">
+    <svg class="pie-svg" viewBox="0 0 36 36">
+      <!-- Payment History 35% - starts at 0 -->
+      <circle r="15.9" cx="18" cy="18" fill="transparent" stroke="#dc2626" stroke-width="5" stroke-dasharray="35 65" stroke-dashoffset="0"></circle>
+      <!-- Credit Utilization 30% - starts at 35 -->
+      <circle r="15.9" cx="18" cy="18" fill="transparent" stroke="#ea580c" stroke-width="5" stroke-dasharray="30 70" stroke-dashoffset="-35"></circle>
+      <!-- Length of History 15% - starts at 65 -->
+      <circle r="15.9" cx="18" cy="18" fill="transparent" stroke="#2563eb" stroke-width="5" stroke-dasharray="15 85" stroke-dashoffset="-65"></circle>
+      <!-- Credit Mix 10% - starts at 80 -->
+      <circle r="15.9" cx="18" cy="18" fill="transparent" stroke="#7c3aed" stroke-width="5" stroke-dasharray="10 90" stroke-dashoffset="-80"></circle>
+      <!-- New Inquiries 10% - starts at 90 -->
+      <circle r="15.9" cx="18" cy="18" fill="transparent" stroke="#0891b2" stroke-width="5" stroke-dasharray="10 90" stroke-dashoffset="-90"></circle>
+    </svg>
+    <div class="pie-legend">
+      <div><span class="dot" style="background:#dc2626"></span><strong>35%</strong> Payment History</div>
+      <div><span class="dot" style="background:#ea580c"></span><strong>30%</strong> Credit Utilization</div>
+      <div><span class="dot" style="background:#2563eb"></span><strong>15%</strong> Length of Credit History</div>
+      <div><span class="dot" style="background:#7c3aed"></span><strong>10%</strong> Credit Mix</div>
+      <div><span class="dot" style="background:#0891b2"></span><strong>10%</strong> New Credit Inquiries</div>
+    </div>
+  </div>
+
+  <div class="factors-grid">
+
+    <div class="factor-card f1">
+      <div class="factor-header">
+        <span class="factor-name">1. Payment History</span>
+        <span class="factor-pct">35%</span>
+      </div>
+      <div class="factor-desc">The single biggest factor. Do you pay your bills on time?</div>
+      <div class="factor-quote">"ONE late payment can drop your score 100 points. ONE. It stays on your record for 7 years. Set up autopay and never miss a due date."</div>
+    </div>
+
+    <div class="factor-card f2">
+      <div class="factor-header">
+        <span class="factor-name">2. Credit Utilization</span>
+        <span class="factor-pct">30%</span>
+      </div>
+      <div class="factor-desc">How much of your available credit are you using?</div>
+      <div class="factor-quote">"If your credit limit is $1,000, using more than $300 hurts your score. Using less than $100 is best. Think of it as a test: the less you need to borrow, the more they trust you."</div>
+    </div>
+
+    <div class="factor-card f3">
+      <div class="factor-header">
+        <span class="factor-name">3. Length of Credit History</span>
+        <span class="factor-pct">15%</span>
+      </div>
+      <div class="factor-desc">How long have you had credit accounts?</div>
+      <div class="factor-quote">"Older accounts = better score. This is why starting young gives you a superpower. A 16-year-old who becomes an authorized user will have 5+ years of history by age 21."</div>
+    </div>
+
+    <div class="factor-card f4">
+      <div class="factor-header">
+        <span class="factor-name">4. Credit Mix</span>
+        <span class="factor-pct">10%</span>
+      </div>
+      <div class="factor-desc">Do you have different types of credit?</div>
+      <div class="factor-quote">"Having a credit card + a student loan + a car loan (all in good standing) shows you can handle different kinds of borrowing. Don't open accounts just for this &mdash; it happens naturally over time."</div>
+    </div>
+
+    <div class="factor-card f5">
+      <div class="factor-header">
+        <span class="factor-name">5. New Credit Inquiries</span>
+        <span class="factor-pct">10%</span>
+      </div>
+      <div class="factor-desc">Have you applied for lots of new credit recently?</div>
+      <div class="factor-quote">"Applying for 4 credit cards in one month looks desperate. Each application (called a 'hard inquiry') can ding your score. Space out applications. Note: checking your OWN score is a 'soft inquiry' and does NOT affect it."</div>
+    </div>
+
+  </div>
+
+  <!-- ===== WHO CARES ===== -->
+  <h2>Who Cares About Your Credit Score?</h2>
+  <p>More people than you think check this number before doing business with you:</p>
+
+  <div class="who-grid">
+    <div class="who-item">
+      <div class="who-icon">&#127968;</div>
+      <div>
+        <strong>Landlords</strong>
+        Will they rent you an apartment? Low score = denied or extra deposit required.
+      </div>
+    </div>
+    <div class="who-item">
+      <div class="who-icon">&#127974;</div>
+      <div>
+        <strong>Banks &amp; Lenders</strong>
+        Will they give you a loan? At what interest rate? This is where the BIG money difference happens.
+      </div>
+    </div>
+    <div class="who-item">
+      <div class="who-icon">&#128663;</div>
+      <div>
+        <strong>Car Dealers</strong>
+        What interest rate do you get on an auto loan? Bad credit = thousands more for the same car.
+      </div>
+    </div>
+    <div class="who-item">
+      <div class="who-icon">&#128203;</div>
+      <div>
+        <strong>Insurance Companies</strong>
+        Some states allow insurers to use credit scores when setting your rates. Lower score = higher premiums.
+      </div>
+    </div>
+    <div class="who-item">
+      <div class="who-icon">&#128188;</div>
+      <div>
+        <strong>Some Employers</strong>
+        Especially in finance, government, and security jobs. A credit check can be part of the hiring process.
+      </div>
+    </div>
+    <div class="who-item">
+      <div class="who-icon">&#128241;</div>
+      <div>
+        <strong>Cell Phone Companies</strong>
+        Good credit = phone lease or installment plan. Bad credit = pay full price upfront.
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HOW TO BUILD CREDIT ===== -->
+  <h2>How to Build Credit (Starting Young)</h2>
+
+  <div class="build-timeline">
+    <div class="build-step">
+      <div class="step-age">Ages 13&ndash;17</div>
+      <h4>Become an Authorized User</h4>
+      <p>A parent adds you to one of their credit cards with a long, positive history. You don't even need to use the card. Their payment history starts building YOUR credit file. Make sure the card issuer reports authorized users to the credit bureaus.</p>
+    </div>
+    <div class="build-step">
+      <div class="step-age">Age 18+</div>
+      <h4>Get a Secured Credit Card</h4>
+      <p>You deposit $200&ndash;$500 at a bank. That deposit becomes your credit limit. Use it for one small recurring purchase (like a streaming subscription). Pay the full balance every month. After 6&ndash;12 months of on-time payments, you can upgrade to a regular card and get your deposit back.</p>
+    </div>
+    <div class="build-step">
+      <div class="step-age">Age 18+</div>
+      <h4>Student Credit Card or Credit-Builder Loan</h4>
+      <p>Some banks offer student cards with small limits. Credit-builder loans deposit your loan amount into savings while you make payments &mdash; building history and savings at the same time.</p>
+    </div>
+  </div>
+
+  <div class="golden-rules">
+    <h3>The Golden Rules &mdash; At Any Age</h3>
+    <ul>
+      <li><strong>Pay every bill on time. Every time. No exceptions.</strong> This is 35% of your score. Set up autopay.</li>
+      <li><strong>Use less than 30% of your credit limit.</strong> Under 10% is even better. If your limit is $1,000, keep balances below $300.</li>
+      <li><strong>Don't close old accounts.</strong> Even if you don't use the card much, the length of history matters. Put one small charge on it every few months.</li>
+      <li><strong>Don't open many new accounts at once.</strong> Space applications out. Each one creates a hard inquiry.</li>
+      <li><strong>Check your credit report annually.</strong> You get a free report from each bureau once a year at AnnualCreditReport.com. Look for errors and dispute them.</li>
+    </ul>
+  </div>
+
+  <!-- ===== GOOD DEBT VS BAD DEBT ===== -->
+  <h2>Good Debt vs. Bad Debt</h2>
+
+  <table class="debt-table">
+    <thead>
+      <tr>
+        <th class="good-header">Good Debt (Can Help You)</th>
+        <th class="bad-header">Bad Debt (Hurts You)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="good-cell"><strong>Mortgage</strong> &mdash; Builds equity in a home that typically appreciates in value</td>
+        <td class="bad-cell"><strong>Credit card balance for impulse buys</strong> &mdash; High interest on things that lose value instantly</td>
+      </tr>
+      <tr>
+        <td class="good-cell"><strong>Student loans</strong> &mdash; If for a career that pays well enough to repay them and increase your lifetime earnings</td>
+        <td class="bad-cell"><strong>Payday loans</strong> &mdash; Extremely high interest (often 400%+ APR). Designed to trap you in a cycle</td>
+      </tr>
+      <tr>
+        <td class="good-cell"><strong>Business loan</strong> &mdash; To start or grow a business that generates income exceeding the loan cost</td>
+        <td class="bad-cell"><strong>Car loan you can't afford</strong> &mdash; Cars lose 20% of their value in year one. Borrowing too much = underwater fast</td>
+      </tr>
+      <tr>
+        <td class="good-cell"><strong>Low-interest debt for appreciating assets</strong> &mdash; Things that grow in value over time</td>
+        <td class="bad-cell"><strong>Any high-interest debt for depreciating stuff</strong> &mdash; Clothes, electronics, vacations on credit</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="debt-test">
+    <strong>The Test for Any Debt:</strong><br>
+    "Will this debt help me earn more money or own something that grows in value?"<br>
+    <strong>If YES</strong> &rarr; it might be good debt. <strong>If NO</strong> &rarr; it's probably bad debt.
+  </div>
+
+</div>
+</body>
+</html>
