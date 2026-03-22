@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Savings Match Tracker — Watch Your Money DOUBLE</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #2d3436; background: #fff; padding: 20px; }
+  .page { max-width: 850px; margin: 0 auto; }
+
+  :root { --green: #00b894; --green-light: #e8f8f2; --green-dark: #009b7d; --gray: #636e72; --border: #dfe6e9; }
+
+  h1 { font-size: 1.5rem; color: var(--green-dark); margin-bottom: 2px; }
+  h2 { font-size: 1.05rem; color: var(--green-dark); margin: 14px 0 6px; border-bottom: 2px solid var(--green); padding-bottom: 3px; }
+
+  .header { text-align: center; border-bottom: 3px solid var(--green); padding-bottom: 10px; margin-bottom: 14px; }
+  .header .subtitle { color: var(--gray); font-size: 0.85rem; }
+
+  .field { border-bottom: 1.5px solid var(--border); min-width: 100px; display: inline-block; }
+  .field-sm { min-width: 50px; }
+  .field-lg { min-width: 200px; }
+
+  /* Explanation box */
+  .explain-box { background: var(--green-light); border: 2px solid var(--green); border-radius: 8px; padding: 12px 16px; margin-bottom: 14px; }
+  .explain-box p { font-size: 0.85rem; line-height: 1.55; margin-bottom: 6px; }
+  .explain-box p:last-child { margin-bottom: 0; }
+  .explain-box strong { color: var(--green-dark); }
+
+  /* Goal tracker */
+  .goal-box { background: #fff; border: 2px dashed var(--green); border-radius: 8px; padding: 10px 16px; margin-bottom: 14px; }
+  .goal-box p { font-size: 0.9rem; line-height: 1.7; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+  th, td { border: 1px solid var(--border); padding: 5px 8px; font-size: 0.82rem; text-align: left; }
+  th { background: var(--green-light); color: var(--green-dark); font-weight: 600; }
+  tr.total-row td { background: var(--green-light); font-weight: 700; }
+
+  /* Progress bar */
+  .progress-section { margin: 14px 0; }
+  .progress-track { display: flex; gap: 2px; margin-top: 6px; }
+  .progress-block { flex: 1; height: 28px; border: 1.5px solid var(--green); border-radius: 3px; background: #fff; position: relative; }
+  .progress-block .label { position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%); font-size: 0.6rem; color: var(--gray); white-space: nowrap; }
+  .progress-label-row { display: flex; gap: 2px; margin-top: 18px; }
+  .progress-label-row span { flex: 1; text-align: center; font-size: 0.6rem; color: var(--gray); }
+
+  /* Year-end summary */
+  .year-end { background: var(--green-light); border-radius: 8px; padding: 12px 16px; margin-top: 14px; }
+  .year-end p { font-size: 0.88rem; line-height: 1.7; }
+  .year-end .highlight { font-size: 1rem; font-weight: 700; color: var(--green-dark); text-align: center; margin: 8px 0; }
+
+  /* Real-world box */
+  .real-world { border: 2px solid var(--green); border-radius: 8px; padding: 12px 16px; margin-top: 14px; }
+  .real-world p { font-size: 0.82rem; line-height: 1.55; margin-bottom: 4px; }
+  .real-world p:last-child { margin-bottom: 0; }
+
+  .tip { background: var(--green-light); border-left: 4px solid var(--green); padding: 8px 10px; font-size: 0.78rem; color: var(--gray); margin-top: 12px; border-radius: 0 4px 4px 0; }
+
+  .name-line { font-size: 0.9rem; margin-bottom: 4px; }
+
+  @media print {
+    body { padding: 0; }
+    .page { max-width: 100%; }
+    h1 { font-size: 1.3rem; }
+    table { page-break-inside: avoid; }
+    .explain-box, .goal-box, .year-end, .real-world { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="header">
+    <h1>Savings Match Tracker</h1>
+    <p style="font-size: 1.15rem; font-weight: 700; color: var(--green);">Watch Your Money DOUBLE</p>
+    <p class="subtitle">Year: <span class="field field-sm"></span> &nbsp; Name: <span class="field field-lg"></span></p>
+  </div>
+
+  <!-- Explanation -->
+  <div class="explain-box">
+    <p><strong>How the Savings Match works:</strong> Your parents will <strong>MATCH</strong> your savings &mdash; for every dollar you save, they add <span class="field field-sm"></span> (50&cent; / $1 / your family's rate).</p>
+    <p>This is exactly how a <strong>401(k)</strong> works at a real job. Your employer gives you <strong>FREE MONEY</strong> just for saving. The catch? <strong>You have to actually save to get the match!</strong></p>
+    <p style="font-size:0.8rem; color:var(--gray);">Our family match rate: <span class="field field-sm"></span>% &nbsp; (e.g., 100% = dollar for dollar, 50% = 50 cents per dollar)</p>
+  </div>
+
+  <!-- Goal Tracker -->
+  <div class="goal-box">
+    <p><strong>I'm saving for:</strong> <span class="field field-lg"></span></p>
+    <p><strong>It costs:</strong> $<span class="field field-sm"></span> &nbsp;&nbsp; <strong>At this rate, I'll reach my goal in</strong> <span class="field field-sm"></span> <strong>months.</strong></p>
+  </div>
+
+  <!-- Monthly Tracking Table -->
+  <h2>Monthly Savings &amp; Match Log</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:14%;">Month</th>
+        <th style="width:22%;">My Savings This Month</th>
+        <th style="width:22%;">Parent Match (<span class="field-sm" style="min-width:30px; display:inline-block; border-bottom:1.5px solid var(--green-dark);"></span>%)</th>
+        <th style="width:20%;">Total Added</th>
+        <th style="width:22%;">Running Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>January</td><td>$</td><td>$</td><td>$</td><td>$</td></tr>
+      <tr><td>February</td><td>$</td><td>$</td><td>$</td><td>$</td></tr>
+      <tr><td>March</td><td>$</td><td>$</td><td>$</td><td>$</td></tr>
+      <tr><td>April</td><td>$</td><td>$</td><td>$</td><td>$</td></tr>
+      <tr><td>May</td><td>$</td><td>$</td><td>$</td><td>$</td></tr>
+      <tr><td>June</td><td>$</td><td>$</td><td>$</td><td>$</td></tr>
+      <tr><td>July</td><td>$</td><td>$</td><td>$</td><td>$</td></tr>
+      <tr><td>August</td><td>$</td><td>$</td><td>$</td><td>$</td></tr>
+      <tr><td>September</td><td>$</td><td>$</td><td>$</td><td>$</td></tr>
+      <tr><td>October</td><td>$</td><td>$</td><td>$</td><td>$</td></tr>
+      <tr><td>November</td><td>$</td><td>$</td><td>$</td><td>$</td></tr>
+      <tr><td>December</td><td>$</td><td>$</td><td>$</td><td>$</td></tr>
+      <tr class="total-row"><td><strong>TOTALS</strong></td><td>$</td><td>$</td><td>$</td><td style="font-size:0.95rem;">$</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Progress Visualization -->
+  <div class="progress-section">
+    <h2>Savings Growth &mdash; Color In As You Go!</h2>
+    <p style="font-size:0.8rem; color:var(--gray); margin-bottom: 4px;">Color in one block for each $<span class="field" style="min-width:30px;"></span> saved. Use GREEN for your savings, BLUE for the parent match.</p>
+    <div class="progress-track">
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+      <div class="progress-block"></div>
+    </div>
+    <div class="progress-label-row">
+      <span>$</span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span>GOAL!</span>
+    </div>
+  </div>
+
+  <!-- Year-End Summary -->
+  <div class="year-end">
+    <h2 style="border-bottom-color: var(--green-dark); margin-top: 0;">Year-End Summary</h2>
+    <p>Total <strong>I</strong> saved: $<span class="field"></span></p>
+    <p>Total parent match: $<span class="field"></span></p>
+    <p><strong>Grand total: $<span class="field"></span></strong></p>
+    <div class="highlight">The match gave me $<span class="field"></span> in FREE MONEY &mdash; just for saving!</div>
+  </div>
+
+  <!-- Real-World Connection -->
+  <div class="real-world">
+    <h2 style="margin-top: 0; border: none; padding-bottom: 0;">The Real-World Connection: 401(k) Match</h2>
+    <p>In a real 401(k), your employer typically matches <strong>3&ndash;6% of your salary</strong>.</p>
+    <p>If you earn <strong>$50,000</strong> and your employer matches 3%, that's <strong>$1,500/year in free money</strong>.</p>
+    <p style="font-weight: 700; color: var(--green-dark);">If you DON'T contribute, you LOSE that free money. It's like leaving cash on the table.</p>
+    <p>That $1,500/year invested over 40 years at 8% growth = <strong>over $400,000</strong>. From money your employer just <em>gives</em> you.</p>
+    <p style="font-size: 0.78rem; color: var(--gray);">This is why financial advisors say: "Always contribute at least enough to get the full employer match."</p>
+  </div>
+
+  <div class="tip">Family setup: Decide on your match rate together. Common options: 50% match (for every $1 saved, parents add 50&cent;), 100% match (dollar for dollar), or a capped match (100% up to $10/month). Write it in the box above so everyone remembers the deal!</div>
+
+</div>
+
+</body>
+</html>

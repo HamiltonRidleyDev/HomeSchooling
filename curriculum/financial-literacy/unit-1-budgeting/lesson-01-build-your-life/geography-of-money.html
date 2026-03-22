@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Geography of Money — Where You Live Changes Everything</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 28px 24px 40px;
+    color: #1a1a2e;
+    background: #f8f9fc;
+    line-height: 1.55;
+  }
+
+  /* ---- HEADER ---- */
+  .page-header {
+    text-align: center;
+    padding: 32px 20px 24px;
+    background: linear-gradient(135deg, #0d47a1 0%, #1565c0 40%, #42a5f5 100%);
+    color: #fff;
+    border-radius: 14px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: "\1F30E";
+    font-size: 64px;
+    position: absolute;
+    top: 12px;
+    left: 18px;
+    opacity: .18;
+  }
+  .page-header::after {
+    content: "\1F4B5";
+    font-size: 56px;
+    position: absolute;
+    bottom: 10px;
+    right: 22px;
+    opacity: .18;
+  }
+  .page-header h1 {
+    font-size: 1.65rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .page-header .subtitle {
+    font-size: .97rem;
+    opacity: .92;
+    max-width: 640px;
+    margin: 0 auto;
+    font-style: italic;
+    position: relative;
+  }
+
+  /* ---- SECTIONS ---- */
+  .section { margin-bottom: 30px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+  .section-header .icon { font-size: 1.5rem; }
+
+  .section-header.blue   { background: #e3f2fd; color: #0d47a1; border-left: 5px solid #1565c0; }
+  .section-header.orange  { background: linear-gradient(90deg, #fff3e0, #ffe0b2); color: #e65100; border-left: 5px solid #ff9800; }
+  .section-header.green   { background: #e8f5e9; color: #1b5e20; border-left: 5px solid #43a047; }
+  .section-header.purple  { background: #f3e5f5; color: #4a148c; border-left: 5px solid #8e24aa; }
+
+  /* ---- TABLES ---- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 18px;
+    font-size: .92rem;
+  }
+  table th, table td {
+    padding: 9px 12px;
+    text-align: center;
+    border: 1px solid #cfd8dc;
+  }
+  table th {
+    font-weight: 700;
+    font-size: .84rem;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+  }
+  table td:first-child, table th:first-child { text-align: left; font-weight: 600; }
+
+  /* state column colors */
+  .col-fl { background: #fff8e1; }
+  .col-tx { background: #fce4ec; }
+  .col-ca { background: #e8eaf6; }
+  .col-ny { background: #e0f2f1; }
+
+  .th-fl { background: #f9a825; color: #fff; }
+  .th-tx { background: #c62828; color: #fff; }
+  .th-ca { background: #283593; color: #fff; }
+  .th-ny { background: #00695c; color: #fff; }
+  .th-label { background: #37474f; color: #fff; }
+
+  .highlight-row td { font-weight: 700; font-size: .95rem; }
+  .highlight-row .col-fl { color: #e65100; }
+  .highlight-row .col-tx { color: #b71c1c; }
+  .highlight-row .col-ca { color: #1a237e; }
+  .highlight-row .col-ny { color: #004d40; }
+
+  /* ---- CALLOUT ---- */
+  .callout {
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 18px 0;
+    font-size: .95rem;
+  }
+  .callout.big {
+    background: linear-gradient(135deg, #fff9c4, #fff176);
+    border: 2px solid #f9a825;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .callout.big .emoji { font-size: 1.3rem; }
+
+  /* ---- FLORIDA SPOTLIGHT ---- */
+  .florida-spotlight {
+    background: linear-gradient(135deg, #fff8e1 0%, #ffe0b2 100%);
+    border: 2px solid #ff9800;
+    border-radius: 14px;
+    padding: 0 0 20px;
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .florida-banner {
+    background: linear-gradient(90deg, #ff9800, #f57c00, #ef6c00);
+    color: #fff;
+    text-align: center;
+    padding: 14px 18px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: .5px;
+  }
+  .florida-banner .sun { font-size: 1.5rem; }
+  .florida-content { padding: 18px 22px 0; }
+
+  .fl-col {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+  .fl-col > div { flex: 1; min-width: 260px; }
+
+  .fl-col h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .fl-col ul {
+    list-style: none;
+    padding: 0;
+    font-size: .9rem;
+  }
+  .fl-col ul li {
+    padding: 5px 0 5px 22px;
+    position: relative;
+    line-height: 1.45;
+  }
+  .fl-col .advantages li::before { content: "\2705"; position: absolute; left: 0; }
+  .fl-col .watchout li::before  { content: "\26A0\FE0F"; position: absolute; left: 0; }
+
+  .did-you-know {
+    background: #fff3e0;
+    border: 1px dashed #ff9800;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 16px;
+  }
+  .did-you-know h4 {
+    font-size: .95rem;
+    margin-bottom: 8px;
+    color: #e65100;
+  }
+  .did-you-know ul {
+    list-style: none;
+    padding: 0;
+    font-size: .88rem;
+  }
+  .did-you-know li {
+    padding: 4px 0 4px 22px;
+    position: relative;
+  }
+  .did-you-know li::before { content: "\1F4A1"; position: absolute; left: 0; }
+
+  /* ---- DISCUSSION ---- */
+  .prompts {
+    list-style: none;
+    padding: 0;
+  }
+  .prompts li {
+    background: #f1f8e9;
+    border-left: 4px solid #43a047;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    border-radius: 0 8px 8px 0;
+    font-size: .92rem;
+    line-height: 1.5;
+  }
+  .prompts li::before { content: "\1F4AC "; }
+
+  .rule-of-thumb {
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    border: 2px solid #43a047;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 14px;
+    font-size: .93rem;
+    line-height: 1.55;
+  }
+  .rule-of-thumb strong { color: #1b5e20; }
+
+  /* ---- ACTIVITY ---- */
+  .activity-table th:first-child { min-width: 150px; }
+  .activity-table td:not(:first-child) {
+    background: #fafafa;
+    min-width: 100px;
+    height: 34px;
+  }
+  .activity-table .hint { font-size: .78rem; color: #888; font-weight: 400; }
+  .activity-tagline {
+    text-align: center;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #4a148c;
+    margin-top: 12px;
+    padding: 10px;
+    background: #f3e5f5;
+    border-radius: 8px;
+  }
+
+  /* ---- FOOTER ---- */
+  .footer {
+    text-align: center;
+    font-size: .78rem;
+    color: #90a4ae;
+    margin-top: 34px;
+    padding-top: 14px;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  /* ---- PRINT ---- */
+  @media print {
+    body { background: #fff; padding: 0; font-size: 11pt; }
+    .page-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .florida-spotlight, .florida-banner,
+    .section-header, .callout, .rule-of-thumb,
+    .did-you-know, .prompts li, .activity-tagline,
+    .th-fl, .th-tx, .th-ca, .th-ny, .th-label,
+    .col-fl, .col-tx, .col-ca, .col-ny {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .section { break-inside: avoid; }
+    table { font-size: 9pt; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="page-header">
+  <h1>The Geography of Money<br>Where You Live Changes Everything</h1>
+  <p class="subtitle">The same job, same lifestyle, same choices &mdash; but a completely different financial picture depending on your zip code.</p>
+</header>
+
+<!-- ============ SECTION 1 ============ -->
+<section class="section">
+  <div class="section-header blue">
+    <span class="icon">&#x1F4CA;</span>
+    Section 1: The Same $60,000 Salary in Four States
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="th-label"></th>
+        <th class="th-fl">&#x2600;&#xFE0F; Florida</th>
+        <th class="th-tx">&#x2B50; Texas</th>
+        <th class="th-ca">&#x1F43B; California</th>
+        <th class="th-ny">&#x1F5FD; New York</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>State Income Tax</td>
+        <td class="col-fl"><strong>$0</strong></td>
+        <td class="col-tx"><strong>$0</strong></td>
+        <td class="col-ca">~$2,400</td>
+        <td class="col-ny">~$3,200</td>
+      </tr>
+      <tr>
+        <td>Monthly Take-Home (approx)</td>
+        <td class="col-fl">$3,850</td>
+        <td class="col-tx">$3,850</td>
+        <td class="col-ca">$3,650</td>
+        <td class="col-ny">$3,580</td>
+      </tr>
+      <tr>
+        <td>Average 1BR Rent</td>
+        <td class="col-fl">$1,400</td>
+        <td class="col-tx">$1,200</td>
+        <td class="col-ca">$2,200</td>
+        <td class="col-ny">$2,800</td>
+      </tr>
+      <tr>
+        <td>Car Insurance (annual)</td>
+        <td class="col-fl">$2,800</td>
+        <td class="col-tx">$1,900</td>
+        <td class="col-ca">$2,200</td>
+        <td class="col-ny">$2,600</td>
+      </tr>
+      <tr>
+        <td>Home Insurance (annual, $300K home)</td>
+        <td class="col-fl">$4,500</td>
+        <td class="col-tx">$3,800</td>
+        <td class="col-ca">$1,500</td>
+        <td class="col-ny">$1,200</td>
+      </tr>
+      <tr>
+        <td>Groceries (monthly)</td>
+        <td class="col-fl">$350</td>
+        <td class="col-tx">$320</td>
+        <td class="col-ca">$400</td>
+        <td class="col-ny">$420</td>
+      </tr>
+      <tr class="highlight-row">
+        <td>Monthly Money "Left Over" (rough)</td>
+        <td class="col-fl">~$1,492</td>
+        <td class="col-tx">~$1,855</td>
+        <td class="col-ca">~$742</td>
+        <td class="col-ny">~$43</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="font-size:.82rem;color:#546e7a;margin-bottom:10px;">
+    <em>* "Left over" = Monthly take-home minus rent, car insurance&divide;12, home insurance&divide;12, and groceries. Real life has many more expenses &mdash; this is simplified to show the geographic difference.</em>
+  </p>
+
+  <div class="callout big">
+    <span class="emoji">&#x26A0;&#xFE0F;</span><br>
+    Florida and Texas have <u>NO state income tax</u> &mdash; but Florida has the <strong>highest home insurance in the country</strong>.<br>
+    Every state has trade-offs.
+  </div>
+</section>
+
+<!-- ============ SECTION 2: FLORIDA SPOTLIGHT ============ -->
+<section class="section">
+  <div class="florida-spotlight">
+    <div class="florida-banner">
+      <span class="sun">&#x2600;&#xFE0F;</span> &nbsp;
+      Florida Financial Facts &mdash; The Sunshine State Spotlight
+      &nbsp; <span class="sun">&#x1F34A;</span>
+    </div>
+
+    <div class="florida-content">
+      <div class="fl-col">
+        <!-- ADVANTAGES -->
+        <div>
+          <h3 style="color:#2e7d32;">&#x2705; Advantages</h3>
+          <ul class="advantages">
+            <li><strong>No state income tax</strong> &mdash; save $2,000&ndash;$8,000+/year vs. high-tax states</li>
+            <li><strong>No state estate/inheritance tax</strong> &mdash; your wealth passes to family</li>
+            <li><strong>Homestead exemption</strong> &mdash; your primary home is protected from most creditors (unique to Florida!)</li>
+            <li><strong>No tax on Social Security or retirement income</strong></li>
+            <li><strong>Lower overall cost of living</strong> than CA, NY, NJ, MA, etc.</li>
+          </ul>
+        </div>
+
+        <!-- WATCH OUT -->
+        <div>
+          <h3 style="color:#c62828;">&#x26A0;&#xFE0F; Watch Out For</h3>
+          <ul class="watchout">
+            <li><strong>Homeowner's insurance:</strong> 2&ndash;3&times; national average due to hurricanes. A $300K home can cost $4,000&ndash;$7,000/yr to insure. National avg: ~$1,500.</li>
+            <li><strong>Flood insurance:</strong> Required in many areas, NOT included in standard policies. Can add $500&ndash;$2,500/yr.</li>
+            <li><strong>Car insurance:</strong> FL is a "no-fault" state with many uninsured drivers. Avg: ~$2,800/yr vs. $1,700 nationally.</li>
+            <li><strong>Hurricane preparedness:</strong> Budget for storm supplies, potential evacuation costs, deductibles. Hurricane deductible can be 2&ndash;5% of home value ($6,000&ndash;$15,000 on a $300K home).</li>
+            <li><strong>Property taxes:</strong> About 0.86% of home value. On a $300K home: ~$2,580/yr.</li>
+            <li><strong>Sales tax:</strong> 6% state + up to 1.5% local = up to 7.5% on purchases.</li>
+            <li><strong>Heat = high electric bills:</strong> AC runs most of the year. Average electric: $150&ndash;$250/month.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- DID YOU KNOW -->
+      <div class="did-you-know">
+        <h4>&#x1F4A1; Did You Know?</h4>
+        <ul>
+          <li>Florida is the #1 destination for people moving from high-tax states like NY and CA.</li>
+          <li>The average Floridian saves $2,000&ndash;$5,000/year just from no state income tax.</li>
+          <li>But that savings can be wiped out by one bad hurricane season if you're not properly insured.</li>
+          <li>Florida's homestead exemption is so strong that some people have moved to Florida specifically to protect their home from creditors.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3: THE LESSON ============ -->
+<section class="section">
+  <div class="section-header green">
+    <span class="icon">&#x1F9ED;</span>
+    Section 3: The Lesson &mdash; Geography Matters
+  </div>
+
+  <h3 style="font-size:.98rem;margin-bottom:10px;color:#2e7d32;">Discussion Prompts</h3>
+  <ul class="prompts">
+    <li>If you took the same job in California vs. Florida, you'd earn the same gross salary but take home different amounts. How much difference does state income tax make?</li>
+    <li>Florida saves you on income tax but costs more for insurance. Which trade-off would you prefer?</li>
+    <li>If you're choosing between two job offers &mdash; one in a big expensive city for $80K and one in a small town for $55K &mdash; which might actually leave you with MORE money after expenses?</li>
+    <li>Why do you think so many people are moving to Florida and Texas from other states?</li>
+    <li>What would you research about a city's finances BEFORE deciding to move there?</li>
+  </ul>
+
+  <div class="rule-of-thumb">
+    <strong>&#x1F4D0; Cost of Living Rule of Thumb:</strong><br><br>
+    Before accepting a job in a new city, research: <strong>housing costs, state/local taxes, insurance rates, and commute costs</strong>.<br><br>
+    A $90K salary in San Francisco might leave you with <strong>LESS money</strong> than a $60K salary in Tampa after accounting for the $2,800/month rent difference.
+  </div>
+</section>
+
+<!-- ============ SECTION 4: ACTIVITY ============ -->
+<section class="section">
+  <div class="section-header purple">
+    <span class="icon">&#x1F3D7;&#xFE0F;</span>
+    Section 4: Build Your Life &mdash; Location Edition
+    <span style="font-size:.78rem;font-weight:400;margin-left:auto;opacity:.75;">Optional Activity</span>
+  </div>
+
+  <p style="font-size:.93rem;margin-bottom:14px;">
+    Take your <em>Build Your Life</em> budget and redo it as if you lived in a different state. How much changes?
+  </p>
+
+  <table class="activity-table">
+    <thead>
+      <tr>
+        <th class="th-label">Category</th>
+        <th class="th-fl">&#x2600;&#xFE0F; My FL Budget</th>
+        <th class="th-ca">If I Lived in CA</th>
+        <th class="th-tx">If I Lived in Rural TX</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Housing</td>
+        <td class="col-fl">$________</td>
+        <td class="col-ca">$________ <span class="hint">(multiply by 1.5&ndash;2&times;)</span></td>
+        <td class="col-tx">$________ <span class="hint">(multiply by 0.7)</span></td>
+      </tr>
+      <tr>
+        <td>State Income Tax</td>
+        <td class="col-fl"><strong>$0</strong></td>
+        <td class="col-ca">$________ <span class="hint">(~5% of gross)</span></td>
+        <td class="col-tx"><strong>$0</strong></td>
+      </tr>
+      <tr>
+        <td>Car Insurance</td>
+        <td class="col-fl">$________</td>
+        <td class="col-ca">$________</td>
+        <td class="col-tx">$________ <span class="hint">(lower)</span></td>
+      </tr>
+      <tr>
+        <td>Home Insurance</td>
+        <td class="col-fl">$________ <span class="hint">(higher)</span></td>
+        <td class="col-ca">$________ <span class="hint">(lower)</span></td>
+        <td class="col-tx">$________</td>
+      </tr>
+      <tr class="highlight-row">
+        <td>Total Difference</td>
+        <td class="col-fl">&mdash;</td>
+        <td class="col-ca">+$____ or &minus;$____</td>
+        <td class="col-tx">+$____ or &minus;$____</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="activity-tagline">
+    &#x1F3E0; Same life, different zip code, different bank account. &#x1F4B0;
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  The Geography of Money &mdash; Financial Literacy Unit 1: Budgeting &bull; The Lost Boys Adventure Homeschool
+</footer>
+
+</body>
+</html>

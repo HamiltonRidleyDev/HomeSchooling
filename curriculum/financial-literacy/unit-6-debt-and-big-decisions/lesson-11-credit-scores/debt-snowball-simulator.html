@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Debt Snowball Simulator — Escape the Debt Trap</title>
+<style>
+  :root {
+    --navy: #1a2744;
+    --blue: #2563eb;
+    --light-blue: #dbeafe;
+    --green: #16a34a;
+    --dark-green: #15803d;
+    --light-green: #dcfce7;
+    --bright-green: #22c55e;
+    --amber: #d97706;
+    --light-amber: #fef3c7;
+    --red: #dc2626;
+    --dark-red: #b91c1c;
+    --light-red: #fee2e2;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-600: #4b5563;
+    --gray-800: #1f2937;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--gray-800);
+    line-height: 1.5;
+    background: var(--gray-50);
+  }
+
+  .page {
+    max-width: 850px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 36px 44px;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .page { padding: 16px 0; max-width: 100%; }
+    .phase-block { break-inside: avoid; }
+    .reflection-section { break-inside: avoid; }
+    .tip-box { break-inside: avoid; }
+    .strategy-card { break-inside: avoid; }
+    .comparison-section { break-inside: avoid; }
+    .age-label { break-inside: avoid; }
+    .exercise-section { break-inside: avoid; }
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .header .unit-tag {
+    display: inline-block;
+    background: var(--navy);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 28px;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  .header .tagline {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--red);
+    margin-bottom: 4px;
+  }
+  .header .subtitle {
+    font-size: 14px;
+    color: var(--gray-600);
+    font-style: italic;
+  }
+
+  .name-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .name-line .line {
+    flex: 1;
+    border-bottom: 2px solid var(--gray-200);
+    height: 1px;
+  }
+
+  h2 {
+    font-size: 20px;
+    color: var(--navy);
+    margin: 28px 0 12px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--light-blue);
+  }
+
+  h3 {
+    font-size: 17px;
+    color: var(--navy);
+    margin: 0 0 8px;
+  }
+
+  p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  /* Age labels */
+  .age-label {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+  .age-all { background: var(--light-blue); color: var(--blue); }
+  .age-11 { background: var(--light-green); color: var(--dark-green); }
+  .age-15 { background: var(--light-amber); color: var(--amber); }
+
+  /* Intro section */
+  .intro-section {
+    margin-bottom: 24px;
+  }
+
+  /* Strategy cards */
+  .strategy-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .strategy-card {
+    flex: 1;
+    border-radius: 14px;
+    border: 2px solid var(--gray-200);
+    overflow: hidden;
+  }
+  .strategy-card .card-header {
+    padding: 12px 18px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .strategy-card.snowball .card-header {
+    background: var(--blue);
+  }
+  .strategy-card.avalanche .card-header {
+    background: var(--dark-green);
+  }
+  .strategy-card .card-body {
+    padding: 14px 18px;
+    font-size: 13px;
+  }
+  .strategy-card .card-body p {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  .strategy-card .card-body ul {
+    margin: 0 0 0 18px;
+    font-size: 13px;
+  }
+  .strategy-card .card-body li {
+    margin-bottom: 4px;
+  }
+  .advantage {
+    font-weight: 700;
+    color: var(--dark-green);
+  }
+  .best-for {
+    font-style: italic;
+    color: var(--gray-600);
+  }
+
+  /* Scenario table */
+  .scenario-table-wrap {
+    margin-bottom: 20px;
+  }
+  .scenario-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    border: 2px solid var(--gray-200);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .scenario-table thead th {
+    background: var(--navy);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .scenario-table tbody td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .scenario-table tbody tr:nth-child(odd) td {
+    background: var(--gray-50);
+  }
+  .scenario-table .total-row td {
+    background: var(--light-red) !important;
+    font-weight: 700;
+    color: var(--dark-red);
+    border-top: 2px solid var(--red);
+  }
+  .debt-highlight {
+    color: var(--dark-red);
+    font-weight: 700;
+  }
+  .rate-highlight {
+    color: var(--red);
+    font-weight: 600;
+  }
+
+  /* Budget callout */
+  .budget-callout {
+    background: var(--light-blue);
+    border-left: 4px solid var(--blue);
+    padding: 14px 18px;
+    border-radius: 0 10px 10px 0;
+    margin-bottom: 28px;
+    font-size: 14px;
+  }
+  .budget-callout strong {
+    color: var(--navy);
+  }
+  .budget-callout .extra-amount {
+    display: inline-block;
+    background: var(--blue);
+    color: #fff;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-size: 15px;
+  }
+
+  /* Exercise sections */
+  .exercise-section {
+    margin-bottom: 32px;
+  }
+
+  /* Phase blocks */
+  .phase-block {
+    border: 2px solid var(--gray-200);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 18px;
+  }
+  .phase-header {
+    padding: 12px 18px;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .phase-header .phase-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: 800;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .phase-active .phase-header {
+    background: var(--light-red);
+    color: var(--dark-red);
+  }
+  .phase-active .phase-num {
+    background: var(--red);
+  }
+  .phase-done .phase-header {
+    background: var(--light-green);
+    color: var(--dark-green);
+  }
+  .phase-done .phase-num {
+    background: var(--green);
+  }
+  .phase-final .phase-header {
+    background: #eff6ff;
+    color: var(--blue);
+  }
+  .phase-final .phase-num {
+    background: var(--blue);
+  }
+  .phase-body {
+    padding: 16px 18px;
+  }
+  .phase-body .calc-line {
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .calc-line .label {
+    font-weight: 600;
+    color: var(--gray-600);
+    min-width: 220px;
+  }
+  .calc-line .value {
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .calc-line .fill-blank {
+    display: inline-block;
+    width: 80px;
+    border-bottom: 2px solid var(--gray-800);
+    text-align: center;
+    font-weight: 700;
+    min-height: 20px;
+  }
+  .calc-line .hint {
+    font-size: 12px;
+    color: var(--gray-600);
+    font-style: italic;
+  }
+  .phase-body .note {
+    font-size: 13px;
+    color: var(--gray-600);
+    font-style: italic;
+    margin-top: 6px;
+  }
+
+  /* Middle school hint */
+  .hint-box {
+    background: var(--light-green);
+    border: 1px dashed var(--green);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 8px 0;
+    font-size: 12px;
+    color: var(--dark-green);
+  }
+  .hint-box strong {
+    font-size: 13px;
+  }
+
+  /* Totals box */
+  .totals-box {
+    border: 3px solid var(--navy);
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin: 20px 0 28px;
+    background: #f8fafc;
+  }
+  .totals-box h3 {
+    font-size: 16px;
+    color: var(--navy);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .totals-box .total-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+  .totals-box .total-label {
+    font-weight: 600;
+    min-width: 240px;
+  }
+  .totals-box .total-fill {
+    display: inline-block;
+    width: 100px;
+    border-bottom: 3px solid var(--navy);
+    text-align: center;
+    min-height: 22px;
+  }
+  .totals-green .total-fill {
+    border-color: var(--green);
+  }
+
+  /* Comparison table */
+  .comparison-section {
+    margin: 28px 0;
+  }
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    border: 2px solid var(--navy);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .compare-table thead th {
+    background: var(--navy);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .compare-table tbody td {
+    padding: 12px 14px;
+    text-align: center;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .compare-table tbody td:first-child {
+    font-weight: 700;
+    text-align: left;
+  }
+  .compare-table .row-snowball td {
+    background: var(--light-blue);
+  }
+  .compare-table .row-snowball td:first-child {
+    color: var(--blue);
+  }
+  .compare-table .row-avalanche td {
+    background: var(--light-green);
+  }
+  .compare-table .row-avalanche td:first-child {
+    color: var(--dark-green);
+  }
+  .compare-table .row-diff td {
+    background: var(--light-amber);
+    font-weight: 700;
+    color: var(--amber);
+  }
+
+  /* Answer key (self-check) */
+  .answer-key {
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 12px 0 24px;
+    font-size: 12px;
+    color: var(--gray-600);
+  }
+  .answer-key strong {
+    font-size: 13px;
+    color: var(--gray-800);
+  }
+
+  /* Minimums warning */
+  .warning-block {
+    background: var(--light-red);
+    border: 2px solid var(--red);
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin: 20px 0;
+  }
+  .warning-block h3 {
+    color: var(--dark-red);
+    margin-bottom: 8px;
+  }
+  .warning-block .calc-line .label {
+    color: var(--dark-red);
+  }
+  .warning-block .fill-blank {
+    border-color: var(--dark-red);
+  }
+
+  /* Tip box */
+  .tip-box {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border: 2px solid var(--green);
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin: 28px 0;
+  }
+  .tip-box .tip-header {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--dark-green);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .tip-box p {
+    font-size: 14px;
+    color: var(--dark-green);
+    margin: 0;
+  }
+
+  /* Reflection */
+  .reflection-section {
+    margin: 28px 0 0;
+  }
+  .reflection-question {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--navy);
+  }
+  .reflection-lines {
+    border-bottom: 1px solid var(--gray-200);
+    height: 24px;
+    margin-bottom: 6px;
+  }
+  .reflection-lines.tall {
+    height: 48px;
+  }
+
+  /* Work space for high school */
+  .work-space {
+    border: 1px dashed var(--gray-200);
+    border-radius: 10px;
+    min-height: 120px;
+    margin: 8px 0 16px;
+    padding: 10px;
+    background: var(--gray-50);
+  }
+  .work-space-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gray-600);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  /* Challenge box */
+  .challenge-box {
+    background: var(--light-amber);
+    border: 2px solid var(--amber);
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin: 24px 0;
+  }
+  .challenge-box h3 {
+    color: var(--amber);
+    margin-bottom: 6px;
+  }
+  .challenge-box p {
+    font-size: 14px;
+    color: var(--gray-800);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="unit-tag">Unit 6 &mdash; Debt &amp; Big Decisions &bull; Lesson 11</div>
+    <h1>Debt Snowball Simulator</h1>
+    <div class="tagline">Escape the Debt Trap</div>
+    <div class="subtitle">You have $12,000 in debt across 3 sources. How you pay it off changes EVERYTHING.</div>
+  </div>
+
+  <div class="name-line">
+    Name <div class="line"></div> Date <div class="line" style="max-width:180px"></div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro-section">
+    <p>Most adults have multiple debts at the same time. The way you attack them makes a huge difference in how fast you're free and how much you pay in interest. Two popular strategies:</p>
+  </div>
+
+  <!-- STRATEGY CARDS -->
+  <div class="strategy-row">
+    <div class="strategy-card snowball">
+      <div class="card-header">Strategy 1: The Snowball Method</div>
+      <div class="card-body">
+        <p>Pay minimums on everything, then throw ALL extra money at the <strong>smallest debt first</strong>. When it's gone, roll that payment into the next smallest. Like a snowball getting bigger as it rolls.</p>
+        <ul>
+          <li><span class="advantage">Advantage:</span> Quick wins keep you motivated</li>
+          <li><span class="best-for">Best for: People who need momentum</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="strategy-card avalanche">
+      <div class="card-header">Strategy 2: The Avalanche Method</div>
+      <div class="card-body">
+        <p>Pay minimums on everything, then throw ALL extra money at the <strong>highest interest debt first</strong>. Mathematically saves the most money.</p>
+        <ul>
+          <li><span class="advantage">Advantage:</span> Saves the most in interest</li>
+          <li><span class="best-for">Best for: People who are disciplined and patient</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE SCENARIO -->
+  <h2>The Scenario</h2>
+  <p>You just graduated and have these 3 debts:</p>
+
+  <div class="scenario-table-wrap">
+    <table class="scenario-table">
+      <thead>
+        <tr>
+          <th>Debt</th>
+          <th>Balance</th>
+          <th>Interest Rate (APR)</th>
+          <th>Minimum Payment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Credit Card</td>
+          <td class="debt-highlight">$3,500</td>
+          <td class="rate-highlight">22%</td>
+          <td>$75/mo</td>
+        </tr>
+        <tr>
+          <td>Student Loan</td>
+          <td class="debt-highlight">$6,000</td>
+          <td class="rate-highlight">6%</td>
+          <td>$65/mo</td>
+        </tr>
+        <tr>
+          <td>Car Loan</td>
+          <td class="debt-highlight">$2,500</td>
+          <td class="rate-highlight">8%</td>
+          <td>$85/mo</td>
+        </tr>
+        <tr class="total-row">
+          <td>Total</td>
+          <td>$12,000</td>
+          <td></td>
+          <td>$225/mo</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="budget-callout">
+    <strong>Your total budget for debt payments: $500/month</strong><br>
+    That means you have <span class="extra-amount">$275/month EXTRA</span> beyond minimums to attack one debt.
+  </div>
+
+  <!-- ============================================ -->
+  <!-- EXERCISE 1: SNOWBALL METHOD -->
+  <!-- ============================================ -->
+  <div class="exercise-section">
+    <h2>Exercise 1: The Snowball Method</h2>
+    <span class="age-label age-all">Ages 11&ndash;15</span>
+    <p>Attack the <strong>smallest balance first</strong> (Car Loan: $2,500), then the next smallest.</p>
+
+    <!-- Phase 1 -->
+    <div class="phase-block phase-active">
+      <div class="phase-header">
+        <span class="phase-num">1</span>
+        Attack the Car Loan ($2,500 at 8%)
+      </div>
+      <div class="phase-body">
+        <div class="calc-line">
+          <span class="label">Car loan payment:</span>
+          <span class="value">$85 minimum + $275 extra = $360/mo</span>
+        </div>
+        <div class="calc-line">
+          <span class="label">Months to pay off $2,500 at $360/mo:</span>
+          <span class="fill-blank"></span>
+          <span class="hint">(about 7)</span>
+        </div>
+        <div class="calc-line">
+          <span class="label">Interest paid on car loan:</span>
+          ~$<span class="fill-blank"></span>
+        </div>
+        <div class="hint-box">
+          <strong>Ages 11&ndash;13 Hint:</strong> Divide the balance by the monthly payment: $2,500 &div; $360 &asymp; 7 months. The interest adds a little extra, but the payment is so large it gets wiped out fast. Interest will be roughly $60&ndash;$80.
+        </div>
+        <p class="note">Meanwhile: Still paying minimums on credit card ($75/mo) and student loan ($65/mo).</p>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="phase-block phase-done">
+      <div class="phase-header">
+        <span class="phase-num">2</span>
+        Car Loan is GONE! Roll $360 into Credit Card
+      </div>
+      <div class="phase-body">
+        <div class="calc-line">
+          <span class="label">Credit card payment:</span>
+          <span class="value">$75 minimum + $360 freed up = $435/mo</span>
+        </div>
+        <div class="calc-line">
+          <span class="label">Remaining CC balance (after ~7 mo of minimums):</span>
+          ~$<span class="fill-blank"></span>
+        </div>
+        <div class="calc-line">
+          <span class="label">Months to pay off remaining balance:</span>
+          <span class="fill-blank"></span>
+          <span class="hint">months</span>
+        </div>
+        <div class="calc-line">
+          <span class="label">Interest paid on credit card (total):</span>
+          ~$<span class="fill-blank"></span>
+        </div>
+        <div class="hint-box">
+          <strong>Ages 11&ndash;13 Hint:</strong> After 7 months of only paying $75/mo on a 22% card, the balance barely drops because interest eats most of the payment. The remaining balance is around $3,100&ndash;$3,200. At $435/mo it takes about 8&ndash;9 more months.
+        </div>
+        <p class="note">Meanwhile: Still paying minimums on student loan ($65/mo).</p>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="phase-block phase-final">
+      <div class="phase-header">
+        <span class="phase-num">3</span>
+        Credit Card is GONE! Roll $435 into Student Loan
+      </div>
+      <div class="phase-body">
+        <div class="calc-line">
+          <span class="label">Student loan payment:</span>
+          <span class="value">$65 + $435 = $500/mo (your entire budget)</span>
+        </div>
+        <div class="calc-line">
+          <span class="label">Remaining student loan balance:</span>
+          ~$<span class="fill-blank"></span>
+        </div>
+        <div class="calc-line">
+          <span class="label">Months to pay off:</span>
+          <span class="fill-blank"></span>
+          <span class="hint">months</span>
+        </div>
+        <div class="calc-line">
+          <span class="label">Interest paid on student loan (total):</span>
+          ~$<span class="fill-blank"></span>
+        </div>
+        <div class="hint-box">
+          <strong>Ages 11&ndash;13 Hint:</strong> After about 15&ndash;16 months of paying $65/mo on a 6% loan, the balance is around $5,000&ndash;$5,100. At $500/mo, that's about 10&ndash;11 more months.
+        </div>
+      </div>
+    </div>
+
+    <!-- Snowball Totals -->
+    <div class="totals-box">
+      <h3>Snowball Totals</h3>
+      <div class="total-line">
+        <span class="total-label">Total months to become debt-free:</span>
+        <span class="total-fill"></span>
+      </div>
+      <div class="total-line">
+        <span class="total-label">Total interest paid:</span>
+        ~$<span class="total-fill"></span>
+      </div>
+    </div>
+
+    <span class="age-label age-15">Age 15 &mdash; Show Your Work</span>
+    <div class="work-space-label">Show your calculations here</div>
+    <div class="work-space"></div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- EXERCISE 2: AVALANCHE METHOD -->
+  <!-- ============================================ -->
+  <div class="exercise-section">
+    <h2>Exercise 2: The Avalanche Method</h2>
+    <span class="age-label age-all">Ages 11&ndash;15</span>
+    <p>Attack the <strong>highest interest rate first</strong> (Credit Card: 22%), then the next highest.</p>
+
+    <!-- Phase 1 -->
+    <div class="phase-block phase-active">
+      <div class="phase-header">
+        <span class="phase-num">1</span>
+        Attack the Credit Card ($3,500 at 22%)
+      </div>
+      <div class="phase-body">
+        <div class="calc-line">
+          <span class="label">Credit card payment:</span>
+          <span class="value">$75 minimum + $275 extra = $350/mo</span>
+        </div>
+        <div class="calc-line">
+          <span class="label">Months to pay off $3,500 at $350/mo:</span>
+          <span class="fill-blank"></span>
+          <span class="hint">(about 11&ndash;12)</span>
+        </div>
+        <div class="calc-line">
+          <span class="label">Interest paid on credit card:</span>
+          ~$<span class="fill-blank"></span>
+        </div>
+        <div class="hint-box">
+          <strong>Ages 11&ndash;13 Hint:</strong> At 22% APR, interest is steep! Each month about $64 in interest gets added at first. $3,500 &div; $350 &asymp; 10, but interest stretches it to about 11&ndash;12 months. Total interest around $350&ndash;$400.
+        </div>
+        <p class="note">Meanwhile: Still paying minimums on student loan ($65/mo) and car loan ($85/mo).</p>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="phase-block phase-done">
+      <div class="phase-header">
+        <span class="phase-num">2</span>
+        Credit Card is GONE! Roll $350 into Car Loan
+      </div>
+      <div class="phase-body">
+        <div class="calc-line">
+          <span class="label">Car loan payment:</span>
+          <span class="value">$85 minimum + $350 freed up = $435/mo</span>
+        </div>
+        <div class="calc-line">
+          <span class="label">Remaining car balance (after ~11 mo of minimums):</span>
+          ~$<span class="fill-blank"></span>
+        </div>
+        <div class="calc-line">
+          <span class="label">Months to pay off remaining balance:</span>
+          <span class="fill-blank"></span>
+          <span class="hint">months</span>
+        </div>
+        <div class="calc-line">
+          <span class="label">Interest paid on car loan (total):</span>
+          ~$<span class="fill-blank"></span>
+        </div>
+        <div class="hint-box">
+          <strong>Ages 11&ndash;13 Hint:</strong> After ~11 months of paying $85/mo on an 8% loan, the balance is around $1,700&ndash;$1,800. At $435/mo, that disappears in about 4&ndash;5 months.
+        </div>
+        <p class="note">Meanwhile: Still paying minimums on student loan ($65/mo).</p>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="phase-block phase-final">
+      <div class="phase-header">
+        <span class="phase-num">3</span>
+        Car Loan is GONE! Roll $435 into Student Loan
+      </div>
+      <div class="phase-body">
+        <div class="calc-line">
+          <span class="label">Student loan payment:</span>
+          <span class="value">$65 + $435 = $500/mo (your entire budget)</span>
+        </div>
+        <div class="calc-line">
+          <span class="label">Remaining student loan balance:</span>
+          ~$<span class="fill-blank"></span>
+        </div>
+        <div class="calc-line">
+          <span class="label">Months to pay off:</span>
+          <span class="fill-blank"></span>
+          <span class="hint">months</span>
+        </div>
+        <div class="calc-line">
+          <span class="label">Interest paid on student loan (total):</span>
+          ~$<span class="fill-blank"></span>
+        </div>
+        <div class="hint-box">
+          <strong>Ages 11&ndash;13 Hint:</strong> After about 15&ndash;16 months of paying $65/mo on a 6% loan, the balance is around $5,000&ndash;$5,100. At $500/mo, that's about 10&ndash;11 more months.
+        </div>
+      </div>
+    </div>
+
+    <!-- Avalanche Totals -->
+    <div class="totals-box totals-green">
+      <h3>Avalanche Totals</h3>
+      <div class="total-line">
+        <span class="total-label">Total months to become debt-free:</span>
+        <span class="total-fill"></span>
+      </div>
+      <div class="total-line">
+        <span class="total-label">Total interest paid:</span>
+        ~$<span class="total-fill"></span>
+      </div>
+    </div>
+
+    <span class="age-label age-15">Age 15 &mdash; Show Your Work</span>
+    <div class="work-space-label">Show your calculations here</div>
+    <div class="work-space"></div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- COMPARISON -->
+  <!-- ============================================ -->
+  <div class="comparison-section">
+    <h2>Comparison: Snowball vs. Avalanche</h2>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>Months to Debt-Free</th>
+          <th>Total Interest Paid</th>
+          <th>First Debt Gone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row-snowball">
+          <td>Snowball</td>
+          <td><span class="fill-blank" style="width:60px;border-color:var(--blue)"></span></td>
+          <td>$<span class="fill-blank" style="width:70px;border-color:var(--blue)"></span></td>
+          <td>Month <span class="fill-blank" style="width:40px;border-color:var(--blue)"></span></td>
+        </tr>
+        <tr class="row-avalanche">
+          <td>Avalanche</td>
+          <td><span class="fill-blank" style="width:60px;border-color:var(--green)"></span></td>
+          <td>$<span class="fill-blank" style="width:70px;border-color:var(--green)"></span></td>
+          <td>Month <span class="fill-blank" style="width:40px;border-color:var(--green)"></span></td>
+        </tr>
+        <tr class="row-diff">
+          <td>Difference</td>
+          <td><span class="fill-blank" style="width:60px;border-color:var(--amber)"></span> months</td>
+          <td>$<span class="fill-blank" style="width:70px;border-color:var(--amber)"></span> saved</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="answer-key">
+      <strong>Self-Check (approximate answers):</strong><br>
+      Snowball: ~28 months, ~$2,100 in interest. First debt gone at month 7.<br>
+      Avalanche: ~26 months, ~$1,700 in interest. First debt gone at month 11&ndash;12.<br>
+      The avalanche saves ~$400 and ~2 months, but the snowball gives you your first win at month 7.
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- EXERCISE 3: ONLY MINIMUMS -->
+  <!-- ============================================ -->
+  <div class="exercise-section">
+    <h2>Exercise 3: What If You Only Pay Minimums?</h2>
+    <span class="age-label age-all">Ages 11&ndash;15</span>
+    <p>What if you just paid the minimum $225/month and never paid extra?</p>
+
+    <div class="warning-block">
+      <h3>The Minimum Payment Trap</h3>
+      <div class="calc-line">
+        <span class="label">Time to pay off ALL debts:</span>
+        <span class="fill-blank"></span>
+        <span class="hint">months (hint: 5+ years)</span>
+      </div>
+      <div class="calc-line">
+        <span class="label">Total interest paid:</span>
+        ~$<span class="fill-blank"></span>
+        <span class="hint">(hint: $4,000+)</span>
+      </div>
+      <div class="calc-line" style="margin-top: 14px;">
+        <span class="label">The difference between minimums and your $500/month plan:</span>
+      </div>
+      <div class="calc-line">
+        <span class="label" style="min-width:auto">You save $</span>
+        <span class="fill-blank"></span>
+        <span class="label" style="min-width:auto">and</span>
+        <span class="fill-blank"></span>
+        <span class="hint">years of your life.</span>
+      </div>
+      <div class="hint-box" style="background:#fff;border-color:var(--red);color:var(--dark-red);margin-top:12px;">
+        <strong>Ages 11&ndash;13 Hint:</strong> The credit card at 22% is the killer. At only $75/mo on a $3,500 balance, most of each payment goes to interest. It would take 7+ years just for the credit card alone! Total interest across all debts would be well over $4,000.
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- TIP BOX -->
+  <!-- ============================================ -->
+  <div class="tip-box">
+    <div class="tip-header">The #1 Debt Strategy</div>
+    <p>The best debt strategy? <strong>AVOID DEBT IN THE FIRST PLACE.</strong> But if you have it, attack it with a plan. The worst thing you can do is ignore it and pay only minimums.</p>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- HIGH SCHOOL CHALLENGE -->
+  <!-- ============================================ -->
+  <div class="challenge-box">
+    <span class="age-label age-15">Age 15 &mdash; Challenge</span>
+    <h3>Side Hustle Bonus Challenge</h3>
+    <p>What if you found an extra $100/month from your side hustle? Redo the avalanche method at <strong>$600/month total</strong> ($375/month extra beyond minimums). How much faster do you become debt-free? How much interest do you save compared to $500/month?</p>
+    <div class="work-space-label" style="margin-top:12px">Show your work below</div>
+    <div class="work-space" style="min-height:180px"></div>
+    <div class="calc-line" style="margin-top:8px;">
+      <span class="label">New total months to debt-free:</span>
+      <span class="fill-blank"></span>
+    </div>
+    <div class="calc-line">
+      <span class="label">New total interest paid:</span>
+      ~$<span class="fill-blank"></span>
+    </div>
+    <div class="calc-line">
+      <span class="label">Months saved vs. $500/month avalanche:</span>
+      <span class="fill-blank"></span>
+    </div>
+    <div class="calc-line">
+      <span class="label">Interest saved vs. $500/month avalanche:</span>
+      ~$<span class="fill-blank"></span>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- REFLECTION -->
+  <!-- ============================================ -->
+  <div class="reflection-section">
+    <h2>Reflection</h2>
+
+    <p class="reflection-question">1. Which method would YOU choose &mdash; Snowball or Avalanche? Why?</p>
+    <div class="reflection-lines"></div>
+    <div class="reflection-lines tall"></div>
+
+    <p class="reflection-question">2. What's the danger of only paying minimums?</p>
+    <div class="reflection-lines"></div>
+    <div class="reflection-lines tall"></div>
+
+    <p class="reflection-question">3. How does this connect to the credit card section from Build Your Life?</p>
+    <div class="reflection-lines"></div>
+    <div class="reflection-lines tall"></div>
+
+    <p class="reflection-question">4. If you could avoid ONE of these debts entirely, which would it be and how would you avoid it?</p>
+    <div class="reflection-lines"></div>
+    <div class="reflection-lines tall"></div>
+
+    <p class="reflection-question">5. What's the most important thing you learned from this exercise?</p>
+    <div class="reflection-lines"></div>
+    <div class="reflection-lines tall"></div>
+  </div>
+
+</div>
+</body>
+</html>

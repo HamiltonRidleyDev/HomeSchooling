@@ -18,11 +18,17 @@
   .card { border: 2.5px solid; border-radius: 12px; padding: 12px; min-height: 180px; display: flex; flex-direction: column; }
   .card.expense { border-color: #d63031; background: #fff5f5; }
   .card.windfall { border-color: #00b894; background: #f0fff8; }
+  .card.temptation { border-color: #e17055; background: #fff8f0; }
+  .card.modern-trap { border-color: #e17055; background: #fff8f0; }
+  .card.modern-opportunity { border-color: #00cec9; background: #f0fffe; }
   .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
   .card-icon { font-size: 1.6em; }
   .card-type { font-size: 0.65em; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
   .card.expense .card-type { color: #d63031; }
   .card.windfall .card-type { color: #00b894; }
+  .card.temptation .card-type { color: #e17055; }
+  .card.modern-trap .card-type { color: #e17055; }
+  .card.modern-opportunity .card-type { color: #00cec9; }
   .card-title { font-size: 1em; font-weight: bold; margin-bottom: 4px; }
   .card-desc { font-size: 0.8em; color: #636e72; margin-bottom: 8px; }
 
@@ -251,6 +257,122 @@
     <div class="outcome-row"><span class="outcome-condition">You didn't give or volunteer</span><span class="outcome-cost neutral">No effect — but think about what giving could open up</span></div>
   </div>
   <div class="lesson">Lesson: Generosity isn't just about the money — it builds relationships and reputation. What goes around often comes around.</div>
+</div>
+
+</div>
+
+<div class="page-break"></div>
+
+<div class="section-label" style="background: linear-gradient(135deg, #e17055, #00cec9);">Temptation &amp; Modern Life Cards &mdash; Real-world traps and opportunities</div>
+
+<div class="grid">
+
+<!-- LIMITED-EDITION SNEAKER DROP -->
+<div class="card temptation">
+  <div class="card-header"><span class="card-icon">&#128095;</span><span class="card-type">Temptation</span></div>
+  <div class="card-title">Limited-Edition Sneaker Drop!</div>
+  <div class="card-desc">The shoes everyone wants just dropped. $280. Your friends are all buying them. They'll be worth $400 on resale... maybe.</div>
+  <div class="outcomes">
+    <div class="label">What happens?</div>
+    <div class="outcome-row"><span class="outcome-condition">You buy them (no emergency fund)</span><span class="outcome-cost">-$280 on credit card (+ interest next month)</span></div>
+    <div class="outcome-row"><span class="outcome-condition">You buy them (have emergency fund)</span><span class="outcome-cost">-$280 from savings. Worth it?</span></div>
+    <div class="outcome-row"><span class="outcome-condition">You resist</span><span class="outcome-cost good">$0. Your savings stay intact. The hype dies in 2 weeks.</span></div>
+  </div>
+  <div class="lesson">Lesson: Impulse purchases feel urgent but rarely are. The "limited edition" pressure is a marketing trick.</div>
+</div>
+
+<!-- CRYPTO/MEME STOCK HYPE -->
+<div class="card modern-trap">
+  <div class="card-header"><span class="card-icon">&#128200;</span><span class="card-type">Modern Risk</span></div>
+  <div class="card-title">Crypto / Meme Stock Hype!</div>
+  <div class="card-desc">Everyone online says this crypto coin is "going to the moon." It's up 300% this month.</div>
+  <div class="outcomes">
+    <div class="label">What happens?</div>
+    <div class="outcome-row"><span class="outcome-condition">You invested $200 last month &mdash; it's now $800! Do you sell?</span><span class="outcome-cost good">If you sell: +$600 profit. Smart.</span></div>
+    <div class="outcome-row"><span class="outcome-condition">You hold instead of selling</span><span class="outcome-cost">Flip a coin. Heads = +$1,200. Tails = -$150 (crash to almost nothing).</span></div>
+    <div class="outcome-row"><span class="outcome-condition">You didn't invest</span><span class="outcome-cost neutral">$0 effect. FOMO hurts but your money is safe.</span></div>
+  </div>
+  <div class="lesson">Lesson: If it sounds too good to be true, it usually is. Taking profits is never wrong. Gambling isn't investing.</div>
+</div>
+
+<!-- PHONE UPGRADE PRESSURE -->
+<div class="card temptation">
+  <div class="card-header"><span class="card-icon">&#128241;</span><span class="card-type">Temptation</span></div>
+  <div class="card-title">Phone Upgrade Pressure!</div>
+  <div class="card-desc">Your phone works fine but the new model just came out. All your friends have it. The carrier offers $0 down &mdash; just $45/month for 24 months.</div>
+  <div class="outcomes">
+    <div class="label">What happens?</div>
+    <div class="outcome-row"><span class="outcome-condition">You upgrade</span><span class="outcome-cost">-$45/month for 2 years (total: $1,080)</span></div>
+    <div class="outcome-row"><span class="outcome-condition">You keep your current phone</span><span class="outcome-cost good">$0. It still works. You saved $1,080.</span></div>
+    <div class="outcome-row"><span class="outcome-condition">You buy a refurbished model</span><span class="outcome-cost neutral">-$300 one-time. Saved $780 vs new.</span></div>
+  </div>
+  <div class="lesson">Lesson: "$0 down" isn't free &mdash; it's a 2-year commitment. Calculate the TOTAL cost, not the monthly cost.</div>
+</div>
+
+<!-- SCAM TEXT / PHISHING ATTACK -->
+<div class="card modern-trap">
+  <div class="card-header"><span class="card-icon">&#9888;&#65039;</span><span class="card-type">Modern Trap</span></div>
+  <div class="card-title">Scam Text / Phishing Attack!</div>
+  <div class="card-desc">You get a text: "Your bank account has been compromised. Click here to verify your identity immediately."</div>
+  <div class="outcomes">
+    <div class="label">What happens?</div>
+    <div class="outcome-row"><span class="outcome-condition">You learned about scams (Digital Safety lesson)</span><span class="outcome-cost good">$0 &mdash; you recognized it and deleted it.</span></div>
+    <div class="outcome-row"><span class="outcome-condition">You clicked the link and entered your info</span><span class="outcome-cost">-$500 stolen from your account. Takes 2-3 weeks to recover (if you're lucky).</span></div>
+  </div>
+  <div class="lesson">Lesson: Urgency + fear = scam. Your bank will NEVER text you a link. When in doubt, call the number on your actual bank card.</div>
+</div>
+
+<!-- SUBSCRIPTION CREEP -->
+<div class="card temptation">
+  <div class="card-header"><span class="card-icon">&#128257;</span><span class="card-type">Temptation</span></div>
+  <div class="card-title">Subscription Creep!</div>
+  <div class="card-desc">You signed up for a few free trials. You forgot to cancel. You're now paying for 4 services you barely use.</div>
+  <div class="outcomes">
+    <div class="label">What happens?</div>
+    <div class="outcome-row"><span class="outcome-condition">You track your subscriptions monthly</span><span class="outcome-cost good">$0 &mdash; you caught it.</span></div>
+    <div class="outcome-row"><span class="outcome-condition">You don't track</span><span class="outcome-cost">-$65/month in forgotten subscriptions. That's $780/year!</span></div>
+  </div>
+  <div class="lesson">Lesson: Set a calendar reminder when ANY free trial starts. Audit your subscriptions every month. The companies are counting on you forgetting.</div>
+</div>
+
+<!-- FRIEND ASKS FOR MONEY -->
+<div class="card temptation">
+  <div class="card-header"><span class="card-icon">&#129309;</span><span class="card-type">Social Pressure</span></div>
+  <div class="card-title">Friend Asks for Money!</div>
+  <div class="card-desc">Your close friend is in a tough spot and asks to borrow $300. They promise to pay you back next month.</div>
+  <div class="outcomes">
+    <div class="label">What happens?</div>
+    <div class="outcome-row"><span class="outcome-condition">You lend it AND they pay back</span><span class="outcome-cost neutral">$0 net, friendship intact.</span></div>
+    <div class="outcome-row"><span class="outcome-condition">You lend it and they DON'T pay back</span><span class="outcome-cost">-$300 and an awkward friendship.</span></div>
+    <div class="outcome-row"><span class="outcome-condition">You say no (or offer $50 you can afford to lose)</span><span class="outcome-cost neutral">$0 to -$50. Friendship tested but finances safe.</span></div>
+  </div>
+  <div class="lesson">Lesson: Never lend money you can't afford to lose. If you lend to a friend, consider it a gift in your mind &mdash; if they pay it back, great. If not, you're not surprised or resentful.</div>
+</div>
+
+<!-- REFERRAL / NETWORKING BONUS -->
+<div class="card modern-opportunity">
+  <div class="card-header"><span class="card-icon">&#127760;</span><span class="card-type">Positive Opportunity</span></div>
+  <div class="card-title">Referral / Networking Bonus!</div>
+  <div class="card-desc">Someone you helped in your community recommends you for a freelance gig / job opportunity.</div>
+  <div class="outcomes">
+    <div class="label">What happens?</div>
+    <div class="outcome-row"><span class="outcome-condition">You gave to charity or volunteered</span><span class="outcome-cost good">+$500 one-time opportunity. Generosity opened a door.</span></div>
+    <div class="outcome-row"><span class="outcome-condition">You didn't give or connect with community</span><span class="outcome-cost neutral">No effect. You never met this person.</span></div>
+  </div>
+  <div class="lesson">Lesson: Your network is your net worth. Giving &mdash; time, money, or help &mdash; builds relationships that come back in unexpected ways.</div>
+</div>
+
+<!-- VIRAL SIDE HUSTLE "COURSE" -->
+<div class="card modern-trap">
+  <div class="card-header"><span class="card-icon">&#127909;</span><span class="card-type">Modern Trap</span></div>
+  <div class="card-title">Viral Side Hustle "Course"!</div>
+  <div class="card-desc">An influencer promises: "Buy my $197 course and learn to make $10K/month from home!" Testimonials look amazing.</div>
+  <div class="outcomes">
+    <div class="label">What happens?</div>
+    <div class="outcome-row"><span class="outcome-condition">You buy it</span><span class="outcome-cost">-$197. The "course" is 3 YouTube videos you could've found for free.</span></div>
+    <div class="outcome-row"><span class="outcome-condition">You research first</span><span class="outcome-cost good">$0. A quick Google search reveals it's mostly hype.</span></div>
+  </div>
+  <div class="lesson">Lesson: If someone's making money selling a course about making money... they're making money from YOU, not from the method they're teaching. Be skeptical of "easy money" promises.</div>
 </div>
 
 </div>

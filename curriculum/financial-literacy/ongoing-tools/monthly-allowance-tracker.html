@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Real Budget — Monthly Allowance Tracker</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #2d3436; background: #fff; padding: 20px; }
+  .page { max-width: 850px; margin: 0 auto; }
+
+  /* ---------- Accent ---------- */
+  :root { --green: #00b894; --green-light: #e8f8f2; --green-dark: #009b7d; --gray: #636e72; --border: #dfe6e9; }
+
+  h1 { font-size: 1.55rem; color: var(--green-dark); margin-bottom: 2px; }
+  h2 { font-size: 1.1rem; color: var(--green-dark); margin: 14px 0 6px; border-bottom: 2px solid var(--green); padding-bottom: 3px; }
+  h3 { font-size: 0.95rem; color: var(--green-dark); margin: 10px 0 4px; }
+
+  .header { text-align: center; border-bottom: 3px solid var(--green); padding-bottom: 10px; margin-bottom: 12px; }
+  .header .subtitle { color: var(--gray); font-size: 0.85rem; }
+
+  .field { border-bottom: 1.5px solid var(--border); min-width: 120px; display: inline-block; }
+  .field-lg { min-width: 200px; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+  th, td { border: 1px solid var(--border); padding: 4px 6px; font-size: 0.8rem; text-align: left; }
+  th { background: var(--green-light); color: var(--green-dark); font-weight: 600; }
+  tr:last-child th, tr.total-row td { background: var(--green-light); font-weight: 700; }
+
+  /* Spending log */
+  .spending-log td { height: 18px; }
+  .spending-log th { position: sticky; top: 0; }
+
+  /* Summary */
+  .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; margin-bottom: 10px; }
+  .summary-item { font-size: 0.85rem; }
+  .summary-item span { font-weight: 600; }
+
+  .reflection { margin-top: 6px; font-size: 0.85rem; line-height: 1.8; }
+  .reflection .line { border-bottom: 1.5px solid var(--border); margin-bottom: 2px; min-height: 1.2em; display: block; }
+
+  .circle-choice { display: inline-block; border: 1.5px solid var(--green); border-radius: 50px; padding: 1px 10px; margin: 0 4px; font-size: 0.8rem; font-weight: 600; }
+
+  /* ---------- Age tiers ---------- */
+  .tier { display: none; }
+  .show-primary .tier-primary,
+  .show-elementary .tier-elementary,
+  .show-middle .tier-middle { display: block; }
+
+  /* Tier selector (screen only) */
+  .tier-selector { text-align: center; margin-bottom: 14px; font-size: 0.85rem; }
+  .tier-selector button { background: var(--green-light); border: 2px solid var(--green); border-radius: 6px; padding: 6px 16px; margin: 0 4px; cursor: pointer; font-family: inherit; font-weight: 600; color: var(--green-dark); }
+  .tier-selector button.active { background: var(--green); color: #fff; }
+
+  /* Primary piggy bank visual */
+  .piggy-section { text-align: center; margin: 10px 0; }
+  .piggy { font-size: 3.5rem; line-height: 1; }
+  .tally-table td { text-align: center; height: 38px; font-size: 1.1rem; }
+  .tally-table th { font-size: 0.95rem; }
+  .tally-label { font-size: 0.75rem; color: var(--gray); }
+
+  .primary-log td { height: 22px; }
+
+  /* Tip box */
+  .tip { background: var(--green-light); border-left: 4px solid var(--green); padding: 8px 10px; font-size: 0.78rem; color: var(--gray); margin-top: 10px; border-radius: 0 4px 4px 0; }
+
+  /* ---------- Print ---------- */
+  @media print {
+    body { padding: 0; }
+    .tier-selector { display: none; }
+    .page { max-width: 100%; }
+    h1 { font-size: 1.35rem; }
+    h2 { font-size: 1rem; break-after: avoid; }
+    table { page-break-inside: avoid; }
+    .spending-log { page-break-inside: auto; }
+    .spending-log tr { page-break-inside: avoid; }
+    .tip { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page" id="page">
+
+  <!-- Tier Selector (screen only) -->
+  <div class="tier-selector" id="tierSelector">
+    Choose version:
+    <button onclick="setTier('primary')" id="btn-primary">Primary (Age 6)</button>
+    <button onclick="setTier('elementary')" id="btn-elementary" class="active">Elementary</button>
+    <button onclick="setTier('middle')" id="btn-middle">Middle / High</button>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- PRIMARY TIER (Age 6) -->
+  <!-- ============================================================ -->
+  <div class="tier tier-primary">
+    <div class="header">
+      <h1>My Real Budget</h1>
+      <p style="font-size:1.05rem;">Month of <span class="field field-lg"></span></p>
+      <p style="font-size:0.9rem;">Name: <span class="field field-lg"></span></p>
+    </div>
+
+    <p style="font-size:1rem; text-align:center; margin:8px 0;">My Allowance This Month: $<span class="field" style="min-width:60px;"></span></p>
+
+    <div class="piggy-section">
+      <div class="piggy">&#x1F416;</div>
+      <p style="font-size:0.85rem; color:var(--gray);">Color in a coin each time you put money in your piggy bank!</p>
+    </div>
+
+    <h2>Where Does My Money Go?</h2>
+    <table class="tally-table">
+      <thead>
+        <tr><th style="width:30%;">Category</th><th>Planned</th><th>What I Actually Did</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Save</strong> &#x1F4B0;<br><span class="tally-label">Use tally marks: ||||</span></td>
+          <td>$<span class="field" style="min-width:40px;"></span></td>
+          <td>$<span class="field" style="min-width:40px;"></span></td>
+        </tr>
+        <tr>
+          <td><strong>Spend</strong> &#x1F6D2;<br><span class="tally-label">Things I want</span></td>
+          <td>$<span class="field" style="min-width:40px;"></span></td>
+          <td>$<span class="field" style="min-width:40px;"></span></td>
+        </tr>
+        <tr>
+          <td><strong>Give</strong> &#x2764;&#xFE0F;<br><span class="tally-label">Helping others</span></td>
+          <td>$<span class="field" style="min-width:40px;"></span></td>
+          <td>$<span class="field" style="min-width:40px;"></span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>What I Bought This Month</h2>
+    <table class="primary-log">
+      <thead>
+        <tr><th style="width:15%;">Day</th><th>What I Bought</th><th style="width:18%;">How Much?</th></tr>
+      </thead>
+      <tbody>
+        <tr><td></td><td></td><td>$</td></tr>
+        <tr><td></td><td></td><td>$</td></tr>
+        <tr><td></td><td></td><td>$</td></tr>
+        <tr><td></td><td></td><td>$</td></tr>
+        <tr><td></td><td></td><td>$</td></tr>
+        <tr><td></td><td></td><td>$</td></tr>
+        <tr><td></td><td></td><td>$</td></tr>
+        <tr><td></td><td></td><td>$</td></tr>
+        <tr><td></td><td></td><td>$</td></tr>
+        <tr><td></td><td></td><td>$</td></tr>
+      </tbody>
+    </table>
+
+    <h2>End of Month</h2>
+    <div class="reflection">
+      I got: $<span class="field"></span> &nbsp; I spent: $<span class="field"></span> &nbsp; I saved: $<span class="field"></span><br>
+      Did I do a good job? <span class="circle-choice">YES</span> <span class="circle-choice">MOSTLY</span> <span class="circle-choice">NO</span><br>
+      What made me happy this month: <span class="line" style="display:inline-block; min-width:300px; border-bottom:1.5px solid var(--border);"></span><br>
+      My piggy bank total now: $<span class="field"></span>
+    </div>
+
+    <div class="tip">Tip for parents: Let them physically handle coins. Sorting money into jars labeled Save / Spend / Give makes budgeting tangible.</div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- ELEMENTARY TIER -->
+  <!-- ============================================================ -->
+  <div class="tier tier-elementary">
+    <div class="header">
+      <h1>My Real Budget</h1>
+      <p style="font-size:1.05rem;">Month of <span class="field field-lg"></span></p>
+      <p style="font-size:0.9rem;">Name: <span class="field field-lg"></span></p>
+    </div>
+
+    <p style="font-size:1rem; margin:6px 0;">My Monthly Allowance: $<span class="field"></span></p>
+
+    <h2>Budget Plan <span style="font-weight:400; font-size:0.8rem; color:var(--gray);">(fill in at the start of the month)</span></h2>
+    <table>
+      <thead>
+        <tr><th>Category</th><th style="width:18%;">Planned</th><th style="width:18%;">Actual</th><th style="width:18%;">Difference</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Savings (pay yourself first!)</td><td>$</td><td>$</td><td>$</td></tr>
+        <tr><td>Giving</td><td>$</td><td>$</td><td>$</td></tr>
+        <tr><td>Spending (wants)</td><td>$</td><td>$</td><td>$</td></tr>
+        <tr class="total-row"><td><strong>Total</strong></td><td>$</td><td>$</td><td>$</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Daily Spending Log</h2>
+    <table class="spending-log">
+      <thead>
+        <tr><th style="width:10%;">Day</th><th>What I Bought</th><th style="width:16%;">Amount</th><th style="width:16%;">Need or Want?</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td></td><td>$</td><td></td></tr>
+        <tr><td>2</td><td></td><td>$</td><td></td></tr>
+        <tr><td>3</td><td></td><td>$</td><td></td></tr>
+        <tr><td>4</td><td></td><td>$</td><td></td></tr>
+        <tr><td>5</td><td></td><td>$</td><td></td></tr>
+        <tr><td>6</td><td></td><td>$</td><td></td></tr>
+        <tr><td>7</td><td></td><td>$</td><td></td></tr>
+        <tr><td>8</td><td></td><td>$</td><td></td></tr>
+        <tr><td>9</td><td></td><td>$</td><td></td></tr>
+        <tr><td>10</td><td></td><td>$</td><td></td></tr>
+        <tr><td>11</td><td></td><td>$</td><td></td></tr>
+        <tr><td>12</td><td></td><td>$</td><td></td></tr>
+        <tr><td>13</td><td></td><td>$</td><td></td></tr>
+        <tr><td>14</td><td></td><td>$</td><td></td></tr>
+        <tr><td>15</td><td></td><td>$</td><td></td></tr>
+        <tr><td>16</td><td></td><td>$</td><td></td></tr>
+        <tr><td>17</td><td></td><td>$</td><td></td></tr>
+        <tr><td>18</td><td></td><td>$</td><td></td></tr>
+        <tr><td>19</td><td></td><td>$</td><td></td></tr>
+        <tr><td>20</td><td></td><td>$</td><td></td></tr>
+        <tr><td>21</td><td></td><td>$</td><td></td></tr>
+        <tr><td>22</td><td></td><td>$</td><td></td></tr>
+        <tr><td>23</td><td></td><td>$</td><td></td></tr>
+        <tr><td>24</td><td></td><td>$</td><td></td></tr>
+        <tr><td>25</td><td></td><td>$</td><td></td></tr>
+        <tr><td>26</td><td></td><td>$</td><td></td></tr>
+        <tr><td>27</td><td></td><td>$</td><td></td></tr>
+        <tr><td>28</td><td></td><td>$</td><td></td></tr>
+        <tr><td>29</td><td></td><td>$</td><td></td></tr>
+        <tr><td>30</td><td></td><td>$</td><td></td></tr>
+        <tr><td>31</td><td></td><td>$</td><td></td></tr>
+      </tbody>
+    </table>
+
+    <h2>Month-End Summary</h2>
+    <div class="summary-grid">
+      <div class="summary-item"><span>Total received:</span> $<span class="field"></span></div>
+      <div class="summary-item"><span>Total spent:</span> $<span class="field"></span></div>
+      <div class="summary-item"><span>Total saved:</span> $<span class="field"></span></div>
+      <div class="summary-item"><span>Total given:</span> $<span class="field"></span></div>
+    </div>
+
+    <p style="font-size:0.85rem; margin:6px 0;">
+      Did I stick to my plan? <span class="circle-choice">YES</span> <span class="circle-choice">MOSTLY</span> <span class="circle-choice">NO</span>
+    </p>
+
+    <div class="reflection">
+      What went well: <span class="line"></span>
+      What I'd change next month: <span class="line"></span>
+      <strong>Savings balance (running total): $<span class="field"></span></strong>
+    </div>
+
+    <div class="tip">Tip: Fill in your Budget Plan on the 1st of the month. Fill in the Summary on the last day. Track spending as it happens!</div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- MIDDLE / HIGH TIER -->
+  <!-- ============================================================ -->
+  <div class="tier tier-middle">
+    <div class="header">
+      <h1>My Real Budget</h1>
+      <p style="font-size:1.05rem;">Month of <span class="field field-lg"></span></p>
+      <p style="font-size:0.9rem;">Name: <span class="field field-lg"></span></p>
+    </div>
+
+    <p style="font-size:1rem; margin:6px 0;">My Monthly Allowance: $<span class="field"></span></p>
+
+    <h2>Budget Plan <span style="font-weight:400; font-size:0.8rem; color:var(--gray);">(fill in at the start of the month)</span></h2>
+    <table>
+      <thead>
+        <tr><th>Category</th><th style="width:12%;">% of Total</th><th style="width:15%;">Planned</th><th style="width:15%;">Actual</th><th style="width:15%;">Difference</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Savings (pay yourself first!)</td><td>%</td><td>$</td><td>$</td><td>$</td></tr>
+        <tr><td>Investing</td><td>%</td><td>$</td><td>$</td><td>$</td></tr>
+        <tr><td>Giving</td><td>%</td><td>$</td><td>$</td><td>$</td></tr>
+        <tr><td>Spending (wants)</td><td>%</td><td>$</td><td>$</td><td>$</td></tr>
+        <tr class="total-row"><td><strong>Total</strong></td><td><strong>100%</strong></td><td>$</td><td>$</td><td>$</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Daily Spending Log</h2>
+    <table class="spending-log">
+      <thead>
+        <tr><th style="width:8%;">Day</th><th>What I Bought</th><th style="width:14%;">Amount</th><th style="width:14%;">Need or Want?</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td></td><td>$</td><td></td></tr>
+        <tr><td>2</td><td></td><td>$</td><td></td></tr>
+        <tr><td>3</td><td></td><td>$</td><td></td></tr>
+        <tr><td>4</td><td></td><td>$</td><td></td></tr>
+        <tr><td>5</td><td></td><td>$</td><td></td></tr>
+        <tr><td>6</td><td></td><td>$</td><td></td></tr>
+        <tr><td>7</td><td></td><td>$</td><td></td></tr>
+        <tr><td>8</td><td></td><td>$</td><td></td></tr>
+        <tr><td>9</td><td></td><td>$</td><td></td></tr>
+        <tr><td>10</td><td></td><td>$</td><td></td></tr>
+        <tr><td>11</td><td></td><td>$</td><td></td></tr>
+        <tr><td>12</td><td></td><td>$</td><td></td></tr>
+        <tr><td>13</td><td></td><td>$</td><td></td></tr>
+        <tr><td>14</td><td></td><td>$</td><td></td></tr>
+        <tr><td>15</td><td></td><td>$</td><td></td></tr>
+        <tr><td>16</td><td></td><td>$</td><td></td></tr>
+        <tr><td>17</td><td></td><td>$</td><td></td></tr>
+        <tr><td>18</td><td></td><td>$</td><td></td></tr>
+        <tr><td>19</td><td></td><td>$</td><td></td></tr>
+        <tr><td>20</td><td></td><td>$</td><td></td></tr>
+        <tr><td>21</td><td></td><td>$</td><td></td></tr>
+        <tr><td>22</td><td></td><td>$</td><td></td></tr>
+        <tr><td>23</td><td></td><td>$</td><td></td></tr>
+        <tr><td>24</td><td></td><td>$</td><td></td></tr>
+        <tr><td>25</td><td></td><td>$</td><td></td></tr>
+        <tr><td>26</td><td></td><td>$</td><td></td></tr>
+        <tr><td>27</td><td></td><td>$</td><td></td></tr>
+        <tr><td>28</td><td></td><td>$</td><td></td></tr>
+        <tr><td>29</td><td></td><td>$</td><td></td></tr>
+        <tr><td>30</td><td></td><td>$</td><td></td></tr>
+        <tr><td>31</td><td></td><td>$</td><td></td></tr>
+      </tbody>
+    </table>
+
+    <h2>Month-End Summary</h2>
+    <div class="summary-grid">
+      <div class="summary-item"><span>Total received:</span> $<span class="field"></span></div>
+      <div class="summary-item"><span>Total spent:</span> $<span class="field"></span></div>
+      <div class="summary-item"><span>Total saved:</span> $<span class="field"></span></div>
+      <div class="summary-item"><span>Total invested:</span> $<span class="field"></span></div>
+      <div class="summary-item"><span>Total given:</span> $<span class="field"></span></div>
+    </div>
+
+    <p style="font-size:0.85rem; margin:6px 0;">
+      Did I stick to my plan? <span class="circle-choice">YES</span> <span class="circle-choice">MOSTLY</span> <span class="circle-choice">NO</span>
+    </p>
+
+    <div class="reflection">
+      What went well: <span class="line"></span>
+      What I'd change next month: <span class="line"></span>
+      <strong>Savings balance (running total): $<span class="field"></span></strong><br>
+      <strong>Investment balance (running total): $<span class="field"></span></strong>
+    </div>
+
+    <h3>Percentage Check</h3>
+    <p style="font-size:0.8rem; color:var(--gray); margin-bottom:4px;">Calculate: What percentage of my allowance did I actually save? <span class="field" style="min-width:40px;"></span>% &nbsp; Invest? <span class="field" style="min-width:40px;"></span>% &nbsp; Give? <span class="field" style="min-width:40px;"></span>% &nbsp; Spend? <span class="field" style="min-width:40px;"></span>%</p>
+    <p style="font-size:0.78rem; color:var(--gray);">Formula: (Amount &divide; Total Allowance) &times; 100 = percentage</p>
+
+    <div class="tip">Pro tip: Financial advisors often recommend the 50/30/20 rule &mdash; 50% needs, 30% wants, 20% savings. Since your needs are covered by your parents, try aiming for 50% save/invest, 30% spend, 20% give. Find the split that works for YOU.</div>
+  </div>
+
+</div>
+
+<script>
+function setTier(tier) {
+  const page = document.getElementById('page');
+  page.className = 'page show-' + tier;
+  document.querySelectorAll('.tier-selector button').forEach(b => b.classList.remove('active'));
+  document.getElementById('btn-' + tier).classList.add('active');
+}
+// Default to elementary
+setTier('elementary');
+</script>
+
+</body>
+</html>

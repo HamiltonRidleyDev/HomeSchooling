@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career &amp; Wealth Tracker</title>
+<style>
+  @media print {
+    body { margin: 0.3in; font-size: 9.5pt; }
+    .page-break { page-break-before: always; }
+    .round-section { break-inside: avoid-page; }
+    .no-break { page-break-inside: avoid; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.5; color: #2d3436; max-width: 850px; margin: 0 auto; padding: 20px; }
+
+  h1 { font-size: 1.7em; text-align: center; color: #2d3436; margin-bottom: 2px; }
+  .subtitle { text-align: center; font-size: 0.88em; color: #636e72; margin-bottom: 6px; }
+  .header-row { display: flex; justify-content: space-between; margin: 8px 0 14px; font-size: 0.9em; }
+  .header-row span { border-bottom: 1.5px solid #2d3436; display: inline-block; width: 180px; }
+
+  .intro { background: #f5f6fa; border-left: 4px solid #6c5ce7; padding: 10px 14px; font-size: 0.85em; margin-bottom: 20px; border-radius: 0 6px 6px 0; }
+
+  /* Round sections */
+  .round-section { border-radius: 12px; padding: 18px; margin: 20px 0; }
+  .round-1 { border: 2.5px solid #6c5ce7; background: #f8f7ff; }
+  .round-2 { border: 2.5px solid #0984e3; background: #f0f8ff; }
+  .round-3 { border: 2.5px solid #00b894; background: #f0fff8; }
+
+  .round-badge { display: inline-block; padding: 4px 16px; border-radius: 20px; font-weight: bold; font-size: 0.9em; color: white; margin-bottom: 10px; letter-spacing: 0.5px; }
+  .badge-r1 { background: #6c5ce7; }
+  .badge-r2 { background: #0984e3; }
+  .badge-r3 { background: #00b894; }
+
+  .round-title { font-size: 1.25em; font-weight: bold; margin-bottom: 4px; }
+  .round-1 .round-title { color: #6c5ce7; }
+  .round-2 .round-title { color: #0984e3; }
+  .round-3 .round-title { color: #00b894; }
+
+  .round-flavor { font-size: 0.84em; color: #636e72; font-style: italic; margin-bottom: 14px; }
+
+  h3 { font-size: 1em; margin: 14px 0 8px; }
+  .round-1 h3 { color: #6c5ce7; }
+  .round-2 h3 { color: #0984e3; }
+  .round-3 h3 { color: #00b894; }
+
+  p, li { font-size: 0.88em; margin-bottom: 5px; }
+  ul { padding-left: 20px; }
+
+  .wl { border-bottom: 1.5px solid #b2bec3; display: inline-block; width: 80px; }
+  .wlm { border-bottom: 1.5px solid #b2bec3; display: inline-block; width: 140px; }
+  .wll { border-bottom: 1.5px solid #b2bec3; display: inline-block; width: 100%; min-width: 50px; }
+
+  .field-row { margin: 7px 0; font-size: 0.88em; }
+  .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 18px; margin: 8px 0; }
+
+  /* Choice boxes */
+  .choice-box { border: 1.5px solid #dfe6e9; border-radius: 8px; padding: 10px 14px; margin: 8px 0; background: white; }
+  .choice-option { margin: 5px 0; font-size: 0.86em; display: flex; align-items: baseline; gap: 6px; }
+  .choice-option input[type="checkbox"] { margin: 0; flex-shrink: 0; }
+  .choice-circle { width: 14px; height: 14px; border: 1.5px solid #636e72; border-radius: 50%; display: inline-block; flex-shrink: 0; margin-top: 3px; }
+
+  /* Lookup table */
+  .lookup { background: white; border: 1.5px solid #dfe6e9; border-radius: 8px; padding: 10px 14px; margin: 10px 0; font-size: 0.84em; }
+  .lookup-title { font-weight: bold; font-size: 0.82em; text-transform: uppercase; color: #636e72; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .lookup-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; text-align: center; }
+  .lookup-item { background: #f5f6fa; padding: 4px; border-radius: 4px; }
+  .lookup-item .amt { font-weight: bold; color: #6c5ce7; }
+  .lookup-item .result { font-size: 0.9em; }
+
+  /* Budget table */
+  .budget-table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 0.84em; }
+  .budget-table th { padding: 5px 8px; text-align: left; font-size: 0.82em; color: white; }
+  .round-1 .budget-table th { background: #6c5ce7; }
+  .round-2 .budget-table th { background: #0984e3; }
+  .round-3 .budget-table th { background: #00b894; }
+  .budget-table td { padding: 5px 8px; border: 1px solid #dfe6e9; }
+  .budget-table tr:nth-child(even) { background: rgba(255,255,255,0.6); }
+
+  /* Net worth box */
+  .net-worth-box { border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+  .nw-r1 { background: #6c5ce720; border: 2px solid #6c5ce7; }
+  .nw-r2 { background: #0984e320; border: 2px solid #0984e3; }
+  .nw-r3 { background: #00b89420; border: 2px solid #00b894; }
+  .nw-label { font-weight: bold; font-size: 1.05em; }
+  .nw-r1 .nw-label { color: #6c5ce7; }
+  .nw-r2 .nw-label { color: #0984e3; }
+  .nw-r3 .nw-label { color: #00b894; }
+
+  /* Tip / callout boxes */
+  .tip { background: #fff3cd; border-left: 3px solid #fdcb6e; padding: 8px 12px; font-size: 0.82em; margin: 8px 0; border-radius: 0 4px 4px 0; }
+  .level-up { background: #e8f8f5; border-left: 3px solid #00b894; padding: 8px 12px; font-size: 0.84em; margin: 10px 0; border-radius: 0 6px 6px 0; font-weight: 600; color: #00b894; }
+
+  /* Reflection section */
+  .reflection { background: #f5f6fa; border: 2px solid #6c5ce7; border-radius: 12px; padding: 16px; margin: 20px 0; }
+  .reflection h2 { font-size: 1.15em; color: #6c5ce7; border-bottom: 2px solid #6c5ce7; padding-bottom: 4px; margin-bottom: 10px; }
+  .q { margin: 10px 0; font-size: 0.88em; }
+  .answer-lines { border-bottom: 1.5px solid #b2bec3; height: 22px; margin: 4px 0; }
+
+  /* Journey bar */
+  .journey-bar { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 14px 0; font-size: 0.95em; font-weight: bold; }
+  .journey-arrow { color: #b2bec3; font-size: 1.3em; }
+  .journey-val { padding: 4px 14px; border-radius: 20px; color: white; }
+  .j-r1 { background: #6c5ce7; }
+  .j-r2 { background: #0984e3; }
+  .j-r3 { background: #00b894; }
+
+  /* Comparison table */
+  .compare-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.84em; }
+  .compare-table th { background: #2d3436; color: white; padding: 6px 8px; font-size: 0.82em; }
+  .compare-table td { padding: 8px; border: 1px solid #dfe6e9; min-height: 24px; }
+  .compare-table tr:nth-child(even) { background: #fafafa; }
+
+  .section-divider { border: none; border-top: 2px dashed #dfe6e9; margin: 16px 0; }
+
+  /* Big decision box */
+  .big-decision { border: 2.5px solid #fdcb6e; border-radius: 10px; padding: 14px; margin: 12px 0; background: #fffdf5; }
+  .big-decision h3 { color: #e17055 !important; margin-top: 0; }
+</style>
+</head>
+<body>
+
+<h1>Career &amp; Wealth Tracker</h1>
+<p class="subtitle">Your Financial Journey &mdash; Three Rounds, Ten Years, One Future You Built</p>
+
+<div class="header-row">
+  <div>Name: <span>&nbsp;</span></div>
+  <div>Date Started: <span>&nbsp;</span></div>
+</div>
+
+<div class="intro">
+  <strong>How this works:</strong> This tracker follows your financial life across three rounds. Each round represents 5 years passing. Your choices in early rounds affect later rounds &mdash; especially savings and investments. Watch how small, consistent decisions compound into real wealth (or how poor choices make things harder). Think of each round as leveling up in the game of life.
+</div>
+
+<!-- ===================== ROUND 1 ===================== -->
+<div class="round-section round-1">
+  <div class="round-badge badge-r1">ROUND 1</div>
+  <div class="round-title">Starting Out (Age ~22)</div>
+  <div class="round-flavor">Fresh out of school. Your first real paycheck. Everything begins here.</div>
+
+  <h3>Career &amp; Income</h3>
+  <div class="field-grid">
+    <div class="field-row">Career: <span class="wlm">&nbsp;</span></div>
+    <div class="field-row">Monthly take-home: $<span class="wl">&nbsp;</span></div>
+    <div class="field-row">Life situation card: <span class="wlm">&nbsp;</span></div>
+    <div class="field-row">Side hustle income: $<span class="wl">&nbsp;</span>/mo</div>
+  </div>
+
+  <h3>Monthly Budget</h3>
+  <table class="budget-table">
+    <tr><th>Category</th><th>Amount</th><th>Category</th><th>Amount</th></tr>
+    <tr><td>Housing</td><td>$<span class="wl">&nbsp;</span></td><td>Phone</td><td>$<span class="wl">&nbsp;</span></td></tr>
+    <tr><td>Utilities</td><td>$<span class="wl">&nbsp;</span></td><td>Entertainment</td><td>$<span class="wl">&nbsp;</span></td></tr>
+    <tr><td>Food</td><td>$<span class="wl">&nbsp;</span></td><td>Clothing</td><td>$<span class="wl">&nbsp;</span></td></tr>
+    <tr><td>Transportation</td><td>$<span class="wl">&nbsp;</span></td><td>Health/Medical</td><td>$<span class="wl">&nbsp;</span></td></tr>
+  </table>
+
+  <div class="field-grid">
+    <div class="field-row">Monthly budget total: $<span class="wl">&nbsp;</span></div>
+    <div class="field-row">Monthly savings: $<span class="wl">&nbsp;</span></div>
+    <div class="field-row">Monthly investing: $<span class="wl">&nbsp;</span></div>
+    <div class="field-row">Monthly giving: $<span class="wl">&nbsp;</span></div>
+    <div class="field-row">Insurance choices: <span class="wlm">&nbsp;</span></div>
+    <div class="field-row">Surprise card result: <span class="wlm">&nbsp;</span></div>
+  </div>
+
+  <div class="net-worth-box nw-r1 no-break">
+    <div class="nw-label">End-of-Round 1 Net Worth</div>
+    <div class="field-grid" style="margin-top: 6px;">
+      <div class="field-row">Savings: $<span class="wl">&nbsp;</span></div>
+      <div class="field-row">Investments: $<span class="wl">&nbsp;</span></div>
+      <div class="field-row">Any debt: - $<span class="wl">&nbsp;</span></div>
+      <div class="field-row" style="font-weight: bold; font-size: 1.05em;">NET WORTH: $<span class="wl">&nbsp;</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE BREAK -->
+<div class="page-break"></div>
+
+<!-- ===================== ROUND 2 ===================== -->
+<div class="round-section round-2">
+  <div class="round-badge badge-r2">ROUND 2</div>
+  <div class="round-title">Five Years Later (Age ~27)</div>
+  <div class="round-flavor">Life has progressed. Good news: you've gained experience and your career has advanced. Your money has been working while you slept.</div>
+
+  <div class="level-up">LEVEL UP &mdash; Your career has progressed. Choose one path below:</div>
+
+  <h3>Career Advancement</h3>
+  <div class="choice-box">
+    <div class="choice-option"><span class="choice-circle"></span> <strong>Same field, promoted:</strong> Add $800 &ndash; $1,500/mo to your Round 1 income</div>
+    <div class="choice-option"><span class="choice-circle"></span> <strong>Changed careers:</strong> Pick a new career card (mid-tier or above)</div>
+    <div class="choice-option"><span class="choice-circle"></span> <strong>Started a business:</strong> Your side hustle is now full-time (side hustle income &times; 3, but add $500/mo in business expenses)</div>
+    <div class="choice-option"><span class="choice-circle"></span> <strong>Write in:</strong> New career: <span class="wlm">&nbsp;</span> &nbsp; New monthly income: $<span class="wl">&nbsp;</span></div>
+  </div>
+
+  <div class="field-row" style="font-weight: bold; margin-top: 10px;">New monthly take-home: $<span class="wl">&nbsp;</span></div>
+
+  <h3>Wealth Carried Forward</h3>
+  <div class="tip">Your past self's discipline (or lack of it) now pays off. Calculate what you've built:</div>
+
+  <div class="field-row">Savings from Round 1: $<span class="wl">&nbsp;</span>/mo &times; 60 months = $<span class="wl">&nbsp;</span></div>
+
+  <div class="field-row" style="margin-top: 6px;">Investments from Round 1: $<span class="wl">&nbsp;</span>/mo &times; 60 months, grown at ~10%/year =</div>
+
+  <div class="lookup no-break">
+    <div class="lookup-title">Investment Growth Lookup &mdash; 5 Years at ~10%/Year</div>
+    <div class="lookup-grid">
+      <div class="lookup-item"><div class="amt">$50/mo</div><div class="result">&rarr; $3,900</div></div>
+      <div class="lookup-item"><div class="amt">$100/mo</div><div class="result">&rarr; $7,800</div></div>
+      <div class="lookup-item"><div class="amt">$200/mo</div><div class="result">&rarr; $15,600</div></div>
+      <div class="lookup-item"><div class="amt">$300/mo</div><div class="result">&rarr; $23,400</div></div>
+      <div class="lookup-item"><div class="amt">$500/mo</div><div class="result">&rarr; $39,000</div></div>
+    </div>
+  </div>
+
+  <div class="field-row">My investments are now worth: $<span class="wl">&nbsp;</span></div>
+  <div class="field-row" style="font-weight: bold;">Total wealth carried forward: $<span class="wl">&nbsp;</span></div>
+
+  <hr class="section-divider">
+
+  <h3>New Life Situation</h3>
+  <div class="round-flavor">Draw a NEW Life Situation Card. Five years changes a lot &mdash; your life has evolved.</div>
+  <div class="field-grid">
+    <div class="field-row">New situation: <span class="wlm">&nbsp;</span></div>
+    <div class="field-row">Budget impact: <span class="wlm">&nbsp;</span></div>
+  </div>
+
+  <h3>New Monthly Budget</h3>
+  <table class="budget-table">
+    <tr><th>Category</th><th>Amount</th><th>Category</th><th>Amount</th></tr>
+    <tr><td>Housing</td><td>$<span class="wl">&nbsp;</span></td><td>Insurance</td><td>$<span class="wl">&nbsp;</span></td></tr>
+    <tr><td>Utilities</td><td>$<span class="wl">&nbsp;</span></td><td>Savings</td><td>$<span class="wl">&nbsp;</span></td></tr>
+    <tr><td>Food</td><td>$<span class="wl">&nbsp;</span></td><td>Investing</td><td>$<span class="wl">&nbsp;</span></td></tr>
+    <tr><td>Transportation</td><td>$<span class="wl">&nbsp;</span></td><td>Giving</td><td>$<span class="wl">&nbsp;</span></td></tr>
+    <tr><td>Phone</td><td>$<span class="wl">&nbsp;</span></td><td>Other</td><td>$<span class="wl">&nbsp;</span></td></tr>
+    <tr><td>Entertainment</td><td>$<span class="wl">&nbsp;</span></td><td rowspan="2" colspan="2" style="vertical-align: middle; font-weight: bold; font-size: 0.95em; text-align: right;">Total expenses: $<span class="wl">&nbsp;</span><br>Remaining: $<span class="wl">&nbsp;</span></td></tr>
+    <tr><td>Clothing</td><td>$<span class="wl">&nbsp;</span></td></tr>
+    <tr><td>Health/Medical</td><td>$<span class="wl">&nbsp;</span></td><td colspan="2"></td></tr>
+  </table>
+
+  <h3>Surprise Card</h3>
+  <div class="tip">Draw one surprise card. Your insurance and savings choices still matter &mdash; did past-you protect future-you?</div>
+  <div class="field-row">Result: <span class="wll">&nbsp;</span></div>
+
+  <div class="net-worth-box nw-r2 no-break">
+    <div class="nw-label">End-of-Round 2 Net Worth</div>
+    <div class="field-grid" style="margin-top: 6px;">
+      <div class="field-row">Previous net worth (from Round 1): $<span class="wl">&nbsp;</span></div>
+      <div class="field-row">Plus 5 years of new savings/investing: + $<span class="wl">&nbsp;</span></div>
+      <div class="field-row">Minus any debts or surprise costs: - $<span class="wl">&nbsp;</span></div>
+      <div class="field-row" style="font-weight: bold; font-size: 1.05em;">TOTAL NET WORTH: $<span class="wl">&nbsp;</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE BREAK -->
+<div class="page-break"></div>
+
+<!-- ===================== ROUND 3 ===================== -->
+<div class="round-section round-3">
+  <div class="round-badge badge-r3">ROUND 3</div>
+  <div class="round-title">Ten Years Later (Age ~32)</div>
+  <div class="round-flavor">A decade of adult life. Your early choices have compounded &mdash; for better or worse. This is where discipline becomes visible.</div>
+
+  <div class="level-up">LEVEL UP &mdash; You're experienced now. Senior roles and business ownership are on the table.</div>
+
+  <h3>Career Advancement</h3>
+  <div class="choice-box">
+    <div class="choice-option"><span class="choice-circle"></span> <strong>Senior role / promoted again:</strong> Add $1,500 &ndash; $3,000/mo to your Round 2 income</div>
+    <div class="choice-option"><span class="choice-circle"></span> <strong>Business owner (established):</strong> Pick from high-earning career cards</div>
+    <div class="choice-option"><span class="choice-circle"></span> <strong>Changed fields entirely:</strong> Pick any career card (senior tier)</div>
+    <div class="choice-option"><span class="choice-circle"></span> <strong>Write in:</strong> New career: <span class="wlm">&nbsp;</span> &nbsp; New income: $<span class="wl">&nbsp;</span>/mo</div>
+  </div>
+
+  <div class="field-row" style="font-weight: bold; margin-top: 10px;">New monthly take-home: $<span class="wl">&nbsp;</span></div>
+
+  <h3>Wealth Carried Forward</h3>
+  <div class="field-row">Previous net worth (end of Round 2): $<span class="wl">&nbsp;</span></div>
+  <div class="field-row">Round 2 investments grown another 5 years at ~10%:</div>
+
+  <div class="lookup no-break">
+    <div class="lookup-title">Investment Growth Lookup &mdash; Another 5 Years at ~10%/Year</div>
+    <div class="lookup-grid">
+      <div class="lookup-item"><div class="amt">$100/mo</div><div class="result">&rarr; $7,800</div></div>
+      <div class="lookup-item"><div class="amt">$200/mo</div><div class="result">&rarr; $15,600</div></div>
+      <div class="lookup-item"><div class="amt">$300/mo</div><div class="result">&rarr; $23,400</div></div>
+      <div class="lookup-item"><div class="amt">$500/mo</div><div class="result">&rarr; $39,000</div></div>
+      <div class="lookup-item"><div class="amt">$1,000/mo</div><div class="result">&rarr; $78,000</div></div>
+    </div>
+    <p style="font-size: 0.8em; color: #636e72; margin-top: 6px; text-align: center;">Plus your existing investments from Round 1 continued growing! Multiply your Round 1 total by 1.6 for another 5 years of 10% growth.</p>
+  </div>
+
+  <div class="field-row" style="font-weight: bold;">Total wealth carried forward: $<span class="wl">&nbsp;</span></div>
+
+  <hr class="section-divider">
+
+  <h3>Big Life Decision</h3>
+  <div class="big-decision">
+    <h3>You now have enough history to make a major move. Choose any that apply:</h3>
+    <div class="choice-option"><span class="choice-circle"></span> <strong>Buy a house?</strong> Use savings for a down payment, mortgage from income (see Lesson 12)</div>
+    <div class="field-row" style="margin-left: 22px;">Down payment: $<span class="wl">&nbsp;</span> &nbsp; Monthly mortgage: $<span class="wl">&nbsp;</span></div>
+    <div class="choice-option"><span class="choice-circle"></span> <strong>Start a family?</strong> Add ~$1,000/mo in child costs</div>
+    <div class="choice-option"><span class="choice-circle"></span> <strong>Go back to school?</strong> Add $300/mo tuition, but income increases in future</div>
+    <div class="choice-option"><span class="choice-circle"></span> <strong>Write in:</strong> <span class="wll">&nbsp;</span></div>
+  </div>
+
+  <h3>New Life Situation</h3>
+  <div class="field-grid">
+    <div class="field-row">Draw a new card: <span class="wlm">&nbsp;</span></div>
+    <div class="field-row">Budget impact: <span class="wlm">&nbsp;</span></div>
+  </div>
+
+  <h3>New Monthly Budget</h3>
+  <table class="budget-table">
+    <tr><th>Category</th><th>Amount</th><th>Category</th><th>Amount</th></tr>
+    <tr><td>Housing / Mortgage</td><td>$<span class="wl">&nbsp;</span></td><td>Insurance</td><td>$<span class="wl">&nbsp;</span></td></tr>
+    <tr><td>Utilities</td><td>$<span class="wl">&nbsp;</span></td><td>Savings</td><td>$<span class="wl">&nbsp;</span></td></tr>
+    <tr><td>Food</td><td>$<span class="wl">&nbsp;</span></td><td>Investing</td><td>$<span class="wl">&nbsp;</span></td></tr>
+    <tr><td>Transportation</td><td>$<span class="wl">&nbsp;</span></td><td>Giving</td><td>$<span class="wl">&nbsp;</span></td></tr>
+    <tr><td>Phone</td><td>$<span class="wl">&nbsp;</span></td><td>Child Costs</td><td>$<span class="wl">&nbsp;</span></td></tr>
+    <tr><td>Entertainment</td><td>$<span class="wl">&nbsp;</span></td><td>Other</td><td>$<span class="wl">&nbsp;</span></td></tr>
+    <tr><td>Clothing</td><td>$<span class="wl">&nbsp;</span></td><td rowspan="2" colspan="2" style="vertical-align: middle; font-weight: bold; font-size: 0.95em; text-align: right;">Total expenses: $<span class="wl">&nbsp;</span><br>Remaining: $<span class="wl">&nbsp;</span></td></tr>
+    <tr><td>Health/Medical</td><td>$<span class="wl">&nbsp;</span></td></tr>
+  </table>
+
+  <h3>Surprise Card</h3>
+  <div class="field-row">Result: <span class="wll">&nbsp;</span></div>
+
+  <div class="net-worth-box nw-r3 no-break">
+    <div class="nw-label">End-of-Round 3 / Year-End Net Worth</div>
+    <div style="margin-top: 8px;">
+      <div class="field-row">Total assets (savings + investments + home equity): $<span class="wl">&nbsp;</span></div>
+      <div class="field-row">Total debts (mortgage, loans, credit cards): - $<span class="wl">&nbsp;</span></div>
+      <hr style="border: none; border-top: 2px solid #00b894; margin: 8px 0;">
+      <div class="field-row" style="font-weight: bold; font-size: 1.15em; color: #00b894;">NET WORTH: $<span class="wl">&nbsp;</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE BREAK -->
+<div class="page-break"></div>
+
+<!-- ===================== YEAR-END REFLECTION ===================== -->
+<div class="reflection">
+  <h2>Year-End Reflection &mdash; Your Financial Journey</h2>
+
+  <p style="font-size: 0.9em; font-weight: bold; margin-bottom: 12px;">Your net worth journey:</p>
+  <div class="journey-bar">
+    <span class="journey-val j-r1">Round 1: $<span class="wl" style="border-color: rgba(255,255,255,0.5);">&nbsp;</span></span>
+    <span class="journey-arrow">&rarr;</span>
+    <span class="journey-val j-r2">Round 2: $<span class="wl" style="border-color: rgba(255,255,255,0.5);">&nbsp;</span></span>
+    <span class="journey-arrow">&rarr;</span>
+    <span class="journey-val j-r3">Round 3: $<span class="wl" style="border-color: rgba(255,255,255,0.5);">&nbsp;</span></span>
+  </div>
+
+  <div class="q">
+    <strong>What single decision had the biggest impact on your wealth?</strong>
+    <div class="answer-lines">&nbsp;</div>
+    <div class="answer-lines">&nbsp;</div>
+  </div>
+
+  <div class="q">
+    <strong>What would you do differently if you played again?</strong>
+    <div class="answer-lines">&nbsp;</div>
+    <div class="answer-lines">&nbsp;</div>
+  </div>
+
+  <div class="q">
+    <strong>Compare with your siblings: Who has the highest net worth? What did they do differently?</strong>
+    <div class="answer-lines">&nbsp;</div>
+    <div class="answer-lines">&nbsp;</div>
+  </div>
+
+  <div class="q">
+    <strong>What's one real money habit you're starting TODAY based on what you learned?</strong>
+    <div class="answer-lines">&nbsp;</div>
+    <div class="answer-lines">&nbsp;</div>
+  </div>
+</div>
+
+<!-- ===================== SIBLING COMPARISON TABLE ===================== -->
+<div style="margin-top: 20px;" class="no-break">
+  <h2 style="font-size: 1.15em; color: #2d3436; border-bottom: 2px solid #2d3436; padding-bottom: 4px; margin-bottom: 10px;">Sibling Comparison &mdash; Who Built the Best Financial Life?</h2>
+  <table class="compare-table">
+    <tr>
+      <th>Name</th>
+      <th>Career (Final)</th>
+      <th>Net Worth</th>
+      <th>Best Decision</th>
+      <th>Biggest Regret</th>
+    </tr>
+    <tr><td>&nbsp;<br>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;<br>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;<br>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;<br>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;<br>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;<br>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+  </table>
+</div>
+
+</body>
+</html>

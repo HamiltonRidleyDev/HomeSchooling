@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Family Money Meeting — Monthly Check-In</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #2d3436; background: #fff; padding: 20px; }
+  .page { max-width: 850px; margin: 0 auto; }
+
+  :root { --green: #00b894; --green-light: #e8f8f2; --green-dark: #009b7d; --gray: #636e72; --border: #dfe6e9; }
+
+  h1 { font-size: 1.5rem; color: var(--green-dark); margin-bottom: 2px; }
+  h2 { font-size: 1.0rem; color: var(--green-dark); margin: 12px 0 5px; border-bottom: 2px solid var(--green); padding-bottom: 3px; }
+
+  .header { text-align: center; border-bottom: 3px solid var(--green); padding-bottom: 10px; margin-bottom: 10px; }
+  .header .subtitle { color: var(--gray); font-size: 0.9rem; font-style: italic; margin-top: 2px; }
+
+  .field { border-bottom: 1.5px solid var(--border); min-width: 100px; display: inline-block; }
+  .field-sm { min-width: 50px; }
+  .field-lg { min-width: 200px; }
+  .field-xl { min-width: 100%; display: block; min-height: 1.2em; border-bottom: 1.5px solid var(--border); margin: 2px 0; }
+
+  .meta { font-size: 0.88rem; text-align: center; margin-bottom: 12px; }
+
+  /* Agenda items */
+  .agenda-item { margin-bottom: 12px; }
+  .agenda-num { display: inline-block; background: var(--green); color: #fff; font-weight: 700; width: 26px; height: 26px; line-height: 26px; text-align: center; border-radius: 50%; font-size: 0.82rem; margin-right: 6px; vertical-align: middle; }
+  .agenda-title { font-size: 1.0rem; font-weight: 700; color: var(--green-dark); display: inline; vertical-align: middle; }
+  .agenda-time { font-size: 0.78rem; color: var(--gray); font-weight: 400; margin-left: 6px; }
+  .agenda-prompt { font-size: 0.82rem; color: var(--gray); font-style: italic; margin: 3px 0 6px 34px; }
+  .agenda-content { margin-left: 34px; font-size: 0.85rem; line-height: 1.7; }
+
+  /* Kid table */
+  table { width: 100%; border-collapse: collapse; margin: 6px 0; }
+  th, td { border: 1px solid var(--border); padding: 4px 8px; font-size: 0.82rem; text-align: left; }
+  th { background: var(--green-light); color: var(--green-dark); font-weight: 600; }
+  td { height: 24px; }
+
+  /* Examples list */
+  .examples { font-size: 0.8rem; color: var(--gray); margin: 4px 0 6px 34px; }
+  .examples span { display: inline-block; background: var(--green-light); border-radius: 4px; padding: 2px 8px; margin: 2px 4px 2px 0; }
+
+  /* Notes section */
+  .notes-section { margin-top: 14px; border: 2px solid var(--green); border-radius: 8px; padding: 10px 14px; }
+  .notes-section h2 { border: none; margin-top: 0; padding-bottom: 0; }
+  .notes-lines { margin-top: 6px; }
+  .notes-lines .nline { border-bottom: 1.5px solid var(--border); height: 22px; }
+
+  /* Tip box */
+  .tip-box { background: var(--green-light); border: 2px solid var(--green); border-radius: 8px; padding: 10px 14px; margin-top: 14px; }
+  .tip-box .tip-label { font-weight: 700; color: var(--green-dark); font-size: 0.88rem; margin-bottom: 4px; }
+  .tip-box p { font-size: 0.82rem; line-height: 1.5; color: #2d3436; }
+
+  /* Circle choices */
+  .circle-choice { display: inline-block; border: 1.5px solid var(--green); border-radius: 50px; padding: 1px 10px; margin: 0 3px; font-size: 0.78rem; font-weight: 600; }
+
+  @media print {
+    body { padding: 0; }
+    .page { max-width: 100%; }
+    h1 { font-size: 1.3rem; }
+    .agenda-item { break-inside: avoid; }
+    .notes-section { break-inside: avoid; }
+    .tip-box { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="header">
+    <h1>Family Money Meeting</h1>
+    <p style="font-size: 1.05rem; font-weight: 600; color: var(--green);">Monthly Check-In</p>
+    <p class="subtitle">10 minutes. Once a month. Builds habits that last a lifetime.</p>
+  </div>
+
+  <div class="meta">
+    Date: <span class="field field-sm"></span> / <span class="field field-sm"></span> / <span class="field field-sm"></span>
+    &nbsp;&nbsp;&nbsp;
+    Attendees: <span class="field field-lg"></span>
+  </div>
+
+  <!-- ==================== AGENDA ==================== -->
+
+  <!-- 1. CELEBRATIONS -->
+  <div class="agenda-item">
+    <span class="agenda-num">1</span>
+    <span class="agenda-title">CELEBRATIONS</span>
+    <span class="agenda-time">2 min</span>
+    <div class="agenda-prompt">"Who hit a savings goal? Who resisted an impulse buy? Who earned extra money?"</div>
+    <div class="agenda-content">
+      Celebration: <span class="field-xl"></span>
+      <span class="field-xl"></span>
+    </div>
+  </div>
+
+  <!-- 2. BUDGET CHECK -->
+  <div class="agenda-item">
+    <span class="agenda-num">2</span>
+    <span class="agenda-title">BUDGET CHECK</span>
+    <span class="agenda-time">3 min</span>
+    <div class="agenda-prompt">"Everyone shares one number from their tracker."</div>
+    <div class="agenda-content">
+      <table>
+        <thead>
+          <tr><th style="width:22%;">Name</th><th style="width:20%;">Biggest Expense</th><th style="width:20%;">Saved This Month</th><th style="width:20%;">Total Savings</th><th style="width:18%;">On Track?</th></tr>
+        </thead>
+        <tbody>
+          <tr><td></td><td>$</td><td>$</td><td>$</td><td><span class="circle-choice">Y</span> <span class="circle-choice">N</span></td></tr>
+          <tr><td></td><td>$</td><td>$</td><td>$</td><td><span class="circle-choice">Y</span> <span class="circle-choice">N</span></td></tr>
+          <tr><td></td><td>$</td><td>$</td><td>$</td><td><span class="circle-choice">Y</span> <span class="circle-choice">N</span></td></tr>
+          <tr><td></td><td>$</td><td>$</td><td>$</td><td><span class="circle-choice">Y</span> <span class="circle-choice">N</span></td></tr>
+          <tr><td></td><td>$</td><td>$</td><td>$</td><td><span class="circle-choice">Y</span> <span class="circle-choice">N</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 3. SAVINGS MATCH UPDATE -->
+  <div class="agenda-item">
+    <span class="agenda-num">3</span>
+    <span class="agenda-title">SAVINGS MATCH UPDATE</span>
+    <span class="agenda-time">2 min</span>
+    <div class="agenda-prompt">"Parent announces matches earned this month."</div>
+    <div class="agenda-content">
+      Match distributed: $<span class="field"></span>
+      <br>Details: <span class="field-xl"></span>
+    </div>
+  </div>
+
+  <!-- 4. INVESTMENT CHECK -->
+  <div class="agenda-item">
+    <span class="agenda-num">4</span>
+    <span class="agenda-title">INVESTMENT CHECK</span>
+    <span class="agenda-time">2 min</span>
+    <span style="font-size: 0.75rem; color: var(--gray); margin-left: 6px;">(if applicable)</span>
+    <div class="agenda-prompt">"Look up stock prices together. Update investment trackers."</div>
+    <div class="agenda-content">
+      Market this month: <span class="circle-choice">UP</span> <span class="circle-choice">DOWN</span> <span class="circle-choice">FLAT</span>
+      <br>Any big news about our companies? <span class="field-xl"></span>
+    </div>
+  </div>
+
+  <!-- 5. CHALLENGE -->
+  <div class="agenda-item">
+    <span class="agenda-num">5</span>
+    <span class="agenda-title">CHALLENGE FOR NEXT MONTH</span>
+    <span class="agenda-time">1 min</span>
+    <div class="agenda-prompt">"Set one family money challenge."</div>
+    <div class="examples">
+      <span>"No DoorDash for a month"</span>
+      <span>"Everyone saves an extra $5"</span>
+      <span>"Find one subscription to cancel"</span>
+      <span>"Have a no-spend weekend"</span>
+    </div>
+    <div class="agenda-content">
+      This month's challenge: <span class="field-xl"></span>
+    </div>
+  </div>
+
+  <!-- NOTES -->
+  <div class="notes-section">
+    <h2 style="font-size: 0.95rem;">Notes &amp; Teachable Moments</h2>
+    <p style="font-size: 0.78rem; color: var(--gray); margin-bottom: 4px;">Write down anything that came up &mdash; a money question, a real-world situation, something from the news.</p>
+    <div class="notes-lines">
+      <div class="nline"></div>
+      <div class="nline"></div>
+      <div class="nline"></div>
+      <div class="nline"></div>
+      <div class="nline"></div>
+      <div class="nline"></div>
+    </div>
+  </div>
+
+  <!-- TIP BOX -->
+  <div class="tip-box">
+    <div class="tip-label">Keep It Positive</div>
+    <p>Keep it positive and <strong>SHORT</strong>. This isn't a lecture &mdash; it's a celebration of progress. If a kid overspent, ask <em>"what would you do differently?"</em> not <em>"why did you spend that?"</em> The goal is self-awareness, not guilt.</p>
+    <p style="margin-top: 6px;">Consistency matters more than perfection. Even a 5-minute check-in is better than skipping the month. Put it on the calendar &mdash; same day each month &mdash; and protect the time.</p>
+  </div>
+
+</div>
+
+</body>
+</html>
