@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transition Words — The Glue That Connects Your Ideas</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 28px 24px;
+            color: #2d2d2d;
+            line-height: 1.5;
+            background: #ffffff;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #00897b;
+        }
+        header h1 {
+            font-size: 1.5rem;
+            color: #00897b;
+        }
+        .intro {
+            font-size: 0.9rem;
+            color: #555;
+            text-align: center;
+            margin-bottom: 18px;
+            font-style: italic;
+        }
+        .category {
+            margin-bottom: 14px;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            page-break-inside: avoid;
+        }
+        .cat-header {
+            padding: 7px 14px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cat-header .icon { font-size: 1.05rem; }
+        .cat-body { padding: 10px 14px; }
+        .words {
+            font-size: 0.88rem;
+            color: #333;
+            margin-bottom: 6px;
+        }
+        .words span {
+            display: inline-block;
+            background: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            border-radius: 3px;
+            padding: 1px 7px;
+            margin: 2px 3px 2px 0;
+            font-size: 0.82rem;
+        }
+        .example-sentence {
+            font-size: 0.82rem;
+            color: #5d4037;
+            font-style: italic;
+            background: #fafafa;
+            padding: 5px 10px;
+            border-left: 3px solid #ccc;
+            border-radius: 0 3px 3px 0;
+        }
+        .example-sentence strong { font-style: normal; color: #00897b; }
+
+        /* Category colors */
+        .cat-adding .cat-header { background: #00897b; }
+        .cat-adding .example-sentence strong { color: #00897b; }
+        .cat-contrast .cat-header { background: #1565c0; }
+        .cat-contrast .example-sentence strong { color: #1565c0; }
+        .cat-cause .cat-header { background: #e65100; }
+        .cat-cause .example-sentence strong { color: #e65100; }
+        .cat-examples .cat-header { background: #6a1b9a; }
+        .cat-examples .example-sentence strong { color: #6a1b9a; }
+        .cat-sequence .cat-header { background: #2e7d32; }
+        .cat-sequence .example-sentence strong { color: #2e7d32; }
+        .cat-conclude .cat-header { background: #c62828; }
+        .cat-conclude .example-sentence strong { color: #c62828; }
+        .cat-emphasis .cat-header { background: #f9a825; color: #333; }
+        .cat-emphasis .example-sentence strong { color: #f57f17; }
+
+        .tip-box {
+            background: #e0f2f1;
+            border: 1px dashed #00897b;
+            border-radius: 6px;
+            padding: 10px 14px;
+            margin-top: 4px;
+            page-break-inside: avoid;
+        }
+        .tip-box strong { color: #00897b; }
+        .tip-box p { font-size: 0.85rem; color: #444; }
+        .curriculum-tag {
+            text-align: center;
+            font-size: 0.72rem;
+            color: #999;
+            margin-top: 14px;
+            padding-top: 8px;
+            border-top: 1px solid #ddd;
+        }
+        @media print {
+            body { padding: 14px; font-size: 10pt; }
+            header h1 { font-size: 13pt; }
+            .category { break-inside: avoid; }
+            .words span { background: #f0f0f0 !important; border-color: #ccc; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Transition Words &mdash; The Glue That Connects Your Ideas</h1>
+    </header>
+
+    <p class="intro">Transitions are the bridges between your sentences and paragraphs. Without them, your writing feels like a list of unrelated thoughts. With them, it flows.</p>
+
+    <div class="category cat-adding">
+        <div class="cat-header"><span class="icon">+</span> ADDING MORE</div>
+        <div class="cat-body">
+            <div class="words">
+                <span>also</span><span>furthermore</span><span>in addition</span><span>moreover</span><span>additionally</span><span>not only... but also</span><span>equally important</span><span>what's more</span>
+            </div>
+            <div class="example-sentence">Exercise improves physical health. <strong>Furthermore,</strong> it significantly reduces stress and anxiety.</div>
+        </div>
+    </div>
+
+    <div class="category cat-contrast">
+        <div class="cat-header"><span class="icon">&harr;</span> CONTRASTING</div>
+        <div class="cat-body">
+            <div class="words">
+                <span>however</span><span>on the other hand</span><span>nevertheless</span><span>although</span><span>despite this</span><span>in contrast</span><span>conversely</span><span>while</span><span>yet</span>
+            </div>
+            <div class="example-sentence">Social media connects people across the world. <strong>However,</strong> it can also increase feelings of loneliness.</div>
+        </div>
+    </div>
+
+    <div class="category cat-cause">
+        <div class="cat-header"><span class="icon">&rarr;</span> SHOWING CAUSE / EFFECT</div>
+        <div class="cat-body">
+            <div class="words">
+                <span>therefore</span><span>as a result</span><span>consequently</span><span>because of this</span><span>thus</span><span>for this reason</span><span>this leads to</span><span>accordingly</span>
+            </div>
+            <div class="example-sentence">The team practiced every day after school. <strong>As a result,</strong> they won the championship.</div>
+        </div>
+    </div>
+
+    <div class="category cat-examples">
+        <div class="cat-header"><span class="icon">&bull;</span> GIVING EXAMPLES</div>
+        <div class="cat-body">
+            <div class="words">
+                <span>for example</span><span>for instance</span><span>specifically</span><span>to illustrate</span><span>such as</span><span>in particular</span><span>namely</span>
+            </div>
+            <div class="example-sentence">Many everyday habits waste money. <strong>For instance,</strong> a daily $6 coffee adds up to over $2,000 per year.</div>
+        </div>
+    </div>
+
+    <div class="category cat-sequence">
+        <div class="cat-header"><span class="icon">1-2-3</span> SEQUENCING</div>
+        <div class="cat-body">
+            <div class="words">
+                <span>first</span><span>next</span><span>then</span><span>after that</span><span>meanwhile</span><span>finally</span><span>subsequently</span><span>at the same time</span><span>eventually</span>
+            </div>
+            <div class="example-sentence"><strong>First,</strong> research your topic from at least three sources. <strong>Then,</strong> organize your notes into an outline.</div>
+        </div>
+    </div>
+
+    <div class="category cat-conclude">
+        <div class="cat-header"><span class="icon">&darr;</span> CONCLUDING</div>
+        <div class="cat-body">
+            <div class="words">
+                <span>in conclusion</span><span>ultimately</span><span>to summarize</span><span>in the end</span><span>all things considered</span><span>as a result</span><span>looking back</span>
+            </div>
+            <div class="example-sentence"><strong>All things considered,</strong> starting to save early is the single most powerful financial decision a young person can make.</div>
+        </div>
+    </div>
+
+    <div class="category cat-emphasis">
+        <div class="cat-header"><span class="icon">!</span> EMPHASIZING</div>
+        <div class="cat-body">
+            <div class="words">
+                <span>most importantly</span><span>above all</span><span>indeed</span><span>in fact</span><span>especially</span><span>without a doubt</span><span>clearly</span>
+            </div>
+            <div class="example-sentence">Every student should learn to code. <strong>Most importantly,</strong> it teaches logical thinking that applies everywhere.</div>
+        </div>
+    </div>
+
+    <div class="tip-box">
+        <p><strong>Tip:</strong> Don't start every paragraph with a transition. Use them when the connection between ideas isn't obvious. If it flows naturally, you don't need one.</p>
+    </div>
+
+    <div class="curriculum-tag">The Lost Boys Adventure &mdash; Homeschool Writing Curriculum &bull; Shared Resource</div>
+</body>
+</html>

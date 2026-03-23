@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 15: Professional Writing Worksheet</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #212121; line-height: 1.6; padding: 40px 20px; background: #fff; }
+  .container { max-width: 850px; margin: 0 auto; }
+  h1 { color: #00695c; font-size: 2em; margin-bottom: 4px; }
+  h2 { color: #00695c; font-size: 1.4em; margin-top: 32px; margin-bottom: 12px; border-bottom: 2px solid #00897b; padding-bottom: 6px; }
+  h3 { color: #00897b; font-size: 1.15em; margin-top: 20px; margin-bottom: 8px; }
+  .subtitle { color: #00897b; font-size: 1.1em; margin-bottom: 24px; }
+  .name-line { margin-bottom: 28px; font-size: 1em; }
+  .name-line span { display: inline-block; border-bottom: 1px solid #999; width: 250px; margin-left: 8px; }
+  .tier-badge { display: inline-block; background: #00897b; color: #fff; font-size: 0.75em; font-weight: 700; padding: 2px 10px; border-radius: 12px; margin-left: 8px; vertical-align: middle; }
+  .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  .email-example { border-radius: 10px; padding: 16px 20px; font-size: 0.95em; }
+  .email-bad { background: #ffebee; border: 2px solid #ef5350; }
+  .email-good { background: #e8f5e9; border: 2px solid #66bb6a; }
+  .email-label { font-weight: 700; font-size: 0.85em; text-transform: uppercase; margin-bottom: 8px; }
+  .email-bad .email-label { color: #c62828; }
+  .email-good .email-label { color: #2e7d32; }
+  .email-field { margin-bottom: 4px; }
+  .email-field strong { color: #555; }
+  .email-body { margin-top: 8px; white-space: pre-line; }
+  .spot-box { background: #fff8e1; border: 2px solid #ff8f00; border-radius: 10px; padding: 14px 18px; margin: 12px 0; }
+  .spot-box .spot-label { font-weight: 700; color: #ff8f00; margin-bottom: 4px; }
+  .line { border-bottom: 1px solid #ddd; height: 32px; margin-bottom: 2px; }
+  .message-section { background: #f9f9f9; border: 2px solid #e0e0e0; border-radius: 10px; padding: 18px 22px; margin: 20px 0; page-break-inside: avoid; }
+  .message-title { font-weight: 700; color: #00695c; font-size: 1.15em; margin-bottom: 4px; }
+  .message-desc { font-size: 0.9em; color: #757575; margin-bottom: 14px; }
+  .field-row { margin-bottom: 10px; }
+  .field-label { font-weight: 600; color: #00897b; margin-bottom: 4px; }
+  .field-input { border-bottom: 1px solid #ccc; min-height: 28px; }
+  .field-input-wide { border-bottom: 1px solid #ccc; min-height: 28px; width: 100%; }
+  .email-template { border: 1px solid #00897b; border-radius: 8px; padding: 14px 18px; background: #fff; margin: 12px 0; }
+  .template-row { margin-bottom: 10px; }
+  .template-label { font-size: 0.85em; font-weight: 600; color: #00897b; margin-bottom: 2px; }
+  .template-line { border-bottom: 1px solid #ddd; min-height: 28px; }
+  .template-body { border: 1px dashed #ccc; border-radius: 6px; min-height: 80px; padding: 10px; margin: 4px 0; }
+  .writing-space { border: 1px solid #e0e0e0; border-radius: 8px; min-height: 200px; padding: 14px 18px; background: #fff; margin: 12px 0; }
+  .writing-space-large { min-height: 300px; }
+  .spectrum-section { margin: 20px 0; }
+  .spectrum-item { display: flex; align-items: center; padding: 10px 14px; border-bottom: 1px solid #e0e0e0; }
+  .spectrum-item:last-child { border-bottom: none; }
+  .spectrum-situation { flex: 1; }
+  .spectrum-answer { width: 200px; border-bottom: 1px solid #ccc; text-align: center; flex-shrink: 0; }
+  .spectrum-header { display: flex; padding: 10px 14px; background: #00897b; color: #fff; font-weight: 700; border-radius: 8px 8px 0 0; }
+  .spectrum-header .spectrum-situation { color: #fff; }
+  .spectrum-header .spectrum-answer { color: #fff; border: none; }
+  .spectrum-body { border: 1px solid #e0e0e0; border-radius: 0 0 8px 8px; }
+  .format-guide { background: #e0f2f1; border-radius: 8px; padding: 12px 18px; margin: 12px 0; font-size: 0.9em; }
+  .format-guide strong { color: #00695c; }
+  .tip-box { background: #fff8e1; border-left: 4px solid #ff8f00; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 18px 0; }
+  .tip-box .tip-label { font-weight: 700; color: #ff8f00; margin-bottom: 4px; }
+  .age-note { background: #e0f2f1; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+  .age-note strong { color: #00695c; }
+  .cover-letter-section { border: 2px solid #00695c; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .cover-letter-section .cl-title { font-weight: 700; color: #00695c; font-size: 1.15em; margin-bottom: 10px; }
+  ul, ol { margin-left: 24px; margin-bottom: 12px; }
+  li { margin-bottom: 6px; }
+  @media print {
+    body { padding: 0; font-size: 11pt; }
+    .container { max-width: 100%; }
+    .message-section, .email-example, .spot-box, .tip-box, .cover-letter-section, .age-note { break-inside: avoid; }
+    .comparison-grid { grid-template-columns: 1fr; }
+    h1, h2 { break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Professional Writing</h1>
+<p class="subtitle">Lesson 15: Real-World Communication Worksheet</p>
+
+<div class="name-line">Name: <span>&nbsp;</span> &nbsp;&nbsp; Date: <span style="width:150px;">&nbsp;</span></div>
+
+<!-- ===================== SECTION 1: SPOT THE DIFFERENCE ===================== -->
+
+<h2>Section 1: Good vs. Bad &mdash; Spot the Difference</h2>
+
+<p style="margin-bottom: 12px;">Read each pair. What makes the good version better? List the differences.</p>
+
+<h3>Pair 1: Asking a Coach a Question</h3>
+
+<div class="comparison-grid">
+  <div class="email-example email-bad">
+    <div class="email-label">Bad</div>
+    <div class="email-field"><strong>Subject:</strong> (none)</div>
+    <div class="email-body">hey coach r we practicing tmrw or nah</div>
+  </div>
+  <div class="email-example email-good">
+    <div class="email-label">Good</div>
+    <div class="email-field"><strong>Subject:</strong> Practice schedule for Thursday?</div>
+    <div class="email-body">Hi Coach Davis,
+
+I wanted to check if we have practice on Thursday this week. I know the schedule sometimes changes around holidays. If we do, I'll be there at 4:00 as usual.
+
+Thanks,
+Aiden</div>
+  </div>
+</div>
+
+<div class="spot-box">
+  <div class="spot-label">What makes the good one better?</div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+</div>
+
+<h3>Pair 2: Emailing About a Refund</h3>
+
+<div class="comparison-grid">
+  <div class="email-example email-bad">
+    <div class="email-label">Bad</div>
+    <div class="email-field"><strong>Subject:</strong> PROBLEM!!!</div>
+    <div class="email-body">i bought something and it was broken. i want my money back NOW this is ridiculous</div>
+  </div>
+  <div class="email-example email-good">
+    <div class="email-label">Good</div>
+    <div class="email-field"><strong>Subject:</strong> Refund request &mdash; Order #4829, received damaged</div>
+    <div class="email-body">Hello,
+
+I received my order (#4829) on March 15, and unfortunately the item arrived damaged &mdash; the screen has a crack across the top left corner.
+
+Could you help me with a refund or replacement? I've attached a photo of the damage.
+
+Thank you for your help,
+Priya Patel</div>
+  </div>
+</div>
+
+<div class="spot-box">
+  <div class="spot-label">What makes the good one better?</div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+</div>
+
+<!-- ===================== SECTION 2: WRITE 3 REAL MESSAGES ===================== -->
+
+<h2>Section 2: Write 3 Real Messages</h2>
+
+<div class="tip-box">
+  <div class="tip-label">These Get Actually Sent</div>
+  <p>Write to real people about real things. After review, you'll send these for real.</p>
+</div>
+
+<div class="format-guide">
+  <strong>Email Format Reminder:</strong> Greeting &rarr; Purpose (first sentence) &rarr; Details/Context &rarr; Clear Ask &rarr; Closing + Name
+</div>
+
+<!-- MESSAGE 1 -->
+<div class="message-section">
+  <div class="message-title">Message 1: The Polite Request</div>
+  <div class="message-desc">Write an email to a teacher, coach, librarian, or business asking for something specific.</div>
+
+  <div class="email-template">
+    <div class="template-row">
+      <div class="template-label">To:</div>
+      <div class="template-line"></div>
+    </div>
+    <div class="template-row">
+      <div class="template-label">Subject:</div>
+      <div class="template-line"></div>
+    </div>
+    <div class="template-row">
+      <div class="template-label">Greeting:</div>
+      <div class="template-line"></div>
+    </div>
+    <div class="template-row">
+      <div class="template-label">Purpose (first sentence):</div>
+      <div class="template-body" style="min-height: 32px;"></div>
+    </div>
+    <div class="template-row">
+      <div class="template-label">Details / Context:</div>
+      <div class="template-body" style="min-height: 50px;"></div>
+    </div>
+    <div class="template-row">
+      <div class="template-label">Clear Ask:</div>
+      <div class="template-body" style="min-height: 32px;"></div>
+    </div>
+    <div class="template-row">
+      <div class="template-label">Closing + Name:</div>
+      <div class="template-line"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MESSAGE 2 -->
+<div class="message-section">
+  <div class="message-title">Message 2: The Thank-You</div>
+  <div class="message-desc">Write a genuine thank-you note or email to someone who helped you recently. Be specific about what they did and why it mattered.</div>
+
+  <div class="email-template">
+    <div class="template-row">
+      <div class="template-label">To:</div>
+      <div class="template-line"></div>
+    </div>
+    <div class="template-row">
+      <div class="template-label">Message:</div>
+      <div class="template-body" style="min-height: 120px;">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MESSAGE 3 -->
+<div class="message-section">
+  <div class="message-title">Message 3: The Professional Introduction <span class="tier-badge">Ages 13+</span></div>
+  <div class="message-desc">Write an email introducing yourself for a job, volunteer opportunity, or internship.</div>
+
+  <div class="email-template">
+    <div class="template-row">
+      <div class="template-label">To:</div>
+      <div class="template-line"></div>
+    </div>
+    <div class="template-row">
+      <div class="template-label">Subject:</div>
+      <div class="template-line"></div>
+    </div>
+    <div class="template-row">
+      <div class="template-label">Message:</div>
+      <div class="template-body" style="min-height: 140px;">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="age-note" style="margin-top: 14px;">
+    <strong>Ages 9&ndash;10 alternative:</strong> Instead of a professional introduction, write a friendly message to a family member you haven't talked to in a while. Ask them a question about their life!
+  </div>
+</div>
+
+<!-- ===================== SECTION 3: COVER LETTER ===================== -->
+
+<div class="cover-letter-section">
+  <div class="cl-title">Section 3: The Cover Letter <span class="tier-badge">High School Only</span></div>
+  <p style="margin-bottom: 12px;">A cover letter is your chance to show a potential employer who you are beyond a resume. Structure:</p>
+
+  <div class="format-guide" style="margin-bottom: 16px;">
+    <strong>Opening:</strong> Who you are + what you're applying for<br>
+    <strong>Body:</strong> Why you're a good fit &mdash; 2&ndash;3 specific reasons with examples<br>
+    <strong>Closing:</strong> Call to action + thank you
+  </div>
+
+  <div class="field-row">
+    <div class="field-label">Position / opportunity you're applying for:</div>
+    <div class="field-input"></div>
+  </div>
+  <div class="field-row">
+    <div class="field-label">Organization:</div>
+    <div class="field-input"></div>
+  </div>
+
+  <div class="writing-space writing-space-large" style="margin-top: 16px;">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+</div>
+
+<!-- ===================== SECTION 4: TEXT MESSAGE SPECTRUM ===================== -->
+
+<h2>Section 4: The Text Message Spectrum</h2>
+
+<p style="margin-bottom: 12px;">Rate each situation: should your message be <strong>CASUAL</strong>, <strong>SOMEWHAT FORMAL</strong>, or <strong>VERY FORMAL</strong>?</p>
+
+<div class="spectrum-header">
+  <div class="spectrum-situation">Situation</div>
+  <div class="spectrum-answer">Formality Level</div>
+</div>
+<div class="spectrum-body">
+  <div class="spectrum-item">
+    <div class="spectrum-situation">Asking a friend to hang out</div>
+    <div class="spectrum-answer"></div>
+  </div>
+  <div class="spectrum-item">
+    <div class="spectrum-situation">Emailing your teacher about a missed assignment</div>
+    <div class="spectrum-answer"></div>
+  </div>
+  <div class="spectrum-item">
+    <div class="spectrum-situation">Texting your parent that you'll be late</div>
+    <div class="spectrum-answer"></div>
+  </div>
+  <div class="spectrum-item">
+    <div class="spectrum-situation">Emailing a company about a refund</div>
+    <div class="spectrum-answer"></div>
+  </div>
+  <div class="spectrum-item">
+    <div class="spectrum-situation">Messaging someone about a job opening</div>
+    <div class="spectrum-answer"></div>
+  </div>
+  <div class="spectrum-item">
+    <div class="spectrum-situation">Thank-you note after a job interview</div>
+    <div class="spectrum-answer"></div>
+  </div>
+  <div class="spectrum-item">
+    <div class="spectrum-situation">Group chat with friends</div>
+    <div class="spectrum-answer"></div>
+  </div>
+  <div class="spectrum-item">
+    <div class="spectrum-situation">Asking your coach for a letter of recommendation</div>
+    <div class="spectrum-answer"></div>
+  </div>
+</div>
+
+<div class="tip-box" style="margin-top: 20px;">
+  <div class="tip-label">The Key Insight</div>
+  <p>There's no single "right" way to write a message. The skill is matching your tone to your audience and purpose. A text to your friend and an email to a potential employer are BOTH valid &mdash; they're just different tools for different jobs.</p>
+</div>
+
+<h2>Age-Tier Guide</h2>
+<div class="age-note">
+  <strong>Primary (Age 6):</strong> Writes a thank-you card (drawn + written). Skip the email sections.
+</div>
+<div class="age-note">
+  <strong>Elementary (Ages 9&ndash;10):</strong> Section 1 (spot the difference) + Messages 1 and 2 + the family member alternative for Message 3. Text spectrum for fun.
+</div>
+<div class="age-note">
+  <strong>Middle School (Ages 11&ndash;13):</strong> Sections 1&ndash;2 (all 3 messages) + Section 4 (text spectrum).
+</div>
+<div class="age-note">
+  <strong>High School (Age 15):</strong> All sections including the cover letter + text spectrum analysis.
+</div>
+
+</div>
+</body>
+</html>

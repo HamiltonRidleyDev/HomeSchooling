@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 14: Flash Fiction Story Planner</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #212121; line-height: 1.6; padding: 40px 20px; background: #fff; }
+  .container { max-width: 850px; margin: 0 auto; }
+  h1 { color: #00695c; font-size: 2em; margin-bottom: 4px; }
+  h2 { color: #00695c; font-size: 1.4em; margin-top: 32px; margin-bottom: 12px; border-bottom: 2px solid #00897b; padding-bottom: 6px; }
+  h3 { color: #00897b; font-size: 1.15em; margin-top: 20px; margin-bottom: 8px; }
+  .subtitle { color: #00897b; font-size: 1.1em; margin-bottom: 24px; }
+  .name-line { margin-bottom: 28px; font-size: 1em; }
+  .name-line span { display: inline-block; border-bottom: 1px solid #999; width: 250px; margin-left: 8px; }
+  .intro-box { background: #e0f2f1; border: 2px solid #00897b; border-radius: 10px; padding: 18px 22px; margin: 16px 0 28px 0; }
+  .intro-box .intro-title { font-weight: 700; color: #00695c; font-size: 1.2em; margin-bottom: 8px; }
+  .plan-section { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; padding: 18px 22px; margin-bottom: 18px; page-break-inside: avoid; }
+  .plan-section .plan-label { font-weight: 700; color: #00695c; font-size: 1.1em; margin-bottom: 4px; }
+  .plan-section .plan-sublabel { font-size: 0.9em; color: #757575; margin-bottom: 10px; }
+  .field-row { margin-bottom: 12px; }
+  .field-label { font-weight: 600; color: #00897b; margin-bottom: 4px; }
+  .field-input { border-bottom: 1px solid #ccc; min-height: 28px; margin-bottom: 4px; }
+  .field-input-large { border: 1px solid #ccc; border-radius: 6px; min-height: 60px; padding: 8px 12px; background: #fff; }
+  .tip-box { background: #fff8e1; border-left: 4px solid #ff8f00; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 18px 0; }
+  .tip-box .tip-label { font-weight: 700; color: #ff8f00; margin-bottom: 4px; }
+  .sentence-map { background: #fff; border: 2px solid #00897b; border-radius: 10px; padding: 18px 22px; margin: 20px 0; }
+  .sentence-map .map-title { font-weight: 700; color: #00695c; font-size: 1.1em; margin-bottom: 12px; }
+  .map-row { display: flex; align-items: flex-start; margin-bottom: 14px; }
+  .map-num { background: #00897b; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9em; flex-shrink: 0; margin-right: 12px; margin-top: 2px; }
+  .map-content { flex: 1; }
+  .map-content .map-label { font-weight: 600; color: #00695c; font-size: 0.9em; margin-bottom: 4px; }
+  .map-content .map-line { border-bottom: 1px solid #ccc; min-height: 28px; }
+  .map-content .map-line-2 { border-bottom: 1px solid #ccc; min-height: 28px; margin-top: 4px; }
+  .hook-section { background: #f5f5f5; border-left: 4px solid #00897b; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 18px 0; }
+  .primary-section { border: 2px dashed #ff8f00; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .primary-section .primary-title { font-weight: 700; color: #ff8f00; font-size: 1.1em; margin-bottom: 10px; }
+  .comic-panel { border: 2px solid #00897b; border-radius: 8px; min-height: 180px; padding: 10px; background: #fff; margin-bottom: 8px; }
+  .comic-panel .panel-label { font-size: 0.8em; font-weight: 700; color: #00897b; margin-bottom: 4px; }
+  .comic-caption { border-top: 1px solid #ccc; padding-top: 6px; margin-top: 4px; }
+  .comic-caption .caption-line { border-bottom: 1px solid #ddd; height: 24px; }
+  .comic-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+  .age-note { background: #e0f2f1; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+  .age-note strong { color: #00695c; }
+  ul, ol { margin-left: 24px; margin-bottom: 12px; }
+  li { margin-bottom: 6px; }
+  @media print {
+    body { padding: 0; font-size: 11pt; }
+    .container { max-width: 100%; }
+    .plan-section, .sentence-map, .tip-box, .hook-section, .primary-section, .comic-panel { break-inside: avoid; }
+    h1, h2 { break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Flash Fiction Planner</h1>
+<p class="subtitle">Plan Big, Write Small &mdash; Lesson 14 Worksheet</p>
+
+<div class="name-line">Name: <span>&nbsp;</span> &nbsp;&nbsp; Date: <span style="width:150px;">&nbsp;</span></div>
+
+<div class="intro-box">
+  <div class="intro-title">The Challenge</div>
+  <p>Write a <strong>complete story</strong> &mdash; character, conflict, resolution &mdash; in 500 words or less. The constraint is your teacher. When every word matters, you become a better writer.</p>
+</div>
+
+<!-- ===================== PRIMARY SECTION ===================== -->
+
+<div class="primary-section">
+  <div class="primary-title">Primary (Age 6) &mdash; 4-Panel Comic Strip</div>
+  <p style="margin-bottom: 12px;">Tell a complete story in 4 pictures! Draw what happens, add speech bubbles, and write a sentence under each panel.</p>
+
+  <div class="comic-grid">
+    <div class="comic-panel">
+      <div class="panel-label">Panel 1: Setup &mdash; Who? Where?</div>
+      <div style="min-height: 100px;"></div>
+      <div class="comic-caption">
+        <div class="caption-line"></div>
+      </div>
+    </div>
+    <div class="comic-panel">
+      <div class="panel-label">Panel 2: Problem &mdash; Uh oh!</div>
+      <div style="min-height: 100px;"></div>
+      <div class="comic-caption">
+        <div class="caption-line"></div>
+      </div>
+    </div>
+    <div class="comic-panel">
+      <div class="panel-label">Panel 3: Turning Point &mdash; Something changes!</div>
+      <div style="min-height: 100px;"></div>
+      <div class="comic-caption">
+        <div class="caption-line"></div>
+      </div>
+    </div>
+    <div class="comic-panel">
+      <div class="panel-label">Panel 4: Resolution &mdash; How does it end?</div>
+      <div style="min-height: 100px;"></div>
+      <div class="comic-caption">
+        <div class="caption-line"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== STORY PLANNER ===================== -->
+
+<h2>Story Elements</h2>
+
+<div class="plan-section">
+  <div class="plan-label">ONE Character</div>
+  <div class="plan-sublabel">Flash fiction works best with a single main character. Make them real.</div>
+  <div class="field-row">
+    <div class="field-label">Name:</div>
+    <div class="field-input"></div>
+  </div>
+  <div class="field-row">
+    <div class="field-label">3 words to describe them:</div>
+    <div class="field-input"></div>
+  </div>
+  <div class="field-row">
+    <div class="field-label">What do they want?</div>
+    <div class="field-input"></div>
+  </div>
+</div>
+
+<div class="plan-section">
+  <div class="plan-label">ONE Problem / Conflict</div>
+  <div class="plan-sublabel">Every story needs tension. What's standing in your character's way?</div>
+  <div class="field-row">
+    <div class="field-label">What's in their way?</div>
+    <div class="field-input-large"></div>
+  </div>
+</div>
+
+<div class="plan-section">
+  <div class="plan-label">ONE Setting</div>
+  <div class="plan-sublabel">Be specific &mdash; not "a house" but "a kitchen with a dripping faucet at 2 AM."</div>
+  <div class="field-row">
+    <div class="field-label">Where and when?</div>
+    <div class="field-input-large"></div>
+  </div>
+</div>
+
+<div class="plan-section">
+  <div class="plan-label">THE Turning Point</div>
+  <div class="plan-sublabel">The moment everything shifts. What does your character realize, decide, or discover?</div>
+  <div class="field-row">
+    <div class="field-label">What changes?</div>
+    <div class="field-input-large"></div>
+  </div>
+</div>
+
+<div class="plan-section">
+  <div class="plan-label">THE Ending</div>
+  <div class="plan-sublabel">Not everything needs a happy ending &mdash; just a SATISFYING one. The reader should feel something.</div>
+  <div class="field-row">
+    <div class="field-label">How does it resolve?</div>
+    <div class="field-input-large"></div>
+  </div>
+</div>
+
+<!-- ===================== OPENING HOOK ===================== -->
+
+<div class="hook-section">
+  <h3 style="margin-top: 0;">Opening Hook</h3>
+  <div class="field-row">
+    <div class="field-label">Which hook technique from Lesson 3?</div>
+    <div class="field-input"></div>
+    <p style="font-size: 0.85em; color: #757575; margin-top: 4px;">(Action, dialogue, question, surprising statement, sensory detail)</p>
+  </div>
+  <div class="field-row" style="margin-top: 12px;">
+    <div class="field-label">My opening line:</div>
+    <div class="field-input-large"></div>
+  </div>
+</div>
+
+<!-- ===================== 5-SENTENCE MAP ===================== -->
+
+<div class="sentence-map">
+  <div class="map-title">Map Your Story in 5 Sentences</div>
+  <p style="font-size: 0.9em; color: #757575; margin-bottom: 16px;">If you can tell the whole story in 5 sentences, you can write it in 500 words.</p>
+
+  <div class="map-row">
+    <div class="map-num">1</div>
+    <div class="map-content">
+      <div class="map-label">Setup (character + situation)</div>
+      <div class="map-line"></div>
+      <div class="map-line-2"></div>
+    </div>
+  </div>
+
+  <div class="map-row">
+    <div class="map-num">2</div>
+    <div class="map-content">
+      <div class="map-label">Problem introduced</div>
+      <div class="map-line"></div>
+      <div class="map-line-2"></div>
+    </div>
+  </div>
+
+  <div class="map-row">
+    <div class="map-num">3</div>
+    <div class="map-content">
+      <div class="map-label">Tension builds</div>
+      <div class="map-line"></div>
+      <div class="map-line-2"></div>
+    </div>
+  </div>
+
+  <div class="map-row">
+    <div class="map-num">4</div>
+    <div class="map-content">
+      <div class="map-label">Turning point</div>
+      <div class="map-line"></div>
+      <div class="map-line-2"></div>
+    </div>
+  </div>
+
+  <div class="map-row">
+    <div class="map-num">5</div>
+    <div class="map-content">
+      <div class="map-label">Resolution</div>
+      <div class="map-line"></div>
+      <div class="map-line-2"></div>
+    </div>
+  </div>
+</div>
+
+<div class="tip-box">
+  <div class="tip-label">Now Write!</div>
+  <p>Use the <strong>Story Draft</strong> worksheet for your full story. Aim for 400&ndash;600 words. You'll cut to 500 in revision.</p>
+</div>
+
+<h2>Age-Tier Word Count Guide</h2>
+
+<div class="age-note">
+  <strong>Primary (Age 6):</strong> 4-panel comic strip (above) with speech bubbles and captions.
+</div>
+<div class="age-note">
+  <strong>Elementary (Ages 9&ndash;10):</strong> 200-word story. Use the planner sections above, keep it simple.
+</div>
+<div class="age-note">
+  <strong>Middle School (Ages 11&ndash;13):</strong> 300&ndash;400 words. Full planner, full story arc.
+</div>
+<div class="age-note">
+  <strong>High School (Age 15):</strong> Exactly 500 words. Not 499. Not 501. The constraint is the challenge.
+</div>
+
+</div>
+</body>
+</html>

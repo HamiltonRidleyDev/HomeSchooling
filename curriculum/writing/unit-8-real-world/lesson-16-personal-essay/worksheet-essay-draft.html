@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 16: Personal Essay Draft</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #212121; line-height: 1.6; padding: 40px 20px; background: #fff; }
+  .container { max-width: 850px; margin: 0 auto; }
+  h1 { color: #00695c; font-size: 2em; margin-bottom: 4px; }
+  h2 { color: #00695c; font-size: 1.4em; margin-top: 32px; margin-bottom: 12px; border-bottom: 2px solid #00897b; padding-bottom: 6px; }
+  h3 { color: #00897b; font-size: 1.15em; margin-top: 20px; margin-bottom: 8px; }
+  .subtitle { color: #00897b; font-size: 1.1em; margin-bottom: 24px; }
+  .name-line { margin-bottom: 12px; font-size: 1em; }
+  .name-line span { display: inline-block; border-bottom: 1px solid #999; width: 300px; margin-left: 8px; }
+  .title-line { margin-bottom: 28px; font-size: 1.1em; }
+  .title-line span { display: inline-block; border-bottom: 2px solid #00897b; width: 450px; margin-left: 8px; font-weight: 600; }
+  .structure-choice { background: #e0f2f1; border: 2px solid #00897b; border-radius: 10px; padding: 18px 22px; margin: 16px 0 24px 0; }
+  .structure-choice .sc-title { font-weight: 700; color: #00695c; font-size: 1.1em; margin-bottom: 10px; }
+  .structure-option { display: flex; align-items: flex-start; margin-bottom: 10px; }
+  .structure-option .check-box { width: 20px; height: 20px; border: 2px solid #00897b; border-radius: 4px; flex-shrink: 0; margin-right: 10px; margin-top: 2px; }
+  .structure-option .option-label { font-weight: 700; color: #00695c; }
+  .structure-option .option-desc { color: #555; }
+  .writing-space { border: 1px solid #e0e0e0; border-radius: 8px; padding: 18px 22px; background: #fff; margin: 16px 0; }
+  .line { border-bottom: 1px solid #ddd; height: 32px; margin-bottom: 2px; }
+  .word-guide { background: #fff8e1; border-radius: 8px; padding: 12px 18px; margin: 12px 0; font-size: 0.95em; }
+  .word-guide strong { color: #ff8f00; }
+  .checklist { background: #f9f9f9; border: 2px solid #00897b; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .checklist .checklist-title { font-weight: 700; color: #00695c; font-size: 1.15em; margin-bottom: 14px; }
+  .check-item { display: flex; align-items: flex-start; margin-bottom: 10px; }
+  .check-box { width: 20px; height: 20px; border: 2px solid #00897b; border-radius: 4px; flex-shrink: 0; margin-right: 10px; margin-top: 2px; }
+  .check-text { flex: 1; }
+  .check-text .lesson-ref { font-size: 0.85em; color: #00897b; font-weight: 600; }
+  .peer-review { background: #fff8e1; border: 2px solid #ff8f00; border-radius: 10px; padding: 18px 22px; margin: 24px 0; page-break-inside: avoid; }
+  .peer-review .pr-title { font-weight: 700; color: #ff8f00; font-size: 1.1em; margin-bottom: 14px; }
+  .pr-block { border: 1px solid #e0e0e0; border-radius: 8px; padding: 14px 18px; margin: 12px 0; background: #fff; }
+  .pr-block .pr-label { font-weight: 700; color: #00695c; margin-bottom: 8px; }
+  .pr-field { margin-bottom: 10px; }
+  .pr-field .field-label { font-weight: 600; color: #00897b; font-size: 0.95em; margin-bottom: 4px; }
+  .pr-field .field-input { border-bottom: 1px solid #ccc; min-height: 28px; }
+  .pr-field .field-input-large { border: 1px solid #ccc; border-radius: 6px; min-height: 50px; padding: 8px 12px; }
+  .changes-section { background: #e0f2f1; border-radius: 8px; padding: 14px 18px; margin: 16px 0; }
+  .changes-section .changes-label { font-weight: 700; color: #00695c; margin-bottom: 8px; }
+  .presentation-prep { background: #f5f5f5; border: 2px solid #00695c; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .presentation-prep .pres-title { font-weight: 700; color: #00695c; font-size: 1.15em; margin-bottom: 14px; }
+  .pres-check { display: flex; align-items: flex-start; margin-bottom: 10px; }
+  .pres-check .check-box { width: 20px; height: 20px; border: 2px solid #00695c; border-radius: 4px; flex-shrink: 0; margin-right: 10px; margin-top: 2px; }
+  .pres-nervous { background: #fff8e1; border-left: 4px solid #ff8f00; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 14px 0; }
+  .pres-nervous .nervous-label { font-weight: 700; color: #ff8f00; font-style: italic; }
+  .age-note { background: #e0f2f1; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+  .age-note strong { color: #00695c; }
+  .tip-box { background: #fff8e1; border-left: 4px solid #ff8f00; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 18px 0; }
+  .tip-box .tip-label { font-weight: 700; color: #ff8f00; margin-bottom: 4px; }
+  @media print {
+    body { padding: 0; font-size: 11pt; }
+    .container { max-width: 100%; }
+    .structure-choice, .checklist, .peer-review, .presentation-prep, .pr-block, .pres-nervous, .age-note { break-inside: avoid; }
+    h1, h2 { break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>My Personal Essay</h1>
+<p class="subtitle">Lesson 16: Capstone &mdash; Essay Draft</p>
+
+<div class="title-line">Title: <span>&nbsp;</span></div>
+<div class="name-line">Author: <span>&nbsp;</span> &nbsp;&nbsp; Date: <span style="width:150px;">&nbsp;</span></div>
+
+<!-- ===================== STRUCTURE CHOICE ===================== -->
+
+<div class="structure-choice">
+  <div class="sc-title">Choose Your Structure</div>
+
+  <div class="structure-option">
+    <div class="check-box"></div>
+    <div>
+      <span class="option-label">NARRATIVE:</span>
+      <span class="option-desc"> Tell a story with a beginning, middle, and end. The "essay" part is the reflection woven in.</span>
+    </div>
+  </div>
+
+  <div class="structure-option">
+    <div class="check-box"></div>
+    <div>
+      <span class="option-label">REFLECTIVE:</span>
+      <span class="option-desc"> Open with a moment, then explore what it means to you. More thinking, less chronological.</span>
+    </div>
+  </div>
+
+  <div class="structure-option">
+    <div class="check-box"></div>
+    <div>
+      <span class="option-label">HYBRID:</span>
+      <span class="option-desc"> Mix both &mdash; tell a story, pause to reflect, return to the story.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== WRITING SPACE ===================== -->
+
+<div class="word-guide">
+  <strong>Word Count Guide:</strong> Elementary: 200&ndash;400 words &nbsp;|&nbsp; Middle School: 400&ndash;700 words &nbsp;|&nbsp; High School: 600&ndash;1000 words
+</div>
+
+<div class="writing-space">
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+</div>
+
+<p style="text-align: right; font-size: 0.95em; color: #757575;">Word count: ______</p>
+
+<!-- ===================== REVISION CHECKLIST ===================== -->
+
+<div class="checklist">
+  <div class="checklist-title">Revision &mdash; Using Everything You've Learned</div>
+
+  <div class="check-item">
+    <div class="check-box"></div>
+    <div class="check-text"><span class="lesson-ref">L1:</span> Are my sentences strong? (power verbs, specific nouns)</div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box"></div>
+    <div class="check-text"><span class="lesson-ref">L2:</span> Am I SHOWING, not telling?</div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box"></div>
+    <div class="check-text"><span class="lesson-ref">L3:</span> Does my opening HOOK the reader?</div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box"></div>
+    <div class="check-text"><span class="lesson-ref">L4:</span> Does my conclusion echo my opening? (bookend)</div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box"></div>
+    <div class="check-text"><span class="lesson-ref">L5:</span> Have I done the 20% cut?</div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box"></div>
+    <div class="check-text"><span class="lesson-ref">L6:</span> Is this in MY voice? Does it sound like me?</div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box"></div>
+    <div class="check-text">Full revision checklist applied?</div>
+  </div>
+</div>
+
+<!-- ===================== PEER REVIEW ===================== -->
+
+<div class="peer-review">
+  <div class="pr-title">Peer Review &mdash; Get Feedback from 2 Siblings</div>
+
+  <div class="pr-block">
+    <div class="pr-label">Reviewer 1</div>
+    <div class="pr-field">
+      <div class="field-label">Name:</div>
+      <div class="field-input"></div>
+    </div>
+    <div class="pr-field">
+      <div class="field-label">What worked well:</div>
+      <div class="field-input-large"></div>
+    </div>
+    <div class="pr-field">
+      <div class="field-label">What I wanted more of / what confused me:</div>
+      <div class="field-input-large"></div>
+    </div>
+    <div class="pr-field">
+      <div class="field-label">The line that hit hardest:</div>
+      <div class="field-input"></div>
+    </div>
+  </div>
+
+  <div class="pr-block">
+    <div class="pr-label">Reviewer 2</div>
+    <div class="pr-field">
+      <div class="field-label">Name:</div>
+      <div class="field-input"></div>
+    </div>
+    <div class="pr-field">
+      <div class="field-label">What worked well:</div>
+      <div class="field-input-large"></div>
+    </div>
+    <div class="pr-field">
+      <div class="field-label">What I wanted more of / what confused me:</div>
+      <div class="field-input-large"></div>
+    </div>
+    <div class="pr-field">
+      <div class="field-label">The line that hit hardest:</div>
+      <div class="field-input"></div>
+    </div>
+  </div>
+</div>
+
+<div class="changes-section">
+  <div class="changes-label">Changes I made based on feedback:</div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+</div>
+
+<!-- ===================== PRESENTATION PREP ===================== -->
+
+<div class="presentation-prep">
+  <div class="pres-title">Presentation Prep</div>
+
+  <div class="pres-check">
+    <div class="check-box"></div>
+    <div>Read it aloud to yourself 3 times</div>
+  </div>
+
+  <div class="pres-check">
+    <div class="check-box"></div>
+    <div>Mark pauses with a slash ( / ) in your essay</div>
+  </div>
+
+  <div class="pres-check">
+    <div class="check-box"></div>
+    <div>Underline or mark words to emphasize ( *word* )</div>
+  </div>
+
+  <div class="pres-check">
+    <div class="check-box"></div>
+    <div>Practice eye contact &mdash; look up from the page at least 3 times</div>
+  </div>
+
+  <div class="pres-check">
+    <div class="check-box"></div>
+    <div>Time yourself: _______ minutes</div>
+  </div>
+</div>
+
+<div class="pres-nervous">
+  <div class="nervous-label">"The part I'm most nervous to read aloud is:</div>
+  <div class="line" style="margin-top: 8px;"></div>
+  <div class="line"></div>
+  <p style="margin-top: 10px; font-style: italic; color: #ff8f00;">&mdash; which means it's probably the most powerful part."</p>
+</div>
+
+<!-- ===================== AGE TIERS ===================== -->
+
+<h2>Age-Tier Guide</h2>
+
+<div class="age-note">
+  <strong>Primary (Age 6):</strong> Tell your story aloud. A parent helps write it down. Illustrate it with drawings. At the presentation, "read" your story and show your pictures.
+</div>
+<div class="age-note">
+  <strong>Elementary (Ages 9&ndash;10):</strong> Write 1 page (200&ndash;400 words). Read aloud to the family. Focus on one specific moment.
+</div>
+<div class="age-note">
+  <strong>Middle School (Ages 11&ndash;13):</strong> Write 2 pages (400&ndash;700 words). Present with some eye contact and vocal variety.
+</div>
+<div class="age-note">
+  <strong>High School (Age 15):</strong> Write the full essay (600&ndash;1000 words). Deliver it as a polished presentation.
+</div>
+
+</div>
+</body>
+</html>

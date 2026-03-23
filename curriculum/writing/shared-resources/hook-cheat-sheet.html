@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8 Ways to Hook Your Reader</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 25px 20px;
+            color: #2d2d2d;
+            line-height: 1.45;
+            background: #ffffff;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #00897b;
+        }
+        header h1 {
+            font-size: 1.5rem;
+            color: #00897b;
+        }
+        header p {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 2px;
+        }
+        .columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+        .column {
+            border: 2px solid #00897b;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .column.narrative { border-color: #e65100; }
+        .col-header {
+            background: #00897b;
+            color: #fff;
+            padding: 7px 12px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: 0.03em;
+        }
+        .column.narrative .col-header { background: #e65100; }
+        .col-body { padding: 10px 12px; }
+        .hook {
+            margin-bottom: 10px;
+            page-break-inside: avoid;
+        }
+        .hook:last-child { margin-bottom: 0; }
+        .hook-num {
+            display: inline-block;
+            background: #00897b;
+            color: #fff;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 22px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        .column.narrative .hook-num { background: #e65100; }
+        .hook h3 {
+            display: inline;
+            font-size: 0.88rem;
+            color: #00695c;
+            vertical-align: middle;
+        }
+        .column.narrative .hook h3 { color: #bf360c; }
+        .hook .desc {
+            font-size: 0.8rem;
+            color: #555;
+            margin: 3px 0 2px 27px;
+        }
+        .hook .example {
+            font-size: 0.78rem;
+            color: #5d4037;
+            font-style: italic;
+            margin-left: 27px;
+            background: #f5f5f5;
+            padding: 3px 8px;
+            border-radius: 3px;
+            border-left: 2px solid #ccc;
+        }
+        .tip-box {
+            background: #e0f2f1;
+            border: 1px dashed #00897b;
+            border-radius: 6px;
+            padding: 10px 14px;
+            text-align: center;
+            page-break-inside: avoid;
+        }
+        .tip-box strong { color: #00897b; }
+        .tip-box p {
+            font-size: 0.85rem;
+            color: #444;
+        }
+        .curriculum-tag {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #999;
+            margin-top: 10px;
+            padding-top: 6px;
+            border-top: 1px solid #ddd;
+        }
+        @media print {
+            body { padding: 12px; }
+            header h1 { font-size: 13pt; }
+            .columns { gap: 8px; }
+            .hook .example { background: #f5f5f5 !important; }
+            .tip-box { background: #f0f0f0 !important; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>8 Ways to Hook Your Reader</h1>
+        <p>Desk Reference Card &mdash; Print &amp; Keep Nearby</p>
+    </header>
+
+    <div class="columns">
+        <div class="column">
+            <div class="col-header">EXPOSITORY / PERSUASIVE HOOKS</div>
+            <div class="col-body">
+                <div class="hook">
+                    <span class="hook-num">1</span>
+                    <h3>The Startling Fact</h3>
+                    <p class="desc">Drop a surprising statistic or fact.</p>
+                    <p class="example">"Americans throw away 80 billion pounds of food every year."</p>
+                </div>
+                <div class="hook">
+                    <span class="hook-num">2</span>
+                    <h3>The Question</h3>
+                    <p class="desc">Ask something that makes the reader think.</p>
+                    <p class="example">"What would you do if you lost everything tomorrow?"</p>
+                </div>
+                <div class="hook">
+                    <span class="hook-num">3</span>
+                    <h3>The Bold Claim</h3>
+                    <p class="desc">State something provocative.</p>
+                    <p class="example">"High school doesn't prepare you for real life."</p>
+                </div>
+                <div class="hook">
+                    <span class="hook-num">4</span>
+                    <h3>The Funnel</h3>
+                    <p class="desc">Broad &rarr; narrow &rarr; thesis in 3 sentences. Start wide, zoom in to your point.</p>
+                </div>
+                <div class="hook">
+                    <span class="hook-num">5</span>
+                    <h3>The Anecdote</h3>
+                    <p class="desc">A brief real story that sets up your point.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="column narrative">
+            <div class="col-header">NARRATIVE HOOKS</div>
+            <div class="col-body">
+                <div class="hook">
+                    <span class="hook-num">6</span>
+                    <h3>In Medias Res</h3>
+                    <p class="desc">Start in the middle of the action.</p>
+                    <p class="example">"The glass shattered before I could scream."</p>
+                </div>
+                <div class="hook">
+                    <span class="hook-num">7</span>
+                    <h3>The Mystery</h3>
+                    <p class="desc">Open with something unexplained.</p>
+                    <p class="example">"Nobody talked about what happened in the shed."</p>
+                </div>
+                <div class="hook">
+                    <span class="hook-num">8</span>
+                    <h3>Dialogue</h3>
+                    <p class="desc">Start with someone speaking.</p>
+                    <p class="example">"'Don't open that door,' she whispered."</p>
+                </div>
+                <div style="margin-top: 18px; padding: 10px; background: #fff3e0; border-radius: 5px; border-left: 3px solid #e65100;">
+                    <p style="font-size: 0.8rem; color: #bf360c;"><strong>Pro tip:</strong> Narrative hooks can be used in expository writing too. Starting an essay with a mini-story is one of the most powerful techniques there is.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tip-box">
+        <p><strong>Not sure which to use?</strong> Try 2&ndash;3 different hooks for the same piece and see which one makes YOU want to keep reading. That's the one.</p>
+    </div>
+
+    <div class="curriculum-tag">The Lost Boys Adventure &mdash; Homeschool Writing Curriculum &bull; Shared Resource</div>
+</body>
+</html>

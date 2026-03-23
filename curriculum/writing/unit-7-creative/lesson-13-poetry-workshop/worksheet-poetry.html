@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 13: Poetry Workshop Worksheet</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #212121; line-height: 1.6; padding: 40px 20px; background: #fff; }
+  .container { max-width: 850px; margin: 0 auto; }
+  h1 { color: #00695c; font-size: 2em; margin-bottom: 4px; }
+  h2 { color: #00695c; font-size: 1.4em; margin-top: 32px; margin-bottom: 12px; border-bottom: 2px solid #00897b; padding-bottom: 6px; }
+  h3 { color: #00897b; font-size: 1.15em; margin-top: 20px; margin-bottom: 8px; }
+  .subtitle { color: #00897b; font-size: 1.1em; margin-bottom: 24px; }
+  .name-line { margin-bottom: 28px; font-size: 1em; }
+  .name-line span { display: inline-block; border-bottom: 1px solid #999; width: 250px; margin-left: 8px; }
+  .tier-badge { display: inline-block; background: #00897b; color: #fff; font-size: 0.75em; font-weight: 700; padding: 2px 10px; border-radius: 12px; margin-left: 8px; vertical-align: middle; }
+  .rules-box { background: #e0f2f1; border: 2px solid #00897b; border-radius: 10px; padding: 18px 22px; margin: 16px 0; }
+  .rules-box .rules-title { font-weight: 700; color: #00695c; font-size: 1.1em; margin-bottom: 8px; }
+  .example-box { background: #f5f5f5; border-left: 4px solid #00897b; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 12px 0; }
+  .example-box .ex-label { font-weight: 700; color: #00695c; font-size: 0.85em; text-transform: uppercase; margin-bottom: 4px; }
+  .example-box .poem-text { font-style: italic; white-space: pre-line; }
+  .tip-box { background: #fff8e1; border-left: 4px solid #ff8f00; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 18px 0; }
+  .tip-box .tip-label { font-weight: 700; color: #ff8f00; margin-bottom: 4px; }
+  .write-section { border: 1px solid #e0e0e0; border-radius: 10px; padding: 18px 22px; margin: 16px 0; background: #fafafa; page-break-inside: avoid; }
+  .write-section .section-label { font-weight: 700; color: #00695c; margin-bottom: 10px; }
+  .haiku-group { border: 1px dashed #00897b; border-radius: 8px; padding: 14px 18px; margin: 12px 0; background: #fff; }
+  .haiku-group .haiku-num { font-weight: 700; color: #00897b; margin-bottom: 8px; }
+  .haiku-line { display: flex; align-items: center; margin-bottom: 6px; }
+  .haiku-line .syllable-label { font-size: 0.8em; color: #757575; width: 80px; flex-shrink: 0; }
+  .haiku-line .line-input { flex: 1; border-bottom: 1px solid #ccc; min-height: 28px; }
+  .haiku-line .syllable-count { font-size: 0.8em; color: #00897b; font-weight: 600; width: 60px; text-align: right; flex-shrink: 0; }
+  .acrostic-line { display: flex; align-items: center; margin-bottom: 8px; }
+  .acrostic-letter { font-size: 1.4em; font-weight: 700; color: #00695c; width: 40px; text-align: center; flex-shrink: 0; }
+  .acrostic-dash { color: #00897b; margin: 0 8px; flex-shrink: 0; }
+  .acrostic-input { flex: 1; border-bottom: 1px solid #ccc; min-height: 28px; }
+  .letter-blank { display: inline-block; width: 30px; height: 36px; border: 2px solid #00897b; border-radius: 4px; text-align: center; font-size: 1.4em; font-weight: 700; color: #00695c; margin-right: 4px; vertical-align: middle; }
+  .writing-space { border: 1px solid #e0e0e0; border-radius: 8px; min-height: 200px; padding: 14px 18px; background: #fff; margin: 12px 0; }
+  .writing-space-large { min-height: 300px; }
+  .line { border-bottom: 1px solid #ddd; height: 32px; margin-bottom: 2px; }
+  .prompt-list { background: #fff8e1; border-radius: 8px; padding: 12px 18px; margin: 12px 0; }
+  .prompt-list strong { color: #ff8f00; }
+  .checkbox-item { margin-bottom: 6px; }
+  .checkbox-item input[type="checkbox"] { margin-right: 8px; }
+  .performance-note { background: #e0f2f1; border-radius: 8px; padding: 12px 18px; margin: 12px 0; font-size: 0.95em; }
+  .age-note { background: #e0f2f1; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+  .age-note strong { color: #00695c; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+  th { background: #00897b; color: #fff; padding: 10px 14px; text-align: left; font-size: 0.9em; }
+  td { border: 1px solid #ccc; padding: 10px 14px; vertical-align: top; }
+  tr:nth-child(even) td { background: #f9f9f9; }
+  .primary-section { border: 2px dashed #ff8f00; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .primary-section .primary-title { font-weight: 700; color: #ff8f00; font-size: 1.1em; margin-bottom: 10px; }
+  .shape-poem-space { border: 2px solid #00897b; border-radius: 12px; min-height: 250px; padding: 18px; background: #fff; margin: 12px 0; text-align: center; }
+  ul, ol { margin-left: 24px; margin-bottom: 12px; }
+  li { margin-bottom: 6px; }
+  @media print {
+    body { padding: 0; font-size: 11pt; }
+    .container { max-width: 100%; }
+    .rules-box, .example-box, .tip-box, .write-section, .haiku-group, .age-note, .primary-section { break-inside: avoid; }
+    .tip-box { border-left-color: #ff8f00 !important; }
+    h1, h2 { break-after: avoid; }
+    .writing-space { min-height: 150px; }
+    .writing-space-large { min-height: 250px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Poetry Workshop</h1>
+<p class="subtitle">Lesson 13: Unit 7 &mdash; Creative Writing Worksheet</p>
+
+<div class="name-line">Name: <span>&nbsp;</span> &nbsp;&nbsp; Date: <span style="width:150px;">&nbsp;</span></div>
+
+<!-- ===================== PRIMARY SECTION ===================== -->
+
+<div class="primary-section">
+  <div class="primary-title">Primary (Age 6) &mdash; Shape Poems + Simple Acrostic</div>
+  <p style="margin-bottom: 12px;">Pick something you love (a star, a heart, an animal, a tree). Write words about it <strong>in the shape of that thing</strong>. Then do the acrostic below using your name!</p>
+  <p style="font-size: 0.9em; color: #757575; margin-bottom: 8px;">Example: If you love the sun, write sunny words in a circle shape!</p>
+  <div class="shape-poem-space">
+    <p style="color: #ccc; font-size: 1.2em; margin-top: 80px;">Draw and write your shape poem here</p>
+  </div>
+</div>
+
+<!-- ===================== SECTION 1: HAIKU ===================== -->
+
+<h2>Section 1: Haiku</h2>
+
+<div class="rules-box">
+  <div class="rules-title">Haiku Rules</div>
+  <ul>
+    <li><strong>Line 1:</strong> 5 syllables</li>
+    <li><strong>Line 2:</strong> 7 syllables</li>
+    <li><strong>Line 3:</strong> 5 syllables</li>
+  </ul>
+  <p style="margin-top: 8px;">Usually about nature or a single moment frozen in time. The power of haiku is what it leaves <em>out</em>.</p>
+</div>
+
+<div class="example-box">
+  <div class="ex-label">Example</div>
+  <div class="poem-text">An old silent pond          (5)
+A frog jumps into the pond  (7)
+Splash! Silence again.      (5)</div>
+  <p style="font-size: 0.85em; color: #757575; margin-top: 6px;">&mdash; Matsuo Basho</p>
+</div>
+
+<div class="tip-box">
+  <div class="tip-label">Syllable Tip</div>
+  <p>Clap it out! Each clap = one syllable. "Wa-ter-mel-on" = 4 claps = 4 syllables.</p>
+</div>
+
+<p><strong>Write 3 haiku:</strong></p>
+
+<div class="haiku-group">
+  <div class="haiku-num">Haiku #1</div>
+  <div class="haiku-line">
+    <div class="syllable-label">Line 1:</div>
+    <div class="line-input"></div>
+    <div class="syllable-count">( ___ / 5 )</div>
+  </div>
+  <div class="haiku-line">
+    <div class="syllable-label">Line 2:</div>
+    <div class="line-input"></div>
+    <div class="syllable-count">( ___ / 7 )</div>
+  </div>
+  <div class="haiku-line">
+    <div class="syllable-label">Line 3:</div>
+    <div class="line-input"></div>
+    <div class="syllable-count">( ___ / 5 )</div>
+  </div>
+</div>
+
+<div class="haiku-group">
+  <div class="haiku-num">Haiku #2</div>
+  <div class="haiku-line">
+    <div class="syllable-label">Line 1:</div>
+    <div class="line-input"></div>
+    <div class="syllable-count">( ___ / 5 )</div>
+  </div>
+  <div class="haiku-line">
+    <div class="syllable-label">Line 2:</div>
+    <div class="line-input"></div>
+    <div class="syllable-count">( ___ / 7 )</div>
+  </div>
+  <div class="haiku-line">
+    <div class="syllable-label">Line 3:</div>
+    <div class="line-input"></div>
+    <div class="syllable-count">( ___ / 5 )</div>
+  </div>
+</div>
+
+<div class="haiku-group">
+  <div class="haiku-num">Haiku #3</div>
+  <div class="haiku-line">
+    <div class="syllable-label">Line 1:</div>
+    <div class="line-input"></div>
+    <div class="syllable-count">( ___ / 5 )</div>
+  </div>
+  <div class="haiku-line">
+    <div class="syllable-label">Line 2:</div>
+    <div class="line-input"></div>
+    <div class="syllable-count">( ___ / 7 )</div>
+  </div>
+  <div class="haiku-line">
+    <div class="syllable-label">Line 3:</div>
+    <div class="line-input"></div>
+    <div class="syllable-count">( ___ / 5 )</div>
+  </div>
+</div>
+
+<!-- ===================== SECTION 2: ACROSTIC ===================== -->
+
+<h2>Section 2: Acrostic</h2>
+
+<div class="rules-box">
+  <div class="rules-title">Acrostic Rules</div>
+  <p>Write a word vertically down the page. Each letter starts a line that relates to that word. Don't just list adjectives &mdash; tell tiny stories. Make each line a surprise.</p>
+</div>
+
+<div class="example-box">
+  <div class="ex-label">Example: BRAVE</div>
+  <div class="poem-text"><strong>B</strong> &mdash; Beyond the fear that grips my chest
+<strong>R</strong> &mdash; Rising when my legs say stop
+<strong>A</strong> &mdash; Always one more step to take
+<strong>V</strong> &mdash; Victory isn't the absence of fear
+<strong>E</strong> &mdash; Every hero shakes before they leap</div>
+</div>
+
+<p><strong>Write 1 acrostic using:</strong></p>
+<div style="margin: 10px 0 16px 0;">
+  <label><input type="checkbox" style="margin-right: 6px;">My name</label> &nbsp;&nbsp;
+  <label><input type="checkbox" style="margin-right: 6px;">A word I love: </label>
+  <span style="display: inline-block; border-bottom: 1px solid #999; width: 200px;">&nbsp;</span>
+</div>
+
+<p style="margin-bottom: 8px;">Write your word vertically, then complete each line:</p>
+
+<div class="write-section">
+  <div class="acrostic-line">
+    <div class="letter-blank">&nbsp;</div>
+    <div class="acrostic-dash">&mdash;</div>
+    <div class="acrostic-input"></div>
+  </div>
+  <div class="acrostic-line">
+    <div class="letter-blank">&nbsp;</div>
+    <div class="acrostic-dash">&mdash;</div>
+    <div class="acrostic-input"></div>
+  </div>
+  <div class="acrostic-line">
+    <div class="letter-blank">&nbsp;</div>
+    <div class="acrostic-dash">&mdash;</div>
+    <div class="acrostic-input"></div>
+  </div>
+  <div class="acrostic-line">
+    <div class="letter-blank">&nbsp;</div>
+    <div class="acrostic-dash">&mdash;</div>
+    <div class="acrostic-input"></div>
+  </div>
+  <div class="acrostic-line">
+    <div class="letter-blank">&nbsp;</div>
+    <div class="acrostic-dash">&mdash;</div>
+    <div class="acrostic-input"></div>
+  </div>
+  <div class="acrostic-line">
+    <div class="letter-blank">&nbsp;</div>
+    <div class="acrostic-dash">&mdash;</div>
+    <div class="acrostic-input"></div>
+  </div>
+  <div class="acrostic-line">
+    <div class="letter-blank">&nbsp;</div>
+    <div class="acrostic-dash">&mdash;</div>
+    <div class="acrostic-input"></div>
+  </div>
+  <div class="acrostic-line">
+    <div class="letter-blank">&nbsp;</div>
+    <div class="acrostic-dash">&mdash;</div>
+    <div class="acrostic-input"></div>
+  </div>
+  <p style="font-size: 0.85em; color: #757575; margin-top: 8px;">(Use as many lines as letters in your word. Leave extra lines blank.)</p>
+</div>
+
+<!-- ===================== SECTION 3: FREE VERSE ===================== -->
+
+<h2>Section 3: Free Verse <span class="tier-badge">Elementary +</span></h2>
+
+<div class="rules-box">
+  <div class="rules-title">Free Verse Rules</div>
+  <p>No rules about rhyme, syllables, or length. Just make it <strong>REAL</strong>. Write about something you feel deeply. Be specific. Be honest.</p>
+</div>
+
+<div class="prompt-list">
+  <strong>Pick a prompt (or use your own):</strong>
+  <ul style="margin-top: 8px;">
+    <li>"Home is..."</li>
+    <li>"I am from..."</li>
+    <li>"What I want you to know about me is..."</li>
+    <li>"When no one is watching, I..."</li>
+    <li>Your own topic: <span style="display: inline-block; border-bottom: 1px solid #999; width: 250px;">&nbsp;</span></li>
+  </ul>
+</div>
+
+<div class="write-section">
+  <div class="section-label">My Free Verse Poem</div>
+  <p style="font-size: 0.85em; color: #757575; margin-bottom: 10px;">Title (optional): <span style="display: inline-block; border-bottom: 1px solid #999; width: 300px;">&nbsp;</span></p>
+  <div class="writing-space writing-space-large">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+</div>
+
+<!-- ===================== SECTION 4: SPOKEN WORD ===================== -->
+
+<h2>Section 4: Spoken Word <span class="tier-badge">Middle + High School</span></h2>
+
+<div class="rules-box">
+  <div class="rules-title">Spoken Word Rules</div>
+  <p>Written to be performed <strong>OUT LOUD</strong>. Use repetition, rhythm, emotion. It should <em>sound</em> powerful. This isn't quiet poetry &mdash; this is poetry with a heartbeat.</p>
+</div>
+
+<div class="prompt-list">
+  <strong>Write about:</strong>
+  <ul style="margin-top: 8px;">
+    <li>Something you <strong>believe in</strong></li>
+    <li>Something that makes you <strong>angry</strong></li>
+    <li>Something you wish people <strong>understood</strong></li>
+    <li>Something you're <strong>tired of hearing</strong></li>
+  </ul>
+</div>
+
+<div class="write-section">
+  <div class="section-label">My Spoken Word Piece</div>
+  <p style="font-size: 0.85em; color: #757575; margin-bottom: 10px;">Title: <span style="display: inline-block; border-bottom: 1px solid #999; width: 300px;">&nbsp;</span></p>
+  <div class="writing-space writing-space-large">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+</div>
+
+<div class="performance-note">
+  <strong>Performance Notes:</strong> Before you perform, mark up your poem:
+  <ul style="margin-top: 8px;">
+    <li>Mark where you should <strong>pause</strong> with a slash: /</li>
+    <li><u>Underline</u> words to <strong>emphasize</strong></li>
+    <li>Write <strong>(LOUD)</strong> or <strong>(whisper)</strong> where volume changes</li>
+    <li>Circle the line that matters most &mdash; that's where you look up and make eye contact</li>
+  </ul>
+</div>
+
+<!-- ===================== FAMILY POETRY SLAM ===================== -->
+
+<h2>Family Poetry Slam</h2>
+
+<p style="font-size: 1.1em; font-weight: 600; color: #00695c; margin-bottom: 8px;">"Pick your best poem. Perform it. Own it."</p>
+
+<div class="tip-box">
+  <div class="tip-label">Slam Rules</div>
+  <ul>
+    <li>Stand up (or sit up tall)</li>
+    <li>Read like you mean it</li>
+    <li>Applause after every single poem &mdash; no exceptions</li>
+    <li>Scoring is for fun, not stress</li>
+  </ul>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Poet</th>
+      <th>Poem Form</th>
+      <th>Emotional Impact (1&ndash;5)</th>
+      <th>Best Line</th>
+      <th>Applause Level</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="height: 40px;"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="height: 40px;"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="height: 40px;"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="height: 40px;"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="height: 40px;"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="height: 40px;"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Age-Tier Guide</h2>
+
+<div class="age-note">
+  <strong>Primary (Age 6):</strong> Shape poem + simple acrostic with drawing. Performs shape poem at the slam.
+</div>
+<div class="age-note">
+  <strong>Elementary (Ages 9&ndash;10):</strong> Haiku (3) + Acrostic (1) + Free Verse (1). Performs at the slam.
+</div>
+<div class="age-note">
+  <strong>Middle School (Ages 11&ndash;13):</strong> All four forms. Performs at the slam.
+</div>
+<div class="age-note">
+  <strong>High School (Age 15):</strong> All four forms + full performance with pacing, emphasis, and eye contact.
+</div>
+
+</div>
+</body>
+</html>

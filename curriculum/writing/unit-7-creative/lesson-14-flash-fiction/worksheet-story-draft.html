@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 14: Flash Fiction — Story Draft</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #212121; line-height: 1.6; padding: 40px 20px; background: #fff; }
+  .container { max-width: 850px; margin: 0 auto; }
+  h1 { color: #00695c; font-size: 2em; margin-bottom: 4px; }
+  h2 { color: #00695c; font-size: 1.4em; margin-top: 32px; margin-bottom: 12px; border-bottom: 2px solid #00897b; padding-bottom: 6px; }
+  h3 { color: #00897b; font-size: 1.15em; margin-top: 20px; margin-bottom: 8px; }
+  .subtitle { color: #00897b; font-size: 1.1em; margin-bottom: 24px; }
+  .name-line { margin-bottom: 12px; font-size: 1em; }
+  .name-line span { display: inline-block; border-bottom: 1px solid #999; width: 300px; margin-left: 8px; }
+  .title-line { margin-bottom: 28px; font-size: 1.1em; }
+  .title-line span { display: inline-block; border-bottom: 2px solid #00897b; width: 400px; margin-left: 8px; font-weight: 600; }
+  .writing-space { border: 1px solid #e0e0e0; border-radius: 8px; padding: 18px 22px; background: #fff; margin: 16px 0; }
+  .line { border-bottom: 1px solid #ddd; height: 32px; margin-bottom: 2px; }
+  .word-count-bar { display: flex; align-items: center; justify-content: center; gap: 12px; background: #e0f2f1; border-radius: 8px; padding: 12px 18px; margin: 16px 0; font-size: 1.1em; }
+  .word-count-bar .wc-label { font-weight: 700; color: #00695c; }
+  .word-count-bar .wc-box { border: 2px solid #00897b; border-radius: 6px; width: 80px; height: 36px; text-align: center; font-size: 1.2em; font-weight: 700; }
+  .checklist { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; padding: 18px 22px; margin: 20px 0; }
+  .checklist .checklist-title { font-weight: 700; color: #00695c; font-size: 1.1em; margin-bottom: 12px; }
+  .check-item { display: flex; align-items: flex-start; margin-bottom: 10px; }
+  .check-box { width: 20px; height: 20px; border: 2px solid #00897b; border-radius: 4px; flex-shrink: 0; margin-right: 10px; margin-top: 2px; }
+  .check-text { flex: 1; }
+  .check-text .ref { font-size: 0.85em; color: #757575; }
+  .peer-review { background: #fff8e1; border: 2px solid #ff8f00; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .peer-review .pr-title { font-weight: 700; color: #ff8f00; font-size: 1.1em; margin-bottom: 12px; }
+  .pr-field { margin-bottom: 14px; }
+  .pr-field .pr-label { font-weight: 600; color: #00695c; margin-bottom: 4px; }
+  .pr-field .pr-input { border-bottom: 1px solid #ccc; min-height: 28px; }
+  .pr-field .pr-input-large { border: 1px solid #ccc; border-radius: 6px; min-height: 50px; padding: 8px 12px; background: #fff; }
+  .revision-section { background: #e0f2f1; border: 2px solid #00897b; border-radius: 10px; padding: 18px 22px; margin: 24px 0; }
+  .revision-section .rev-title { font-weight: 700; color: #00695c; font-size: 1.1em; margin-bottom: 12px; }
+  .rev-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .rev-stat { text-align: center; background: #fff; border-radius: 8px; padding: 12px; }
+  .rev-stat .stat-label { font-size: 0.85em; color: #757575; margin-bottom: 4px; }
+  .rev-stat .stat-value { font-size: 1.3em; font-weight: 700; color: #00695c; }
+  .rev-stat .stat-input { border: 2px solid #00897b; border-radius: 6px; width: 80px; height: 36px; text-align: center; font-size: 1.2em; font-weight: 700; margin: 0 auto; display: block; }
+  .fav-sentence { margin-top: 12px; }
+  .fav-sentence .fav-label { font-weight: 600; color: #00695c; margin-bottom: 4px; }
+  .fav-sentence .fav-input { border: 1px solid #ccc; border-radius: 6px; min-height: 40px; padding: 8px 12px; background: #fff; }
+  .age-note { background: #e0f2f1; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+  .age-note strong { color: #00695c; }
+  .tip-box { background: #fff8e1; border-left: 4px solid #ff8f00; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 18px 0; }
+  .tip-box .tip-label { font-weight: 700; color: #ff8f00; margin-bottom: 4px; }
+  @media print {
+    body { padding: 0; font-size: 11pt; }
+    .container { max-width: 100%; }
+    .checklist, .peer-review, .revision-section, .word-count-bar { break-inside: avoid; }
+    h1, h2 { break-after: avoid; }
+    .writing-space { min-height: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>My Flash Fiction</h1>
+<p class="subtitle">Lesson 14: A Complete Story in 500 Words</p>
+
+<div class="title-line">Title: <span>&nbsp;</span></div>
+<div class="name-line">Author: <span>&nbsp;</span> &nbsp;&nbsp; Date: <span style="width:150px;">&nbsp;</span></div>
+
+<!-- ===================== WRITING SPACE ===================== -->
+
+<div class="writing-space">
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+</div>
+
+<div class="word-count-bar">
+  <div class="wc-label">Word Count:</div>
+  <div class="wc-box"></div>
+  <div style="font-size: 1.2em; font-weight: 700; color: #00695c;">/ 500</div>
+</div>
+
+<!-- ===================== POST-DRAFT CHECKLIST ===================== -->
+
+<div class="checklist">
+  <div class="checklist-title">Post-Draft Checklist</div>
+
+  <div class="check-item">
+    <div class="check-box"></div>
+    <div class="check-text">Does it start with a hook? (Not "Once upon a time" or backstory) <span class="ref">&mdash; L3</span></div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box"></div>
+    <div class="check-text">Is there a clear conflict? (Something the character wants + something in the way)</div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box"></div>
+    <div class="check-text">Does something CHANGE? (A turning point, a realization, a decision)</div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box"></div>
+    <div class="check-text">Did I use "show don't tell"? <span class="ref">&mdash; L2</span></div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box"></div>
+    <div class="check-text">Is there at least one line of dialogue?</div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box"></div>
+    <div class="check-text">Does the ending feel complete? (Not just... stopping)</div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box"></div>
+    <div class="check-text">Is every sentence doing work? (If I remove it, does anything get lost?)</div>
+  </div>
+</div>
+
+<!-- ===================== PEER REVIEW ===================== -->
+
+<div class="peer-review">
+  <div class="pr-title">Peer Review</div>
+  <p style="font-size: 0.9em; color: #757575; margin-bottom: 14px;">Have a sibling read your story and answer these three questions.</p>
+
+  <div class="pr-field">
+    <div class="pr-label">Reviewer:</div>
+    <div class="pr-input"></div>
+  </div>
+
+  <div class="pr-field">
+    <div class="pr-label">One thing that worked:</div>
+    <div class="pr-input-large"></div>
+  </div>
+
+  <div class="pr-field">
+    <div class="pr-label">One thing I wanted more of:</div>
+    <div class="pr-input-large"></div>
+  </div>
+
+  <div class="pr-field">
+    <div class="pr-label">One question I had:</div>
+    <div class="pr-input-large"></div>
+  </div>
+</div>
+
+<!-- ===================== REVISION ===================== -->
+
+<div class="revision-section">
+  <div class="rev-title">Revision Tracker</div>
+
+  <div class="rev-stats">
+    <div class="rev-stat">
+      <div class="stat-label">Words BEFORE revision</div>
+      <div class="stat-input"></div>
+    </div>
+    <div class="rev-stat">
+      <div class="stat-label">Words AFTER revision</div>
+      <div class="stat-input"></div>
+    </div>
+    <div class="rev-stat">
+      <div class="stat-label">Words CUT</div>
+      <div class="stat-input"></div>
+    </div>
+  </div>
+
+  <div class="fav-sentence">
+    <div class="fav-label">My favorite sentence in the story:</div>
+    <div class="fav-input"></div>
+  </div>
+</div>
+
+<div class="tip-box">
+  <div class="tip-label">Revision Reminder</div>
+  <p>Cutting words isn't losing your story &mdash; it's finding it. Every word you cut makes the remaining words stronger. The number of words cut is a badge of honor, not a loss.</p>
+</div>
+
+<h2>Age-Tier Guide</h2>
+<div class="age-note">
+  <strong>Primary (Age 6):</strong> Uses the comic strip on the Story Planner instead of this draft sheet.
+</div>
+<div class="age-note">
+  <strong>Elementary (Ages 9&ndash;10):</strong> Target 200 words. Focus on having a beginning, middle, and end.
+</div>
+<div class="age-note">
+  <strong>Middle School (Ages 11&ndash;13):</strong> Target 300&ndash;400 words. Full checklist and peer review.
+</div>
+<div class="age-note">
+  <strong>High School (Age 15):</strong> Exactly 500 words. Full checklist, peer review, and revision tracking.
+</div>
+
+</div>
+</body>
+</html>

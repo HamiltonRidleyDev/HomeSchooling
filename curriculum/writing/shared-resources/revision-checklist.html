@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Revision Checklist — Make Good Writing Great</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 28px 24px;
+            color: #2d2d2d;
+            line-height: 1.5;
+            background: #ffffff;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #00897b;
+        }
+        header h1 {
+            font-size: 1.5rem;
+            color: #00897b;
+        }
+        .intro {
+            font-size: 0.9rem;
+            color: #555;
+            text-align: center;
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+        .section {
+            margin-bottom: 14px;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            page-break-inside: avoid;
+        }
+        .section-header {
+            padding: 7px 14px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #fff;
+        }
+        .sec-big .section-header { background: #00897b; }
+        .sec-para .section-header { background: #1565c0; }
+        .sec-sent .section-header { background: #e65100; }
+        .sec-cut .section-header { background: #c62828; }
+        .sec-final .section-header { background: #6a1b9a; }
+        .section-body { padding: 10px 14px; }
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 4px 0;
+            font-size: 0.86rem;
+            color: #333;
+        }
+        .check-box {
+            flex-shrink: 0;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #999;
+            border-radius: 3px;
+            margin-top: 2px;
+        }
+        .sec-big .check-box { border-color: #00897b; }
+        .sec-para .check-box { border-color: #1565c0; }
+        .sec-sent .check-box { border-color: #e65100; }
+        .sec-cut .check-box { border-color: #c62828; }
+        .sec-final .check-box { border-color: #6a1b9a; }
+        .check-item em { color: #777; font-size: 0.82rem; }
+
+        .cut-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            margin: 8px 0;
+        }
+        .cut-field {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 6px 10px;
+            text-align: center;
+            font-size: 0.82rem;
+        }
+        .cut-field .label { color: #888; font-size: 0.75rem; }
+        .cut-field .blank {
+            border-bottom: 1px solid #999;
+            display: inline-block;
+            width: 50px;
+            margin-top: 2px;
+        }
+        .cut-quote {
+            font-style: italic;
+            font-size: 0.84rem;
+            color: #c62828;
+            text-align: center;
+            margin-top: 4px;
+        }
+
+        .age-section {
+            margin-top: 18px;
+            background: #e8eaf6;
+            border-radius: 6px;
+            padding: 14px 16px;
+            page-break-inside: avoid;
+        }
+        .age-section h3 {
+            font-size: 0.95rem;
+            color: #283593;
+            margin-bottom: 8px;
+        }
+        .age-tier {
+            margin-bottom: 8px;
+        }
+        .age-tier strong {
+            color: #00897b;
+            font-size: 0.88rem;
+        }
+        .age-tier ul {
+            margin: 4px 0 0 20px;
+            font-size: 0.82rem;
+            color: #444;
+        }
+        .age-tier ul li { padding: 1px 0; }
+
+        .curriculum-tag {
+            text-align: center;
+            font-size: 0.72rem;
+            color: #999;
+            margin-top: 14px;
+            padding-top: 8px;
+            border-top: 1px solid #ddd;
+        }
+        @media print {
+            body { padding: 14px; font-size: 10pt; }
+            header h1 { font-size: 13pt; }
+            .section { break-inside: avoid; }
+            .age-section { break-inside: avoid; background: #f0f0ff !important; }
+            .check-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>The Revision Checklist &mdash; Make Good Writing Great</h1>
+    </header>
+
+    <p class="intro">Revision isn't fixing spelling. It's rethinking, restructuring, and sharpening. Use this checklist every time you revise.</p>
+
+    <div class="section sec-big">
+        <div class="section-header">THE BIG PICTURE &mdash; Do These First</div>
+        <div class="section-body">
+            <div class="check-item"><div class="check-box"></div><span>Read the whole thing aloud. Mark anything that sounds awkward.</span></div>
+            <div class="check-item"><div class="check-box"></div><span>Does it have a clear POINT? Can you state it in one sentence?</span></div>
+            <div class="check-item"><div class="check-box"></div><span>Does the opening HOOK the reader? <em>(See Hook Cheat Sheet)</em></span></div>
+            <div class="check-item"><div class="check-box"></div><span>Does the conclusion echo or connect back to the opening?</span></div>
+            <div class="check-item"><div class="check-box"></div><span>Does every paragraph support the main point? Cut anything that doesn't.</span></div>
+            <div class="check-item"><div class="check-box"></div><span>Do paragraphs flow into each other? <em>(Check transitions)</em></span></div>
+        </div>
+    </div>
+
+    <div class="section sec-para">
+        <div class="section-header">PARAGRAPH LEVEL</div>
+        <div class="section-body">
+            <div class="check-item"><div class="check-box"></div><span>Read only the FIRST sentence of each paragraph. Do they tell the story on their own?</span></div>
+            <div class="check-item"><div class="check-box"></div><span>Does each paragraph have ONE main idea?</span></div>
+            <div class="check-item"><div class="check-box"></div><span>Is there a mix of short and long sentences? <em>(Rhythm matters)</em></span></div>
+            <div class="check-item"><div class="check-box"></div><span>Are there any paragraphs that are too long? <em>(Split them)</em></span></div>
+        </div>
+    </div>
+
+    <div class="section sec-sent">
+        <div class="section-header">SENTENCE LEVEL</div>
+        <div class="section-body">
+            <div class="check-item"><div class="check-box"></div><span>Hunt for weak verbs (<em>is, was, were, had</em>) &mdash; can you replace with strong ones?</span></div>
+            <div class="check-item"><div class="check-box"></div><span>Hunt for adverbs (<em>words ending in -ly</em>) &mdash; can the verb do the work alone?</span></div>
+            <div class="check-item"><div class="check-box"></div><span>Kill "very" and "really" &mdash; find a stronger word instead.</span></div>
+            <div class="check-item"><div class="check-box"></div><span>Check for repeated words in the same paragraph.</span></div>
+            <div class="check-item"><div class="check-box"></div><span>Are sentences varied? <em>(Not all starting with "I" or "The")</em></span></div>
+        </div>
+    </div>
+
+    <div class="section sec-cut">
+        <div class="section-header">THE 20% CUT</div>
+        <div class="section-body">
+            <div class="cut-grid">
+                <div class="cut-field">
+                    <div class="label">Word count before</div>
+                    <div class="blank">&nbsp;</div>
+                </div>
+                <div class="cut-field">
+                    <div class="label">Target (cut 20%)</div>
+                    <div class="blank">&nbsp;</div>
+                </div>
+                <div class="cut-field">
+                    <div class="label">Word count after</div>
+                    <div class="blank">&nbsp;</div>
+                </div>
+            </div>
+            <p class="cut-quote">"Every word must earn its place. If it doesn't add meaning, cut it."</p>
+        </div>
+    </div>
+
+    <div class="section sec-final">
+        <div class="section-header">FINAL POLISH</div>
+        <div class="section-body">
+            <div class="check-item"><div class="check-box"></div><span>Spelling check <em>(read backwards &mdash; your brain catches more errors)</em></span></div>
+            <div class="check-item"><div class="check-box"></div><span>Punctuation check <em>(especially commas and apostrophes)</em></span></div>
+            <div class="check-item"><div class="check-box"></div><span>Read aloud one final time.</span></div>
+        </div>
+    </div>
+
+    <div class="age-section">
+        <h3>Age-Tiered Guidance</h3>
+        <div class="age-tier">
+            <strong>Ages 6&ndash;8 (Primary) &mdash; Simplified Checklist:</strong>
+            <ul>
+                <li>Read it aloud to someone. Does it make sense?</li>
+                <li>Does your story have a beginning, middle, and end?</li>
+                <li>Can you add one more detail to help the reader SEE it?</li>
+                <li>Check your capital letters and periods.</li>
+                <li>Read it aloud one more time. Fix anything that sounds funny.</li>
+            </ul>
+        </div>
+        <div class="age-tier">
+            <strong>Ages 9&ndash;12 (Elementary):</strong>
+            <ul>
+                <li>Use the <strong>Big Picture</strong> section + <strong>Sentence Level</strong> section.</li>
+                <li>Skip the 20% cut for now (but try cutting 2&ndash;3 unnecessary sentences).</li>
+            </ul>
+        </div>
+        <div class="age-tier">
+            <strong>Ages 13+ (Middle / High):</strong>
+            <ul>
+                <li>Use the <strong>full checklist</strong> every time.</li>
+                <li>The 20% cut is your most powerful tool. Use it ruthlessly.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="curriculum-tag">The Lost Boys Adventure &mdash; Homeschool Writing Curriculum &bull; Shared Resource</div>
+</body>
+</html>

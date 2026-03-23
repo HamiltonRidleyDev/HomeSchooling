@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Feedback Framework — How to Help a Writer Get Better</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 30px 25px;
+            color: #2d2d2d;
+            line-height: 1.5;
+            background: #ffffff;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 3px solid #00897b;
+        }
+        header h1 {
+            font-size: 1.65rem;
+            color: #00897b;
+            margin-bottom: 6px;
+        }
+        header p {
+            font-size: 0.92rem;
+            color: #555;
+            font-style: italic;
+        }
+        .problem-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 10px 14px;
+            margin-bottom: 18px;
+            font-size: 0.92rem;
+            border-radius: 0 4px 4px 0;
+        }
+        .problem-box strong { color: #e65100; }
+        .framework { margin-bottom: 16px; }
+        .step {
+            background: #e0f2f1;
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            position: relative;
+            page-break-inside: avoid;
+        }
+        .step-number {
+            display: inline-block;
+            background: #00897b;
+            color: #fff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .step h3 {
+            display: inline;
+            font-size: 1rem;
+            color: #00695c;
+            vertical-align: middle;
+        }
+        .step p {
+            margin-top: 5px;
+            font-size: 0.88rem;
+            padding-left: 36px;
+            color: #444;
+        }
+        .step .examples {
+            font-style: italic;
+            color: #5d4037;
+        }
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+        .col-box {
+            background: #f5f5f5;
+            border-radius: 6px;
+            padding: 12px 14px;
+            page-break-inside: avoid;
+        }
+        .col-box h4 {
+            font-size: 0.92rem;
+            color: #00897b;
+            margin-bottom: 6px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 4px;
+        }
+        .col-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        .col-box ul li {
+            font-size: 0.84rem;
+            padding: 2px 0;
+            padding-left: 14px;
+            position: relative;
+            color: #444;
+        }
+        .col-box ul li::before {
+            content: "\u25B8";
+            position: absolute;
+            left: 0;
+            color: #00897b;
+        }
+        .rules-box {
+            background: #fce4ec;
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            page-break-inside: avoid;
+        }
+        .rules-box h4 {
+            font-size: 0.95rem;
+            color: #c62828;
+            margin-bottom: 6px;
+        }
+        .rules-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        .rules-box ul li {
+            font-size: 0.84rem;
+            padding: 3px 0 3px 18px;
+            position: relative;
+            color: #444;
+        }
+        .rules-box ul li::before {
+            content: "\u2716";
+            position: absolute;
+            left: 0;
+            color: #c62828;
+            font-size: 0.7rem;
+        }
+        .rules-box ul li:nth-child(odd)::before {
+            content: "\u2714";
+            color: #00897b;
+        }
+        .age-guide {
+            background: #e8eaf6;
+            border-radius: 6px;
+            padding: 12px 16px;
+            page-break-inside: avoid;
+        }
+        .age-guide h4 {
+            font-size: 0.95rem;
+            color: #283593;
+            margin-bottom: 6px;
+        }
+        .age-guide .tier {
+            font-size: 0.84rem;
+            padding: 3px 0;
+            color: #444;
+        }
+        .age-guide .tier strong { color: #00897b; }
+        .curriculum-tag {
+            text-align: center;
+            font-size: 0.72rem;
+            color: #999;
+            margin-top: 14px;
+            padding-top: 8px;
+            border-top: 1px solid #ddd;
+        }
+        @media print {
+            body { padding: 15px; font-size: 11pt; }
+            header h1 { font-size: 14pt; }
+            .step, .col-box, .rules-box, .age-guide { break-inside: avoid; }
+            .problem-box { background: #fff !important; border-left: 3px solid #ff9800; }
+            .step { background: #f0f0f0 !important; }
+            .rules-box { background: #fff0f0 !important; }
+            .age-guide { background: #f0f0ff !important; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>The Feedback Framework</h1>
+        <p>How to Help a Writer Get Better</p>
+    </header>
+
+    <div class="problem-box">
+        <strong>The Problem:</strong> "I liked it" is the most useless feedback in the world. Here's how to actually help.
+    </div>
+
+    <div class="framework">
+        <div class="step">
+            <span class="step-number">1</span>
+            <h3>ONE THING THAT WORKED</h3>
+            <p>Be specific. Not "it was good" but:</p>
+            <p class="examples">"The opening question hooked me because I immediately wanted to know the answer." &bull; "The description of the burned toast made me smell it."</p>
+        </div>
+        <div class="step">
+            <span class="step-number">2</span>
+            <h3>ONE THING I WANTED MORE OF</h3>
+            <p>Not "it was bad" &mdash; frame it as curiosity:</p>
+            <p class="examples">"I wanted to SEE what the room looked like." &bull; "I wanted to know how she felt when that happened." &bull; "The middle section moved fast &mdash; I wanted more detail on the argument with her brother."</p>
+        </div>
+        <div class="step">
+            <span class="step-number">3</span>
+            <h3>ONE QUESTION I HAD</h3>
+            <p>Something that wasn't clear or that you're curious about:</p>
+            <p class="examples">"What happened next?" &bull; "Why did he go back to the house?" &bull; "How does this connect to your thesis?"</p>
+        </div>
+    </div>
+
+    <div class="two-col">
+        <div class="col-box">
+            <h4>Sentence Starters &mdash; Praise</h4>
+            <ul>
+                <li>"I liked the part where... because..."</li>
+                <li>"The strongest sentence was... because..."</li>
+                <li>"I could really picture / feel / hear..."</li>
+                <li>"This reminded me of..."</li>
+            </ul>
+        </div>
+        <div class="col-box">
+            <h4>Sentence Starters &mdash; Growth</h4>
+            <ul>
+                <li>"I wanted to know more about..."</li>
+                <li>"I got confused when..."</li>
+                <li>"What if you tried..."</li>
+                <li>"I was curious about..."</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="rules-box">
+        <h4>Rules of Feedback</h4>
+        <ul>
+            <li>Be kind AND honest (both, not either/or)</li>
+            <li>Talk about the WRITING, not the WRITER ("The ending felt rushed" not "You rushed the ending")</li>
+            <li>Be specific &mdash; vague praise is as useless as vague criticism</li>
+            <li>Ask questions more than give commands</li>
+            <li>Remember: you're helping them make THEIR piece better, not rewriting it as YOU would</li>
+        </ul>
+    </div>
+
+    <div class="age-guide">
+        <h4>Age Guidance</h4>
+        <div class="tier"><strong>Ages 6&ndash;8:</strong> Just do Step 1 (one thing that worked) + one question. That's it!</div>
+        <div class="tier"><strong>Ages 9&ndash;12:</strong> All 3 steps, using the sentence starters above.</div>
+        <div class="tier"><strong>Ages 13+:</strong> Full framework. Aim for specificity &mdash; cite exact sentences and explain why they work (or don't).</div>
+    </div>
+
+    <div class="curriculum-tag">The Lost Boys Adventure &mdash; Homeschool Writing Curriculum &bull; Shared Resource</div>
+</body>
+</html>
